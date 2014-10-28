@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONModel.h"
 
-@interface BaseModel : NSObject
+@interface BaseModel : JSONModel
 
 @property (nonatomic, strong) NSString *message;
-@property (nonatomic, assign) NSInteger responseCode;
-@property (nonatomic, assign) BOOL httpSuccess;
+//@property (nonatomic, assign) NSInteger responseCode;
+@property (nonatomic, assign) BOOL success;
 
 @end
