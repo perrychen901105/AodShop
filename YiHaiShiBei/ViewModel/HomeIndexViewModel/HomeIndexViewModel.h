@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HomeIndexService.h"
-
+#import "LocationModel.h"
 
 @protocol HomeIndexViewModelDelegate <NSObject>
 
@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong) NSMutableArray *arrProvince;
 
+@property (nonatomic, strong) LocationBaseModel *locationModel;
 
 - (void)getAllProvinceList;
 

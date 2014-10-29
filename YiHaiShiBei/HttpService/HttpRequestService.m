@@ -7,7 +7,7 @@
 //
 
 #import "HttpRequestService.h"
-#import "ASIHTTPRequest.h"
+
 #import "AppConfig.h"
 
 @implementation HttpRequestService
@@ -26,28 +26,85 @@
     [request startAsynchronous];
     [request setCompletionBlock:^{
         NSString *responseString = [request responseString];
-        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingAllowFragments error:nil];
-//        NSDictionary *dicSucc = [dicRoot objectForKey:@"success"];
-//        NSDictionary *dicData = [dicRoot objectForKey:@"data"];
-        
-//        NSArray *arrRoot = [NSJSONSerialization js ]
-        NSLog(@"dic root is %@",dicRoot);
-#ifdef DEBUG
+#ifdef DEBUG_X
         NSLog(@"success string %@",responseString);
 #endif
         successBlock(responseString);
     }];
-    
-    
-    
     [request setFailedBlock:^{
         NSError *error = [request error];
-#ifdef DEBUG
+#ifdef DEBUG_X
         NSLog(@"error is %@",[error localizedDescription]);
 #endif
         errorBlock(request.responseStatusCode, [error localizedDescription]);
     }];
     
+}
+
+- (void)postFileToServer:(NSString *)actionName Datas:(NSMutableDictionary *)datas dicParams:(NSMutableDictionary *)dicParams success:(RequestSuccessBlock)successBlock error:(RequestErrorBlock)errorBlock
+{
+    NSURL *url = [NSURL URLWithString:[APIHost stringByAppendingString:actionName]];
+    
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    
+    for (NSString *fileKey in [datas allKeys]) {
+        [request addData:datas[fileKey] withFileName:@"temp.jpg" andContentType:@"image/jpeg" forKey:fileKey];
+    }
+    for (NSString *key in [dicParams allKeys]) {
+        [request addPostValue:dicParams[key] forKey:key];
+    }
+    
+    [request setRequestMethod:@"POST"];
+    [request setTimeOutSeconds:60];
+   
+    [request startAsynchronous];
+    [request setCompletionBlock:^{
+#ifdef DEBUG_X
+        NSLog(@"message is %@",request.responseString);
+#endif
+        successBlock(request.responseString);
+    }];
+    [request setFailedBlock:^{
+#ifdef DEBUG_X
+        NSLog(@"delete");
+#endif
+        NSError *error = [request error];
+        errorBlock(request.responseStatusCode, [error localizedDescription]);
+    }];
+}
+
+- (void)postRequestToServer:(NSString *)actionName dicParams:(NSMutableDictionary *)dicParams success:(RequestSuccessBlock)successBlock error:(RequestErrorBlock)errorBlock
+{
+    NSURL *url = [NSURL URLWithString:[APIHost stringByAppendingString:actionName]];
+    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    
+
+    NSLog(@"DIC %@",dicParams);
+    for (NSString *key in [dicParams allKeys]) {
+        NSLog(@"%@",dicParams[key]);
+        [request addPostValue:dicParams[key] forKey:key];
+    }
+    
+    
+    [request setRequestMethod:@"POST"];
+    [request setTimeOutSeconds:60];
+    
+    [request startAsynchronous];
+    [request setCompletionBlock:^{
+#ifdef DEBUG_X
+        NSLog(@"message is %@",request.responseString);
+        NSLog(@"add");
+#endif
+        successBlock(request.responseString);
+    }];
+    [request setFailedBlock:^{
+#ifdef DEBUG_X
+        NSLog(@"delete");
+#endif
+        NSError *error = [request error];
+        errorBlock(request.responseStatusCode, [error localizedDescription]);
+    }];
+
 }
 
 @end

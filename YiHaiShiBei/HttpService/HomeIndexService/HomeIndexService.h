@@ -8,8 +8,9 @@
 
 #import "HttpRequestService.h"
 
-typedef void (^GetLocationListSuccessBlock)(NSDictionary *dicData);
-typedef void (^GetLocationListFailBlock)(NSDictionary *dicFail);
+
+typedef void (^GetLocationListSuccessBlock)(NSString *strResponse);
+typedef void (^GetLocationListFailBlock)(NSString *strFail);
 
 @interface HomeIndexService : HttpRequestService
 

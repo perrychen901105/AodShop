@@ -22,6 +22,7 @@
 		046643E719F7A14B0060C9CC /* FavPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046643E619F7A14B0060C9CC /* FavPage.storyboard */; };
 		046643E919F7A15B0060C9CC /* MerchantPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046643E819F7A15B0060C9CC /* MerchantPage.storyboard */; };
 		046643ED19F7A1700060C9CC /* MorePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046643EC19F7A1700060C9CC /* MorePage.storyboard */; };
+		04AA31931A00B63D00623D30 /* ProfileRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AA31921A00B63D00623D30 /* ProfileRequestService.m */; };
 		04E9D51419F8FCED005265E3 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9D51319F8FCED005265E3 /* BaseModel.m */; };
 		04EB66FB19FF6D990043D120 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66E419FF6D990043D120 /* JSONModel.m */; };
 		04EB66FC19FF6D990043D120 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66E619FF6D990043D120 /* JSONModelArray.m */; };
@@ -111,6 +112,8 @@
 		046643E619F7A14B0060C9CC /* FavPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavPage.storyboard; sourceTree = "<group>"; };
 		046643E819F7A15B0060C9CC /* MerchantPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MerchantPage.storyboard; sourceTree = "<group>"; };
 		046643EC19F7A1700060C9CC /* MorePage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MorePage.storyboard; sourceTree = "<group>"; };
+		04AA31911A00B63D00623D30 /* ProfileRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileRequestService.h; sourceTree = "<group>"; };
+		04AA31921A00B63D00623D30 /* ProfileRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileRequestService.m; sourceTree = "<group>"; };
 		04E9D51219F8FCED005265E3 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		04E9D51319F8FCED005265E3 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		04EB66E319FF6D990043D120 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
@@ -313,6 +316,15 @@
 			path = Supply;
 			sourceTree = "<group>";
 		};
+		04AA31901A00B5E900623D30 /* ProfileService */ = {
+			isa = PBXGroup;
+			children = (
+				04AA31911A00B63D00623D30 /* ProfileRequestService.h */,
+				04AA31921A00B63D00623D30 /* ProfileRequestService.m */,
+			);
+			path = ProfileService;
+			sourceTree = "<group>";
+		};
 		04EB66E119FF6D990043D120 /* JSONModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +397,7 @@
 		2C433E7C19EEC91600129479 /* HttpService */ = {
 			isa = PBXGroup;
 			children = (
+				04AA31901A00B5E900623D30 /* ProfileService */,
 				040C051119FE1D46009FD61D /* HomeIndexService */,
 				040C050E19FE10AE009FD61D /* HttpRequestService.h */,
 				040C050F19FE10AE009FD61D /* HttpRequestService.m */,
@@ -565,10 +578,10 @@
 			children = (
 				2C433E8C19EED4AC00129479 /* Library */,
 				2C433E8119EECC7700129479 /* Support */,
+				2C433E7F19EEC91600129479 /* ViewModel */,
 				2C433E7C19EEC91600129479 /* HttpService */,
 				2C433E7D19EEC91600129479 /* Model */,
 				2C433E7E19EEC91600129479 /* Protocol */,
-				2C433E7F19EEC91600129479 /* ViewModel */,
 				2C433E8019EEC93B00129479 /* ViewController */,
 				2CDA1DDD19EEA50E0001FC43 /* AppDelegate.h */,
 				2CDA1DDE19EEA50E0001FC43 /* AppDelegate.m */,
@@ -744,6 +757,7 @@
 				2C433EDD19EED87200129479 /* SDWebImageManager.m in Sources */,
 				2C433EDB19EED87200129479 /* SDWebImageDownloader.m in Sources */,
 				2C433EE419EED87200129479 /* UIImageView+WebCache.m in Sources */,
+				04AA31931A00B63D00623D30 /* ProfileRequestService.m in Sources */,
 				04EB670219FF6D990043D120 /* JSONModel+networking.m in Sources */,
 				2C433EE319EED87200129479 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2C433ED619EED87200129479 /* MKAnnotationView+WebCache.m in Sources */,

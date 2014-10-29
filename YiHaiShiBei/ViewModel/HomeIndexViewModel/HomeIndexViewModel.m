@@ -14,10 +14,23 @@
     if (self.homeService == nil) {
         self.homeService = [[HomeIndexService alloc] init];
     }
-    [self.homeService getAllLocationList:^(NSDictionary *dicData) {
-        NSLog(@"dic data is %@",dicData);
-    } error:^(NSDictionary *dicFail) {
-        NSLog(@"dic error is %@",dicFail);
+    [self.homeService getAllLocationList:^(NSString *strResponse) {
+        NSError *err = nil;
+        LocationBaseModel *loca = [[LocationBaseModel alloc] initWithString:strResponse error:&err];
+        self.locationModel = loca;
+        if (loca.success) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(httpSuccess)]) {
+                [self.delegate httpSuccess];
+            }
+        } else {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(httpError:message:)]) {
+                [self.delegate httpError:loca.success message:loca.message];
+            }
+        }
+    } error:^(NSString *strFail) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(httpError:message:)]) {
+            [self.delegate httpError:1 message:strFail];
+        }
     }];
 }
 
