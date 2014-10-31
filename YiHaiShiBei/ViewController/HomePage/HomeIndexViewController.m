@@ -10,6 +10,7 @@
 #import "HomeIndexViewModel.h"
 #import "HttpRequestService.h"
 #import "ProfileRequestService.h"
+#import "RegisterRootViewController.h"
 @interface HomeIndexViewController ()
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
 @end
@@ -35,15 +36,16 @@
     [self setNaviBarTitle:nil];
     
     
-    ProfileRequestService *requestProfile = [[ProfileRequestService alloc] init];
-    [requestProfile userRegisterWithUserName:@"pppppppppp" password:@"123456" district:1 success:^(NSString *modelLocation) {
-#ifdef DEBUG_X
-        NSLog(@"%@",modelLocation);
-#endif
-    } error:^(NSString *strFail) {
-        NSLog(@"%@",strFail);
-    }];
-    
+//    ProfileRequestService *requestProfile = [[ProfileRequestService alloc] init];
+//    [requestProfile userRegisterWithUserName:@"pppppppppp" password:@"123456" district:1 success:^(NSString *modelLocation) {
+//#ifdef DEBUG_X
+//        NSLog(@"%@",modelLocation);
+//#endif
+//    } error:^(NSString *strFail) {
+//        NSLog(@"%@",strFail);
+//    }];
+    [self setSearchAndCityButton];
+    [self setUserIconButton];
 //    HttpRequestService *requestUpload = [[HttpRequestService alloc] init];
 //    UIImage *imgOne = [UIImage imageNamed:@"tabbar_moreSelected"];
 //    NSMutableDictionary *dicPost = [[NSMutableDictionary alloc] init];
@@ -53,13 +55,21 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)userLoginAction
+{
+    NSLog(@"login action");
+    UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    [self presentViewController:viewControllerRoot animated:YES completion:^{
+        NSLog(@"present success");
+    }];}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -67,7 +77,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+
 }
-*/
+
 
 @end

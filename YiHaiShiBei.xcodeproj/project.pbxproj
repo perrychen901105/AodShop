@@ -10,6 +10,8 @@
 		040C051019FE10AE009FD61D /* HttpRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C050F19FE10AE009FD61D /* HttpRequestService.m */; };
 		040C051419FE22F3009FD61D /* HomeIndexService.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C051319FE22F3009FD61D /* HomeIndexService.m */; };
 		040C051819FE38B6009FD61D /* HomeIndexViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C051719FE38B6009FD61D /* HomeIndexViewModel.m */; };
+		040D62111A0336B2009AB9B2 /* RegisterRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040D62101A0336B2009AB9B2 /* RegisterRootViewController.m */; };
+		040D62151A0336CB009AB9B2 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040D62141A0336CB009AB9B2 /* Register.storyboard */; };
 		0446961A19EFA68800EF71A3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446961919EFA68800EF71A3 /* BaseViewController.m */; };
 		0446962319EFB2EE00EF71A3 /* HomeIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446962219EFB2EE00EF71A3 /* HomeIndexViewController.m */; };
 		0446962519EFB2FF00EF71A3 /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0446962419EFB2FF00EF71A3 /* HomePage.storyboard */; };
@@ -92,6 +94,9 @@
 		040C051319FE22F3009FD61D /* HomeIndexService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeIndexService.m; sourceTree = "<group>"; };
 		040C051619FE38B6009FD61D /* HomeIndexViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeIndexViewModel.h; sourceTree = "<group>"; };
 		040C051719FE38B6009FD61D /* HomeIndexViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeIndexViewModel.m; sourceTree = "<group>"; };
+		040D620F1A0336B2009AB9B2 /* RegisterRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRootViewController.h; sourceTree = "<group>"; };
+		040D62101A0336B2009AB9B2 /* RegisterRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRootViewController.m; sourceTree = "<group>"; };
+		040D62141A0336CB009AB9B2 /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		0446961819EFA68800EF71A3 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		0446961919EFA68800EF71A3 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		0446961B19EFA7E700EF71A3 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
@@ -254,6 +259,16 @@
 				040C051719FE38B6009FD61D /* HomeIndexViewModel.m */,
 			);
 			path = HomeIndexViewModel;
+			sourceTree = "<group>";
+		};
+		040D620E1A03369C009AB9B2 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				040D620F1A0336B2009AB9B2 /* RegisterRootViewController.h */,
+				040D62101A0336B2009AB9B2 /* RegisterRootViewController.m */,
+				040D62141A0336CB009AB9B2 /* Register.storyboard */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		0446961719EFA67500EF71A3 /* Base */ = {
@@ -434,6 +449,7 @@
 		2C433E8019EEC93B00129479 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				040D620E1A03369C009AB9B2 /* Register */,
 				0446961D19EFB16000EF71A3 /* HomePage */,
 				0446962019EFB16000EF71A3 /* Supply */,
 				0446961C19EFB16000EF71A3 /* Fav */,
@@ -705,6 +721,7 @@
 				2CDA1DE519EEA50E0001FC43 /* Main.storyboard in Resources */,
 				046643E719F7A14B0060C9CC /* FavPage.storyboard in Resources */,
 				0446962A19EFBB3700EF71A3 /* SupplyIndex.storyboard in Resources */,
+				040D62151A0336CB009AB9B2 /* Register.storyboard in Resources */,
 				2C433EAF19EED52800129479 /* Default-568h@2x.png in Resources */,
 				2CDA1DEA19EEA50E0001FC43 /* LaunchScreen.xib in Resources */,
 				046643E919F7A15B0060C9CC /* MerchantPage.storyboard in Resources */,
@@ -772,6 +789,7 @@
 				04EB670819FF6F330043D120 /* LocationModel.m in Sources */,
 				04EB670019FF6D990043D120 /* JSONAPI.m in Sources */,
 				2C433EDA19EED87200129479 /* SDWebImageDecoder.m in Sources */,
+				040D62111A0336B2009AB9B2 /* RegisterRootViewController.m in Sources */,
 				04EB66FF19FF6D990043D120 /* NSArray+JSONModel.m in Sources */,
 				2C433EE519EED87200129479 /* UIView+WebCacheOperation.m in Sources */,
 				040C051819FE38B6009FD61D /* HomeIndexViewModel.m in Sources */,

@@ -68,7 +68,7 @@
     [[self.tabBarController.viewControllers objectAtIndex:3] tabBarItem].title = @"主页";
     [[self.tabBarController.viewControllers objectAtIndex:4] tabBarItem].title = @"主页";
     
-    [self setSearchAndCityButton];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -113,8 +113,14 @@
     UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
     btnBack.frame = CGRectMake(0, 0, 30, 30);
     [btnBack setImage:[UIImage imageNamed:@"img_huiyuan"] forState:UIControlStateNormal];
+    [btnBack addTarget:self action:@selector(userLoginAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backBtnItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
     self.navigationItem.leftBarButtonItem = backBtnItem;
+}
+
+- (void)userLoginAction
+{
+    
 }
 
 - (void)setBackButton
@@ -122,8 +128,14 @@
     UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
     btnBack.frame = CGRectMake(0, 0, 30, 30);
     [btnBack setImage:[UIImage imageNamed:@"img_return"] forState:UIControlStateNormal];
+    [btnBack addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backBtnItem = [[UIBarButtonItem alloc] initWithCustomView:btnBack];
     self.navigationItem.leftBarButtonItem = backBtnItem;
+}
+
+- (void)backAction
+{
+    
 }
 
 - (void)setNaviBarTitle:(NSString *)navTitle

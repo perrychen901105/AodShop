@@ -18,4 +18,7 @@
 - (void)setUserIconButton;
 - (void)setBackButton;
 
+- (void)backAction;
+- (void)userLoginAction;
+
 @end
