@@ -69,6 +69,7 @@
 		2C433EE319EED87200129479 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C433ED019EED87200129479 /* UIImageView+HighlightedWebCache.m */; };
 		2C433EE419EED87200129479 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C433ED219EED87200129479 /* UIImageView+WebCache.m */; };
 		2C433EE519EED87200129479 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C433ED419EED87200129479 /* UIView+WebCacheOperation.m */; };
+		2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */; };
 		2CDA1DDC19EEA50E0001FC43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DDB19EEA50E0001FC43 /* main.m */; };
 		2CDA1DDF19EEA50E0001FC43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DDE19EEA50E0001FC43 /* AppDelegate.m */; };
 		2CDA1DE519EEA50E0001FC43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDA1DE319EEA50E0001FC43 /* Main.storyboard */; };
@@ -207,6 +208,8 @@
 		2C433ED219EED87200129479 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		2C433ED319EED87200129479 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		2C433ED419EED87200129479 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		2CC4C73F1A0683E1001CCDAD /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2CDA1DD619EEA50E0001FC43 /* YiHaiShiBei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiHaiShiBei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDA1DDA19EEA50E0001FC43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CDA1DDB19EEA50E0001FC43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 			children = (
 				040D620F1A0336B2009AB9B2 /* RegisterRootViewController.h */,
 				040D62101A0336B2009AB9B2 /* RegisterRootViewController.m */,
+				2CC4C73F1A0683E1001CCDAD /* RegisterViewController.h */,
+				2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */,
 				040D62141A0336CB009AB9B2 /* Register.storyboard */,
 			);
 			path = Register;
@@ -778,6 +783,7 @@
 				04EB670219FF6D990043D120 /* JSONModel+networking.m in Sources */,
 				2C433EE319EED87200129479 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2C433ED619EED87200129479 /* MKAnnotationView+WebCache.m in Sources */,
+				2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */,
 				2C433EE019EED87200129479 /* UIImage+GIF.m in Sources */,
 				2C433EAD19EED4C900129479 /* Reachability.m in Sources */,
 				0446962319EFB2EE00EF71A3 /* HomeIndexViewController.m in Sources */,
@@ -869,7 +875,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -904,7 +910,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -916,7 +922,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YiHaiShiBei/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -928,7 +934,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YiHaiShiBei/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
