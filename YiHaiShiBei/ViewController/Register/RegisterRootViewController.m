@@ -7,8 +7,16 @@
 //
 
 #import "RegisterRootViewController.h"
+#import "ProfileViewModel.h"
+#import "UserProfileProtocol.h"
 
-@interface RegisterRootViewController ()
+@interface RegisterRootViewController ()<UITextFieldDelegate, UserProfileProtocol>
+
+@property (weak, nonatomic) IBOutlet UITextField *tfUserName;
+@property (weak, nonatomic) IBOutlet UITextField *tfPassword;
+
+
+@property (strong, nonatomic) ProfileViewModel *viewModleProfile;
 
 - (IBAction)actionLogin:(id)sender;
 - (IBAction)actionRegister:(id)sender;
@@ -30,6 +38,10 @@
     [super viewDidLoad];
     [self setNaviBarTitle:nil];
     [self setBackButton];
+    
+    self.viewModleProfile = [[ProfileViewModel alloc] init];
+    self.viewModleProfile.delegate = self;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -41,12 +53,10 @@
 
 - (void)backAction
 {
-    NSLog(@"back");
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"dismiss success");
     }];
 }
-
 
 #pragma mark - Navigation
 
@@ -57,14 +67,38 @@
     // Pass the selected object to the new view controller.
 }
 
+#pragma mark - Login Request
+
+- (BOOL)checkAllFields
+{
+    BOOL boolAllComplete = YES;
+    if ([self.tfPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        boolAllComplete = NO;
+    }
+    if ([self.tfUserName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        boolAllComplete = NO;
+    }
+    return boolAllComplete;
+}
 
 - (IBAction)actionLogin:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"success");
-    }];
+    if ([self checkAllFields]) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"success");
+        }];
+    }
+
 }
 
 - (IBAction)actionRegister:(id)sender {
     [self performSegueWithIdentifier:@"registerSegue" sender:sender];
 }
+
+#pragma mark - UITextField methods
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end

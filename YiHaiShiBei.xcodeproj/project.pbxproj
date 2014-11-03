@@ -37,6 +37,7 @@
 		04EB670319FF6D990043D120 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66F819FF6D990043D120 /* JSONKeyMapper.m */; };
 		04EB670419FF6D990043D120 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66FA19FF6D990043D120 /* JSONValueTransformer.m */; };
 		04EB670819FF6F330043D120 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB670719FF6F330043D120 /* LocationModel.m */; };
+		2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */; };
 		2C433E8319EED27F00129479 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8219EED27F00129479 /* CFNetwork.framework */; };
 		2C433E8519EED48500129479 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8419EED48500129479 /* SystemConfiguration.framework */; };
 		2C433E8719EED48D00129479 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8619EED48D00129479 /* MobileCoreServices.framework */; };
@@ -145,6 +146,9 @@
 		04EB66FA19FF6D990043D120 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
 		04EB670619FF6F330043D120 /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
 		04EB670719FF6F330043D120 /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		2C03C8F21A07C7C900EB90FD /* ProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewModel.h; sourceTree = "<group>"; };
+		2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewModel.m; sourceTree = "<group>"; };
+		2C03C8F51A07C7F100EB90FD /* UserProfileProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileProtocol.h; sourceTree = "<group>"; };
 		2C433E8219EED27F00129479 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2C433E8419EED48500129479 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2C433E8619EED48D00129479 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -414,6 +418,15 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		2C03C8F11A07C7A200EB90FD /* ProfileViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C03C8F21A07C7C900EB90FD /* ProfileViewModel.h */,
+				2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */,
+			);
+			path = ProfileViewModel;
+			sourceTree = "<group>";
+		};
 		2C433E7C19EEC91600129479 /* HttpService */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				046643DC19F752000060C9CC /* ChooseCityProtocol.h */,
+				2C03C8F51A07C7F100EB90FD /* UserProfileProtocol.h */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -446,6 +460,7 @@
 		2C433E7F19EEC91600129479 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2C03C8F11A07C7A200EB90FD /* ProfileViewModel */,
 				040C051519FE381B009FD61D /* HomeIndexViewModel */,
 			);
 			path = ViewModel;
@@ -799,6 +814,7 @@
 				04EB66FF19FF6D990043D120 /* NSArray+JSONModel.m in Sources */,
 				2C433EE519EED87200129479 /* UIView+WebCacheOperation.m in Sources */,
 				040C051819FE38B6009FD61D /* HomeIndexViewModel.m in Sources */,
+				2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */,
 				2C433EA819EED4C900129479 /* ASIDownloadCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,7 @@
 @implementation ProfileRequestService
 
 static NSString *ActionRegister = @"register";
+static NSString *ActionLogin = @"login";
 
 - (void)userRegisterWithUserName:(NSString *)userName password:(NSString *)pwd district:(NSInteger)disId success:(RegisterSuccessBlock)successBlock error:(RegisterFailBlock)errorBlock
 {
@@ -25,4 +26,16 @@ static NSString *ActionRegister = @"register";
     }];
     
 }
+
+- (void)loginWithName:(NSString *)userName password:(NSString *)pwd success:(LoginSuccessBlock)successBlock error:(LoginFailBlock)errorBlock
+{
+    NSMutableDictionary *dicPara = [@{@"username":userName
+                                      ,@"password":pwd} mutableCopy];
+    [self postRequestToServer:ActionLogin dicParams:dicPara success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorMessage);
+    }];
+}
+
 @end

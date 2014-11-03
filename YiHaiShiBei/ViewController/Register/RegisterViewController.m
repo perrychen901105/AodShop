@@ -8,7 +8,13 @@
 
 #import "RegisterViewController.h"
 
-@interface RegisterViewController ()
+@interface RegisterViewController ()<UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *tfChooseDistrict;
+@property (weak, nonatomic) IBOutlet UITextField *tfUserName;
+@property (weak, nonatomic) IBOutlet UITextField *tfPassword;
+@property (weak, nonatomic) IBOutlet UITextField *tfConfirmPwd;
+
 
 - (IBAction)actionRegisterComplete:(id)sender;
 @end
@@ -55,6 +61,11 @@
 */
 
 - (IBAction)actionRegisterComplete:(id)sender {
+    
+//    if (<#condition#>) {
+//        <#statements#>
+//    }
+    
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"aa");
     }];
