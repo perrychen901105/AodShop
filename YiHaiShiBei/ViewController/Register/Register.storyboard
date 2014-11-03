@@ -156,7 +156,7 @@
                                         </connections>
                                     </textField>
                                     <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账 号( 手机号或邮箱或英文数字组合 )" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-MO-nJe">
-                                        <rect key="frame" x="0.0" y="50" width="280" height="30"/>
+                                        <rect key="frame" x="0.0" y="45" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -165,19 +165,19 @@
                                         </connections>
                                     </textField>
                                     <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密 码( 数字和英文的组合 )" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-Nd-mYf">
-                                        <rect key="frame" x="0.0" y="100" width="280" height="30"/>
+                                        <rect key="frame" x="0.0" y="90" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="dtI-nU-xWr" id="LL8-6J-vmv"/>
                                         </connections>
                                     </textField>
                                     <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKP-lh-yzk">
-                                        <rect key="frame" x="0.0" y="150" width="280" height="30"/>
+                                        <rect key="frame" x="0.0" y="135" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="dtI-nU-xWr" id="Sts-hS-xcI"/>
                                         </connections>
@@ -188,18 +188,18 @@
                                     <constraint firstAttribute="height" constant="180" id="25i-TF-u39"/>
                                     <constraint firstAttribute="trailing" secondItem="CKP-lh-yzk" secondAttribute="trailing" id="350-cp-h4o"/>
                                     <constraint firstItem="mtC-mX-Z4v" firstAttribute="leading" secondItem="26m-Sg-Vln" secondAttribute="leading" id="5Ci-Fo-K7t"/>
-                                    <constraint firstItem="CKP-lh-yzk" firstAttribute="top" secondItem="dT0-Nd-mYf" secondAttribute="bottom" constant="20" id="5cJ-mF-ZBV"/>
-                                    <constraint firstAttribute="bottom" secondItem="CKP-lh-yzk" secondAttribute="bottom" id="CNK-So-tqE"/>
+                                    <constraint firstItem="CKP-lh-yzk" firstAttribute="top" secondItem="dT0-Nd-mYf" secondAttribute="bottom" constant="15" id="5cJ-mF-ZBV"/>
+                                    <constraint firstAttribute="bottom" secondItem="CKP-lh-yzk" secondAttribute="bottom" constant="15" id="CNK-So-tqE"/>
                                     <constraint firstItem="mtC-mX-Z4v" firstAttribute="top" secondItem="26m-Sg-Vln" secondAttribute="top" id="HNy-gg-JyN"/>
-                                    <constraint firstItem="BLs-MO-nJe" firstAttribute="top" secondItem="mtC-mX-Z4v" secondAttribute="bottom" constant="20" id="Hu0-Vm-0N1"/>
-                                    <constraint firstItem="dT0-Nd-mYf" firstAttribute="top" secondItem="BLs-MO-nJe" secondAttribute="bottom" constant="20" id="IpW-Xb-I5q"/>
+                                    <constraint firstItem="BLs-MO-nJe" firstAttribute="top" secondItem="mtC-mX-Z4v" secondAttribute="bottom" constant="15" id="Hu0-Vm-0N1"/>
+                                    <constraint firstItem="dT0-Nd-mYf" firstAttribute="top" secondItem="BLs-MO-nJe" secondAttribute="bottom" constant="15" id="IpW-Xb-I5q"/>
                                     <constraint firstItem="dT0-Nd-mYf" firstAttribute="leading" secondItem="26m-Sg-Vln" secondAttribute="leading" id="N4a-cF-Luf"/>
                                     <constraint firstItem="BLs-MO-nJe" firstAttribute="leading" secondItem="26m-Sg-Vln" secondAttribute="leading" id="O5d-g5-2MT"/>
-                                    <constraint firstItem="CKP-lh-yzk" firstAttribute="top" secondItem="dT0-Nd-mYf" secondAttribute="bottom" constant="20" id="Xbh-fM-jIl"/>
+                                    <constraint firstItem="CKP-lh-yzk" firstAttribute="top" secondItem="dT0-Nd-mYf" secondAttribute="bottom" constant="15" id="Xbh-fM-jIl"/>
                                     <constraint firstAttribute="trailing" secondItem="dT0-Nd-mYf" secondAttribute="trailing" id="YBG-Wd-4Vq"/>
-                                    <constraint firstItem="dT0-Nd-mYf" firstAttribute="top" secondItem="BLs-MO-nJe" secondAttribute="bottom" constant="20" id="fCb-di-IXO"/>
+                                    <constraint firstItem="dT0-Nd-mYf" firstAttribute="top" secondItem="BLs-MO-nJe" secondAttribute="bottom" constant="15" id="fCb-di-IXO"/>
                                     <constraint firstItem="CKP-lh-yzk" firstAttribute="leading" secondItem="26m-Sg-Vln" secondAttribute="leading" id="i6G-yc-2o8"/>
-                                    <constraint firstItem="BLs-MO-nJe" firstAttribute="top" secondItem="mtC-mX-Z4v" secondAttribute="bottom" constant="20" id="lQh-Vv-RKH"/>
+                                    <constraint firstItem="BLs-MO-nJe" firstAttribute="top" secondItem="mtC-mX-Z4v" secondAttribute="bottom" constant="15" id="lQh-Vv-RKH"/>
                                     <constraint firstAttribute="trailing" secondItem="BLs-MO-nJe" secondAttribute="trailing" id="pV6-k6-dIb"/>
                                     <constraint firstAttribute="trailing" secondItem="mtC-mX-Z4v" secondAttribute="trailing" id="uMH-e0-Yui"/>
                                 </constraints>
