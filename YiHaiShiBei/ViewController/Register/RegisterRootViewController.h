@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface RegisterRootViewController : BaseViewController
+@interface RegisterRootViewController : BaseViewController<MBProgressHUDDelegate>
 
 @end

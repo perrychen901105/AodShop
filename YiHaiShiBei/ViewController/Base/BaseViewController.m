@@ -29,7 +29,11 @@
     return self;
 }
 
-
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.HUD.delegate = nil;
+}
 
 - (void)viewDidLoad
 {
@@ -72,6 +76,32 @@
     // Do any additional setup after loading the view.
 }
 
+
+- (void)showProgressLabelHud:(NSString *)str withView:(UIView *)withView
+{
+    self.HUD = [[MBProgressHUD alloc] initWithView:withView];
+    [withView addSubview:self.HUD];
+    self.HUD.labelText = str;
+    self.HUD.removeFromSuperViewOnHide = YES;
+	[self.HUD show:YES];
+}
+
+- (void)showOnlyLabelHud:(NSString *)str withView:(UIView *)withView
+{
+    self.HUD = [[MBProgressHUD alloc] initWithView:withView];
+    [withView addSubview:self.HUD];
+    [self.HUD show:YES];
+    self.HUD.mode = MBProgressHUDModeText;
+    self.HUD.labelText = str;
+    self.HUD.removeFromSuperViewOnHide = YES;
+    [self.HUD hide:YES afterDelay:3];
+//	[self.HUD show:YES];
+}
+
+- (void)hideHudWithDelay:(NSInteger)delay
+{
+    [self.HUD hide:YES afterDelay:delay];
+}
 
 - (void)didReceiveMemoryWarning
 {

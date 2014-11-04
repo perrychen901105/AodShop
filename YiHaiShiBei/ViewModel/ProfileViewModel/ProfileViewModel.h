@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "UserProfileProtocol.h"
+#import "ProfileRequestService.h"
 
 @interface ProfileViewModel : NSObject
 
 @property (nonatomic, weak) id<UserProfileProtocol> delegate;
+
+@property (nonatomic, strong) ProfileRequestService *profileRequest;
 
 - (void)loginWithName:(NSString *)strUserName pwd:(NSString *)strPwd;
 

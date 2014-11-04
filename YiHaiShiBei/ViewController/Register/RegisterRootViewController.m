@@ -8,8 +8,10 @@
 
 #import "RegisterRootViewController.h"
 #import "ProfileViewModel.h"
+
 #import "UserProfileProtocol.h"
 
+//#import "MBProgressHUD.h"
 @interface RegisterRootViewController ()<UITextFieldDelegate, UserProfileProtocol>
 
 @property (weak, nonatomic) IBOutlet UITextField *tfUserName;
@@ -83,15 +85,76 @@
 
 - (IBAction)actionLogin:(id)sender {
     if ([self checkAllFields]) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            NSLog(@"success");
-        }];
+        [self showProgressLabelHud:@"登录中..." withView:self.view];
+
+        [self.viewModleProfile loginWithName:self.tfUserName.text pwd:self.tfPassword.text];
     }
 
 }
 
 - (IBAction)actionRegister:(id)sender {
     [self performSegueWithIdentifier:@"registerSegue" sender:sender];
+}
+
+#pragma mark - Http methods
+- (void)LoginSuccess
+{
+    [self hideHudWithDelay:0];
+    self.HUD.delegate = self;
+    self.HUD.tag = 1;
+    [self showOnlyLabelHud:@"登陆成功" withView:self.view];
+//    //初始化进度框，置于当前的View当中
+//    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//    [self.view addSubview:HUD];
+//    
+//    //如果设置此属性则当前的view置于后台
+//    HUD.dimBackground = YES;
+//    
+//    //设置对话框文字
+//    HUD.labelText = @"登录成功";
+//    
+//    //显示对话框
+//    [HUD showAnimated:YES whileExecutingBlock:^{
+//        //对话框显示时需要执行的操作
+//        sleep(3);
+//    } completionBlock:^{
+//        //操作执行完后取消对话框
+//        [HUD removeFromSuperview];
+//    }];
+//
+    
+}
+
+- (void)LoginFailed:(NSString *)strMessage
+{
+//    //初始化进度框，置于当前的View当中
+//    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//    [self.view addSubview:HUD];
+//    
+//    //如果设置此属性则当前的view置于后台
+//    HUD.dimBackground = YES;
+//    
+//    //设置对话框文字
+//    HUD.labelText = @"请稍等";
+//    
+//    //显示对话框
+//    [HUD showAnimated:YES whileExecutingBlock:^{
+//        //对话框显示时需要执行的操作
+//        sleep(3);
+//    } completionBlock:^{
+//        //操作执行完后取消对话框
+//        [HUD removeFromSuperview];
+//    }];
+}
+
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    if (hud.tag == 1) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"success");
+        }];
+
+    }
 }
 
 #pragma mark - UITextField methods
