@@ -8,7 +8,6 @@
 
 #import "RegisterRootViewController.h"
 #import "ProfileViewModel.h"
-
 #import "UserProfileProtocol.h"
 
 //#import "MBProgressHUD.h"
@@ -76,9 +75,13 @@
     BOOL boolAllComplete = YES;
     if ([self.tfPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         boolAllComplete = NO;
+        [self showOnlyLabelHud:@"密码不能为空" withView:self.view];
+        return boolAllComplete;
     }
     if ([self.tfUserName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         boolAllComplete = NO;
+        [self showOnlyLabelHud:@"用户名不能为空" withView:self.view];
+        return boolAllComplete;
     }
     return boolAllComplete;
 }
@@ -127,6 +130,7 @@
 
 - (void)LoginFailed:(NSString *)strMessage
 {
+    [self showOnlyLabelHud:@"登陆失败" withView:self.view];
 //    //初始化进度框，置于当前的View当中
 //    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 //    [self.view addSubview:HUD];
