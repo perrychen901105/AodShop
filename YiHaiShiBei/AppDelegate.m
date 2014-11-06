@@ -24,6 +24,9 @@
     // Override point for customization after application launch.
 
     UITabBarController *tabIndex = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+    
+    
+    
     UINavigationController *navHome = [[UIStoryboard storyboardWithName:@"HomePage" bundle:nil] instantiateInitialViewController];
     UINavigationController *navSupply = [[UIStoryboard storyboardWithName:@"SupplyIndex" bundle:nil] instantiateInitialViewController];
     UINavigationController *navFav = [[UIStoryboard storyboardWithName:@"FavPage" bundle:nil] instantiateInitialViewController];
@@ -31,6 +34,20 @@
     UINavigationController *navMore = [[UIStoryboard storyboardWithName:@"MorePage" bundle:nil] instantiateInitialViewController];
     
     [tabIndex setViewControllers:@[navHome, navSupply, navFav, navMerchant, navMore]];
+    
+    [[[tabIndex.viewControllers objectAtIndex:0] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];
+    [[[tabIndex.viewControllers objectAtIndex:1] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_supplySelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_supply"]];
+    [[[tabIndex.viewControllers objectAtIndex:2] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_merchantSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_merchant"]];
+    [[[tabIndex.viewControllers objectAtIndex:3] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_favSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_fav"]];
+    [[[tabIndex.viewControllers objectAtIndex:4] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_moreSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_more"]];
+    
+    [[tabIndex.viewControllers objectAtIndex:0] tabBarItem].title = @"主页";
+    [[tabIndex.viewControllers objectAtIndex:1] tabBarItem].title = @"主页";
+    [[tabIndex.viewControllers objectAtIndex:2] tabBarItem].title = @"主页";
+    [[tabIndex.viewControllers objectAtIndex:3] tabBarItem].title = @"主页";
+    [[tabIndex.viewControllers objectAtIndex:4] tabBarItem].title = @"主页";
+    
+    
     self.window.rootViewController = tabIndex;
     
 
@@ -39,6 +56,8 @@
                                              forState:UIControlStateSelected];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:152/255.0f green:152/255.0f blue:152/255.0f alpha:1.0f] }
                                              forState:UIControlStateNormal];
+    
+    self.modelUser = [[UserModel alloc] init];
 //    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
 
 //    [[UITabBarController tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];

@@ -18,14 +18,23 @@
         self.profileRequest = [[ProfileRequestService alloc] init];
     }
     
-    __weak ProfileViewModel *weakSelf = self;
     [self.profileRequest loginWithName:strUserName password:strPwd success:^(NSString *strToken) {
 #ifdef DEBUG_X
         NSLog(@"%s, %@",__func__,strToken);
 #endif
-        if ([self.delegate respondsToSelector:@selector(LoginSuccess)]) {
-            [self.delegate LoginSuccess];
+        UserModel *user = [[UserModel alloc] initWithString:strToken error:nil];
+        
+        if (user.success == 0) {
+            self.modelUser = user;
+            if ([self.delegate respondsToSelector:@selector(LoginSuccess)]) {
+                [self.delegate LoginSuccess];
+            }
+        } else {
+            if ([self.delegate respondsToSelector:@selector(LoginFailed:)]) {
+                [self.delegate LoginFailed:user.message];
+            }
         }
+        
     } error:^(NSString *strFail) {
         if ([self.delegate respondsToSelector:@selector(LoginFailed:)]) {
             [self.delegate LoginFailed:strFail];
@@ -38,7 +47,6 @@
     if (self.profileRequest == nil) {
         self.profileRequest = [[ProfileRequestService alloc] init];
     }
-    __weak ProfileViewModel *weakSelf = self;
     [self.profileRequest userRegisterWithUserName:strUserName password:strPwd district:districtId success:^(NSString *modelLocation) {
 #ifdef DEBUG_X
         NSLog(@"%s, %@",__func__,modelLocation);

@@ -7,7 +7,18 @@
 //
 
 #import "UserModel.h"
+#import "JSONKeyMapper.h"
 
 @implementation UserModel
+
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"data.User.id":@"userId",
+                                                       @"data.User.username":@"username",
+                                                       @"data.User.appkey":@"appkey",
+                                                       @"data.User.is_pass":@"is_pass"
+                                                       }];
+}
 
 @end

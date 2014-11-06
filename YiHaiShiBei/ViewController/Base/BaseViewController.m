@@ -38,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.apps = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
@@ -57,29 +57,29 @@
         [self.navigationController.navigationBar setTranslucent:NO];
     }
     
-//    [self setBackButton];
-//    [[UITabBar appearance] setTintColor:[[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:0.5]];
-    
-    [[[self.tabBarController.viewControllers objectAtIndex:0] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];
-    [[[self.tabBarController.viewControllers objectAtIndex:1] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_supplySelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_supply"]];
-    [[[self.tabBarController.viewControllers objectAtIndex:2] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_merchantSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_merchant"]];
-    [[[self.tabBarController.viewControllers objectAtIndex:3] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_favSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_fav"]];
-    [[[self.tabBarController.viewControllers objectAtIndex:4] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_moreSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_more"]];
-    
-    [[self.tabBarController.viewControllers objectAtIndex:0] tabBarItem].title = @"主页";
-    [[self.tabBarController.viewControllers objectAtIndex:1] tabBarItem].title = @"主页";
-    [[self.tabBarController.viewControllers objectAtIndex:2] tabBarItem].title = @"主页";
-    [[self.tabBarController.viewControllers objectAtIndex:3] tabBarItem].title = @"主页";
-    [[self.tabBarController.viewControllers objectAtIndex:4] tabBarItem].title = @"主页";
-    
-    
     // Do any additional setup after loading the view.
 }
 
+- (void)addTapGestureOnEmptyView
+{
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emptyViewTapped)];
+    [self.view addGestureRecognizer:tapGesture];
+}
+
+- (void)emptyViewTapped
+{
+    
+}
 
 - (void)showProgressLabelHud:(NSString *)str withView:(UIView *)withView
 {
+    if (self.HUD) {
+//        [self.HUD hide:YES];
+        [self.HUD removeFromSuperview];
+        self.HUD = nil;
+    }
     self.HUD = [[MBProgressHUD alloc] initWithView:withView];
+//    self.HUD = [[MBProgressHUD alloc] initWithView:withView];
     [withView addSubview:self.HUD];
     self.HUD.labelText = str;
     self.HUD.removeFromSuperViewOnHide = YES;
@@ -88,13 +88,18 @@
 
 - (void)showOnlyLabelHud:(NSString *)str withView:(UIView *)withView
 {
+    if (self.HUD) {
+        [self.HUD removeFromSuperview];
+        self.HUD = nil;
+    }
     self.HUD = [[MBProgressHUD alloc] initWithView:withView];
+    
     [withView addSubview:self.HUD];
     [self.HUD show:YES];
     self.HUD.mode = MBProgressHUDModeText;
     self.HUD.labelText = str;
     self.HUD.removeFromSuperViewOnHide = YES;
-    [self.HUD hide:YES afterDelay:3];
+    [self.HUD hide:YES afterDelay:2];
 //	[self.HUD show:YES];
 }
 

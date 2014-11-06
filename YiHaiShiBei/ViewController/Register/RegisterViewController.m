@@ -38,6 +38,9 @@
     [super viewDidLoad];
     
     [self setBackButton];
+    [self setNaviBarTitle:nil];
+    
+    [self addTapGestureOnEmptyView];
     
     self.viewModelRegister = [[ProfileViewModel alloc] init];
     self.viewModelRegister.delegate = self;
@@ -47,6 +50,13 @@
 - (void)backAction
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)emptyViewTapped
+{
+    [self.tfUserName resignFirstResponder];
+    [self.tfPassword resignFirstResponder];
+    [self.tfConfirmPwd resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,7 +136,6 @@
 {
     if (hud.tag == 1) {
         [self dismissViewControllerAnimated:YES completion:^{
-            NSLog(@"success");
         }];
     }
 }
@@ -135,6 +144,14 @@
 -  (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == self.tfChooseDistrict) {
+        return NO;
+    }
     return YES;
 }
 

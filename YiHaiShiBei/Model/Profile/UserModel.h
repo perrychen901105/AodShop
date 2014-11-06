@@ -10,4 +10,9 @@
 
 @interface UserModel : BaseModel
 
+@property (nonatomic, strong) NSString<Optional> *userId;
+@property (nonatomic, strong) NSString<Optional> *username;
+@property (nonatomic, strong) NSString<Optional> *appkey;
+@property (nonatomic, strong) NSString<Optional> *is_pass;
+
 @end

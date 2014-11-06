@@ -40,6 +40,8 @@
     [self setNaviBarTitle:nil];
     [self setBackButton];
     
+    [self addTapGestureOnEmptyView];
+    
     self.viewModleProfile = [[ProfileViewModel alloc] init];
     self.viewModleProfile.delegate = self;
     
@@ -57,6 +59,12 @@
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"dismiss success");
     }];
+}
+
+- (void)emptyViewTapped
+{
+    [self.tfUserName resignFirstResponder];
+    [self.tfPassword resignFirstResponder];
 }
 
 #pragma mark - Navigation
@@ -92,7 +100,6 @@
 
         [self.viewModleProfile loginWithName:self.tfUserName.text pwd:self.tfPassword.text];
     }
-
 }
 
 - (IBAction)actionRegister:(id)sender {
@@ -102,60 +109,22 @@
 #pragma mark - Http methods
 - (void)LoginSuccess
 {
-    [self hideHudWithDelay:0];
+    [self showOnlyLabelHud:@"登陆成功" withView:self.view];
+    self.apps.modelUser = self.viewModleProfile.modelUser;
     self.HUD.delegate = self;
     self.HUD.tag = 1;
-    [self showOnlyLabelHud:@"登陆成功" withView:self.view];
-//    //初始化进度框，置于当前的View当中
-//    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//    [self.view addSubview:HUD];
-//    
-//    //如果设置此属性则当前的view置于后台
-//    HUD.dimBackground = YES;
-//    
-//    //设置对话框文字
-//    HUD.labelText = @"登录成功";
-//    
-//    //显示对话框
-//    [HUD showAnimated:YES whileExecutingBlock:^{
-//        //对话框显示时需要执行的操作
-//        sleep(3);
-//    } completionBlock:^{
-//        //操作执行完后取消对话框
-//        [HUD removeFromSuperview];
-//    }];
-//
-    
 }
 
 - (void)LoginFailed:(NSString *)strMessage
 {
-    [self showOnlyLabelHud:@"登陆失败" withView:self.view];
-//    //初始化进度框，置于当前的View当中
-//    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//    [self.view addSubview:HUD];
-//    
-//    //如果设置此属性则当前的view置于后台
-//    HUD.dimBackground = YES;
-//    
-//    //设置对话框文字
-//    HUD.labelText = @"请稍等";
-//    
-//    //显示对话框
-//    [HUD showAnimated:YES whileExecutingBlock:^{
-//        //对话框显示时需要执行的操作
-//        sleep(3);
-//    } completionBlock:^{
-//        //操作执行完后取消对话框
-//        [HUD removeFromSuperview];
-//    }];
+    [self showOnlyLabelHud:strMessage withView:self.view];
+
 }
 
 - (void)hudWasHidden:(MBProgressHUD *)hud
 {
     if (hud.tag == 1) {
         [self dismissViewControllerAnimated:YES completion:^{
-            NSLog(@"success");
         }];
 
     }
