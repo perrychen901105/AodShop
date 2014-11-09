@@ -7,10 +7,12 @@
 //
 
 #import "HomeIndexViewController.h"
+#import "AppConfig.h"
 #import "HomeIndexViewModel.h"
 #import "HttpRequestService.h"
 #import "ProfileRequestService.h"
 #import "RegisterRootViewController.h"
+#import "ChooseLocationViewController.h"
 @interface HomeIndexViewController ()
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
 @end
@@ -61,7 +63,8 @@
     UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
     [self presentViewController:viewControllerRoot animated:YES completion:^{
         NSLog(@"present success");
-    }];}
+    }];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -69,6 +72,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Location methods
+- (void)didChooseCity
+{
+    ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
+//    [self.navigationController pushViewController:viewControllerCity animated:YES];
+    [self presentViewController:viewControllerCity animated:YES completion:^{
+#ifdef DEBUG_X
+        NSLog(@"present success");
+#endif
+    }];
+    
+}
 
 #pragma mark - Navigation
 

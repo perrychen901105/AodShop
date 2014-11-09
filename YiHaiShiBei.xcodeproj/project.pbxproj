@@ -75,6 +75,8 @@
 		2CA9E2AD1A0929C00078176D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AC1A0929C00078176D /* UIKit.framework */; };
 		2CA9E2AF1A0929DA0078176D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AE1A0929DA0078176D /* Foundation.framework */; };
 		2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */; };
+		2CD0BDAC1A0F73310004F44C /* ChooseLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BDAB1A0F73310004F44C /* ChooseLocationViewController.m */; };
+		2CD0BDAE1A0F73430004F44C /* ChooseLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD0BDAD1A0F73430004F44C /* ChooseLocation.storyboard */; };
 		2CDA1DDC19EEA50E0001FC43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DDB19EEA50E0001FC43 /* main.m */; };
 		2CDA1DDF19EEA50E0001FC43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DDE19EEA50E0001FC43 /* AppDelegate.m */; };
 		2CDA1DE519EEA50E0001FC43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDA1DE319EEA50E0001FC43 /* Main.storyboard */; };
@@ -225,6 +227,9 @@
 		2CA9E2AE1A0929DA0078176D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2CC4C73F1A0683E1001CCDAD /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2CD0BDAA1A0F73310004F44C /* ChooseLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLocationViewController.h; sourceTree = "<group>"; };
+		2CD0BDAB1A0F73310004F44C /* ChooseLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLocationViewController.m; sourceTree = "<group>"; };
+		2CD0BDAD1A0F73430004F44C /* ChooseLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChooseLocation.storyboard; sourceTree = "<group>"; };
 		2CDA1DD619EEA50E0001FC43 /* YiHaiShiBei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiHaiShiBei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDA1DDA19EEA50E0001FC43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CDA1DDB19EEA50E0001FC43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -485,6 +490,7 @@
 		2C433E8019EEC93B00129479 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2CD0BDA91A0F73180004F44C /* Location */,
 				040D620E1A03369C009AB9B2 /* Register */,
 				0446961D19EFB16000EF71A3 /* HomePage */,
 				0446962019EFB16000EF71A3 /* Supply */,
@@ -617,6 +623,16 @@
 				2CA9E2A91A0922290078176D /* HUDHelper.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		2CD0BDA91A0F73180004F44C /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				2CD0BDAA1A0F73310004F44C /* ChooseLocationViewController.h */,
+				2CD0BDAB1A0F73310004F44C /* ChooseLocationViewController.m */,
+				2CD0BDAD1A0F73430004F44C /* ChooseLocation.storyboard */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		2CDA1DCD19EEA50E0001FC43 = {
@@ -780,6 +796,7 @@
 				2CDA1DE519EEA50E0001FC43 /* Main.storyboard in Resources */,
 				046643E719F7A14B0060C9CC /* FavPage.storyboard in Resources */,
 				0446962A19EFBB3700EF71A3 /* SupplyIndex.storyboard in Resources */,
+				2CD0BDAE1A0F73430004F44C /* ChooseLocation.storyboard in Resources */,
 				040D62151A0336CB009AB9B2 /* Register.storyboard in Resources */,
 				2C433EAF19EED52800129479 /* Default-568h@2x.png in Resources */,
 				2CDA1DEA19EEA50E0001FC43 /* LaunchScreen.xib in Resources */,
@@ -812,6 +829,7 @@
 				2C433EA519EED4C900129479 /* ASIAuthenticationDialog.m in Sources */,
 				2C433EA919EED4C900129479 /* ASIFormDataRequest.m in Sources */,
 				2CDA1DDF19EEA50E0001FC43 /* AppDelegate.m in Sources */,
+				2CD0BDAC1A0F73310004F44C /* ChooseLocationViewController.m in Sources */,
 				040C051019FE10AE009FD61D /* HttpRequestService.m in Sources */,
 				04EB66FB19FF6D990043D120 /* JSONModel.m in Sources */,
 				046643DF19F7A11E0060C9CC /* FavIndexViewController.m in Sources */,

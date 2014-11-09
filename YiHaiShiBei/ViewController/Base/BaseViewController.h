@@ -34,4 +34,5 @@
 
 - (void)addTapGestureOnEmptyView;
 - (void)emptyViewTapped;
+- (void)didChooseCity;
 @end

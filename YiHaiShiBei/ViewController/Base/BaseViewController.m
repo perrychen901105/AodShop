@@ -71,6 +71,11 @@
     
 }
 
+- (void)didChooseCity
+{
+    
+}
+
 - (void)showProgressLabelHud:(NSString *)str withView:(UIView *)withView
 {
     if (self.HUD) {

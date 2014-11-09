@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PlJ-Xd-cYs">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Choose Location View Controller-->
+        <scene sceneID="Kca-TZ-MXA">
+            <objects>
+                <viewController id="PlJ-Xd-cYs" customClass="ChooseLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fCR-u7-mB1"/>
+                        <viewControllerLayoutGuide type="bottom" id="125-kV-D5G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bzf-vK-r7z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="05M-6N-lQH">
+                                <rect key="frame" x="20" y="60" width="280" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="t8V-DQ-ds6"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="省"/>
+                                    <segment title="市"/>
+                                    <segment title="区"/>
+                                </segments>
+                                <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqk-we-cPe">
+                                <rect key="frame" x="60" y="188" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Paq-Ke-l3U"/>
+                                    <constraint firstAttribute="width" constant="50" id="bfW-5c-RuL"/>
+                                </constraints>
+                                <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="确定">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnpressed_ConfirmCity:" destination="PlJ-Xd-cYs" eventType="touchUpInside" id="RcB-df-P1h"/>
+                                </connections>
+                            </button>
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7R-dq-3nM">
+                                <rect key="frame" x="210" y="188" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZJc-QZ-jWU"/>
+                                    <constraint firstAttribute="width" constant="50" id="wAa-ZD-ucb"/>
+                                </constraints>
+                                <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="取消">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnpressed_CancelCity:" destination="PlJ-Xd-cYs" eventType="touchUpInside" id="ipl-R0-LUn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="05M-6N-lQH" secondAttribute="trailing" constant="20" id="4a2-TM-T0q"/>
+                            <constraint firstItem="05M-6N-lQH" firstAttribute="leading" secondItem="Bzf-vK-r7z" secondAttribute="leading" constant="20" id="5OQ-nz-jEU"/>
+                            <constraint firstItem="Tqk-we-cPe" firstAttribute="leading" secondItem="Bzf-vK-r7z" secondAttribute="leading" constant="60" id="HZl-CO-oxQ"/>
+                            <constraint firstItem="05M-6N-lQH" firstAttribute="top" secondItem="fCR-u7-mB1" secondAttribute="bottom" constant="40" id="Hva-VD-0ff"/>
+                            <constraint firstItem="E7R-dq-3nM" firstAttribute="leading" secondItem="Tqk-we-cPe" secondAttribute="trailing" priority="900" constant="100" id="KeU-Vs-5Os"/>
+                            <constraint firstItem="Tqk-we-cPe" firstAttribute="top" secondItem="05M-6N-lQH" secondAttribute="bottom" constant="100" id="YXH-0L-xeB"/>
+                            <constraint firstItem="E7R-dq-3nM" firstAttribute="top" secondItem="05M-6N-lQH" secondAttribute="bottom" constant="100" id="gyS-T2-Q9U"/>
+                            <constraint firstAttribute="trailing" secondItem="E7R-dq-3nM" secondAttribute="trailing" constant="60" id="qpm-Cs-1dr"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ABP-2G-1H2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="147" y="8"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
