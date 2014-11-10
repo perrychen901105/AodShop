@@ -37,6 +37,7 @@
 		04EB670319FF6D990043D120 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66F819FF6D990043D120 /* JSONKeyMapper.m */; };
 		04EB670419FF6D990043D120 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66FA19FF6D990043D120 /* JSONValueTransformer.m */; };
 		04EB670819FF6F330043D120 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB670719FF6F330043D120 /* LocationModel.m */; };
+		26CA72221A10DB44000DEE5F /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CA72211A10DB44000DEE5F /* LocationViewModel.m */; };
 		2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */; };
 		2C433E8319EED27F00129479 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8219EED27F00129479 /* CFNetwork.framework */; };
 		2C433E8519EED48500129479 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8419EED48500129479 /* SystemConfiguration.framework */; };
@@ -153,6 +154,8 @@
 		04EB66FA19FF6D990043D120 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
 		04EB670619FF6F330043D120 /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
 		04EB670719FF6F330043D120 /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		26CA72201A10DB44000DEE5F /* LocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewModel.h; sourceTree = "<group>"; };
+		26CA72211A10DB44000DEE5F /* LocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewModel.m; sourceTree = "<group>"; };
 		2C03C8F21A07C7C900EB90FD /* ProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewModel.h; sourceTree = "<group>"; };
 		2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewModel.m; sourceTree = "<group>"; };
 		2C03C8F51A07C7F100EB90FD /* UserProfileProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileProtocol.h; sourceTree = "<group>"; };
@@ -438,6 +441,15 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		26CA721F1A10DB34000DEE5F /* LocationViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				26CA72201A10DB44000DEE5F /* LocationViewModel.h */,
+				26CA72211A10DB44000DEE5F /* LocationViewModel.m */,
+			);
+			path = LocationViewModel;
+			sourceTree = "<group>";
+		};
 		2C03C8F11A07C7A200EB90FD /* ProfileViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +493,7 @@
 		2C433E7F19EEC91600129479 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				26CA721F1A10DB34000DEE5F /* LocationViewModel */,
 				2C03C8F11A07C7A200EB90FD /* ProfileViewModel */,
 				040C051519FE381B009FD61D /* HomeIndexViewModel */,
 			);
@@ -832,6 +845,7 @@
 				2CD0BDAC1A0F73310004F44C /* ChooseLocationViewController.m in Sources */,
 				040C051019FE10AE009FD61D /* HttpRequestService.m in Sources */,
 				04EB66FB19FF6D990043D120 /* JSONModel.m in Sources */,
+				26CA72221A10DB44000DEE5F /* LocationViewModel.m in Sources */,
 				046643DF19F7A11E0060C9CC /* FavIndexViewController.m in Sources */,
 				2C433EDC19EED87200129479 /* SDWebImageDownloaderOperation.m in Sources */,
 				040C051419FE22F3009FD61D /* HomeIndexService.m in Sources */,
