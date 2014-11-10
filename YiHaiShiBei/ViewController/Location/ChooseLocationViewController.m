@@ -14,9 +14,11 @@
 @interface ChooseLocationViewController ()<LocationIndexViewModelDelegate>
 
 @property (nonatomic, strong) LocationViewModel *viewModelLocation;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segControlLocation;
 
 - (IBAction)btnpressed_ConfirmCity:(id)sender;
 - (IBAction)btnpressed_CancelCity:(id)sender;
+- (IBAction)segBarLocationChanged:(id)sender;
 
 @end
 
@@ -103,5 +105,9 @@
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+- (IBAction)segBarLocationChanged:(id)sender {
+    NSLog(@"%d",self.segControlLocation.selectedSegmentIndex);
 }
 @end

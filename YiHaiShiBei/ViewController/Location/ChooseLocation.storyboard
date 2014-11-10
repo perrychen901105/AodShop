@@ -28,6 +28,9 @@
                                     <segment title="区"/>
                                 </segments>
                                 <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segBarLocationChanged:" destination="PlJ-Xd-cYs" eventType="valueChanged" id="YJm-F4-jvq"/>
+                                </connections>
                             </segmentedControl>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqk-we-cPe">
                                 <rect key="frame" x="60" y="188" width="50" height="30"/>
@@ -72,6 +75,9 @@
                             <constraint firstAttribute="trailing" secondItem="E7R-dq-3nM" secondAttribute="trailing" constant="60" id="qpm-Cs-1dr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="segControlLocation" destination="05M-6N-lQH" id="9Qe-M2-H7r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABP-2G-1H2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
