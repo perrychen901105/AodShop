@@ -7,9 +7,14 @@
 //
 
 #import "ChooseLocationViewController.h"
+#import "AppConfig.h"
+#import "LocationViewModel.h"
+#import "LocationModel.h"
 
+@interface ChooseLocationViewController ()<LocationIndexViewModelDelegate>
 
-@interface ChooseLocationViewController ()
+@property (nonatomic, strong) LocationViewModel *viewModelLocation;
+
 - (IBAction)btnpressed_ConfirmCity:(id)sender;
 - (IBAction)btnpressed_CancelCity:(id)sender;
 
@@ -29,6 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.viewModelLocation = [[LocationViewModel alloc] init];
+    self.viewModelLocation.delegate = self;
+    [self getAllLocations];
     // Do any additional setup after loading the view.
 }
 
@@ -36,6 +45,41 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - WebService methods
+- (void)getAllLocations
+{
+    [self showProgressLabelHud:TEXT_WAIT_NETWORK withView:self.view];
+    [self.viewModelLocation getAllProvinceList];
+}
+
+- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage
+{
+    [self showOnlyLabelHud:errorMessage withView:self.view];
+}
+
+- (void)httpSuccess
+{
+    [self showOnlyLabelHud:TEXT_SUCCESS_NETWORK withView:self.view];
+#ifdef DEBUG_X
+    NSLog(@"%@",self.viewModelLocation.locationModel.arrLocation);
+#endif
+    for (LocationModel *modelLocation in self.viewModelLocation.locationModel.arrLocation) {
+#ifdef DEBUG_X
+        NSLog(@"the province name is %@",modelLocation.Province.name);
+#endif
+        for (CityModel *modelCity in modelLocation.arrCity) {
+#ifdef DEBUG_X
+            NSLog(@"the city name is %@",modelCity.name);
+#endif
+            for (DistrinctModel *modelDistrinct in modelCity.arrDistrict) {
+#ifdef DEBUG_X
+                NSLog(@"the distrint is %@",modelDistrinct.name);
+#endif
+            }
+        }
+    }
 }
 
 /*

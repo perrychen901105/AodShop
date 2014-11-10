@@ -11,6 +11,9 @@
 
 #define DEBUG_X
 
+#define TEXT_WAIT_NETWORK @"请稍等..."
+#define TEXT_SUCCESS_NETWORK @"请求成功"
+
 #define IsIOS7 ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=7)
 
 #define APIHost @"http://www.aodshop.cn/aodshop/index.php/api/"

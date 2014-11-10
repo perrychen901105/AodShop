@@ -19,4 +19,14 @@
 
 @interface LocationViewModel : NSObject
 
+@property (nonatomic, weak) id<LocationIndexViewModelDelegate> delegate;
+
+@property (nonatomic, strong) HomeIndexService *homeService;
+
+@property (nonatomic, strong) NSMutableArray *arrProvince;
+
+@property (nonatomic, strong) LocationBaseModel *locationModel;
+
+- (void)getAllProvinceList;
+
 @end
