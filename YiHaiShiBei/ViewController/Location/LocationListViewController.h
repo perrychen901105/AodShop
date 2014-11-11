@@ -9,6 +9,12 @@
 #import "BaseViewController.h"
 
 typedef void (^SelectLocationIndexBlock)(NSInteger index);
+typedef enum LocationListType
+{
+    ENUM_LOCATIONLIST_PROVINCE = 0x00000001,
+    ENUM_LOCATIONLIST_CITY = 0x00000001 << 2,
+    ENUM_LOCATIONLIST_DISTRINCT = 0x00000001 << 4
+}enumLocationListType;
 
 @interface LocationListViewController : BaseViewController
 
@@ -16,6 +22,10 @@ typedef void (^SelectLocationIndexBlock)(NSInteger index);
 
 @property (nonatomic, strong) SelectLocationIndexBlock blockSelectedIndex;
 
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *strTitle;
+
+@property (nonatomic, assign) enumLocationListType TypeLocationList;
+
+- (void)HadSelectLocation:(SelectLocationIndexBlock)selectBlock;
 
 @end

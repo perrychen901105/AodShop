@@ -29,4 +29,8 @@
 
 - (void)getAllProvinceList;
 
+- (NSMutableArray *)getAllProvince;
+- (NSMutableArray *)getCityWithProvinceID:(NSInteger)provinceID;
+- (NSMutableArray *)getAllDistrinctWithCityID:(NSInteger)cityID;
+
 @end

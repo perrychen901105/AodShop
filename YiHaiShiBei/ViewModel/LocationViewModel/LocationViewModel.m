@@ -33,4 +33,22 @@
         }
     }];
 }
+
+//- (NSMutableArray *)getAllProvince
+//{
+//    NSMutableArray *arrProvince = [@[] mutableCopy];
+//    
+//    return self.locationModel.arrLocation;
+//}
+//
+//- (NSMutableArray *)getCityWithProvinceID:(NSInteger)provinceID
+//{
+//    
+//}
+//
+//- (NSMutableArray *)getAllDistrinctWithCityID:(NSInteger)cityID
+//{
+//    
+//}
+
 @end

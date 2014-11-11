@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PlJ-Xd-cYs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PlJ-Xd-cYs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -97,7 +97,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7gj-Zd-vCA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -110,10 +110,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7gj-Zd-vCA" secondAttribute="trailing" id="Rud-80-VyI"/>
                             <constraint firstItem="EOH-Rv-Ens" firstAttribute="top" secondItem="7gj-Zd-vCA" secondAttribute="bottom" id="S6X-2T-ZsM"/>
-                            <constraint firstItem="7gj-Zd-vCA" firstAttribute="top" secondItem="Gux-xp-jp5" secondAttribute="top" id="oZ4-op-Z50"/>
+                            <constraint firstItem="7gj-Zd-vCA" firstAttribute="top" secondItem="Gux-xp-jp5" secondAttribute="top" constant="20" id="oZ4-op-Z50"/>
                             <constraint firstItem="7gj-Zd-vCA" firstAttribute="leading" secondItem="Gux-xp-jp5" secondAttribute="leading" id="pYT-LN-vTW"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tka-mC-Scg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

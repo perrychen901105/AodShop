@@ -104,7 +104,7 @@
     self.HUD.mode = MBProgressHUDModeText;
     self.HUD.labelText = str;
     self.HUD.removeFromSuperViewOnHide = YES;
-    [self.HUD hide:YES afterDelay:2];
+    [self.HUD hide:YES afterDelay:1];
 //	[self.HUD show:YES];
 }
 

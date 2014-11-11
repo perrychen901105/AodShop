@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) CurrentLocationModel *selectedLocation;
 @property (nonatomic, strong) LocationViewModel *viewModelLocation;
+@property (nonatomic, assign) NSInteger intSelectSeg;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControlLocation;
 
 - (IBAction)btnpressed_ConfirmCity:(id)sender;
@@ -41,6 +42,7 @@
     
     self.viewModelLocation = [[LocationViewModel alloc] init];
     self.viewModelLocation.delegate = self;
+    self.selectedLocation = [[CurrentLocationModel alloc] init];
     [self getAllLocations];
     // Do any additional setup after loading the view.
 }
@@ -66,26 +68,7 @@
 - (void)httpSuccess
 {
     [self showOnlyLabelHud:TEXT_SUCCESS_NETWORK withView:self.view];
-#ifdef DEBUG_X
-    NSLog(@"%@",self.viewModelLocation.locationModel.arrLocation);
-#endif
-    for (LocationModel *modelLocation in self.viewModelLocation.locationModel.arrLocation) {
-#ifdef DEBUG_X
-        NSLog(@"the province name is %@",modelLocation.Province.name);
-#endif
-        for (CityModel *modelCity in modelLocation.arrCity) {
-#ifdef DEBUG_X
-            NSLog(@"the city name is %@",modelCity.name);
-#endif
-            for (DistrinctModel *modelDistrinct in modelCity.arrDistrict) {
-#ifdef DEBUG_X
-                NSLog(@"the distrint is %@",modelDistrinct.name);
-#endif
-            }
-        }
-    }
 }
-
 
 #pragma mark - Navigation
 
@@ -95,31 +78,59 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"gotoLocationList"]) {
+        self.intSelectSeg = self.segControlLocation.selectedSegmentIndex;
         LocationListViewController *viewControllerList = segue.destinationViewController;
         if (self.segControlLocation.selectedSegmentIndex == 0) {
-//            viewControllerList.arrayLocation
+            viewControllerList.arrayLocation = self.viewModelLocation.locationModel.arrLocation;
+            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_PROVINCE;
+        } else if (self.segControlLocation.selectedSegmentIndex == 1) {
+            viewControllerList.arrayLocation = self.selectedLocation.location.arrCity;
+            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_CITY;
+        } else {
+            viewControllerList.arrayLocation = self.selectedLocation.city.arrDistrict;
+            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_DISTRINCT;
         }
-        viewControllerList.blockSelectedIndex = ^(NSInteger index){
-            NSLog(@"%d",index);
-        };
+        __weak ChooseLocationViewController *weakSelf = self;
+        [viewControllerList HadSelectLocation:^(NSInteger index) {
+            if (weakSelf.intSelectSeg == 0) {
+                weakSelf.selectedLocation.location = self.viewModelLocation.locationModel.arrLocation[index];
+                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.location.Province.name forSegmentAtIndex:0];
+            } else if (weakSelf.intSelectSeg == 1) {
+                weakSelf.selectedLocation.city = self.selectedLocation.location.arrCity[index];
+                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.city.name forSegmentAtIndex:1];
+            } else {
+                weakSelf.selectedLocation.distrinct = self.selectedLocation.city.arrDistrict[index];
+                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.distrinct.name forSegmentAtIndex:2];
+            }
+        }];
     }
 }
 
-
 - (IBAction)btnpressed_ConfirmCity:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
-        
     }];
 }
 
 - (IBAction)btnpressed_CancelCity:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
-        
     }];
 }
 
 - (IBAction)segBarLocationChanged:(id)sender {
-    NSLog(@"%d",self.segControlLocation.selectedSegmentIndex);
+    if (self.segControlLocation.selectedSegmentIndex == 0) {
+
+    } else if (self.segControlLocation.selectedSegmentIndex == 1) {
+        if (self.selectedLocation.location.Province.name == nil) {
+            [self showOnlyLabelHud:@"请选择省份" withView:self.view];
+            return;
+        }
+    } else {
+        if (self.selectedLocation.city.name == nil) {
+            [self showOnlyLabelHud:@"请选择城市" withView:self.view];
+            return;
+        }
+    }
+    
     [self performSegueWithIdentifier:@"gotoLocationList" sender:sender];
 }
 @end

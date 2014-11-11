@@ -26,7 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitle:@""]
+    [self setTitle:self.strTitle];
+//    self.arrayLocation = [@[] mutableCopy];
     // Do any additional setup after loading the view.
 }
 
@@ -36,20 +37,51 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)HadSelectLocation:(SelectLocationIndexBlock)selectBlock
+{
+    self.blockSelectedIndex = selectBlock;
+}
+
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"locationCell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"locationCell"];
+    }
+    if (self.TypeLocationList == ENUM_LOCATIONLIST_PROVINCE) {
+        cell.textLabel.text = @"1";
+    } else if (self.TypeLocationList == ENUM_LOCATIONLIST_CITY) {
+        cell.textLabel.text = @"2";
+    } else {
+        cell.textLabel.text = @"3";
+    }
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.arrayLocation.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.blockSelectedIndex != nil) {
+        self.blockSelectedIndex(indexPath.row);
+    }
+    [self backAction];
+}
+
+- (void)backAction
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 /*
