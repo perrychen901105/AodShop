@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PlJ-Xd-cYs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PlJ-Xd-cYs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -77,11 +77,47 @@
                     </view>
                     <connections>
                         <outlet property="segControlLocation" destination="05M-6N-lQH" id="9Qe-M2-H7r"/>
+                        <segue destination="7e9-Z3-tHd" kind="modal" identifier="gotoLocationList" id="Tkh-7V-UQJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABP-2G-1H2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="147" y="8"/>
+        </scene>
+        <!--Location List View Controller-->
+        <scene sceneID="ObZ-UD-pGE">
+            <objects>
+                <viewController storyboardIdentifier="LocationList" id="7e9-Z3-tHd" customClass="LocationListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QGL-UY-dut"/>
+                        <viewControllerLayoutGuide type="bottom" id="EOH-Rv-Ens"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gux-xp-jp5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7gj-Zd-vCA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7e9-Z3-tHd" id="dSd-li-5Hy"/>
+                                    <outlet property="delegate" destination="7e9-Z3-tHd" id="gph-fe-6kR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7gj-Zd-vCA" secondAttribute="trailing" id="Rud-80-VyI"/>
+                            <constraint firstItem="EOH-Rv-Ens" firstAttribute="top" secondItem="7gj-Zd-vCA" secondAttribute="bottom" id="S6X-2T-ZsM"/>
+                            <constraint firstItem="7gj-Zd-vCA" firstAttribute="top" secondItem="Gux-xp-jp5" secondAttribute="top" id="oZ4-op-Z50"/>
+                            <constraint firstItem="7gj-Zd-vCA" firstAttribute="leading" secondItem="Gux-xp-jp5" secondAttribute="leading" id="pYT-LN-vTW"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tka-mC-Scg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="533" y="13"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

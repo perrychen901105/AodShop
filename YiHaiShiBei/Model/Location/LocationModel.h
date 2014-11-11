@@ -25,8 +25,6 @@
 
 @end
 
-
-
 @interface DistrinctModel : JSONModel
 
 @property (nonatomic, assign) NSInteger districtID;
@@ -48,6 +46,14 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSInteger province_id;
 @property (nonatomic, strong) NSArray <DistrinctModel> *arrDistrict;
+
+@end
+
+@interface CurrentLocationModel : BaseModel
+
+@property (nonatomic, strong) ProvinceModel *province;
+@property (nonatomic, strong) CityModel *city;
+@property (nonatomic, strong) DistrinctModel *distrinct;
 
 @end
 

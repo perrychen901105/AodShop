@@ -60,3 +60,7 @@
                                                        }];
 }
 @end
+
+@implementation CurrentLocationModel
+
+@end

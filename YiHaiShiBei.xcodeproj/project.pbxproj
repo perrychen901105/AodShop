@@ -37,6 +37,7 @@
 		04EB670319FF6D990043D120 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66F819FF6D990043D120 /* JSONKeyMapper.m */; };
 		04EB670419FF6D990043D120 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66FA19FF6D990043D120 /* JSONValueTransformer.m */; };
 		04EB670819FF6F330043D120 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB670719FF6F330043D120 /* LocationModel.m */; };
+		263F2D561A122EEA00BC7AC7 /* LocationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F2D551A122EEA00BC7AC7 /* LocationListViewController.m */; };
 		26CA72221A10DB44000DEE5F /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CA72211A10DB44000DEE5F /* LocationViewModel.m */; };
 		2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */; };
 		2C433E8319EED27F00129479 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8219EED27F00129479 /* CFNetwork.framework */; };
@@ -154,6 +155,8 @@
 		04EB66FA19FF6D990043D120 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
 		04EB670619FF6F330043D120 /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
 		04EB670719FF6F330043D120 /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		263F2D541A122EEA00BC7AC7 /* LocationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationListViewController.h; sourceTree = "<group>"; };
+		263F2D551A122EEA00BC7AC7 /* LocationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationListViewController.m; sourceTree = "<group>"; };
 		26CA72201A10DB44000DEE5F /* LocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewModel.h; sourceTree = "<group>"; };
 		26CA72211A10DB44000DEE5F /* LocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewModel.m; sourceTree = "<group>"; };
 		2C03C8F21A07C7C900EB90FD /* ProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewModel.h; sourceTree = "<group>"; };
@@ -643,6 +646,8 @@
 			children = (
 				2CD0BDAA1A0F73310004F44C /* ChooseLocationViewController.h */,
 				2CD0BDAB1A0F73310004F44C /* ChooseLocationViewController.m */,
+				263F2D541A122EEA00BC7AC7 /* LocationListViewController.h */,
+				263F2D551A122EEA00BC7AC7 /* LocationListViewController.m */,
 				2CD0BDAD1A0F73430004F44C /* ChooseLocation.storyboard */,
 			);
 			path = Location;
@@ -857,6 +862,7 @@
 				04EB670419FF6D990043D120 /* JSONValueTransformer.m in Sources */,
 				04EB670319FF6D990043D120 /* JSONKeyMapper.m in Sources */,
 				2CDA1DDC19EEA50E0001FC43 /* main.m in Sources */,
+				263F2D561A122EEA00BC7AC7 /* LocationListViewController.m in Sources */,
 				2C433EAC19EED4C900129479 /* ASINetworkQueue.m in Sources */,
 				2C433ED519EED87200129479 /* MBProgressHUD.m in Sources */,
 				2C433ED919EED87200129479 /* SDWebImageCompat.m in Sources */,

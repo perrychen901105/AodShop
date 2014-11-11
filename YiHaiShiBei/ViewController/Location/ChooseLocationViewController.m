@@ -10,9 +10,11 @@
 #import "AppConfig.h"
 #import "LocationViewModel.h"
 #import "LocationModel.h"
+#import "LocationListViewController.h"
 
 @interface ChooseLocationViewController ()<LocationIndexViewModelDelegate>
 
+@property (nonatomic, strong) CurrentLocationModel *selectedLocation;
 @property (nonatomic, strong) LocationViewModel *viewModelLocation;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControlLocation;
 
@@ -84,7 +86,7 @@
     }
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -92,8 +94,17 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"gotoLocationList"]) {
+        LocationListViewController *viewControllerList = segue.destinationViewController;
+        if (self.segControlLocation.selectedSegmentIndex == 0) {
+//            viewControllerList.arrayLocation
+        }
+        viewControllerList.blockSelectedIndex = ^(NSInteger index){
+            NSLog(@"%d",index);
+        };
+    }
 }
-*/
+
 
 - (IBAction)btnpressed_ConfirmCity:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
@@ -109,5 +120,6 @@
 
 - (IBAction)segBarLocationChanged:(id)sender {
     NSLog(@"%d",self.segControlLocation.selectedSegmentIndex);
+    [self performSegueWithIdentifier:@"gotoLocationList" sender:sender];
 }
 @end
