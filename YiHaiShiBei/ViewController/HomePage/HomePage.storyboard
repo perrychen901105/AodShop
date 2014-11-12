@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWV-5d-8ga">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWV-5d-8ga">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -34,9 +34,40 @@
                     <view key="view" contentMode="scaleToFill" id="PYr-3H-Fuo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Olz-qg-fPR">
+                                <rect key="frame" x="0.0" y="64" width="320" height="150"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="QK4-r3-vW7"/>
+                                </constraints>
+                            </scrollView>
+                            <tableView appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-wh-wtP">
+                                <rect key="frame" x="0.0" y="214" width="320" height="306"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Uaj-SM-eCR" id="bKx-HE-0e5"/>
+                                    <outlet property="delegate" destination="Uaj-SM-eCR" id="lwy-8C-gJp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Olz-qg-fPR" firstAttribute="leading" secondItem="PYr-3H-Fuo" secondAttribute="leading" id="0WS-mr-IIZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Olz-qg-fPR" secondAttribute="trailing" id="9Cu-eF-7e5"/>
+                            <constraint firstAttribute="trailing" secondItem="OwC-wh-wtP" secondAttribute="trailing" id="Tk4-8Z-LZs"/>
+                            <constraint firstItem="Olz-qg-fPR" firstAttribute="top" secondItem="e94-sI-ahw" secondAttribute="bottom" id="VwL-8F-bw0"/>
+                            <constraint firstItem="OwC-wh-wtP" firstAttribute="top" secondItem="Olz-qg-fPR" secondAttribute="bottom" id="WP6-Ha-rah"/>
+                            <constraint firstAttribute="bottom" secondItem="OwC-wh-wtP" secondAttribute="bottom" constant="48" id="YJc-oh-MEq"/>
+                            <constraint firstItem="OwC-wh-wtP" firstAttribute="leading" secondItem="PYr-3H-Fuo" secondAttribute="leading" id="s0d-z8-Ibz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="okk-uu-2BR"/>
+                    <connections>
+                        <outlet property="scrollViewBanner" destination="Olz-qg-fPR" id="9UN-HP-eGQ"/>
+                        <outlet property="tbViewContent" destination="OwC-wh-wtP" id="KCd-Bg-GeU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvK-kd-uhf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

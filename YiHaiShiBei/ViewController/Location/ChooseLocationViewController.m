@@ -107,8 +107,8 @@
 }
 
 - (IBAction)btnpressed_ConfirmCity:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(didChooseCity)]) {
-        [self.delegate didChooseCity];
+    if ([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
+        [self.delegate didSelectCity:self.selectedLocation];
     }
     [self dismissViewControllerAnimated:YES completion:^{
     }];

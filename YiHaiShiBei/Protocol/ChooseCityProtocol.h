@@ -12,6 +12,6 @@
 
 
 
-- (void)didChooseCity:(CurrentLocationModel *)modelCurrent;
+- (void)didSelectCity:(CurrentLocationModel *)modelCurrent;
 
 @end

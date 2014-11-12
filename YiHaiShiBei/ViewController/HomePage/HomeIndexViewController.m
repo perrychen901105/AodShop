@@ -14,8 +14,14 @@
 #import "RegisterRootViewController.h"
 #import "ChooseLocationViewController.h"
 #import "ChooseCityProtocol.h"
-@interface HomeIndexViewController ()
+#import "UIImageView+WebCache.h"
+@interface HomeIndexViewController ()<ChooseCityProtocol>
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewBanner;
+@property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
+
+
 @end
 
 @implementation HomeIndexViewController
@@ -38,6 +44,9 @@
     
     [self setSearchAndCityButton];
     [self setUserIconButton];
+    
+    UIImageView *imgBanner = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
+    
 //    HttpRequestService *requestUpload = [[HttpRequestService alloc] init];
 //    UIImage *imgOne = [UIImage imageNamed:@"tabbar_moreSelected"];
 //    NSMutableDictionary *dicPost = [[NSMutableDictionary alloc] init];
@@ -66,9 +75,17 @@
 - (void)didChooseCity
 {
     ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
+    viewControllerCity.delegate = self;
     [self presentViewController:viewControllerCity animated:YES completion:^{
     }];
     
+}
+
+#pragma mark - Location Protocol
+- (void)didSelectCity:(CurrentLocationModel *)modelCurrent
+{
+    NSLog(@"%@",modelCurrent);
+    self.lblCity.text = modelCurrent.city.name;
 }
 
 #pragma mark - Navigation

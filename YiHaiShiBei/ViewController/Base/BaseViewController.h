@@ -18,6 +18,7 @@
 @property (nonatomic, strong) MBProgressHUD *HUD;
 
 @property (nonatomic, strong) AppDelegate *apps;
+@property (nonatomic, strong) UILabel *lblCity;
 
 - (void)setNaviBarTitle:(NSString *)navTitle;
 - (void)setSearchAndCityButton;

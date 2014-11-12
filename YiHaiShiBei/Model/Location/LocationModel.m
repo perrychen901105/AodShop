@@ -67,7 +67,7 @@
 {
     if (self = [super init]) {
         self.location = [[LocationModel alloc] init];
-        self.province = [[ProvinceModel alloc] init];
+//        self.province = [[ProvinceModel alloc] init];
         self.city = [[CityModel alloc] init];
     }
     return self;

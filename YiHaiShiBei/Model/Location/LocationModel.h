@@ -58,7 +58,7 @@
 
 @interface CurrentLocationModel : BaseModel
 
-@property (nonatomic, strong) ProvinceModel *province;
+//@property (nonatomic, strong) ProvinceModel *province;
 @property (nonatomic, strong) CityModel *city;
 @property (nonatomic, strong) DistrinctModel *distrinct;
 @property (nonatomic, strong) LocationModel *location;

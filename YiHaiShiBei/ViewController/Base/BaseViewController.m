@@ -119,6 +119,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (void)setSearchAndCityButton
 {
     UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -127,11 +129,12 @@
     UIBarButtonItem *searchBtnItem = [[UIBarButtonItem alloc] initWithCustomView:btnSearch];
     
     UIView *viewCity = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
-    UILabel *cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    cityLabel.font = [UIFont fontWithName:cityLabel.font.fontName size:11];
-    cityLabel.text = @"苏州";
+    self.lblCity = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 35, 30)];
+    self.lblCity.textAlignment = NSTextAlignmentCenter;
+    self.lblCity.font = [UIFont fontWithName:self.lblCity.font.fontName size:10];
+    self.lblCity.text = @"苏州";
     
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 10, 10, 10)];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 12, 5, 8)];
     imgView.image = [UIImage imageNamed:@"img_arrowDown"];
     
     UIButton *btnChooseCity = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -139,7 +142,7 @@
 
     [btnChooseCity addTarget:self action:@selector(didChooseCity) forControlEvents:UIControlEventTouchUpInside];
     
-    [viewCity addSubview:cityLabel];
+    [viewCity addSubview:self.lblCity];
     [viewCity addSubview:imgView];
     [viewCity addSubview:btnChooseCity];
     UIBarButtonItem *cityBtnItem = [[UIBarButtonItem alloc] initWithCustomView:viewCity];
