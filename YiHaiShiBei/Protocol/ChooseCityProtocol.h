@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "LocationModel.h"
 @protocol ChooseCityProtocol <NSObject>
 
 
 
-- (NSString *)didChooseCity;
+- (void)didChooseCity:();
 
 @end

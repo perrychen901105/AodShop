@@ -13,6 +13,7 @@
 #import "ProfileRequestService.h"
 #import "RegisterRootViewController.h"
 #import "ChooseLocationViewController.h"
+#import "ChooseCityProtocol.h"
 @interface HomeIndexViewController ()
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
 @end
@@ -33,19 +34,8 @@
     [super viewDidLoad];
 
     self.viewModelIndex = [[HomeIndexViewModel alloc] init];
-//    [self.viewModelIndex getAllProvinceList];
-    
     [self setNaviBarTitle:nil];
     
-    
-//    ProfileRequestService *requestProfile = [[ProfileRequestService alloc] init];
-//    [requestProfile userRegisterWithUserName:@"pppppppppp" password:@"123456" district:1 success:^(NSString *modelLocation) {
-//#ifdef DEBUG_X
-//        NSLog(@"%@",modelLocation);
-//#endif
-//    } error:^(NSString *strFail) {
-//        NSLog(@"%@",strFail);
-//    }];
     [self setSearchAndCityButton];
     [self setUserIconButton];
 //    HttpRequestService *requestUpload = [[HttpRequestService alloc] init];
@@ -76,11 +66,7 @@
 - (void)didChooseCity
 {
     ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
-//    [self.navigationController pushViewController:viewControllerCity animated:YES];
     [self presentViewController:viewControllerCity animated:YES completion:^{
-#ifdef DEBUG_X
-        NSLog(@"present success");
-#endif
     }];
     
 }

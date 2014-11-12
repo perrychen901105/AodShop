@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "ChooseCityProtocol.h"
+@interface ChooseLocationViewController : BaseViewController<ChooseCityProtocol>
 
-@interface ChooseLocationViewController : BaseViewController
+@property (weak, nonatomic) id<ChooseCityProtocol> delegate;
 
 @end
