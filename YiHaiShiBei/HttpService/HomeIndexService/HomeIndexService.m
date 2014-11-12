@@ -27,4 +27,17 @@ static NSString *ActionAllLocation = @"getProvinces";
     }];
 }
 
+// 获取所有广告的列表
+- (void)getAllBannerList:(NSInteger)distrinctID start:(NSInteger)start num:(NSInteger)num success:(GetAllBannerListSuccessBlock)successBlock error:(GetAllBannerListFailBlock)errorBlock
+{
+    NSMutableString *strGetBannerList = [[NSMutableString alloc] initWithFormat:[NSString stringWithFormat:@"/%d",distrinctID]];
+    if (start >= 0) {
+        [strGetBannerList appendFormat:@"/%d",start];
+    }
+    if (num >= 0) {
+        [strGetBannerList appendFormat:@"/%d",num];
+    }
+    
+}
+
 @end

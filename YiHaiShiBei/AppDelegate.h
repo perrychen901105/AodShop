@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "UserModel.h"
+#import "LocationModel.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) UserModel *modelUser;
+
+@property (strong, nonatomic) CurrentLocationModel *selectedLocation;
 
 @end
 

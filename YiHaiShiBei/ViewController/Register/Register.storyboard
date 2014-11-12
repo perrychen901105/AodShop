@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eQX-dd-a9R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eQX-dd-a9R">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -32,9 +33,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRz-eG-YM3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRz-eG-YM3">
                                 <rect key="frame" x="53" y="287" width="61" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="Jb6-93-k6T"/>
+                                    <constraint firstAttribute="width" constant="61" id="zM8-BW-vng"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="登 录" backgroundImage="btn_orange">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,9 +48,12 @@
                                     <action selector="actionLogin:" destination="cjh-Vg-8QZ" eventType="touchUpInside" id="ddg-wY-kE7"/>
                                 </connections>
                             </button>
-                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qX9-IP-22m">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qX9-IP-22m">
                                 <rect key="frame" x="211" y="287" width="61" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="EcG-Y1-SKP"/>
+                                    <constraint firstAttribute="width" constant="61" id="g9t-6r-uWu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="注 册">
                                     <color key="titleColor" red="0.95686274509803926" green="0.5725490196078431" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,17 +63,15 @@
                                     <action selector="actionRegister:" destination="cjh-Vg-8QZ" eventType="touchUpInside" id="2WE-Ms-NaD"/>
                                 </connections>
                             </button>
-                            <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="fMA-hk-nS0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="fMA-hk-nS0">
                                 <rect key="frame" x="15" y="119" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2Jv-hW-DBn"/>
                                     <constraint firstAttribute="width" constant="30" id="Fwk-nh-bGI"/>
                                 </constraints>
                             </imageView>
-                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pppppp" borderStyle="roundedRect" placeholder="账 号( 手机号或邮箱或英文数字组合)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIF-66-3Gu">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pppppp" borderStyle="roundedRect" placeholder="账 号( 手机号或邮箱或英文数字组合)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIF-66-3Gu">
                                 <rect key="frame" x="53" y="119" width="247" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="svK-uL-AOW"/>
                                 </constraints>
@@ -76,17 +81,15 @@
                                     <outlet property="delegate" destination="cjh-Vg-8QZ" id="WfF-90-UhK"/>
                                 </connections>
                             </textField>
-                            <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pwd_icon" translatesAutoresizingMaskIntoConstraints="NO" id="bhu-D9-eje">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pwd_icon" translatesAutoresizingMaskIntoConstraints="NO" id="bhu-D9-eje">
                                 <rect key="frame" x="15" y="189" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="irN-FD-fIN"/>
                                     <constraint firstAttribute="width" constant="30" id="jXY-aP-6mh"/>
                                 </constraints>
                             </imageView>
-                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="密 码( 数字和英文的组合 )" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBe-c4-Szg">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="密 码( 数字和英文的组合 )" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBe-c4-Szg">
                                 <rect key="frame" x="53" y="189" width="247" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="azK-zR-XgZ"/>
                                 </constraints>
@@ -103,8 +106,12 @@
                             <constraint firstAttribute="trailing" secondItem="JIF-66-3Gu" secondAttribute="trailing" constant="20" id="0lh-ee-Doj"/>
                             <constraint firstItem="GBe-c4-Szg" firstAttribute="top" secondItem="JIF-66-3Gu" secondAttribute="bottom" constant="40" id="6sW-IT-Icl"/>
                             <constraint firstItem="bhu-D9-eje" firstAttribute="top" secondItem="fMA-hk-nS0" secondAttribute="bottom" constant="40" id="Da3-Vr-0kp"/>
+                            <constraint firstItem="mRz-eG-YM3" firstAttribute="top" secondItem="GBe-c4-Szg" secondAttribute="bottom" constant="68" id="Lts-y5-LKK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qX9-IP-22m" secondAttribute="trailing" constant="32" id="MBc-gA-UAV"/>
                             <constraint firstItem="fMA-hk-nS0" firstAttribute="top" secondItem="VKA-Gf-ixQ" secondAttribute="bottom" constant="55" id="VSc-cd-jas"/>
                             <constraint firstItem="JIF-66-3Gu" firstAttribute="top" secondItem="VKA-Gf-ixQ" secondAttribute="bottom" constant="55" id="Ynr-QH-JyZ"/>
+                            <constraint firstItem="qX9-IP-22m" firstAttribute="top" secondItem="GBe-c4-Szg" secondAttribute="bottom" constant="68" id="d22-il-PwS"/>
+                            <constraint firstItem="mRz-eG-YM3" firstAttribute="leading" secondItem="Z5a-QK-zFi" secondAttribute="leadingMargin" constant="37" id="lZs-AO-Hf3"/>
                             <constraint firstAttribute="trailing" secondItem="GBe-c4-Szg" secondAttribute="trailing" constant="20" id="tsH-c0-I7T"/>
                             <constraint firstItem="fMA-hk-nS0" firstAttribute="leading" secondItem="Z5a-QK-zFi" secondAttribute="leading" constant="15" id="tuR-fz-IpG"/>
                             <constraint firstItem="bhu-D9-eje" firstAttribute="leading" secondItem="Z5a-QK-zFi" secondAttribute="leading" constant="15" id="v0r-Mp-THe"/>
@@ -134,9 +141,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDI-xd-1Tb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDI-xd-1Tb">
                                 <rect key="frame" x="115" y="326" width="90" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="RxF-0R-BIY"/>
+                                    <constraint firstAttribute="width" constant="90" id="SHb-yh-yHo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="立即注册" backgroundImage="btn_orange">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -145,40 +155,35 @@
                                     <action selector="actionRegisterComplete:" destination="dtI-nU-xWr" eventType="touchUpInside" id="aUl-ds-dcD"/>
                                 </connections>
                             </button>
-                            <view appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26m-Sg-Vln">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26m-Sg-Vln">
                                 <rect key="frame" x="20" y="84" width="280" height="180"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="选择地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-mX-Z4v">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="选择地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-mX-Z4v">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="dtI-nU-xWr" id="uxW-UR-rKd"/>
                                         </connections>
                                     </textField>
-                                    <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账 号( 手机号或邮箱或英文数字组合 )" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-MO-nJe">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账 号( 手机号或邮箱或英文数字组合 )" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-MO-nJe">
                                         <rect key="frame" x="0.0" y="45" width="280" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="dtI-nU-xWr" id="MRl-GW-7Ki"/>
                                         </connections>
                                     </textField>
-                                    <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密 码( 数字和英文的组合 )" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-Nd-mYf">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密 码( 数字和英文的组合 )" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-Nd-mYf">
                                         <rect key="frame" x="0.0" y="90" width="280" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="dtI-nU-xWr" id="LL8-6J-vmv"/>
                                         </connections>
                                     </textField>
-                                    <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKP-lh-yzk">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKP-lh-yzk">
                                         <rect key="frame" x="0.0" y="135" width="280" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
@@ -210,6 +215,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SDI-xd-1Tb" firstAttribute="top" secondItem="26m-Sg-Vln" secondAttribute="bottom" constant="62" id="8Ln-no-PeX"/>
+                            <constraint firstAttribute="centerX" secondItem="SDI-xd-1Tb" secondAttribute="centerX" id="KfD-AJ-t25"/>
                             <constraint firstItem="26m-Sg-Vln" firstAttribute="leading" secondItem="6IS-oc-YCs" secondAttribute="leading" constant="20" id="elW-I9-OkQ"/>
                             <constraint firstAttribute="trailing" secondItem="26m-Sg-Vln" secondAttribute="trailing" constant="20" id="ldX-lf-OTJ"/>
                             <constraint firstItem="26m-Sg-Vln" firstAttribute="top" secondItem="Aox-6A-qCE" secondAttribute="bottom" constant="20" id="v1K-4S-tQ3"/>

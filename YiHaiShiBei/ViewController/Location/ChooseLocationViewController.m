@@ -110,6 +110,7 @@
     if ([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
         [self.delegate didSelectCity:self.selectedLocation];
     }
+    self.apps.selectedLocation = self.selectedLocation;
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
