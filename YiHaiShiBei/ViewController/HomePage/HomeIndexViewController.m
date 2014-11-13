@@ -15,7 +15,7 @@
 #import "ChooseLocationViewController.h"
 #import "ChooseCityProtocol.h"
 #import "UIImageView+WebCache.h"
-@interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate>
+@interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate>
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewBanner;
@@ -40,12 +40,13 @@
     [super viewDidLoad];
 
     self.viewModelIndex = [[HomeIndexViewModel alloc] init];
+    self.viewModelIndex.delegate = self;
     [self setNaviBarTitle:nil];
     
     [self setSearchAndCityButton];
     [self setUserIconButton];
     
-    UIImageView *imgBanner = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
+//    [self.viewModelIndex getAllBannersList:1 start:-1 num:-1];
     
 //    HttpRequestService *requestUpload = [[HttpRequestService alloc] init];
 //    UIImage *imgOne = [UIImage imageNamed:@"tabbar_moreSelected"];
@@ -85,6 +86,9 @@
 {
     NSLog(@"%@",modelCurrent);
     self.lblCity.text = modelCurrent.city.name;
+    if (modelCurrent.distrinct.name.length > 0) {
+        [self.viewModelIndex getAllBannersList:modelCurrent.distrinct.districtID start:-1 num:-1];
+    }
 }
 
 #pragma mark - Navigation
@@ -118,5 +122,19 @@
     
 }
 
+#pragma mark - HttpService methods
+- (void)httpSuccessWithTag:(EnumRequestType)type
+{
+    if (type == TypeRequestAllBanner) {
+        
+    }
+}
+
+- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type
+{
+    if (type == TypeRequestAllBanner) {
+        
+    }
+}
 
 @end

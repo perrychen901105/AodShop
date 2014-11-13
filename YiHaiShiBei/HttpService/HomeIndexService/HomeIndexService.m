@@ -12,17 +12,14 @@
 @implementation HomeIndexService
 
 static NSString *ActionAllLocation = @"getProvinces";
+static NSString *ActionAllBanners  = @"getAdvertisings";
 
 - (void)getAllLocationList:(GetLocationListSuccessBlock)successBlock error:(GetLocationListFailBlock)errorBlock
 {
     NSString *strGetAllLocation = @"/2";
     [self getRequestToServer:ActionAllLocation requestPara:strGetAllLocation success:^(NSString *responseString) {
         successBlock(responseString);
- 
     } error:^(NSInteger errorCode, NSString *errorMessage) {
-#ifdef DEBUG_X
-        NSLog(@"error is %@",errorMessage);
-#endif
         errorBlock(errorMessage);
     }];
 }
@@ -37,7 +34,11 @@ static NSString *ActionAllLocation = @"getProvinces";
     if (num >= 0) {
         [strGetBannerList appendFormat:@"/%d",num];
     }
-    
+    [self getRequestToServer:ActionAllBanners requestPara:strGetBannerList success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorMessage);
+    }];
 }
 
 @end

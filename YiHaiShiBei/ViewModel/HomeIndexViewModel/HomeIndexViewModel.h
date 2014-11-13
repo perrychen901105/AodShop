@@ -10,10 +10,15 @@
 #import "HomeIndexService.h"
 #import "LocationModel.h"
 
+typedef enum EnumRequestType
+{
+    TypeRequestAllBanner = 10
+}EnumRequestType;
+
 @protocol HomeIndexViewModelDelegate <NSObject>
 
-- (void)httpSuccess;
-- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage;
+- (void)httpSuccessWithTag:(EnumRequestType)type;
+- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type;
 
 @end
 
@@ -23,10 +28,8 @@
 
 @property (nonatomic, strong) HomeIndexService *homeService;
 
-@property (nonatomic, strong) NSMutableArray *arrProvince;
+@property (nonatomic, strong) NSMutableArray *arrAllBanners;
 
-@property (nonatomic, strong) LocationBaseModel *locationModel;
-
-- (void)getAllProvinceList;
+- (void)getAllBannersList:(NSInteger)distrinctID start:(NSInteger)numStart num:(NSInteger)num;
 
 @end
