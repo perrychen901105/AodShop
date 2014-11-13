@@ -15,7 +15,7 @@
 #import "ChooseLocationViewController.h"
 #import "ChooseCityProtocol.h"
 #import "UIImageView+WebCache.h"
-@interface HomeIndexViewController ()<ChooseCityProtocol>
+@interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewBanner;
@@ -58,7 +58,6 @@
 
 - (void)userLoginAction
 {
-    NSLog(@"login action");
     UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
     [self presentViewController:viewControllerRoot animated:YES completion:^{
         NSLog(@"present success");
@@ -96,6 +95,27 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 
+}
+
+#pragma mark - UITableView methods
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 
