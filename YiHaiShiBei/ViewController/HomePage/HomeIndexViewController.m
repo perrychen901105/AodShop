@@ -46,6 +46,15 @@
     [self setSearchAndCityButton];
     [self setUserIconButton];
     
+    
+    
+    UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
+    imgViewShow.contentMode = UIViewContentModeScaleToFill;
+    imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
+    NSLog(@"%@",NSStringFromCGRect(imgViewShow.frame));
+    [self.scrollViewBanner addSubview:imgViewShow];
+    self.scrollViewBanner.contentSize = CGSizeMake(imgViewShow.frame.size.width, imgViewShow.frame.size.height);
+    
 //    [self.viewModelIndex getAllBannersList:1 start:-1 num:-1];
     
 //    HttpRequestService *requestUpload = [[HttpRequestService alloc] init];
@@ -104,12 +113,26 @@
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndexInfoCell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexInfoCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"消息";
+    } else if (indexPath.row == 1) {
+        cell.textLabel.text = @"资讯";
+    } else if (indexPath.row == 2) {
+        cell.textLabel.text = @"求购";
+    } else {
+        cell.textLabel.text = @"团购";
+    }
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 4;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -126,7 +149,9 @@
 - (void)httpSuccessWithTag:(EnumRequestType)type
 {
     if (type == TypeRequestAllBanner) {
-        
+        if (self.viewModelIndex.arrAllBanners.count == 0) {
+
+        }
     }
 }
 

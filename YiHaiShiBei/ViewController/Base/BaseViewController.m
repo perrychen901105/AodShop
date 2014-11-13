@@ -38,8 +38,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.apps = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    self.apps = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.automaticallyAdjustsScrollViewInsets =NO;
     NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor greenColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
