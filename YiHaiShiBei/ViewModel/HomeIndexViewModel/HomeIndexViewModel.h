@@ -31,5 +31,6 @@ typedef enum EnumRequestType
 @property (nonatomic, strong) NSMutableArray *arrAllBanners;
 
 - (void)getAllBannersList:(NSInteger)distrinctID start:(NSInteger)numStart num:(NSInteger)num;
+- (void)getAllInfoList:(NSInteger)numStart num:(NSInteger)num;
 
 @end

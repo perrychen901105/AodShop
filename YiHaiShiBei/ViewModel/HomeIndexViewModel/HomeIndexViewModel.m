@@ -35,4 +35,16 @@
     }];
 }
 
+- (void)getAllInfoList:(NSInteger)numStart num:(NSInteger)num
+{
+    if (self.homeService == nil) {
+        self.homeService = [[HomeIndexService alloc] init];
+    }
+    [self.homeService getAllInforList:numStart num:num success:^(NSString *strResponse) {
+        
+    } error:^(NSString *strFail) {
+        
+    }];
+}
+
 @end

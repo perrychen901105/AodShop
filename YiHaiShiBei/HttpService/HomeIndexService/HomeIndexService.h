@@ -15,6 +15,9 @@ typedef void (^GetLocationListFailBlock)(NSString *strFail);
 typedef void (^GetAllBannerListSuccessBlock)(NSString *strResponse);
 typedef void (^GetAllBannerListFailBlock)(NSString *strFail);
 
+typedef void (^GetAllInfoListSuccessBlock)(NSString *strResponse);
+typedef void (^GetAllInfoListFailBlock)(NSString *strFail);
+
 @interface HomeIndexService : HttpRequestService
 
 - (void)getAllLocationList:(GetLocationListSuccessBlock)successBlock error:(GetLocationListFailBlock)errorBlock;
@@ -22,5 +25,8 @@ typedef void (^GetAllBannerListFailBlock)(NSString *strFail);
 
 // 获取所有广告的列表
 - (void)getAllBannerList:(NSInteger)distrinctID start:(NSInteger)start num:(NSInteger)num success:(GetAllBannerListSuccessBlock)successBlock error:(GetAllBannerListFailBlock)errorBlock;
+
+// 获取所有资讯列表
+- (void)getAllInforList:(NSInteger)start num:(NSInteger)num success:(GetAllBannerListSuccessBlock)successBlock error:(GetAllBannerListFailBlock)errorBlock;
 
 @end

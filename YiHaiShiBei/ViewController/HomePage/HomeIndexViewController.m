@@ -35,6 +35,26 @@
     return self;
 }
 
+- (void)setupBannerView
+{
+    for (UIView *subView in self.scrollViewBanner.subviews) {
+        [subView removeFromSuperview];
+    }
+    if (self.viewModelIndex) {
+        if (self.viewModelIndex.arrAllBanners.count > 0) {
+            
+            return;
+        } else {
+            
+        }
+    }
+    UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
+    imgViewShow.contentMode = UIViewContentModeScaleToFill;
+    imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
+    [self.scrollViewBanner addSubview:imgViewShow];
+    self.scrollViewBanner.contentSize = CGSizeMake(imgViewShow.frame.size.width, imgViewShow.frame.size.height);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,15 +66,7 @@
     [self setSearchAndCityButton];
     [self setUserIconButton];
     
-    
-    
-    UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
-    imgViewShow.contentMode = UIViewContentModeScaleToFill;
-    imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
-    NSLog(@"%@",NSStringFromCGRect(imgViewShow.frame));
-    [self.scrollViewBanner addSubview:imgViewShow];
-    self.scrollViewBanner.contentSize = CGSizeMake(imgViewShow.frame.size.width, imgViewShow.frame.size.height);
-    
+    [self setupBannerView];
 //    [self.viewModelIndex getAllBannersList:1 start:-1 num:-1];
     
 //    HttpRequestService *requestUpload = [[HttpRequestService alloc] init];
@@ -116,7 +128,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndexInfoCell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexInfoCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"消息";
@@ -142,15 +153,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 0) {
+        [self.viewModelIndex getAllInfoList:-1 num:-1];
+    }
 }
 
 #pragma mark - HttpService methods
 - (void)httpSuccessWithTag:(EnumRequestType)type
 {
     if (type == TypeRequestAllBanner) {
-        if (self.viewModelIndex.arrAllBanners.count == 0) {
-
+        if (self.viewModelIndex.arrAllBanners.count > 0) {
+            [self setupBannerView];
         }
     }
 }

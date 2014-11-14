@@ -77,11 +77,11 @@
 {
     NSURL *url = [NSURL URLWithString:[APIHost stringByAppendingString:actionName]];
     __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    
 
-    NSLog(@"DIC %@",dicParams);
+#ifdef DEBUG_X
+    NSLog(@"url is %@, dic is %@",url, dicParams);
+#endif
     for (NSString *key in [dicParams allKeys]) {
-        NSLog(@"%@",dicParams[key]);
         [request addPostValue:dicParams[key] forKey:key];
     }
     
