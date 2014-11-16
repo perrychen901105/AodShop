@@ -43,9 +43,10 @@ static NSString *ActionAllInfos    = @"getInfomations";
 }
 
 // 获取所有资讯列表
-- (void)getAllInforList:(NSInteger)start num:(NSInteger)num success:(GetAllBannerListSuccessBlock)successBlock error:(GetAllBannerListFailBlock)errorBlock
+- (void)getAllInforList:(NSInteger)distrinctID start:(NSInteger)start num:(NSInteger)num success:(GetAllBannerListSuccessBlock)successBlock error:(GetAllBannerListFailBlock)errorBlock
 {
     NSMutableDictionary *dicParas = [@{@"typeid":@1} mutableCopy];
+    dicParas[@"district_id"] = [NSString stringWithFormat:@"%d",distrinctID];
     if (start > 0) {
         dicParas[@"start"] = [NSString stringWithFormat:@"%d",start];
     }

@@ -105,8 +105,8 @@
 #pragma mark - Location Protocol
 - (void)didSelectCity:(CurrentLocationModel *)modelCurrent
 {
-    NSLog(@"%@",modelCurrent);
     self.lblCity.text = modelCurrent.city.name;
+    self.apps.selectedLocation = modelCurrent;
     if (modelCurrent.distrinct.name.length > 0) {
         [self.viewModelIndex getAllBannersList:modelCurrent.distrinct.districtID start:-1 num:-1];
     }
@@ -155,7 +155,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
-        [self.viewModelIndex getAllInfoList:-1 num:-1];
+        if (self.apps.selectedLocation.distrinct.name.length > 0) {
+            [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.distrinct.districtID startNum:-1 num:-1];
+        } else {
+            [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
+        }
     }
 }
 

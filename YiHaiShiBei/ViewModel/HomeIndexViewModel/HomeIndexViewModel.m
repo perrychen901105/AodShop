@@ -35,7 +35,7 @@
     }];
 }
 
-- (void)getAllInfoList:(NSInteger)numStart num:(NSInteger)num
+- (void)getAllInfoList:(NSInteger)distrinctID startNum:(NSInteger)numStart num:(NSInteger)num
 {
     if (self.homeService == nil) {
         self.homeService = [[HomeIndexService alloc] init];
