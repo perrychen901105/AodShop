@@ -87,6 +87,10 @@
 		2CDA1DF619EEA50E0001FC43 /* YiHaiShiBeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DF519EEA50E0001FC43 /* YiHaiShiBeiTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2CEF60591A150026001B7B53 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF60581A150026001B7B53 /* BannerModel.m */; };
 		2CFD71911A0A80EE00A9902D /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFD71901A0A80EE00A9902D /* UserModel.m */; };
+		2CFFA0081A1CE33A0089B5AC /* HomeInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA0071A1CE33A0089B5AC /* HomeInfoListViewController.m */; };
+		2CFFA00B1A1CE3470089B5AC /* HomeMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA00A1A1CE3470089B5AC /* HomeMessageListViewController.m */; };
+		2CFFA00E1A1CE3670089B5AC /* HomeGrouponListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA00D1A1CE3670089B5AC /* HomeGrouponListViewController.m */; };
+		2CFFA0111A1CE37E0089B5AC /* HomePurchaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,6 +256,14 @@
 		2CEF60581A150026001B7B53 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
 		2CFD718F1A0A80EE00A9902D /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		2CFD71901A0A80EE00A9902D /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		2CFFA0061A1CE33A0089B5AC /* HomeInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeInfoListViewController.h; sourceTree = "<group>"; };
+		2CFFA0071A1CE33A0089B5AC /* HomeInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeInfoListViewController.m; sourceTree = "<group>"; };
+		2CFFA0091A1CE3470089B5AC /* HomeMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMessageListViewController.h; sourceTree = "<group>"; };
+		2CFFA00A1A1CE3470089B5AC /* HomeMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMessageListViewController.m; sourceTree = "<group>"; };
+		2CFFA00C1A1CE3670089B5AC /* HomeGrouponListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeGrouponListViewController.h; sourceTree = "<group>"; };
+		2CFFA00D1A1CE3670089B5AC /* HomeGrouponListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeGrouponListViewController.m; sourceTree = "<group>"; };
+		2CFFA00F1A1CE37E0089B5AC /* HomePurchaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePurchaseListViewController.h; sourceTree = "<group>"; };
+		2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePurchaseListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +346,14 @@
 			children = (
 				0446962119EFB2EE00EF71A3 /* HomeIndexViewController.h */,
 				0446962219EFB2EE00EF71A3 /* HomeIndexViewController.m */,
+				2CFFA0061A1CE33A0089B5AC /* HomeInfoListViewController.h */,
+				2CFFA0071A1CE33A0089B5AC /* HomeInfoListViewController.m */,
+				2CFFA0091A1CE3470089B5AC /* HomeMessageListViewController.h */,
+				2CFFA00A1A1CE3470089B5AC /* HomeMessageListViewController.m */,
+				2CFFA00C1A1CE3670089B5AC /* HomeGrouponListViewController.h */,
+				2CFFA00D1A1CE3670089B5AC /* HomeGrouponListViewController.m */,
+				2CFFA00F1A1CE37E0089B5AC /* HomePurchaseListViewController.h */,
+				2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */,
 				0446962419EFB2FF00EF71A3 /* HomePage.storyboard */,
 			);
 			path = HomePage;
@@ -891,6 +911,7 @@
 				04AA31931A00B63D00623D30 /* ProfileRequestService.m in Sources */,
 				04EB670219FF6D990043D120 /* JSONModel+networking.m in Sources */,
 				2C433EE319EED87200129479 /* UIImageView+HighlightedWebCache.m in Sources */,
+				2CFFA0081A1CE33A0089B5AC /* HomeInfoListViewController.m in Sources */,
 				2C433ED619EED87200129479 /* MKAnnotationView+WebCache.m in Sources */,
 				2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */,
 				2C433EE019EED87200129479 /* UIImage+GIF.m in Sources */,
@@ -898,9 +919,12 @@
 				0446962319EFB2EE00EF71A3 /* HomeIndexViewController.m in Sources */,
 				2C433EDE19EED87200129479 /* SDWebImagePrefetcher.m in Sources */,
 				2C433EDF19EED87200129479 /* UIButton+WebCache.m in Sources */,
+				2CFFA00B1A1CE3470089B5AC /* HomeMessageListViewController.m in Sources */,
 				04EB66FD19FF6D990043D120 /* JSONModelClassProperty.m in Sources */,
 				2C433EE119EED87200129479 /* UIImage+MultiFormat.m in Sources */,
+				2CFFA0111A1CE37E0089B5AC /* HomePurchaseListViewController.m in Sources */,
 				04EB670119FF6D990043D120 /* JSONHTTPClient.m in Sources */,
+				2CFFA00E1A1CE3670089B5AC /* HomeGrouponListViewController.m in Sources */,
 				04EB670819FF6F330043D120 /* LocationModel.m in Sources */,
 				04EB670019FF6D990043D120 /* JSONAPI.m in Sources */,
 				2C433EDA19EED87200129479 /* SDWebImageDecoder.m in Sources */,

@@ -40,9 +40,22 @@
     if (self.homeService == nil) {
         self.homeService = [[HomeIndexService alloc] init];
     }
-    [self.homeService getAllInforList:numStart num:num success:^(NSString *strResponse) {
+    
+    [self.homeService getAllInforList:distrinctID start:numStart num:num success:^(NSString *strResponse) {
         
     } error:^(NSString *strFail) {
+        
+    }];
+}
+
+- (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass IsOnsale:(NSInteger)isOnsale start:(NSInteger)numStart num:(NSInteger)num
+{
+    if (self.homeService == nil) {
+        self.homeService = [[HomeIndexService alloc] init];
+    }
+    [self.homeService getAllGrouponList:districtID isPass:isPass isOnsale:isOnsale start:numStart num:numStart success:^(NSString *strResponse) {
+        
+    } error:^(NSInteger errorCode, NSString *errorMsg) {
         
     }];
 }

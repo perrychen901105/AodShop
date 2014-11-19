@@ -64,11 +64,61 @@
                     <connections>
                         <outlet property="scrollViewBanner" destination="Olz-qg-fPR" id="9UN-HP-eGQ"/>
                         <outlet property="tbViewContent" destination="OwC-wh-wtP" id="KCd-Bg-GeU"/>
+                        <segue destination="WNN-vC-d6Y" kind="push" identifier="segueHomeGroupon" id="s2j-W8-CfN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvK-kd-uhf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="-252"/>
+            <point key="canvasLocation" x="103" y="-376"/>
+        </scene>
+        <!--Home Groupon List View Controller-->
+        <scene sceneID="OPH-51-y3t">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="WNN-vC-d6Y" customClass="HomeGrouponListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zoX-Ts-f0W"/>
+                        <viewControllerLayoutGuide type="bottom" id="gVT-9W-mn4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Gh-4j-r8O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IlX-4E-sc5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellHomeGroupon" id="vU0-Eb-xP6">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vU0-Eb-xP6" id="b0d-sg-tPI">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="WNN-vC-d6Y" id="OGW-3a-jgo"/>
+                                    <outlet property="delegate" destination="WNN-vC-d6Y" id="0iM-ei-mnY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IlX-4E-sc5" firstAttribute="leading" secondItem="4Gh-4j-r8O" secondAttribute="leading" id="37g-SO-PYU"/>
+                            <constraint firstAttribute="trailing" secondItem="IlX-4E-sc5" secondAttribute="trailing" id="FTf-2W-kbJ"/>
+                            <constraint firstItem="gVT-9W-mn4" firstAttribute="top" secondItem="IlX-4E-sc5" secondAttribute="bottom" id="ZIz-V6-WZa"/>
+                            <constraint firstItem="IlX-4E-sc5" firstAttribute="top" secondItem="zoX-Ts-f0W" secondAttribute="bottom" id="t7W-CT-5Wb"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="GQP-wp-QNO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tbViewContent" destination="IlX-4E-sc5" id="l4R-8U-2eU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ic-cP-jAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="524" y="-599"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

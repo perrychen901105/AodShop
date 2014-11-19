@@ -45,8 +45,9 @@ static NSString *ActionAllInfos    = @"getInfomations";
 // 获取所有资讯列表
 - (void)getAllInforList:(NSInteger)distrinctID start:(NSInteger)start num:(NSInteger)num success:(GetAllBannerListSuccessBlock)successBlock error:(GetAllBannerListFailBlock)errorBlock
 {
-    NSMutableDictionary *dicParas = [@{@"typeid":@1} mutableCopy];
-    dicParas[@"district_id"] = [NSString stringWithFormat:@"%d",distrinctID];
+    NSMutableDictionary *dicParas = [@{@"typeid":@1,
+                                       @"district_id":[NSString stringWithFormat:@"%d",distrinctID]} mutableCopy];
+    
     if (start > 0) {
         dicParas[@"start"] = [NSString stringWithFormat:@"%d",start];
     }
@@ -54,10 +55,40 @@ static NSString *ActionAllInfos    = @"getInfomations";
         dicParas[@"number"] = [NSString stringWithFormat:@"%d",num];
     }
     [self postRequestToServer:ActionAllInfos dicParams:dicParas success:^(NSString *responseString) {
-        
+        successBlock(responseString);
     } error:^(NSInteger errorCode, NSString *errorMessage) {
-        
+        errorBlock(errorMessage);
     }];
+}
+
+// 获取所有消息列表
+- (void)getAllMessageList:(NSInteger)districtID start:(NSInteger)start num:(NSInteger)num success:(GetAllMessageListSuccessBlock)successBlock error:(GetAllMessageListFailBlock)errorBlock
+{
+    NSMutableDictionary *dicParas = [@{@"typeid":@2,
+                                       @"district_id":[NSString stringWithFormat:@"%d",districtID]} mutableCopy];
+    
+    if (start > 0) {
+        dicParas[@"start"] = [NSString stringWithFormat:@"%d",start];
+    }
+    if (num > 0) {
+        dicParas[@"number"] = [NSString stringWithFormat:@"%d",num];
+    }
+    [self postRequestToServer:ActionAllInfos dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorMessage);
+    }];
+}
+
+// 获取所有团购列表
+- (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass isOnsale:(NSInteger)isOnsale start:(NSInteger)start num:(NSInteger)num success:(GetAllGrouponListSuccessBlock)successBlock error:(GetAllGrouponListFailBlock)errorBlock
+{
+//    NSString *strGetAllLocation = @"/2";
+//    [self getRequestToServer:ActionAllLocation requestPara:strGetAllLocation success:^(NSString *responseString) {
+//        successBlock(responseString);
+//    } error:^(NSInteger errorCode, NSString *errorMessage) {
+//        errorBlock(errorMessage);
+//    }];
 }
 
 @end

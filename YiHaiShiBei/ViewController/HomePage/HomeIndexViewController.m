@@ -15,6 +15,8 @@
 #import "ChooseLocationViewController.h"
 #import "ChooseCityProtocol.h"
 #import "UIImageView+WebCache.h"
+
+#import "HomeGrouponListViewController.h"
 @interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate>
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
 
@@ -25,6 +27,8 @@
 @end
 
 @implementation HomeIndexViewController
+
+#define SEGUE_GROUPON @"segueHomeGroupon"
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -119,7 +123,9 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-
+    if ([segue.identifier isEqualToString:SEGUE_GROUPON]) {
+        HomeGrouponListViewController *viewControllerGroupon = segue.destinationViewController;
+    }
 }
 
 #pragma mark - UITableView methods
@@ -155,11 +161,21 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
+//        if (self.apps.selectedLocation.distrinct.name.length > 0) {
+//            [self.viewModelIndex];
+//        } else {
+//            [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
+//        }
+    } else if (indexPath.row == 1) {
         if (self.apps.selectedLocation.distrinct.name.length > 0) {
             [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.distrinct.districtID startNum:-1 num:-1];
         } else {
             [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
         }
+    } else if (indexPath.row == 2) {
+        
+    } else if (indexPath.row == 3) {
+        [self performSegueWithIdentifier:SEGUE_GROUPON sender:indexPath];
     }
 }
 
