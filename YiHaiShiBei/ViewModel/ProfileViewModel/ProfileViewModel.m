@@ -67,4 +67,16 @@
     }];
 }
 
+- (void)getUserInfo:(NSString *)userId appKey:(NSString *)appKey
+{
+    if (self.profileRequest == nil) {
+        self.profileRequest = [[ProfileRequestService alloc] init];
+    }
+    [self.profileRequest getUserInfo:userId appKey:appKey success:^(NSString *strResponse) {
+        
+    } error:^(NSInteger errorCode, NSString *strError) {
+        
+    }];
+}
+
 @end

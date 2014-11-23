@@ -58,10 +58,12 @@
 
 @interface CurrentLocationModel : BaseModel
 
-//@property (nonatomic, strong) ProvinceModel *province;
-@property (nonatomic, strong) CityModel *city;
-@property (nonatomic, strong) DistrinctModel *distrinct;
-@property (nonatomic, strong) LocationModel *location;
+@property (nonatomic, strong) NSString *strProvince;
+@property (nonatomic, assign) NSInteger intProvinceId;
+@property (nonatomic, strong) NSString *strCity;
+@property (nonatomic, assign) NSInteger intCityId;
+@property (nonatomic, strong) NSString *strDistrinct;
+@property (nonatomic, assign) NSInteger intDistrinctId;
 
 @end
 

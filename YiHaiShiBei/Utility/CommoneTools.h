@@ -18,6 +18,9 @@ typedef void (^ReloadRequestBlock)(UIView *view);
 + (void) alertOnView:(UIView*)view content:(NSString*)content;
 + (void) confirmOnView:(UIView*)view delegate:(id)delegate content:(NSString*)content tag:(int)tag;
 
+// 移动文件
+- (void)moveTempFile:(NSString *)tmpFilePath ToDestination:(NSString *)desFilePath needRemoveOld:(BOOL)needRemove;
+
 // 是否有网络连接
 + (BOOL) isConnectionAvailable;
 

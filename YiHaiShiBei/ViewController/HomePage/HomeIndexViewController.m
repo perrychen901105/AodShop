@@ -17,8 +17,12 @@
 #import "UIImageView+WebCache.h"
 
 #import "HomeGrouponListViewController.h"
+
+#import "ProfileViewModel.h"
 @interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate>
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
+
+@property (nonatomic, strong) ProfileViewModel *viewModelProfile;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewBanner;
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
@@ -65,6 +69,9 @@
 
     self.viewModelIndex = [[HomeIndexViewModel alloc] init];
     self.viewModelIndex.delegate = self;
+    
+    self.viewModelProfile = [[ProfileViewModel alloc] init];
+    
     [self setNaviBarTitle:nil];
     
     [self setSearchAndCityButton];
@@ -84,10 +91,16 @@
 
 - (void)userLoginAction
 {
-    UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-    [self presentViewController:viewControllerRoot animated:YES completion:^{
-        NSLog(@"present success");
-    }];
+    if (self.apps.modelUser) {
+        [self.viewModelProfile getUserInfo:self.apps.modelUser.userId appKey:self.apps.modelUser.appkey];
+    } else {
+        // 未登录
+        UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+        [self presentViewController:viewControllerRoot animated:YES completion:^{
+            NSLog(@"present success");
+        }];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,11 +122,13 @@
 #pragma mark - Location Protocol
 - (void)didSelectCity:(CurrentLocationModel *)modelCurrent
 {
+    /*
     self.lblCity.text = modelCurrent.city.name;
     self.apps.selectedLocation = modelCurrent;
     if (modelCurrent.distrinct.name.length > 0) {
         [self.viewModelIndex getAllBannersList:modelCurrent.distrinct.districtID start:-1 num:-1];
     }
+     */
 }
 
 #pragma mark - Navigation
@@ -167,11 +182,13 @@
 //            [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
 //        }
     } else if (indexPath.row == 1) {
+        /*
         if (self.apps.selectedLocation.distrinct.name.length > 0) {
             [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.distrinct.districtID startNum:-1 num:-1];
         } else {
             [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
         }
+         */
     } else if (indexPath.row == 2) {
         
     } else if (indexPath.row == 3) {

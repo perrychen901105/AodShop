@@ -77,36 +77,41 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"gotoLocationList"]) {
-        self.intSelectSeg = self.segControlLocation.selectedSegmentIndex;
-        LocationListViewController *viewControllerList = segue.destinationViewController;
-        if (self.segControlLocation.selectedSegmentIndex == 0) {
-            viewControllerList.arrayLocation = self.viewModelLocation.locationModel.arrLocation;
-            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_PROVINCE;
-        } else if (self.segControlLocation.selectedSegmentIndex == 1) {
-            viewControllerList.arrayLocation = self.selectedLocation.location.arrCity;
-            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_CITY;
-        } else {
-            viewControllerList.arrayLocation = self.selectedLocation.city.arrDistrict;
-            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_DISTRINCT;
-        }
-        __weak ChooseLocationViewController *weakSelf = self;
-        [viewControllerList HadSelectLocation:^(NSInteger index) {
-            if (weakSelf.intSelectSeg == 0) {
-                weakSelf.selectedLocation.location = self.viewModelLocation.locationModel.arrLocation[index];
-                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.location.Province.name forSegmentAtIndex:0];
-            } else if (weakSelf.intSelectSeg == 1) {
-                weakSelf.selectedLocation.city = self.selectedLocation.location.arrCity[index];
-                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.city.name forSegmentAtIndex:1];
-            } else {
-                weakSelf.selectedLocation.distrinct = self.selectedLocation.city.arrDistrict[index];
-                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.distrinct.name forSegmentAtIndex:2];
-            }
-        }];
-    }
+//    if ([segue.identifier isEqualToString:@"gotoLocationList"]) {
+//        self.intSelectSeg = self.segControlLocation.selectedSegmentIndex;
+//        LocationListViewController *viewControllerList = segue.destinationViewController;
+//        if (self.segControlLocation.selectedSegmentIndex == 0) {
+//            viewControllerList.arrayLocation = self.viewModelLocation.locationModel.arrLocation;
+//            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_PROVINCE;
+//        } else if (self.segControlLocation.selectedSegmentIndex == 1) {
+//            viewControllerList.arrayLocation = self.selectedLocation.location.arrCity;
+//            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_CITY;
+//        } else {
+//            viewControllerList.arrayLocation = self.selectedLocation.city.arrDistrict;
+//            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_DISTRINCT;
+//        }
+//        __weak ChooseLocationViewController *weakSelf = self;
+//        // 已经选择地址
+//        [viewControllerList HadSelectLocation:^(NSInteger index) {
+//            if (weakSelf.intSelectSeg == 0) {
+//                weakSelf.selectedLocation.location = self.viewModelLocation.locationModel.arrLocation[index];
+//                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.location.Province.name forSegmentAtIndex:0];
+//            } else if (weakSelf.intSelectSeg == 1) {
+//                weakSelf.selectedLocation.city = self.selectedLocation.location.arrCity[index];
+//                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.city.name forSegmentAtIndex:1];
+//            } else {
+//                weakSelf.selectedLocation.distrinct = self.selectedLocation.city.arrDistrict[index];
+//                [weakSelf.segControlLocation setTitle:weakSelf.selectedLocation.distrinct.name forSegmentAtIndex:2];
+//            }
+//        }];
+//    }
 }
-
+/*
 - (IBAction)btnpressed_ConfirmCity:(id)sender {
+    if (self.selectedLocation.city.name == nil) {
+        [self showOnlyLabelHud:@"请选择城市" withView:self.view];
+        return;
+    }
     if ([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
         [self.delegate didSelectCity:self.selectedLocation];
     }
@@ -114,27 +119,32 @@
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
-
+*/
 - (IBAction)btnpressed_CancelCity:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
 
 - (IBAction)segBarLocationChanged:(id)sender {
-    if (self.segControlLocation.selectedSegmentIndex == 0) {
-
-    } else if (self.segControlLocation.selectedSegmentIndex == 1) {
-        if (self.selectedLocation.location.Province.name == nil) {
-            [self showOnlyLabelHud:@"请选择省份" withView:self.view];
-            return;
-        }
-    } else {
-        if (self.selectedLocation.city.name == nil) {
-            [self showOnlyLabelHud:@"请选择城市" withView:self.view];
-            return;
-        }
-    }
-    
-    [self performSegueWithIdentifier:@"gotoLocationList" sender:sender];
+//    if (self.segControlLocation.selectedSegmentIndex == 0) {
+//        self.selectedLocation.city.name = nil;
+//        self.selectedLocation.distrinct.name = nil;
+//        [self.segControlLocation setTitle:@"市" forSegmentAtIndex:1];
+//        [self.segControlLocation setTitle:@"区" forSegmentAtIndex:2];
+//    } else if (self.segControlLocation.selectedSegmentIndex == 1) {
+//        self.selectedLocation.distrinct.name = nil;
+//        [self.segControlLocation setTitle:@"区" forSegmentAtIndex:2];
+//        if (self.selectedLocation.location.Province.name == nil) {
+//            [self showOnlyLabelHud:@"请选择省份" withView:self.view];
+//            return;
+//        }
+//    } else {
+//        if (self.selectedLocation.city.name == nil) {
+//            [self showOnlyLabelHud:@"请选择城市" withView:self.view];
+//            return;
+//        }
+//    }
+//    
+//    [self performSegueWithIdentifier:@"gotoLocationList" sender:sender];
 }
 @end

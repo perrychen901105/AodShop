@@ -12,6 +12,7 @@
 
 static NSString *ActionRegister = @"register";
 static NSString *ActionLogin = @"login";
+static NSString *ActionGetUserInfo = @"getUserInfo";
 
 - (void)userRegisterWithUserName:(NSString *)userName password:(NSString *)pwd district:(NSInteger)disId success:(RegisterSuccessBlock)successBlock error:(RegisterFailBlock)errorBlock
 {
@@ -36,6 +37,18 @@ static NSString *ActionLogin = @"login";
     } error:^(NSInteger errorCode, NSString *errorMessage) {
         errorBlock(errorMessage);
     }];
+}
+
+- (void)getUserInfo:(NSString *)userId appKey:(NSString *)appKey success:(GetUserInfoSuccessBlock)successBlock error:(GetUserInfoFailBlock)errorBlock
+{
+    NSMutableDictionary *dicPara = [@{@"userid":userId
+                                      ,@"appkey":appKey} mutableCopy];
+    [self postRequestToServer:ActionGetUserInfo dicParams:dicPara success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+    
 }
 
 @end

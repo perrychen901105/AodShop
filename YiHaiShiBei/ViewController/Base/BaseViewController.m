@@ -35,6 +35,8 @@
     self.HUD.delegate = nil;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -61,6 +63,7 @@
     // Do any additional setup after loading the view.
 }
 
+// 添加空白页面点击事件响应方法
 - (void)addTapGestureOnEmptyView
 {
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emptyViewTapped)];

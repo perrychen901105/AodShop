@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HomeIndexViewController.h"
 #import "SupplyIndexViewController.h"
+#import "CommoneTools.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +19,33 @@
 
 @implementation AppDelegate
 
+#pragma mark - File Operator
+- (NSString *)getCacheDatabasePath
+{
+    //对于错误信息
+    NSError *error;
+    // 创建文件管理器
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    //指向文件目录
+    NSString *documentsDirectory= [NSHomeDirectory()
+                                   stringByAppendingPathComponent:@"Documents"];
+    NSString *strDBDirPath = [NSString stringWithFormat:@"%@/myFolder", documentsDirectory];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:strDBDirPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:strDBDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    NSString *strDBPath = [strDBDirPath stringByAppendingPathComponent:@"AodShop.sqlite"];
+    
+    return strDBPath;
+}
 
+- (void)copyDBtoDocument
+{
+    NSString *strDefaultPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"AodShop.sqlite"];
+    [[CommoneTools sharedManager] moveTempFile:strDefaultPath ToDestination:[self getCacheDatabasePath] needRemoveOld:NO];
+}
+
+#pragma mark - Application Lift Cycle
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Override point for customization after application launch.
@@ -42,22 +69,23 @@
     [[[tabIndex.viewControllers objectAtIndex:4] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_moreSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_more"]];
     
     [[tabIndex.viewControllers objectAtIndex:0] tabBarItem].title = @"主页";
-    [[tabIndex.viewControllers objectAtIndex:1] tabBarItem].title = @"主页";
-    [[tabIndex.viewControllers objectAtIndex:2] tabBarItem].title = @"主页";
-    [[tabIndex.viewControllers objectAtIndex:3] tabBarItem].title = @"主页";
-    [[tabIndex.viewControllers objectAtIndex:4] tabBarItem].title = @"主页";
+    [[tabIndex.viewControllers objectAtIndex:1] tabBarItem].title = @"供应";
+    [[tabIndex.viewControllers objectAtIndex:2] tabBarItem].title = @"商户";
+    [[tabIndex.viewControllers objectAtIndex:3] tabBarItem].title = @"收藏";
+    [[tabIndex.viewControllers objectAtIndex:4] tabBarItem].title = @"更多";
     
     
     self.window.rootViewController = tabIndex;
-    
-
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:249/255.0f green:174/255.0f blue:42/255.0f alpha:1.0f] }
                                              forState:UIControlStateSelected];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:152/255.0f green:152/255.0f blue:152/255.0f alpha:1.0f] }
                                              forState:UIControlStateNormal];
     
-    self.modelUser = [[UserModel alloc] init];
+    self.modelUser = nil;//[[UserModel alloc] init];
+    
+    [self copyDBtoDocument];
+    
 //    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
 
 //    [[UITabBarController tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];

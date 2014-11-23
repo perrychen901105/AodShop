@@ -18,5 +18,7 @@
 
 @property (strong, nonatomic) CurrentLocationModel *selectedLocation;
 
+- (NSString *)getCacheDatabasePath;
+
 @end
 

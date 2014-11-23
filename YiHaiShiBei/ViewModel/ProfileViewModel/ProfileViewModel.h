@@ -22,5 +22,6 @@
 
 - (void)RegisterWithName:(NSString *)strUserName pwd:(NSString *)strPwd districtId:(NSInteger)districtId;
 
+- (void)getUserInfo:(NSString *)userId appKey:(NSString *)appKey;
 
 @end

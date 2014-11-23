@@ -40,6 +40,7 @@
 		263F2D561A122EEA00BC7AC7 /* LocationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F2D551A122EEA00BC7AC7 /* LocationListViewController.m */; };
 		26CA72221A10DB44000DEE5F /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CA72211A10DB44000DEE5F /* LocationViewModel.m */; };
 		2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */; };
+		2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */; };
 		2C433E8319EED27F00129479 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8219EED27F00129479 /* CFNetwork.framework */; };
 		2C433E8519EED48500129479 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8419EED48500129479 /* SystemConfiguration.framework */; };
 		2C433E8719EED48D00129479 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8619EED48D00129479 /* MobileCoreServices.framework */; };
@@ -167,6 +168,7 @@
 		2C03C8F21A07C7C900EB90FD /* ProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewModel.h; sourceTree = "<group>"; };
 		2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewModel.m; sourceTree = "<group>"; };
 		2C03C8F51A07C7F100EB90FD /* UserProfileProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileProtocol.h; sourceTree = "<group>"; };
+		2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = AodShop.sqlite; sourceTree = "<group>"; };
 		2C433E8219EED27F00129479 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2C433E8419EED48500129479 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2C433E8619EED48D00129479 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -530,6 +532,7 @@
 		2C433E8019EEC93B00129479 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2CD3754A1A1E1710003DDE32 /* UserProfile */,
 				2CD0BDA91A0F73180004F44C /* Location */,
 				040D620E1A03369C009AB9B2 /* Register */,
 				0446961D19EFB16000EF71A3 /* HomePage */,
@@ -677,6 +680,13 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		2CD3754A1A1E1710003DDE32 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
 		2CDA1DCD19EEA50E0001FC43 = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +730,7 @@
 		2CDA1DD919EEA50E0001FC43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */,
 				2CDA1DDA19EEA50E0001FC43 /* Info.plist */,
 				2CDA1DDB19EEA50E0001FC43 /* main.m */,
 			);
@@ -850,6 +861,7 @@
 				2CD0BDAE1A0F73430004F44C /* ChooseLocation.storyboard in Resources */,
 				040D62151A0336CB009AB9B2 /* Register.storyboard in Resources */,
 				2C433EAF19EED52800129479 /* Default-568h@2x.png in Resources */,
+				2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */,
 				2CDA1DEA19EEA50E0001FC43 /* LaunchScreen.xib in Resources */,
 				046643E919F7A15B0060C9CC /* MerchantPage.storyboard in Resources */,
 				2CDA1DE719EEA50E0001FC43 /* Images.xcassets in Resources */,

@@ -65,6 +65,27 @@
     
 }
 
+- (void)moveTempFile:(NSString *)tmpFilePath ToDestination:(NSString *)desFilePath needRemoveOld:(BOOL)needRemove
+{
+    NSLog(@"tmp file path is %@, dir path is %@",tmpFilePath, desFilePath);
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSError *err = nil;
+    
+    if ([fm fileExistsAtPath:desFilePath]) {
+        if (needRemove) {
+            [fm removeItemAtPath:desFilePath error:nil];
+        }
+    }
+    if (![fm fileExistsAtPath:desFilePath]) {
+        BOOL success;
+        success = [fm copyItemAtPath:tmpFilePath toPath:desFilePath error:&err];
+        if (!success) {
+            NSAssert1(0, @"Fail copy file to path with message '%@'.", [err localizedDescription]);
+        }
+    }
+
+}
+
 -(UIImage*) circleImage:(UIImage*) image withParam:(CGFloat) inset {
     UIGraphicsBeginImageContext(image.size);
 	CGContextRef context = UIGraphicsGetCurrentContext();
