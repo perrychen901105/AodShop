@@ -17,6 +17,8 @@
 
 @end
 
+
+
 @implementation AppDelegate
 
 #pragma mark - File Operator
@@ -35,6 +37,7 @@
     }
     
     NSString *strDBPath = [strDBDirPath stringByAppendingPathComponent:@"AodShop.sqlite"];
+    
     
     return strDBPath;
 }
