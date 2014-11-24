@@ -36,9 +36,6 @@
         NSLog(@"dic loaction city is %@",[dicLocation[@"City"] objectAtIndex:0]);
         [arrCitys addObject:[dicLocation[@"City"] objectAtIndex:0]];
     }
-#ifdef DEBUG
-    NSLog(@"the arr provinces is %@, the city is %@",arrProvinces,arrCitys);
-#endif
     
     FMDatabaseQueue *databaseQueue = [FMDatabaseQueue databaseQueueWithPath:[AppDelegate getCacheDatabasePath]];
     [databaseQueue inDatabase:^(FMDatabase *db){
