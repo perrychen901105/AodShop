@@ -11,6 +11,7 @@
 #import "LocationViewModel.h"
 #import "LocationModel.h"
 #import "LocationListViewController.h"
+#import "DatabaseOperator.h"
 
 @interface ChooseLocationViewController ()<LocationIndexViewModelDelegate>
 

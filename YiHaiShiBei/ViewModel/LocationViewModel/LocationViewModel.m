@@ -7,7 +7,7 @@
 //
 
 #import "LocationViewModel.h"
-
+#import "DatabaseOperator.h"
 @implementation LocationViewModel
 
 - (void)getAllProvinceList{
@@ -16,15 +16,16 @@
     }
     [self.homeService getAllLocationList:^(NSString *strResponse) {
         NSError *err = nil;
-        LocationBaseModel *loca = [[LocationBaseModel alloc] initWithString:strResponse error:&err];
-        self.locationModel = loca;
-        if (loca.success == 0) {
+        NSDictionary *dicReturn = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&err];
+    
+        if ([dicReturn[@"success"] intValue] == 0) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(httpSuccess)]) {
+                [[DatabaseOperator getInstance] insertAllLocations:dicReturn[@"data"]];
                 [self.delegate httpSuccess];
             }
         } else {
             if (self.delegate && [self.delegate respondsToSelector:@selector(httpError:message:)]) {
-                [self.delegate httpError:loca.success message:loca.message];
+                [self.delegate httpError:[dicReturn[@"success"] intValue] message:dicReturn[@"message"]];
             }
         }
     } error:^(NSString *strFail) {

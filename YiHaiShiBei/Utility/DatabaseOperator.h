@@ -12,5 +12,8 @@
 + (DatabaseOperator *)getInstance;
 
 - (void)insertAllLocations:(NSArray *)arrAllLocations;
+- (NSMutableArray *)getAllProvinces;
+- (NSMutableArray *)getAllCitysWithProvinceId:(NSInteger)provinceId;
+- (NSMutableArray *)getAllDistrictsWithCityId:(NSInteger)cityId;
 
 @end

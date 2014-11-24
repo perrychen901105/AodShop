@@ -24,10 +24,6 @@
 #pragma mark - File Operator
 + (NSString *)getCacheDatabasePath
 {
-    //对于错误信息
-    NSError *error;
-    // 创建文件管理器
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
     //指向文件目录
     NSString *documentsDirectory= [NSHomeDirectory()
                                    stringByAppendingPathComponent:@"Documents"];
