@@ -25,9 +25,13 @@
     return instance;
 }
 
-- (void)insertAllLocations:(NSDictionary *)dicAllLocations
+- (void)insertAllLocations:(NSArray *)arrAllLocations
 {
-    
+    FMDatabaseQueue *databaseQueue = [FMDatabaseQueue databaseQueueWithPath:[AppDelegate getCacheDatabasePath]];
+    [databaseQueue inDatabase:^(FMDatabase *db){
+        [db executeUpdate:@"insert into user values (?,?,?)",@"Ren",@"Male",[NSNumber numberWithInt:20]];
+    }];
+    [databaseQueue close];
 }
 
 - (void)insertAllProvince:(NSDictionary *)dicAllProvinces

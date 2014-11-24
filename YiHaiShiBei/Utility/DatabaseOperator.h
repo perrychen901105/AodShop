@@ -11,6 +11,6 @@
 
 + (DatabaseOperator *)getInstance;
 
-- (void)insertAllLocations:(NSDictionary *)dicAllLocations;
+- (void)insertAllLocations:(NSArray *)arrAllLocations;
 
 @end

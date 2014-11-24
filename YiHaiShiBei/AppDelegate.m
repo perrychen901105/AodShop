@@ -22,7 +22,7 @@
 @implementation AppDelegate
 
 #pragma mark - File Operator
-- (NSString *)getCacheDatabasePath
++ (NSString *)getCacheDatabasePath
 {
     //对于错误信息
     NSError *error;
@@ -45,7 +45,7 @@
 - (void)copyDBtoDocument
 {
     NSString *strDefaultPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"AodShop.sqlite"];
-    [[CommoneTools sharedManager] moveTempFile:strDefaultPath ToDestination:[self getCacheDatabasePath] needRemoveOld:NO];
+    [[CommoneTools sharedManager] moveTempFile:strDefaultPath ToDestination:[AppDelegate getCacheDatabasePath] needRemoveOld:NO];
 }
 
 #pragma mark - Application Lift Cycle
