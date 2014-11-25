@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-typedef void (^SelectLocationIndexBlock)(NSInteger index);
+typedef void (^SelectLocationIndexBlock)(NSInteger locationId, NSString *locationName);
 typedef enum LocationListType
 {
     ENUM_LOCATIONLIST_PROVINCE = 0x00000001,

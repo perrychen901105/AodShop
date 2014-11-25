@@ -77,7 +77,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.blockSelectedIndex != nil) {
-        self.blockSelectedIndex(indexPath.row);
+        if (self.TypeLocationList == ENUM_LOCATIONLIST_PROVINCE) {
+            ProvinceModel *model = self.arrayLocation[indexPath.row];
+            self.blockSelectedIndex(model.provinceID, model.name);
+        } else if (self.TypeLocationList == ENUM_LOCATIONLIST_CITY) {
+            CityModel *model = self.arrayLocation[indexPath.row];
+            self.blockSelectedIndex(model.cityID, model.name);
+        } else {
+            DistrinctModel *model = self.arrayLocation[indexPath.row];
+            self.blockSelectedIndex(model.districtID, model.name);
+        }
     }
     [self backAction];
 }
