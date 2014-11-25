@@ -7,6 +7,7 @@
 //
 
 #import "LocationListViewController.h"
+#import "DatabaseOperator.h"
 #import "LocationModel.h"
 
 @interface LocationListViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -51,8 +52,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"locationCell"];
     }
     if (self.TypeLocationList == ENUM_LOCATIONLIST_PROVINCE) {
-        LocationModel *model = self.arrayLocation[indexPath.row];
-        cell.textLabel.text = model.Province.name;
+        ProvinceModel *model = self.arrayLocation[indexPath.row];
+        cell.textLabel.text = model.name;
     } else if (self.TypeLocationList == ENUM_LOCATIONLIST_CITY) {
         CityModel *model = self.arrayLocation[indexPath.row];
         cell.textLabel.text = model.name;

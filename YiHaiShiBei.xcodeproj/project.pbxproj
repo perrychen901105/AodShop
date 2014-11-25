@@ -584,6 +584,7 @@
 		2C433E8C19EED4AC00129479 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				2C7D33711A221C7E002C4A9A /* libsqlite3.dylib */,
 				2C433E8A19EED49A00129479 /* libz.dylib */,
 				2CA9E2AE1A0929DA0078176D /* Foundation.framework */,
 				2CA9E2AC1A0929C00078176D /* UIKit.framework */,
@@ -733,7 +734,6 @@
 		2CDA1DCD19EEA50E0001FC43 = {
 			isa = PBXGroup;
 			children = (
-				2C7D33711A221C7E002C4A9A /* libsqlite3.dylib */,
 				2C433EAE19EED52800129479 /* Default-568h@2x.png */,
 				2CDA1DD819EEA50E0001FC43 /* YiHaiShiBei */,
 				2CDA1DF219EEA50E0001FC43 /* YiHaiShiBeiTests */,

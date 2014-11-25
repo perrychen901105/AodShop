@@ -37,12 +37,20 @@
     return self;
 }
 
+- (void)requestLocationData
+{
+    if ([[DatabaseOperator getInstance] getAllProvinces].count > 0) {
+        
+    } else {
+    
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.viewModelLocation = [[LocationViewModel alloc] init];
-    self.viewModelLocation.delegate = self;
+
     self.selectedLocation = [[CurrentLocationModel alloc] init];
     [self getAllLocations];
     // Do any additional setup after loading the view.
@@ -57,8 +65,15 @@
 #pragma mark - WebService methods
 - (void)getAllLocations
 {
-    [self showProgressLabelHud:TEXT_WAIT_NETWORK withView:self.view];
-    [self.viewModelLocation getAllProvinceList];
+    if ([[DatabaseOperator getInstance] getAllProvinces].count > 0) {
+        
+    } else {
+        self.viewModelLocation = [[LocationViewModel alloc] init];
+        self.viewModelLocation.delegate = self;
+        [self showProgressLabelHud:TEXT_WAIT_NETWORK withView:self.view];
+        [self.viewModelLocation getAllProvinceList];
+    }
+    
 }
 
 - (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage
@@ -127,6 +142,15 @@
 }
 
 - (IBAction)segBarLocationChanged:(id)sender {
+    if (self.segControlLocation.selectedSegmentIndex == 0) {
+        NSMutableArray *arrProvince = [[DatabaseOperator getInstance] getAllProvinces];
+        NSLog(@"%@",arrProvince);
+    } else if (self.segControlLocation.selectedSegmentIndex == 1) {
+        
+    } else {
+        
+    }
+    
 //    if (self.segControlLocation.selectedSegmentIndex == 0) {
 //        self.selectedLocation.city.name = nil;
 //        self.selectedLocation.distrinct.name = nil;
