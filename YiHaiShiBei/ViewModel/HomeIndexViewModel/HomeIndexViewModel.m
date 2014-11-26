@@ -20,6 +20,7 @@
         if (modelBanner.success == 0) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
                 NSLog(@"%d",modelBanner.advertisings.count);
+                self.arrAllBanners = [modelBanner.advertisings mutableCopy];
                 [self.delegate httpSuccessWithTag:TypeRequestAllBanner];
             }
         } else {

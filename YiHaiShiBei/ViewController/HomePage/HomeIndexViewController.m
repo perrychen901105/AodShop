@@ -15,7 +15,6 @@
 #import "ChooseLocationViewController.h"
 #import "ChooseCityProtocol.h"
 #import "UIImageView+WebCache.h"
-
 #import "HomeGrouponListViewController.h"
 
 #import "AdvertiseModel.h"
@@ -53,10 +52,12 @@
         if (self.viewModelIndex.arrAllBanners.count > 0) {
             for (int i = 0; i < self.viewModelIndex.arrAllBanners.count; i++) {
                 AdvertiseModel *modelAdvise = self.viewModelIndex.arrAllBanners[i];
-                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewBanner.frame.size.width*i, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height)];
+                [imgView sd_setImageWithURL:[NSURL URLWithString:modelAdvise.picture] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+                [self.scrollViewBanner addSubview:imgView];
                 
             }
-            
+            self.scrollViewBanner.contentSize = CGSizeMake(self.scrollViewBanner.frame.size.width*self.viewModelIndex.arrAllBanners.count, self.scrollViewBanner.frame.size.height);
             return;
         }
     }
@@ -147,6 +148,19 @@
     }
 }
 
+#pragma mark - IndexViewModel delegate methods
+- (void)httpSuccessWithTag:(EnumRequestType)type
+{
+    if (type == TypeRequestAllBanner) {
+        [self setupBannerView];
+    }
+}
+
+- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type
+{
+    
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -212,21 +226,5 @@
     }
 }
 
-#pragma mark - HttpService methods
-- (void)httpSuccessWithTag:(EnumRequestType)type
-{
-    if (type == TypeRequestAllBanner) {
-        if (self.viewModelIndex.arrAllBanners.count > 0) {
-            [self setupBannerView];
-        }
-    }
-}
-
-- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type
-{
-    if (type == TypeRequestAllBanner) {
-        
-    }
-}
 
 @end
