@@ -97,10 +97,8 @@
         // 未登录
         UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
         [self presentViewController:viewControllerRoot animated:YES completion:^{
-            NSLog(@"present success");
         }];
     }
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,13 +120,10 @@
 #pragma mark - Location Protocol
 - (void)didSelectCity:(CurrentLocationModel *)modelCurrent
 {
-    /*
-    self.lblCity.text = modelCurrent.city.name;
-    self.apps.selectedLocation = modelCurrent;
-    if (modelCurrent.distrinct.name.length > 0) {
-        [self.viewModelIndex getAllBannersList:modelCurrent.distrinct.districtID start:-1 num:-1];
+    self.lblCity.text = modelCurrent.strCity;
+    if (modelCurrent.intDistrinctId > 0) {
+        [self.viewModelIndex getAllBannersList:modelCurrent.intDistrinctId start:-1 num:-1];
     }
-     */
 }
 
 #pragma mark - Navigation

@@ -39,6 +39,7 @@
 		04EB670819FF6F330043D120 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB670719FF6F330043D120 /* LocationModel.m */; };
 		263F2D561A122EEA00BC7AC7 /* LocationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F2D551A122EEA00BC7AC7 /* LocationListViewController.m */; };
 		26CA72221A10DB44000DEE5F /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CA72211A10DB44000DEE5F /* LocationViewModel.m */; };
+		26FCFE071A25F3A000A53FC7 /* AdvertiseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCFE061A25F3A000A53FC7 /* AdvertiseModel.m */; };
 		2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */; };
 		2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */; };
 		2C433E8319EED27F00129479 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C433E8219EED27F00129479 /* CFNetwork.framework */; };
@@ -172,6 +173,8 @@
 		263F2D551A122EEA00BC7AC7 /* LocationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationListViewController.m; sourceTree = "<group>"; };
 		26CA72201A10DB44000DEE5F /* LocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewModel.h; sourceTree = "<group>"; };
 		26CA72211A10DB44000DEE5F /* LocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewModel.m; sourceTree = "<group>"; };
+		26FCFE051A25F3A000A53FC7 /* AdvertiseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertiseModel.h; sourceTree = "<group>"; };
+		26FCFE061A25F3A000A53FC7 /* AdvertiseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertiseModel.m; sourceTree = "<group>"; };
 		2C03C8F21A07C7C900EB90FD /* ProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewModel.h; sourceTree = "<group>"; };
 		2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewModel.m; sourceTree = "<group>"; };
 		2C03C8F51A07C7F100EB90FD /* UserProfileProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileProtocol.h; sourceTree = "<group>"; };
@@ -803,6 +806,8 @@
 			children = (
 				2CEF60571A150026001B7B53 /* BannerModel.h */,
 				2CEF60581A150026001B7B53 /* BannerModel.m */,
+				26FCFE051A25F3A000A53FC7 /* AdvertiseModel.h */,
+				26FCFE061A25F3A000A53FC7 /* AdvertiseModel.m */,
 			);
 			path = HomeIndex;
 			sourceTree = "<group>";
@@ -986,6 +991,7 @@
 				04EB670119FF6D990043D120 /* JSONHTTPClient.m in Sources */,
 				2CFFA00E1A1CE3670089B5AC /* HomeGrouponListViewController.m in Sources */,
 				04EB670819FF6F330043D120 /* LocationModel.m in Sources */,
+				26FCFE071A25F3A000A53FC7 /* AdvertiseModel.m in Sources */,
 				04EB670019FF6D990043D120 /* JSONAPI.m in Sources */,
 				2C433EDA19EED87200129479 /* SDWebImageDecoder.m in Sources */,
 				040D62111A0336B2009AB9B2 /* RegisterRootViewController.m in Sources */,

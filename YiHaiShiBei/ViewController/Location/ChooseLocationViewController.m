@@ -132,7 +132,6 @@
     [self.segControlLocation setTitle:self.selectedLocation.strDistrinct forSegmentAtIndex:2];
 }
 
-
 - (IBAction)btnpressed_ConfirmCity:(id)sender {
     if (self.selectedLocation.intDistrinctId == 0) {
         [self showOnlyLabelHud:@"请选择地区" withView:self.view];

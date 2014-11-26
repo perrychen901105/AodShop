@@ -7,10 +7,12 @@
 //
 
 #import "BaseModel.h"
+#import "AdvertiseModel.h"
 
 @interface BannerModel : BaseModel
 
-@property (nonatomic, strong) NSArray *advertisings;
+@property (nonatomic, strong) NSArray<AdvertiseModel> *advertisings;
 @property (nonatomic, assign) NSInteger count;
 
 @end
+
