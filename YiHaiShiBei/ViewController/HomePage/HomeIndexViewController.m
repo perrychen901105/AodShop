@@ -53,6 +53,7 @@
             for (int i = 0; i < self.viewModelIndex.arrAllBanners.count; i++) {
                 AdvertiseModel *modelAdvise = self.viewModelIndex.arrAllBanners[i];
                 UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewBanner.frame.size.width*i, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height)];
+                imgView.contentMode = UIViewContentModeScaleToFill;
                 [imgView sd_setImageWithURL:[NSURL URLWithString:modelAdvise.picture] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
                 [self.scrollViewBanner addSubview:imgView];
                 
@@ -62,7 +63,6 @@
         }
     }
     UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
-    
     imgViewShow.contentMode = UIViewContentModeScaleToFill;
     imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
     [self.scrollViewBanner addSubview:imgViewShow];
