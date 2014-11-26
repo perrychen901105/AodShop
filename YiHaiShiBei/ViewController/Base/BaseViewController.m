@@ -136,7 +136,7 @@
     self.lblCity = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 35, 30)];
     self.lblCity.textAlignment = NSTextAlignmentCenter;
     self.lblCity.font = [UIFont fontWithName:self.lblCity.font.fontName size:10];
-    self.lblCity.text = @"苏州";
+//    self.lblCity.text = @"苏州";
     
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 12, 5, 8)];
     imgView.image = [UIImage imageNamed:@"img_arrowDown"];

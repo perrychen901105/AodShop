@@ -122,10 +122,6 @@
 }
 
 - (IBAction)actionRegisterComplete:(id)sender {
-    
-//    if (<#condition#>) {
-//        <#statements#>
-//    }
     if ([self checkAllFields]) {
         [self showProgressLabelHud:@"注册中..." withView:self.view];
         [self.viewModelRegister RegisterWithName:self.tfUserName.text pwd:self.tfPassword.text districtId:1];

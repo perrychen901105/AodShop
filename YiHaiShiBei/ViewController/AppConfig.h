@@ -18,4 +18,7 @@
 
 #define APIHost @"http://www.aodshop.cn/aodshop/index.php/api/"
 
+#define K_USER_SELECTED_DISTRICT_ID @"userSelectedDistrictId"
+#define K_USER_SELECTED_CITY_NAME @"userSelectedCityName"
+
 #endif

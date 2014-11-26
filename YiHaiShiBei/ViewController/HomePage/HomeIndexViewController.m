@@ -18,6 +18,7 @@
 
 #import "HomeGrouponListViewController.h"
 
+#import "AdvertiseModel.h"
 #import "ProfileViewModel.h"
 @interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate>
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
@@ -50,13 +51,17 @@
     }
     if (self.viewModelIndex) {
         if (self.viewModelIndex.arrAllBanners.count > 0) {
+            for (int i = 0; i < self.viewModelIndex.arrAllBanners.count; i++) {
+                AdvertiseModel *modelAdvise = self.viewModelIndex.arrAllBanners[i];
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+                
+            }
             
             return;
-        } else {
-            
         }
     }
     UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
+    
     imgViewShow.contentMode = UIViewContentModeScaleToFill;
     imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
     [self.scrollViewBanner addSubview:imgViewShow];
@@ -73,11 +78,17 @@
     self.viewModelProfile = [[ProfileViewModel alloc] init];
     
     [self setNaviBarTitle:nil];
-    
     [self setSearchAndCityButton];
     [self setUserIconButton];
     
-    [self setupBannerView];
+    [self requestForBannerList];
+    
+    NSString *strPreviousSelectCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
+    if (strPreviousSelectCityName != nil) {
+        self.lblCity.text = strPreviousSelectCityName;
+    } else {
+        self.lblCity.text = @"苏州";
+    }
 //    [self.viewModelIndex getAllBannersList:1 start:-1 num:-1];
     
 //    HttpRequestService *requestUpload = [[HttpRequestService alloc] init];
@@ -87,6 +98,16 @@
 //    [requestUpload postFileToServer:@"uploadAvatar" Datas:dicPost dicParams:nil];
     
     // Do any additional setup after loading the view.
+}
+
+- (void)requestForBannerList
+{
+    NSInteger selectedDistrictId = [[[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_DISTRICT_ID] intValue];
+    if (selectedDistrictId > 0) {
+        [self.viewModelIndex getAllBannersList:selectedDistrictId start:-1 num:-1];
+    } else {
+        [self setupBannerView];
+    }
 }
 
 - (void)userLoginAction
@@ -122,7 +143,7 @@
 {
     self.lblCity.text = modelCurrent.strCity;
     if (modelCurrent.intDistrinctId > 0) {
-        [self.viewModelIndex getAllBannersList:modelCurrent.intDistrinctId start:-1 num:-1];
+        [self requestForBannerList];
     }
 }
 

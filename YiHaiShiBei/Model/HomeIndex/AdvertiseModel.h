@@ -10,7 +10,7 @@
 @protocol AdvertiseModel
 
 @end
-@interface AdvertiseModel : BaseModel
+@interface AdvertiseModel : JSONModel
 
 @property (nonatomic, assign) NSInteger advertiseId;
 @property (nonatomic, strong) NSString *name;

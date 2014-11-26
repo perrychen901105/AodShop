@@ -140,6 +140,9 @@
     if ([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
         [self.delegate didSelectCity:self.selectedLocation];
     }
+    [[NSUserDefaults standardUserDefaults] setObject:self.selectedLocation.strCity forKey:K_USER_SELECTED_CITY_NAME];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",self.selectedLocation.intDistrinctId] forKey:K_USER_SELECTED_DISTRICT_ID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     self.apps.selectedLocation = self.selectedLocation;
     [self dismissViewControllerAnimated:YES completion:^{
     }];
