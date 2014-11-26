@@ -151,12 +151,4 @@
     return arrDistricts;
 }
 
-/*
- FMDatabaseQueue *databaseQueue = [FMDatabaseQueue databaseQueueWithPath:dbPath];
- [databaseQueue inDatabase:^(FMDatabase *db){
- [db executeUpdate:@"insert into user values (?,?,?)",@"Ren",@"Male",[NSNumber numberWithInt:20]];
- }];
- [databaseQueue close];
- */
-
 @end
