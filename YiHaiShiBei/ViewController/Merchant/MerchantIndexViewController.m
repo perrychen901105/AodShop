@@ -7,8 +7,13 @@
 //
 
 #import "MerchantIndexViewController.h"
+#import "MerchantViewModel.h"
+@interface MerchantIndexViewController ()<MerchantViewModelDelegate>
 
-@interface MerchantIndexViewController ()
+@property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
+
+@property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
+
 
 @end
 
@@ -26,6 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.viewModelMerchant = [[MerchantViewModel alloc] init];
+    self.viewModelMerchant.delegate = self;
+    [self.viewModelMerchant getMerchantTypeListWithStart:-1 count:-1];
     // Do any additional setup after loading the view.
 }
 
@@ -34,6 +42,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Merchant ViewModel delegate
+- (void)httpSuccessWithTag:(EnumRequestType)typeRequest
+{
+    if (typeRequest == TypeRequestAllMTypeList) {
+        
+    }
+}
+
+- (void)httpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumRequestType)typeRequest
+{
+    
+}
+
 
 /*
 #pragma mark - Navigation

@@ -42,6 +42,8 @@
 		26FCFE071A25F3A000A53FC7 /* AdvertiseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCFE061A25F3A000A53FC7 /* AdvertiseModel.m */; };
 		2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */; };
 		2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */; };
+		2C258EAE1A276B7B00CE9F0D /* MerchantRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */; };
+		2C258EB21A276F0400CE9F0D /* MerchantViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C258EB11A276F0400CE9F0D /* MerchantViewModel.m */; };
 		2C3373C71A2628B5002918A0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3373A71A2628B5002918A0 /* MKAnnotationView+WebCache.m */; };
 		2C3373C81A2628B5002918A0 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3373A91A2628B5002918A0 /* NSData+ImageContentType.m */; };
 		2C3373C91A2628B5002918A0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3373AB1A2628B5002918A0 /* SDImageCache.m */; };
@@ -180,6 +182,10 @@
 		2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewModel.m; sourceTree = "<group>"; };
 		2C03C8F51A07C7F100EB90FD /* UserProfileProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileProtocol.h; sourceTree = "<group>"; };
 		2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = AodShop.sqlite; sourceTree = "<group>"; };
+		2C258EAC1A276B7B00CE9F0D /* MerchantRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantRequestService.h; sourceTree = "<group>"; };
+		2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantRequestService.m; sourceTree = "<group>"; };
+		2C258EB01A276F0400CE9F0D /* MerchantViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantViewModel.h; sourceTree = "<group>"; };
+		2C258EB11A276F0400CE9F0D /* MerchantViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantViewModel.m; sourceTree = "<group>"; };
 		2C3373A61A2628B5002918A0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		2C3373A71A2628B5002918A0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		2C3373A81A2628B5002918A0 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -515,6 +521,24 @@
 			path = ProfileViewModel;
 			sourceTree = "<group>";
 		};
+		2C258EAB1A276B5700CE9F0D /* MerchantService */ = {
+			isa = PBXGroup;
+			children = (
+				2C258EAC1A276B7B00CE9F0D /* MerchantRequestService.h */,
+				2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */,
+			);
+			path = MerchantService;
+			sourceTree = "<group>";
+		};
+		2C258EAF1A276EEF00CE9F0D /* MerchantViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C258EB01A276F0400CE9F0D /* MerchantViewModel.h */,
+				2C258EB11A276F0400CE9F0D /* MerchantViewModel.m */,
+			);
+			path = MerchantViewModel;
+			sourceTree = "<group>";
+		};
 		2C3373A51A2628B5002918A0 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +582,7 @@
 		2C433E7C19EEC91600129479 /* HttpService */ = {
 			isa = PBXGroup;
 			children = (
+				2C258EAB1A276B5700CE9F0D /* MerchantService */,
 				04AA31901A00B5E900623D30 /* ProfileService */,
 				040C051119FE1D46009FD61D /* HomeIndexService */,
 				040C050E19FE10AE009FD61D /* HttpRequestService.h */,
@@ -590,6 +615,7 @@
 		2C433E7F19EEC91600129479 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2C258EAF1A276EEF00CE9F0D /* MerchantViewModel */,
 				26CA721F1A10DB34000DEE5F /* LocationViewModel */,
 				2C03C8F11A07C7A200EB90FD /* ProfileViewModel */,
 				040C051519FE381B009FD61D /* HomeIndexViewModel */,
@@ -966,6 +992,7 @@
 				2C433EAB19EED4C900129479 /* ASIInputStream.m in Sources */,
 				2CEF60591A150026001B7B53 /* BannerModel.m in Sources */,
 				046643E519F7A1360060C9CC /* MoreIndexViewController.m in Sources */,
+				2C258EAE1A276B7B00CE9F0D /* MerchantRequestService.m in Sources */,
 				046643E219F7A12C0060C9CC /* MerchantIndexViewController.m in Sources */,
 				04EB670419FF6D990043D120 /* JSONValueTransformer.m in Sources */,
 				2C3373D51A2628B5002918A0 /* UIImageView+WebCache.m in Sources */,
@@ -980,6 +1007,7 @@
 				2C433ED519EED87200129479 /* MBProgressHUD.m in Sources */,
 				04EB66FC19FF6D990043D120 /* JSONModelArray.m in Sources */,
 				2C433EA719EED4C900129479 /* ASIDataDecompressor.m in Sources */,
+				2C258EB21A276F0400CE9F0D /* MerchantViewModel.m in Sources */,
 				0446962819EFBB1C00EF71A3 /* SupplyIndexViewController.m in Sources */,
 				2CFD71911A0A80EE00A9902D /* UserModel.m in Sources */,
 				04AA31931A00B63D00623D30 /* ProfileRequestService.m in Sources */,

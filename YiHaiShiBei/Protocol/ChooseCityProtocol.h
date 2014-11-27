@@ -10,8 +10,6 @@
 #import "LocationModel.h"
 @protocol ChooseCityProtocol <NSObject>
 
-
-
 - (void)didSelectCity:(CurrentLocationModel *)modelCurrent;
 
 @end

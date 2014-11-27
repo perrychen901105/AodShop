@@ -59,7 +59,7 @@
     UINavigationController *navMerchant = [[UIStoryboard storyboardWithName:@"MerchantPage" bundle:nil] instantiateInitialViewController];
     UINavigationController *navMore = [[UIStoryboard storyboardWithName:@"MorePage" bundle:nil] instantiateInitialViewController];
     
-    [tabIndex setViewControllers:@[navHome, navSupply, navFav, navMerchant, navMore]];
+    [tabIndex setViewControllers:@[navHome, navSupply, navMerchant, navFav , navMore]];
     
     [[[tabIndex.viewControllers objectAtIndex:0] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];
     [[[tabIndex.viewControllers objectAtIndex:1] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_supplySelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_supply"]];
