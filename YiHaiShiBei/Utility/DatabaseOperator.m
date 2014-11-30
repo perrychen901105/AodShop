@@ -29,6 +29,7 @@
 
 - (void)insertAllLocations:(NSArray *)arrAllLocations
 {
+    [self deleteAllDistricts];
     NSMutableArray *arrProvinces = [@[] mutableCopy];
     NSMutableArray *arrCitys = [@[] mutableCopy];
     for (NSDictionary *dicLocation in arrAllLocations) {
@@ -149,6 +150,29 @@
     }
     [db close];
     return arrDistricts;
+}
+
+- (void)deleteAllDistricts
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM DistrictList"];
+    NSString *strSql2 = [NSString stringWithFormat:@"DELETE * FROM CityList"];
+    NSString *strSql3 = [NSString stringWithFormat:@"DELETE * FROM ProvinceList"];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    dbSuccess = [db executeUpdate:strSql2];
+    dbSuccess = [db executeUpdate:strSql3];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+
+    [db close];
+    return ;
+
 }
 
 @end

@@ -15,5 +15,7 @@
 - (NSMutableArray *)getAllProvinces;
 - (NSMutableArray *)getAllCitysWithProvinceId:(NSInteger)provinceId;
 - (NSMutableArray *)getAllDistrictsWithCityId:(NSInteger)cityId;
+- (void)deleteAllDistricts;
+
 
 @end

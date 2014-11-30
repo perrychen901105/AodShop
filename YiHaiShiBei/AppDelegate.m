@@ -73,7 +73,6 @@
     [[tabIndex.viewControllers objectAtIndex:3] tabBarItem].title = @"收藏";
     [[tabIndex.viewControllers objectAtIndex:4] tabBarItem].title = @"更多";
     
-    
     self.window.rootViewController = tabIndex;
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:249/255.0f green:174/255.0f blue:42/255.0f alpha:1.0f] }
