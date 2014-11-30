@@ -48,10 +48,10 @@ static NSString *ActionAllInfos    = @"getInfomations";
     NSMutableDictionary *dicParas = [@{@"typeid":@1,
                                        @"district_id":[NSString stringWithFormat:@"%d",distrinctID]} mutableCopy];
     
-    if (start > 0) {
+    if (start >= 0) {
         dicParas[@"start"] = [NSString stringWithFormat:@"%d",start];
     }
-    if (num > 0) {
+    if (num >= 0) {
         dicParas[@"number"] = [NSString stringWithFormat:@"%d",num];
     }
     [self postRequestToServer:ActionAllInfos dicParams:dicParas success:^(NSString *responseString) {
@@ -67,10 +67,10 @@ static NSString *ActionAllInfos    = @"getInfomations";
     NSMutableDictionary *dicParas = [@{@"typeid":@2,
                                        @"district_id":[NSString stringWithFormat:@"%d",districtID]} mutableCopy];
     
-    if (start > 0) {
+    if (start >= 0) {
         dicParas[@"start"] = [NSString stringWithFormat:@"%d",start];
     }
-    if (num > 0) {
+    if (num >= 0) {
         dicParas[@"number"] = [NSString stringWithFormat:@"%d",num];
     }
     [self postRequestToServer:ActionAllInfos dicParams:dicParas success:^(NSString *responseString) {

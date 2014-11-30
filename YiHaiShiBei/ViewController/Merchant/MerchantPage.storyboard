@@ -26,7 +26,7 @@
         <!--Merchant Index View Controller-->
         <scene sceneID="gWu-1l-UkU">
             <objects>
-                <viewController id="j5j-K3-kZe" customClass="MerchantIndexViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="j5j-K3-kZe" customClass="MerchantIndexViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eni-bR-hMu"/>
                         <viewControllerLayoutGuide type="bottom" id="vHA-1G-gWu"/>
@@ -35,20 +35,36 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="s2y-qb-y80">
-                                <rect key="frame" x="0.0" y="5" width="320" height="519"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Qce-YW-bLI">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MerchantTypeCell" id="vMy-fH-ch9">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vMy-fH-ch9" id="ody-1L-RQD">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="j5j-K3-kZe" id="CAg-iz-wWk"/>
+                                    <outlet property="delegate" destination="j5j-K3-kZe" id="meC-LP-Y0M"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="s2y-qb-y80" secondAttribute="trailing" id="2xk-u2-k8M"/>
-                            <constraint firstItem="vHA-1G-gWu" firstAttribute="top" secondItem="s2y-qb-y80" secondAttribute="bottom" constant="-5" id="MNb-JL-pUm"/>
-                            <constraint firstItem="s2y-qb-y80" firstAttribute="top" secondItem="Eni-bR-hMu" secondAttribute="bottom" constant="-59" id="YiI-d3-sHo"/>
-                            <constraint firstItem="s2y-qb-y80" firstAttribute="leading" secondItem="OpI-um-hFJ" secondAttribute="leading" id="dUI-eW-weL"/>
+                            <constraint firstItem="Qce-YW-bLI" firstAttribute="top" secondItem="Eni-bR-hMu" secondAttribute="bottom" id="3xT-cq-hoc"/>
+                            <constraint firstItem="vHA-1G-gWu" firstAttribute="top" secondItem="Qce-YW-bLI" secondAttribute="bottom" id="DSX-Y5-IlW"/>
+                            <constraint firstItem="Qce-YW-bLI" firstAttribute="leading" secondItem="OpI-um-hFJ" secondAttribute="leading" id="i6O-kX-QLz"/>
+                            <constraint firstAttribute="trailing" secondItem="Qce-YW-bLI" secondAttribute="trailing" id="jZR-7f-jFY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wel-dC-8Hg"/>
+                    <connections>
+                        <outlet property="tbViewContent" destination="Qce-YW-bLI" id="Zer-3g-Ehv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMv-GK-0vs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -206,19 +206,21 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
-//        if (self.apps.selectedLocation.distrinct.name.length > 0) {
-//            [self.viewModelIndex];
-//        } else {
-//            [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
+        if (self.apps.selectedLocation.intDistrinctId > 0) {
+            [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.intDistrinctId startNum:0 num:10];
+        }
+//        else {
+//            [self.viewModelIndex getAllInfoList:1 startNum:-1 num:-1];
 //        }
     } else if (indexPath.row == 1) {
-        /*
-        if (self.apps.selectedLocation.distrinct.name.length > 0) {
-            [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.distrinct.districtID startNum:-1 num:-1];
-        } else {
-            [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
+        
+        if (self.apps.selectedLocation.intDistrinctId > 0) {
+            [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.intDistrinctId startNum:0 num:10];
         }
-         */
+//        else {
+//            [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
+//        }
+        
     } else if (indexPath.row == 2) {
         
     } else if (indexPath.row == 3) {

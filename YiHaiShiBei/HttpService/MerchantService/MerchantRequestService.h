@@ -15,4 +15,6 @@ typedef void (^GetMerchantTypeListFailBlock)(NSInteger errorCode, NSString *strE
 
 - (void)getMerchantTypeListWithStartNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantTypeListSuccessBlock)successBlock error:(GetMerchantTypeListFailBlock)errorBlock;
 
+
+
 @end
