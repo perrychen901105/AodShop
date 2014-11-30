@@ -15,23 +15,24 @@
     if (self.homeService == nil) {
         self.homeService = [[HomeIndexService alloc] init];
     }
+    __weak HomeIndexViewModel *weakSelf = self;
     [self.homeService getAllBannerList:distrinctID start:numStart num:numStart success:^(NSString *strResponse) {
         BannerModel *modelBanner = [[BannerModel alloc] initWithString:strResponse error:nil];
         if (modelBanner.success == 0) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
                 NSLog(@"%d",modelBanner.advertisings.count);
-                self.arrAllBanners = [modelBanner.advertisings mutableCopy];
-                [self.delegate httpSuccessWithTag:TypeRequestAllBanner];
+                weakSelf.arrAllBanners = [modelBanner.advertisings mutableCopy];
+                [weakSelf.delegate httpSuccessWithTag:TypeRequestAllBanner];
             }
         } else {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(httpError:message:type:)]) {
-                [self.delegate httpError:1 message:modelBanner.message type:TypeRequestAllBanner];
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(httpError:message:type:)]) {
+                [weakSelf.delegate httpError:1 message:modelBanner.message type:TypeRequestAllBanner];
             }
         }
 
     } error:^(NSString *strFail) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(httpError:message:type:)]) {
-            [self.delegate httpError:1 message:strFail type:TypeRequestAllBanner];
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:message:type:)]) {
+            [weakSelf.delegate httpError:1 message:strFail type:TypeRequestAllBanner];
         }
     }];
 }

@@ -25,6 +25,7 @@ typedef enum EnumRequestType
 
 @property (nonatomic, weak) id<MerchantViewModelDelegate> delegate;
 @property (nonatomic, strong) MerchantRequestService *merchantService;
+@property (nonatomic, strong) NSMutableArray *arrMerchantType;
 
 - (void)getMerchantTypeListWithStart:(NSInteger)numStart count:(NSInteger)numCount;
 

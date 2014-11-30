@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNaviBarTitle:@"商户"];
     self.viewModelMerchant = [[MerchantViewModel alloc] init];
     self.viewModelMerchant.delegate = self;
     [self.viewModelMerchant getMerchantTypeListWithStart:-1 count:-1];
