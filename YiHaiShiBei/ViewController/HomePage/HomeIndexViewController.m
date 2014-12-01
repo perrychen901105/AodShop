@@ -54,7 +54,7 @@
                 AdvertiseModel *modelAdvise = self.viewModelIndex.arrAllBanners[i];
                 UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewBanner.frame.size.width*i, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height)];
                 imgView.contentMode = UIViewContentModeScaleToFill;
-                [imgView sd_setImageWithURL:[NSURL URLWithString:modelAdvise.picture] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+                [imgView sd_setImageWithURL:[NSURL URLWithString:@"http://www.aodshop.cn/aodshop/app/webroot/upload/1412/1417443808.22.jpg"] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
                 [self.scrollViewBanner addSubview:imgView];
                 
             }
@@ -64,6 +64,7 @@
     }
     UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
     imgViewShow.contentMode = UIViewContentModeScaleToFill;
+    [imgViewShow sd_setImageWithURL:[NSURL URLWithString:@"http://www.aodshop.cn/aodshop/app/webroot/upload/1412/1417443808.22.jpg"] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
     imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
     [self.scrollViewBanner addSubview:imgViewShow];
     self.scrollViewBanner.contentSize = CGSizeMake(imgViewShow.frame.size.width, imgViewShow.frame.size.height);

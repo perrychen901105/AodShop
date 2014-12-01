@@ -7,8 +7,10 @@
 //
 
 #import "HomeInfoListViewController.h"
+#import "InfoTableViewCell.h"
+#import "MJRefresh.h"
 
-@interface HomeInfoListViewController ()
+@interface HomeInfoListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -33,5 +35,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITableView methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
 
 @end

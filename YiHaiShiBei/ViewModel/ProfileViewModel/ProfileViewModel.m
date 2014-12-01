@@ -72,7 +72,7 @@
     if (self.profileRequest == nil) {
         self.profileRequest = [[ProfileRequestService alloc] init];
     }
-    [self.profileRequest getUserInfo:userId appKey:appKey success:^(NSString *strResponse) {
+    [self.profileRequest getUserInfo:@"9" appKey:appKey success:^(NSString *strResponse) {
         
     } error:^(NSInteger errorCode, NSString *strError) {
         
