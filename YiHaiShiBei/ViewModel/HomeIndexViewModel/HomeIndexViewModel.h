@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "HomeIndexService.h"
 #import "LocationModel.h"
+#import "InformationListModel.h"
 
 typedef enum EnumRequestType
 {
-    TypeRequestAllBanner = 10
+    TypeRequestAllBanner = 10,
+    TypeRequestAllInfo,
+    TypeRequestAllMessage
 }EnumRequestType;
 
 @protocol HomeIndexViewModelDelegate <NSObject>
@@ -29,6 +32,8 @@ typedef enum EnumRequestType
 @property (nonatomic, strong) HomeIndexService *homeService;
 
 @property (nonatomic, strong) NSMutableArray *arrAllBanners;
+@property (nonatomic, strong) NSMutableArray *arrAllInfos;
+@property (nonatomic, strong) NSMutableArray *arrAllMessages;
 
 - (void)getAllBannersList:(NSInteger)distrinctID start:(NSInteger)numStart num:(NSInteger)num;
 - (void)getAllInfoList:(NSInteger)distrinctID startNum:(NSInteger)numStart num:(NSInteger)num;

@@ -66,7 +66,7 @@
                         <outlet property="tbViewContent" destination="OwC-wh-wtP" id="KCd-Bg-GeU"/>
                         <segue destination="WNN-vC-d6Y" kind="push" identifier="segueHomeGroupon" id="s2j-W8-CfN"/>
                         <segue destination="APT-JQ-ik7" kind="push" id="x94-md-wEV"/>
-                        <segue destination="m3F-z2-nzy" kind="push" id="GSS-0r-Yp6"/>
+                        <segue destination="m3F-z2-nzy" kind="push" identifier="segueToInfoList" id="GSS-0r-Yp6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvK-kd-uhf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ic-cP-jAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="-599"/>
+            <point key="canvasLocation" x="607" y="46"/>
         </scene>
         <!--Home Message List View Controller-->
         <scene sceneID="NYm-2k-TqQ">
@@ -176,7 +176,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellHomeGroupon" rowHeight="90" id="VI8-FJ-r1u">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MessageInfoCell" rowHeight="90" id="VI8-FJ-r1u">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VI8-FJ-r1u" id="xUU-eq-eIa">
@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Om0-yM-QI9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="578" y="113"/>
+            <point key="canvasLocation" x="607" y="-1374"/>
         </scene>
         <!--Home Info List View Controller-->
         <scene sceneID="m9h-sT-HWk">
@@ -257,12 +257,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VwN-BB-mQm">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VwN-BB-mQm">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellHomeGroupon" rowHeight="90" id="HGy-ON-0mZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="90" id="HGy-ON-0mZ" customClass="InfoTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HGy-ON-0mZ" id="vpw-aL-dyE">
@@ -304,6 +304,12 @@
                                                 <constraint firstItem="iRL-7V-Isg" firstAttribute="leading" secondItem="K8d-lA-mDf" secondAttribute="trailing" constant="8" id="sAI-Sb-Ts5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgViewPic" destination="K8d-lA-mDf" id="t0x-Im-dZM"/>
+                                            <outlet property="lblContent" destination="iRL-7V-Isg" id="AbM-Mo-CjB"/>
+                                            <outlet property="lblCreateTime" destination="cZx-y6-TIa" id="JIg-2t-U0k"/>
+                                            <outlet property="lblTitle" destination="9Dk-ar-6nd" id="bsp-ah-g3V"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -324,12 +330,12 @@
                     <navigationItem key="navigationItem" id="IHy-eu-31o"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tbViewContent" destination="VwN-BB-mQm" id="of9-Nn-cS7"/>
+                        <outlet property="tbViewContent" destination="VwN-BB-mQm" id="NDr-CB-J2U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIr-wh-Cz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="-385"/>
+            <point key="canvasLocation" x="607" y="-632"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

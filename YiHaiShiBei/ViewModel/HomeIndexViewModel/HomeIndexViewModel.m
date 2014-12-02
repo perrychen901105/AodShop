@@ -42,11 +42,36 @@
     if (self.homeService == nil) {
         self.homeService = [[HomeIndexService alloc] init];
     }
-    
+    if (self.arrAllInfos == nil) {
+        self.arrAllInfos = [[NSMutableArray alloc] init];
+    }
+    __weak HomeIndexViewModel *weakSelf = self;
     [self.homeService getAllInforList:distrinctID start:numStart num:num success:^(NSString *strResponse) {
         
-    } error:^(NSString *strFail) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
         
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
+                if (weakSelf.arrAllInfos.count > 0) {
+                    [weakSelf.arrAllInfos removeAllObjects];
+                }
+                for (NSDictionary *dicInformation in dicRoot[@"data"][@"information"]) {
+                    InformationModel *model = [[InformationModel alloc] initWithDictionary:dicInformation[@"Information"] error:nil];
+                    [weakSelf.arrAllInfos addObject:model];
+                }
+                [weakSelf.delegate httpSuccessWithTag:TypeRequestAllInfo];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(httpError:message:type:)]) {
+                [weakSelf.delegate httpError:intResponseCode message:strResponseMsg type:TypeRequestAllInfo];
+            }
+        }
+    } error:^(NSString *strFail) {
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:message:type:)]) {
+            [weakSelf.delegate httpError:1 message:strFail type:TypeRequestAllInfo];
+        }
     }];
 }
 

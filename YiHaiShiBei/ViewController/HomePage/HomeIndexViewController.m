@@ -64,7 +64,7 @@
     }
     UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
     imgViewShow.contentMode = UIViewContentModeScaleToFill;
-    [imgViewShow sd_setImageWithURL:[NSURL URLWithString:@"http://www.aodshop.cn/aodshop/app/webroot/upload/1412/1417443808.22.jpg"] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+//    [imgViewShow sd_setImageWithURL:[NSURL URLWithString:@"http://www.aodshop.cn/aodshop/app/webroot/upload/1412/1417443808.22.jpg"] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
     imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
     [self.scrollViewBanner addSubview:imgViewShow];
     self.scrollViewBanner.contentSize = CGSizeMake(imgViewShow.frame.size.width, imgViewShow.frame.size.height);
@@ -208,19 +208,19 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         if (self.apps.selectedLocation.intDistrinctId > 0) {
-            [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.intDistrinctId startNum:0 num:10];
+            [self performSegueWithIdentifier:@"segueToInfoList" sender:indexPath];
         }
-//        else {
-//            [self.viewModelIndex getAllInfoList:1 startNum:-1 num:-1];
-//        }
+        else {
+            [self showOnlyLabelHud:@"请选择地区" withView:self.view];
+        }
     } else if (indexPath.row == 1) {
         
         if (self.apps.selectedLocation.intDistrinctId > 0) {
-            [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.intDistrinctId startNum:0 num:10];
+            [self performSegueWithIdentifier:@"segueToInfoList" sender:indexPath];
         }
-//        else {
-//            [self.viewModelIndex getAllInfoList:0 startNum:-1 num:-1];
-//        }
+        else {
+            [self showOnlyLabelHud:@"请选择地区" withView:self.view];
+        }
         
     } else if (indexPath.row == 2) {
         

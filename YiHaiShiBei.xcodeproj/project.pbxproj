@@ -53,6 +53,7 @@
 		2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */; };
 		2C258EAE1A276B7B00CE9F0D /* MerchantRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */; };
 		2C258EB21A276F0400CE9F0D /* MerchantViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C258EB11A276F0400CE9F0D /* MerchantViewModel.m */; };
+		2C31B6A71A2E070F0097F8AE /* InformationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B6A61A2E070F0097F8AE /* InformationListModel.m */; };
 		2C3373C71A2628B5002918A0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3373A71A2628B5002918A0 /* MKAnnotationView+WebCache.m */; };
 		2C3373C81A2628B5002918A0 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3373A91A2628B5002918A0 /* NSData+ImageContentType.m */; };
 		2C3373C91A2628B5002918A0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3373AB1A2628B5002918A0 /* SDImageCache.m */; };
@@ -215,6 +216,8 @@
 		2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantRequestService.m; sourceTree = "<group>"; };
 		2C258EB01A276F0400CE9F0D /* MerchantViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantViewModel.h; sourceTree = "<group>"; };
 		2C258EB11A276F0400CE9F0D /* MerchantViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantViewModel.m; sourceTree = "<group>"; };
+		2C31B6A51A2E070F0097F8AE /* InformationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationListModel.h; sourceTree = "<group>"; };
+		2C31B6A61A2E070F0097F8AE /* InformationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationListModel.m; sourceTree = "<group>"; };
 		2C3373A61A2628B5002918A0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		2C3373A71A2628B5002918A0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		2C3373A81A2628B5002918A0 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -917,6 +920,8 @@
 				2CEF60581A150026001B7B53 /* BannerModel.m */,
 				26FCFE051A25F3A000A53FC7 /* AdvertiseModel.h */,
 				26FCFE061A25F3A000A53FC7 /* AdvertiseModel.m */,
+				2C31B6A51A2E070F0097F8AE /* InformationListModel.h */,
+				2C31B6A61A2E070F0097F8AE /* InformationListModel.m */,
 			);
 			path = HomeIndex;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 				2C3373C71A2628B5002918A0 /* MKAnnotationView+WebCache.m in Sources */,
 				263F2D561A122EEA00BC7AC7 /* LocationListViewController.m in Sources */,
 				2C433EAC19EED4C900129479 /* ASINetworkQueue.m in Sources */,
+				2C31B6A71A2E070F0097F8AE /* InformationListModel.m in Sources */,
 				2C7D336C1A221C55002C4A9A /* FMDatabase.m in Sources */,
 				2C7D336D1A221C55002C4A9A /* FMDatabaseAdditions.m in Sources */,
 				2C433ED519EED87200129479 /* MBProgressHUD.m in Sources */,

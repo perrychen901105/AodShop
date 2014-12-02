@@ -10,4 +10,10 @@
 
 @interface InfoTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewPic;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblContent;
+@property (weak, nonatomic) IBOutlet UILabel *lblCreateTime;
+
+
 @end

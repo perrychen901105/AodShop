@@ -182,7 +182,7 @@
 
 - (void)backAction
 {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)setNaviBarTitle:(NSString *)navTitle
