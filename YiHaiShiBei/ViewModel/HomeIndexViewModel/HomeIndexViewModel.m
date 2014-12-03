@@ -59,6 +59,7 @@
                 }
                 for (NSDictionary *dicInformation in dicRoot[@"data"][@"information"]) {
                     InformationModel *model = [[InformationModel alloc] initWithDictionary:dicInformation[@"Information"] error:nil];
+                    model.userName = dicInformation[@"User"][@"username"];
                     [weakSelf.arrAllInfos addObject:model];
                 }
                 [weakSelf.delegate httpSuccessWithTag:TypeRequestAllInfo];

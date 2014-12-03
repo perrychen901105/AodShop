@@ -11,11 +11,19 @@
 
 + (DatabaseOperator *)getInstance;
 
+/**
+ location
+ */
 - (void)insertAllLocations:(NSArray *)arrAllLocations;
 - (NSMutableArray *)getAllProvinces;
 - (NSMutableArray *)getAllCitysWithProvinceId:(NSInteger)provinceId;
 - (NSMutableArray *)getAllDistrictsWithCityId:(NSInteger)cityId;
 - (void)deleteAllDistricts;
 
-
+/**
+ information
+ */
+- (void)insertAllInformations:(NSMutableArray *)arrInfors withDistrictId:(NSInteger)districtid;
+- (NSMutableArray *)getAllInformationsWithDistrictId:(NSInteger)districtid;
+- (void)removeAllInforsWithDistrictId:(NSInteger)districtid;
 @end

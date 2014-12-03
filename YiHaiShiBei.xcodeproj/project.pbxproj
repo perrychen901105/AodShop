@@ -94,6 +94,8 @@
 		2C7D33701A221C55002C4A9A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7D336B1A221C55002C4A9A /* FMResultSet.m */; };
 		2C7D33721A221C7E002C4A9A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7D33711A221C7E002C4A9A /* libsqlite3.dylib */; };
 		2C7D33751A2222E0002C4A9A /* DatabaseOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7D33741A2222DF002C4A9A /* DatabaseOperator.m */; };
+		2C8183161A2F65B700FFB28D /* MsgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */; };
+		2C8183191A2F75CD00FFB28D /* InforDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8183181A2F75CD00FFB28D /* InforDetailViewController.m */; };
 		2CA9E2AA1A0922290078176D /* CommoneTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9E2A71A0922290078176D /* CommoneTools.m */; };
 		2CA9E2AB1A0922290078176D /* HUDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9E2A91A0922290078176D /* HUDHelper.m */; };
 		2CA9E2AD1A0929C00078176D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AC1A0929C00078176D /* UIKit.framework */; };
@@ -296,6 +298,10 @@
 		2C7D33711A221C7E002C4A9A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2C7D33731A2222DF002C4A9A /* DatabaseOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseOperator.h; sourceTree = "<group>"; };
 		2C7D33741A2222DF002C4A9A /* DatabaseOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseOperator.m; sourceTree = "<group>"; };
+		2C8183141A2F65B700FFB28D /* MsgTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableViewCell.h; sourceTree = "<group>"; };
+		2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewCell.m; sourceTree = "<group>"; };
+		2C8183171A2F75CD00FFB28D /* InforDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InforDetailViewController.h; sourceTree = "<group>"; };
+		2C8183181A2F75CD00FFB28D /* InforDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InforDetailViewController.m; sourceTree = "<group>"; };
 		2CA9E2A61A0922290078176D /* CommoneTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommoneTools.h; sourceTree = "<group>"; };
 		2CA9E2A71A0922290078176D /* CommoneTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommoneTools.m; sourceTree = "<group>"; };
 		2CA9E2A81A0922290078176D /* HUDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDHelper.h; sourceTree = "<group>"; };
@@ -421,6 +427,8 @@
 				0446962219EFB2EE00EF71A3 /* HomeIndexViewController.m */,
 				2CFFA0061A1CE33A0089B5AC /* HomeInfoListViewController.h */,
 				2CFFA0071A1CE33A0089B5AC /* HomeInfoListViewController.m */,
+				2C8183171A2F75CD00FFB28D /* InforDetailViewController.h */,
+				2C8183181A2F75CD00FFB28D /* InforDetailViewController.m */,
 				2CFFA0091A1CE3470089B5AC /* HomeMessageListViewController.h */,
 				2CFFA00A1A1CE3470089B5AC /* HomeMessageListViewController.m */,
 				2CFFA00C1A1CE3670089B5AC /* HomeGrouponListViewController.h */,
@@ -554,6 +562,8 @@
 			children = (
 				2C01A5021A2CC4E300FAA7D8 /* InfoTableViewCell.h */,
 				2C01A5031A2CC4E300FAA7D8 /* InfoTableViewCell.m */,
+				2C8183141A2F65B700FFB28D /* MsgTableViewCell.h */,
+				2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */,
 			);
 			path = HomeIndexCell;
 			sourceTree = "<group>";
@@ -1048,6 +1058,7 @@
 			files = (
 				2C01A51B1A2CCC3400FAA7D8 /* UIScrollView+MJExtension.m in Sources */,
 				2C3373D41A2628B5002918A0 /* UIImageView+HighlightedWebCache.m in Sources */,
+				2C8183191A2F75CD00FFB28D /* InforDetailViewController.m in Sources */,
 				2C3373D11A2628B5002918A0 /* UIImage+GIF.m in Sources */,
 				2C433EA619EED4C900129479 /* ASIDataCompressor.m in Sources */,
 				2C3373C91A2628B5002918A0 /* SDImageCache.m in Sources */,
@@ -1063,6 +1074,7 @@
 				2C433EA519EED4C900129479 /* ASIAuthenticationDialog.m in Sources */,
 				2C433EA919EED4C900129479 /* ASIFormDataRequest.m in Sources */,
 				2CDA1DDF19EEA50E0001FC43 /* AppDelegate.m in Sources */,
+				2C8183161A2F65B700FFB28D /* MsgTableViewCell.m in Sources */,
 				2CD0BDAC1A0F73310004F44C /* ChooseLocationViewController.m in Sources */,
 				2C01A5171A2CCC3400FAA7D8 /* MJRefreshBaseView.m in Sources */,
 				040C051019FE10AE009FD61D /* HttpRequestService.m in Sources */,

@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 
 #import "LocationModel.h"
+#import "InformationListModel.h"
 
 @implementation DatabaseOperator
 {
@@ -27,6 +28,7 @@
     return instance;
 }
 
+#pragma mark - Locations
 - (void)insertAllLocations:(NSArray *)arrAllLocations
 {
     [self deleteAllDistricts];
@@ -170,6 +172,79 @@
         NSLog(@"success");
     }
 
+    [db close];
+    return ;
+
+}
+
+#pragma mark - Informations
+- (void)insertAllInformations:(NSMutableArray *)arrInfors withDistrictId:(NSInteger)districtid
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    NSMutableArray *arrValues = [@[] mutableCopy];
+    for (InformationModel *modelInfo in arrInfors) {
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@','%@','%@',%d,%d,'%@')",modelInfo.infoId,modelInfo.title, modelInfo.content,modelInfo.release_date, modelInfo.picture,modelInfo.district_id,modelInfo.user_id,modelInfo.userName];
+        [arrValues addObject:strValues];
+    }
+    NSString *strAllValue = [arrValues componentsJoinedByString:@","];
+    NSString *strExec = [NSString stringWithFormat:@"insert or replace into Information(id, title, content, release_date, picture, district_id, user_id, username) values %@",strAllValue];
+    BOOL dbSuccess = [db executeUpdate:strExec];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    db = nil;
+}
+- (NSMutableArray *)getAllInformationsWithDistrictId:(NSInteger)districtid
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return [@[] mutableCopy];
+    }
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM Information where district_id = %d",districtid];
+#ifdef DEBUG
+    NSLog(@"sql is %@",strSql);
+#endif
+    FMResultSet *rs = [db executeQuery:strSql];
+    NSMutableArray *arrInfos = [@[] mutableCopy];
+    while ([rs next]) {
+        InformationModel *model = [[InformationModel alloc] init];
+        model.infoId = [rs intForColumn:@"id"];
+        model.title = [rs stringForColumn:@"title"];
+        model.content = [rs stringForColumn:@"content"];
+        model.release_date = [rs stringForColumn:@"release_date"];
+        model.picture = [rs stringForColumn:@"picture"];
+        model.district_id = [rs intForColumn:@"district_id"];
+        model.user_id = [rs intForColumn:@"user_id"];
+        model.userName = [rs stringForColumn:@"username"];
+#ifdef DEBUG
+        NSLog(@"model is %@",model);
+#endif
+        [arrInfos addObject:model];
+    }
+    [db close];
+    return arrInfos;
+
+}
+- (void)removeAllInforsWithDistrictId:(NSInteger)districtid
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM Information where district_id = %d",districtid];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    
     [db close];
     return ;
 

@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSString *release_date;
 @property (nonatomic, assign) NSInteger information_category_id;
 
+@property (nonatomic, strong) NSString<Optional> *userName;
+
 @end
 
 @interface InformationListModel : BaseModel

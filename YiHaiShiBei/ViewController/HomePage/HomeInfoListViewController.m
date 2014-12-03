@@ -11,6 +11,7 @@
 #import "InfoTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "DatabaseOperator.h"
 
 @interface HomeInfoListViewController ()<UITableViewDelegate, UITableViewDataSource, HomeIndexViewModelDelegate>
 
@@ -50,8 +51,23 @@
     [self.tbViewContent addHeaderWithCallback:^{
         [weakSelf getAllInfoList];
     }];
-    [self.tbViewContent headerBeginRefreshing];
-    // Do any additional setup after loading the view.
+    
+    NSMutableArray *arrInfos = [[DatabaseOperator getInstance] getAllInformationsWithDistrictId:self.apps.selectedLocation.intDistrinctId];
+    if (arrInfos.count > 0) {
+        self.arrInfoList = arrInfos;
+        [self.tbViewContent reloadData];
+    } else {
+        [self.tbViewContent headerBeginRefreshing];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,6 +90,7 @@
 {
     if (self.viewModelIndex.arrAllInfos.count > 0) {
         self.arrInfoList = self.viewModelIndex.arrAllInfos;
+        [[DatabaseOperator getInstance] insertAllInformations:self.arrInfoList withDistrictId:self.apps.selectedLocation.intDistrinctId];
         [self.tbViewContent reloadData];
     }
     [self.tbViewContent headerEndRefreshing];
