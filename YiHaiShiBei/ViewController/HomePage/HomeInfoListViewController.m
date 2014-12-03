@@ -42,7 +42,8 @@
     self.viewModelIndex = [[HomeIndexViewModel alloc] init];
     self.viewModelIndex.delegate = self;
     self.arrInfoList = [[NSMutableArray alloc] init];
-    [self setTitle:@"资讯"];
+//    [self setTitle:@"资讯"];
+    [self setNaviBarTitle:@"资讯"];
     [self setBackButton];
     
     __weak HomeInfoListViewController *weakSelf = self;
