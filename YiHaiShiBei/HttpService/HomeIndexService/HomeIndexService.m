@@ -65,7 +65,7 @@ static NSString *ActionAllInfos    = @"getInfomations";
 - (void)getAllMessageList:(NSInteger)districtID start:(NSInteger)start num:(NSInteger)num success:(GetAllMessageListSuccessBlock)successBlock error:(GetAllMessageListFailBlock)errorBlock
 {
     NSMutableDictionary *dicParas = [@{@"typeid":@2,
-                                       @"district_id":[NSString stringWithFormat:@"%d",districtID]} mutableCopy];
+                                       @"districtid":[NSString stringWithFormat:@"%d",districtID]} mutableCopy];
     
     if (start >= 0) {
         dicParas[@"start"] = [NSString stringWithFormat:@"%d",start];

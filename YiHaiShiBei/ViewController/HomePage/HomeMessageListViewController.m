@@ -7,15 +7,61 @@
 //
 
 #import "HomeMessageListViewController.h"
+#import "MsgTableViewCell.h"
+#import "DatabaseOperator.h"
+#import "HomeIndexViewModel.h"
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+@interface HomeMessageListViewController ()<UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
-@interface HomeMessageListViewController ()
+@property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
+@property (nonatomic, strong) NSMutableArray *arrMsgList;
 
 @end
 
 @implementation HomeMessageListViewController
 
+- (void)getAllMsgList
+{
+    if (self.viewModelIndex) {
+        [self.viewModelIndex getAllMsgList:self.apps.selectedLocation.intDistrinctId startNum:-1 num:-1];
+    }
+}
+
+- (void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewModelIndex = [[HomeIndexViewModel alloc] init];
+    self.viewModelIndex.delegate = self;
+    self.arrMsgList = [@[] mutableCopy];
+    [self setNaviBarTitle:@"消息"];
+    [self setBackButton];
+    
+    __weak HomeMessageListViewController *weakSelf = self;
+    [self.tbViewContent addHeaderWithCallback:^{
+        [weakSelf getAllMsgList];
+    }];
+    NSMutableArray *arrMsgs = [[DatabaseOperator getInstance] getAllMessagesWithDistrictId:self.apps.selectedLocation.intDistrinctId];
+    if (arrMsgs.count > 0) {
+        self.arrMsgList = arrMsgs;
+        [self.tbViewContent reloadData];
+    } else {
+        [self.tbViewContent headerBeginRefreshing];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -33,5 +79,44 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Http Request 
+- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type
+{
+    [self.tbViewContent headerEndRefreshing];
+}
+
+- (void)httpSuccessWithTag:(EnumRequestType)type
+{
+    if (type == TypeRequestAllMessage) {
+        self.arrMsgList = self.viewModelIndex.arrAllMessages;
+        [[DatabaseOperator getInstance] insertAllMessages:self.viewModelIndex.arrAllMessages withDistrictId:self.apps.selectedLocation.intDistrinctId];
+        [self.tbViewContent reloadData];
+    }
+    [self.tbViewContent headerEndRefreshing];
+}
+
+#pragma mark - UITableView methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.arrMsgList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MsgTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MsgTableViewCell"];
+    InformationModel *modelInfo = self.arrMsgList[indexPath.row];
+    [cell.imgViewPic sd_setImageWithURL:[NSURL URLWithString:modelInfo.picture] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    cell.lblTitle.text = modelInfo.title;
+    cell.lblContent.text = modelInfo.content;
+    cell.lblCreateTime.text = modelInfo.release_date;
+    return cell;
+}
+
 
 @end

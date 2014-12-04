@@ -208,7 +208,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         if (self.apps.selectedLocation.intDistrinctId > 0) {
-            [self performSegueWithIdentifier:@"segueToInfoList" sender:indexPath];
+            [self performSegueWithIdentifier:@"segueToMsgList" sender:indexPath];
         }
         else {
             [self showOnlyLabelHud:@"请选择地区" withView:self.view];

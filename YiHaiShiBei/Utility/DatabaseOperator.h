@@ -26,4 +26,11 @@
 - (void)insertAllInformations:(NSMutableArray *)arrInfors withDistrictId:(NSInteger)districtid;
 - (NSMutableArray *)getAllInformationsWithDistrictId:(NSInteger)districtid;
 - (void)removeAllInforsWithDistrictId:(NSInteger)districtid;
+
+/**
+ message
+ */
+- (void)insertAllMessages:(NSMutableArray *)arrMsgs withDistrictId:(NSInteger)districtid;
+- (NSMutableArray *)getAllMessagesWithDistrictId:(NSInteger)districtid;
+- (void)removeAllMessagesWithDistrictId:(NSInteger)districtid;
 @end

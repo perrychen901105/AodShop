@@ -10,6 +10,7 @@
 #import "HomeIndexService.h"
 #import "LocationModel.h"
 #import "InformationListModel.h"
+#import "MsgListModel.h"
 
 typedef enum EnumRequestType
 {
@@ -37,7 +38,7 @@ typedef enum EnumRequestType
 
 - (void)getAllBannersList:(NSInteger)distrinctID start:(NSInteger)numStart num:(NSInteger)num;
 - (void)getAllInfoList:(NSInteger)distrinctID startNum:(NSInteger)numStart num:(NSInteger)num;
-//- (void)
+- (void)getAllMsgList:(NSInteger)distrinctID startNum:(NSInteger)numStart num:(NSInteger)num;
 - (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass IsOnsale:(NSInteger)isOnsale start:(NSInteger)numStart num:(NSInteger)num;
 
 @end

@@ -20,7 +20,9 @@
         BannerModel *modelBanner = [[BannerModel alloc] initWithString:strResponse error:nil];
         if (modelBanner.success == 0) {
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
+#ifdef DEBUG
                 NSLog(@"%d",modelBanner.advertisings.count);
+#endif
                 weakSelf.arrAllBanners = [modelBanner.advertisings mutableCopy];
                 [weakSelf.delegate httpSuccessWithTag:TypeRequestAllBanner];
             }
@@ -72,6 +74,43 @@
     } error:^(NSString *strFail) {
         if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:message:type:)]) {
             [weakSelf.delegate httpError:1 message:strFail type:TypeRequestAllInfo];
+        }
+    }];
+}
+
+- (void)getAllMsgList:(NSInteger)distrinctID startNum:(NSInteger)numStart num:(NSInteger)num
+{
+    if (self.homeService == nil) {
+        self.homeService = [[HomeIndexService alloc] init];
+    }
+    if (self.arrAllMessages == nil) {
+        self.arrAllMessages = [@[] mutableCopy];
+    }
+    __weak HomeIndexViewModel *weakSelf = self;
+    [self.homeService getAllMessageList:distrinctID start:numStart num:num success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
+                if (weakSelf.arrAllMessages.count > 0) {
+                    [weakSelf.arrAllMessages removeAllObjects];
+                }
+                for (NSDictionary *dicInformation in dicRoot[@"data"][@"information"]) {
+                    MsgModel *model = [[MsgModel alloc] initWithDictionary:dicInformation[@"Information"] error:nil];
+                    model.userName = dicInformation[@"User"][@"username"];
+                    [weakSelf.arrAllMessages addObject:model];
+                }
+                [weakSelf.delegate httpSuccessWithTag:TypeRequestAllMessage];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(httpError:message:type:)]) {
+                [weakSelf.delegate httpError:intResponseCode message:strResponseMsg type:TypeRequestAllMessage];
+            }
+        }
+    } error:^(NSString *strFail) {
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:message:type:)]) {
+            [weakSelf.delegate httpError:1 message:strFail type:TypeRequestAllMessage];
         }
     }];
 }
