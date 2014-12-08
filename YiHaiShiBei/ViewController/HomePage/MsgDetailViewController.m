@@ -7,6 +7,8 @@
 //
 
 #import "MsgDetailViewController.h"
+#import "UIImageView+WebCache.h"
+#import "AppConfig.h"
 
 @interface MsgDetailViewController ()
 
@@ -20,14 +22,32 @@
 
 @implementation MsgDetailViewController
 
+- (void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setNaviBarTitle:@"消息详情"];
+    [self setBackButton];
+    [self setupDetailView];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setupDetailView
+{
+    [self.imgViewDes sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.modelMsg.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    self.lblUserName.text = [NSString stringWithFormat:@"发布人: %@",self.modelMsg.userName];
+    self.lblReleaseTime.text = [NSString stringWithFormat:@"时间: %@",self.modelMsg.release_date];
+    self.lblTitle.text = [NSString stringWithFormat:@"%@",self.modelMsg.title];
+    self.tvContent.text = [NSString stringWithFormat:@"%@",self.modelMsg.content];
 }
 
 /*

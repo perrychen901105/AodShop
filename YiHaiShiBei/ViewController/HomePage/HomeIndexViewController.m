@@ -54,7 +54,7 @@
                 AdvertiseModel *modelAdvise = self.viewModelIndex.arrAllBanners[i];
                 UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewBanner.frame.size.width*i, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height)];
                 imgView.contentMode = UIViewContentModeScaleToFill;
-                [imgView sd_setImageWithURL:[NSURL URLWithString:@"http://www.aodshop.cn/aodshop/app/webroot/upload/1412/1417443808.22.jpg"] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+                [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,modelAdvise.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
                 [self.scrollViewBanner addSubview:imgView];
                 
             }
@@ -64,7 +64,6 @@
     }
     UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
     imgViewShow.contentMode = UIViewContentModeScaleToFill;
-//    [imgViewShow sd_setImageWithURL:[NSURL URLWithString:@"http://www.aodshop.cn/aodshop/app/webroot/upload/1412/1417443808.22.jpg"] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
     imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
     [self.scrollViewBanner addSubview:imgViewShow];
     self.scrollViewBanner.contentSize = CGSizeMake(imgViewShow.frame.size.width, imgViewShow.frame.size.height);
@@ -82,14 +81,14 @@
     [self setNaviBarTitle:nil];
     [self setSearchAndCityButton];
     [self setUserIconButton];
-    
+    [self setupBannerView];
     [self requestForBannerList];
     
     NSString *strPreviousSelectCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
     if (strPreviousSelectCityName != nil) {
         self.lblCity.text = strPreviousSelectCityName;
     } else {
-        self.lblCity.text = @"苏州";
+        self.lblCity.text = @"地址";
     }
 //    [self.viewModelIndex getAllBannersList:1 start:-1 num:-1];
     
@@ -104,9 +103,9 @@
 
 - (void)requestForBannerList
 {
-    NSInteger selectedDistrictId = [[[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_DISTRICT_ID] intValue];
-    if (selectedDistrictId > 0) {
-        [self.viewModelIndex getAllBannersList:selectedDistrictId start:-1 num:-1];
+    
+    if (self.apps.storedDistrictID > 0) {
+        [self.viewModelIndex getAllBannersList:self.apps.storedDistrictID start:-1 num:-1];
     } else {
         [self setupBannerView];
     }
@@ -207,7 +206,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
-        if (self.apps.selectedLocation.intDistrinctId > 0) {
+        if (self.apps.storedDistrictID > 0) {
             [self performSegueWithIdentifier:@"segueToMsgList" sender:indexPath];
         }
         else {
@@ -215,7 +214,7 @@
         }
     } else if (indexPath.row == 1) {
         
-        if (self.apps.selectedLocation.intDistrinctId > 0) {
+        if (self.apps.storedDistrictID > 0) {
             [self performSegueWithIdentifier:@"segueToInfoList" sender:indexPath];
         }
         else {

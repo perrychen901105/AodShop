@@ -38,7 +38,8 @@
     for (NSDictionary *dicLocation in arrAllLocations) {
         [arrProvinces addObject:dicLocation[@"Province"]];
         NSLog(@"dic loaction city is %@",[dicLocation[@"City"] objectAtIndex:0]);
-        [arrCitys addObject:[dicLocation[@"City"] objectAtIndex:0]];
+//        [arrCitys addObject:[dicLocation[@"City"] objectAtIndex:0]];
+        [arrCitys addObjectsFromArray:dicLocation[@"City"]];
     }
     
     FMDatabaseQueue *databaseQueue = [FMDatabaseQueue databaseQueueWithPath:[AppDelegate getCacheDatabasePath]];

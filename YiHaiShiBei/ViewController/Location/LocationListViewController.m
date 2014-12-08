@@ -29,8 +29,20 @@
 {
     [super viewDidLoad];
     [self setTitle:self.strTitle];
+    
 //    self.arrayLocation = [@[] mutableCopy];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.arrayLocation.count <= 0) {
+        [self showOnlyLabelHud:@"暂无数据" withView:self.view];
+        self.HUD.delegate = self;
+        self.HUD.tag = 1;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +54,15 @@
 - (void)HadSelectLocation:(SelectLocationIndexBlock)selectBlock
 {
     self.blockSelectedIndex = selectBlock;
+}
+
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    if (hud.tag == 1) {
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+        
+    }
 }
 
 #pragma mark - UITableView methods

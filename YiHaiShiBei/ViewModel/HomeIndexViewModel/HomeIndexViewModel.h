@@ -41,4 +41,7 @@ typedef enum EnumRequestType
 - (void)getAllMsgList:(NSInteger)distrinctID startNum:(NSInteger)numStart num:(NSInteger)num;
 - (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass IsOnsale:(NSInteger)isOnsale start:(NSInteger)numStart num:(NSInteger)num;
 
+- (void)getCachedInfoList:(NSInteger)districtID;
+- (void)getCachedMsgList:(NSInteger)districtID;
+
 @end

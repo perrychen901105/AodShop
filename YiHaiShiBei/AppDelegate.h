@@ -16,6 +16,9 @@
 @property (strong, nonatomic) UserModel *modelUser;
 
 @property (strong, nonatomic) CurrentLocationModel *selectedLocation;
+@property (assign, nonatomic) NSInteger storedDistrictID;
+@property (assign, nonatomic) NSInteger storedUserID;
+@property (strong, nonatomic) NSString *stroedAppKey;
 
 + (NSString *)getCacheDatabasePath;
 

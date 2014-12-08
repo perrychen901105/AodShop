@@ -11,12 +11,13 @@
 #import "InfoTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "AppConfig.h"
 #import "DatabaseOperator.h"
+#import "InforDetailViewController.h"
 
 @interface HomeInfoListViewController ()<UITableViewDelegate, UITableViewDataSource, HomeIndexViewModelDelegate>
 
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
-@property (nonatomic, strong) NSMutableArray *arrInfoList;
 
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
@@ -28,8 +29,7 @@
 - (void)getAllInfoList
 {
     if (self.viewModelIndex) {
-        [self.viewModelIndex getAllInfoList:self.apps.selectedLocation.intDistrinctId startNum:-1 num:-1];
-        
+        [self.viewModelIndex getAllInfoList:self.apps.storedDistrictID startNum:-1 num:-1];
     }
 }
 
@@ -42,8 +42,6 @@
     [super viewDidLoad];
     self.viewModelIndex = [[HomeIndexViewModel alloc] init];
     self.viewModelIndex.delegate = self;
-    self.arrInfoList = [[NSMutableArray alloc] init];
-//    [self setTitle:@"资讯"];
     [self setNaviBarTitle:@"资讯"];
     [self setBackButton];
     
@@ -52,9 +50,8 @@
         [weakSelf getAllInfoList];
     }];
     
-    NSMutableArray *arrInfos = [[DatabaseOperator getInstance] getAllInformationsWithDistrictId:self.apps.selectedLocation.intDistrinctId];
-    if (arrInfos.count > 0) {
-        self.arrInfoList = arrInfos;
+    [self.viewModelIndex getCachedInfoList:self.apps.storedDistrictID];
+    if (self.viewModelIndex.arrAllInfos.count > 0) {
         [self.tbViewContent reloadData];
     } else {
         [self.tbViewContent headerBeginRefreshing];
@@ -75,22 +72,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueInfoDetail"]) {
+        UITableViewCell *cellSelect = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tbViewContent indexPathForCell:cellSelect];
+        InforDetailViewController *viewControllerDetail = (InforDetailViewController *)segue.destinationViewController;
+        viewControllerDetail.modelInfo = self.viewModelIndex.arrAllInfos[indexPath.row];
+    }
 }
-*/
+
 
 #pragma mark - HomeViewModel methods
 - (void)httpSuccessWithTag:(EnumRequestType)type
 {
     if (self.viewModelIndex.arrAllInfos.count > 0) {
-        self.arrInfoList = self.viewModelIndex.arrAllInfos;
-        [[DatabaseOperator getInstance] insertAllInformations:self.arrInfoList withDistrictId:self.apps.selectedLocation.intDistrinctId];
         [self.tbViewContent reloadData];
     }
     [self.tbViewContent headerEndRefreshing];
@@ -104,7 +105,7 @@
 #pragma mark - UITableView methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrInfoList.count;
+    return self.viewModelIndex.arrAllInfos.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -115,8 +116,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     InfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoTableViewCell"];
-    InformationModel *modelInfo = self.arrInfoList[indexPath.row];
-    [cell.imgViewPic sd_setImageWithURL:[NSURL URLWithString:modelInfo.picture] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    InformationModel *modelInfo = self.viewModelIndex.arrAllInfos[indexPath.row];
+    [cell.imgViewPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,modelInfo.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
     cell.lblTitle.text = modelInfo.title;
     cell.lblContent.text = modelInfo.content;
     cell.lblCreateTime.text = modelInfo.release_date;

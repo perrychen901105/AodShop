@@ -7,6 +7,8 @@
 //
 
 #import "InforDetailViewController.h"
+#import "UIImageView+WebCache.h"
+#import "AppConfig.h"
 
 @interface InforDetailViewController ()
 
@@ -30,12 +32,17 @@
     [super viewDidLoad];
     [self setNaviBarTitle:@"资讯详情"];
     [self setBackButton];
+    [self setupDetailView];
     // Do any additional setup after loading the view.
 }
 
 - (void)setupDetailView
 {
-    
+    [self.imgViewDes sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.modelInfo.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    self.lblUserName.text = [NSString stringWithFormat:@"发布人: %@",self.modelInfo.userName];
+    self.lblReleaseTime.text = [NSString stringWithFormat:@"时间: %@",self.modelInfo.release_date];
+    self.lblTitle.text = [NSString stringWithFormat:@"%@",self.modelInfo.title];
+    self.tvContent.text = [NSString stringWithFormat:@"%@",self.modelInfo.content];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "MsgListModel.h"
 
 @interface MsgDetailViewController : BaseViewController
+
+@property (nonatomic, strong) MsgModel *modelMsg;
 
 @end

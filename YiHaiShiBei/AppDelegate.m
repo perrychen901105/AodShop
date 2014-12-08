@@ -10,6 +10,7 @@
 #import "HomeIndexViewController.h"
 #import "SupplyIndexViewController.h"
 #import "CommoneTools.h"
+#import "AppConfig.h"
 
 @interface AppDelegate ()
 
@@ -59,6 +60,8 @@
     UINavigationController *navMerchant = [[UIStoryboard storyboardWithName:@"MerchantPage" bundle:nil] instantiateInitialViewController];
     UINavigationController *navMore = [[UIStoryboard storyboardWithName:@"MorePage" bundle:nil] instantiateInitialViewController];
     
+//    [navHome.navigationBar setTranslucent:YES];
+    
     [tabIndex setViewControllers:@[navHome, navSupply, navMerchant, navFav , navMore]];
     
     [[[tabIndex.viewControllers objectAtIndex:0] tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];
@@ -79,12 +82,16 @@
                                              forState:UIControlStateSelected];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:152/255.0f green:152/255.0f blue:152/255.0f alpha:1.0f] }
                                              forState:UIControlStateNormal];
+
     
     self.modelUser = nil;//[[UserModel alloc] init];
     
+    self.storedDistrictID = [[[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_DISTRICT_ID] intValue];
+    
+    
     [self copyDBtoDocument];
     
-//    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:249/255.0f green:174/255.0f blue:42/255.0f alpha:1.0f]];
 
 //    [[UITabBarController tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];
     return YES;

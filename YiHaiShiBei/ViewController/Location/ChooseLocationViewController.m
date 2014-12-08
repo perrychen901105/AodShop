@@ -144,6 +144,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",self.selectedLocation.intDistrinctId] forKey:K_USER_SELECTED_DISTRICT_ID];
     [[NSUserDefaults standardUserDefaults] synchronize];
     self.apps.selectedLocation = self.selectedLocation;
+    self.apps.storedDistrictID = self.selectedLocation.intDistrinctId;
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }

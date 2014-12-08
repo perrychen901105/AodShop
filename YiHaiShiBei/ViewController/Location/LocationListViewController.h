@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "MBProgressHUD.h"
 typedef void (^SelectLocationIndexBlock)(NSInteger locationId, NSString *locationName);
 typedef enum LocationListType
 {
@@ -16,7 +16,7 @@ typedef enum LocationListType
     ENUM_LOCATIONLIST_DISTRINCT = 0x00000001 << 4
 }enumLocationListType;
 
-@interface LocationListViewController : BaseViewController
+@interface LocationListViewController : BaseViewController<MBProgressHUDDelegate>
 
 @property (nonatomic, strong) NSArray *arrayLocation;
 

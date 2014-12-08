@@ -11,12 +11,13 @@
 #import "DatabaseOperator.h"
 #import "HomeIndexViewModel.h"
 #import "MJRefresh.h"
+#import "AppConfig.h"
+#import "MsgDetailViewController.h"
 #import "UIImageView+WebCache.h"
 @interface HomeMessageListViewController ()<UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
-@property (nonatomic, strong) NSMutableArray *arrMsgList;
 
 @end
 
@@ -25,7 +26,7 @@
 - (void)getAllMsgList
 {
     if (self.viewModelIndex) {
-        [self.viewModelIndex getAllMsgList:self.apps.selectedLocation.intDistrinctId startNum:-1 num:-1];
+        [self.viewModelIndex getAllMsgList:self.apps.storedDistrictID startNum:-1 num:-1];
     }
 }
 
@@ -47,7 +48,6 @@
     [super viewDidLoad];
     self.viewModelIndex = [[HomeIndexViewModel alloc] init];
     self.viewModelIndex.delegate = self;
-    self.arrMsgList = [@[] mutableCopy];
     [self setNaviBarTitle:@"消息"];
     [self setBackButton];
     
@@ -55,9 +55,8 @@
     [self.tbViewContent addHeaderWithCallback:^{
         [weakSelf getAllMsgList];
     }];
-    NSMutableArray *arrMsgs = [[DatabaseOperator getInstance] getAllMessagesWithDistrictId:self.apps.selectedLocation.intDistrinctId];
-    if (arrMsgs.count > 0) {
-        self.arrMsgList = arrMsgs;
+    [self.viewModelIndex getCachedMsgList:self.apps.storedDistrictID];
+    if (self.viewModelIndex.arrAllMessages.count > 0) {
         [self.tbViewContent reloadData];
     } else {
         [self.tbViewContent headerBeginRefreshing];
@@ -70,15 +69,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"segueMsgDetail"]) {
+        UITableViewCell *cellSelect = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tbViewContent indexPathForCell:cellSelect];
+        MsgDetailViewController *viewControllerDetail = (MsgDetailViewController *)segue.destinationViewController;
+        viewControllerDetail.modelMsg = self.viewModelIndex.arrAllMessages[indexPath.row];
+    }
 }
-*/
+
 
 #pragma mark - Http Request 
 - (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type
@@ -89,8 +95,6 @@
 - (void)httpSuccessWithTag:(EnumRequestType)type
 {
     if (type == TypeRequestAllMessage) {
-        self.arrMsgList = self.viewModelIndex.arrAllMessages;
-        [[DatabaseOperator getInstance] insertAllMessages:self.viewModelIndex.arrAllMessages withDistrictId:self.apps.selectedLocation.intDistrinctId];
         [self.tbViewContent reloadData];
     }
     [self.tbViewContent headerEndRefreshing];
@@ -99,7 +103,7 @@
 #pragma mark - UITableView methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrMsgList.count;
+    return self.viewModelIndex.arrAllMessages.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -110,8 +114,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MsgTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MsgTableViewCell"];
-    InformationModel *modelInfo = self.arrMsgList[indexPath.row];
-    [cell.imgViewPic sd_setImageWithURL:[NSURL URLWithString:modelInfo.picture] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    InformationModel *modelInfo = self.viewModelIndex.arrAllMessages[indexPath.row];
+    [cell.imgViewPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,modelInfo.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
     cell.lblTitle.text = modelInfo.title;
     cell.lblContent.text = modelInfo.content;
     cell.lblCreateTime.text = modelInfo.release_date;

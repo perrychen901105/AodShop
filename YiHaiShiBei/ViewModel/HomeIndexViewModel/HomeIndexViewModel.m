@@ -8,6 +8,7 @@
 
 #import "HomeIndexViewModel.h"
 #import "BannerModel.h"
+#import "DatabaseOperator.h"
 @implementation HomeIndexViewModel
 
 - (void)getAllBannersList:(NSInteger)distrinctID start:(NSInteger)numStart num:(NSInteger)num
@@ -64,6 +65,10 @@
                     model.userName = dicInformation[@"User"][@"username"];
                     [weakSelf.arrAllInfos addObject:model];
                 }
+                if (weakSelf.arrAllInfos.count > 0) {
+                    [[DatabaseOperator getInstance] insertAllInformations:weakSelf.arrAllInfos withDistrictId:distrinctID];
+                }
+                
                 [weakSelf.delegate httpSuccessWithTag:TypeRequestAllInfo];
             }
         } else {
@@ -101,6 +106,9 @@
                     model.userName = dicInformation[@"User"][@"username"];
                     [weakSelf.arrAllMessages addObject:model];
                 }
+                if (weakSelf.arrAllMessages.count > 0) {
+                    [[DatabaseOperator getInstance] insertAllMessages:weakSelf.arrAllMessages withDistrictId:distrinctID];
+                }
                 [weakSelf.delegate httpSuccessWithTag:TypeRequestAllMessage];
             }
         } else {
@@ -127,4 +135,15 @@
     }];
 }
 
+
+#pragma mark - get cached methods
+- (void)getCachedInfoList:(NSInteger)districtID
+{
+    self.arrAllInfos = [[DatabaseOperator getInstance] getAllInformationsWithDistrictId:districtID];
+}
+
+- (void)getCachedMsgList:(NSInteger)districtID
+{
+    self.arrAllMessages = [[DatabaseOperator getInstance] getAllMessagesWithDistrictId:districtID];
+}
 @end
