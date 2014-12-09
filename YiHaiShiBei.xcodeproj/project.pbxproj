@@ -114,6 +114,7 @@
 		2CDA1DEA19EEA50E0001FC43 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CDA1DE819EEA50E0001FC43 /* LaunchScreen.xib */; };
 		2CDA1DF619EEA50E0001FC43 /* YiHaiShiBeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DF519EEA50E0001FC43 /* YiHaiShiBeiTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2CEF60591A150026001B7B53 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF60581A150026001B7B53 /* BannerModel.m */; };
+		2CF1239F1A3673BF00EE1430 /* MerchantListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF1239E1A3673BF00EE1430 /* MerchantListViewController.m */; };
 		2CFD71911A0A80EE00A9902D /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFD71901A0A80EE00A9902D /* UserModel.m */; };
 		2CFFA0081A1CE33A0089B5AC /* HomeInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA0071A1CE33A0089B5AC /* HomeInfoListViewController.m */; };
 		2CFFA00B1A1CE3470089B5AC /* HomeMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA00A1A1CE3470089B5AC /* HomeMessageListViewController.m */; };
@@ -336,6 +337,8 @@
 		2CDA1DF519EEA50E0001FC43 /* YiHaiShiBeiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YiHaiShiBeiTests.m; sourceTree = "<group>"; };
 		2CEF60571A150026001B7B53 /* BannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
 		2CEF60581A150026001B7B53 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
+		2CF1239D1A3673BF00EE1430 /* MerchantListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantListViewController.h; sourceTree = "<group>"; };
+		2CF1239E1A3673BF00EE1430 /* MerchantListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantListViewController.m; sourceTree = "<group>"; };
 		2CFD718F1A0A80EE00A9902D /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		2CFD71901A0A80EE00A9902D /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		2CFFA0061A1CE33A0089B5AC /* HomeInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeInfoListViewController.h; sourceTree = "<group>"; };
@@ -453,6 +456,8 @@
 			children = (
 				046643E019F7A12C0060C9CC /* MerchantIndexViewController.h */,
 				046643E119F7A12C0060C9CC /* MerchantIndexViewController.m */,
+				2CF1239D1A3673BF00EE1430 /* MerchantListViewController.h */,
+				2CF1239E1A3673BF00EE1430 /* MerchantListViewController.m */,
 				046643E819F7A15B0060C9CC /* MerchantPage.storyboard */,
 			);
 			path = Merchant;
@@ -1075,6 +1080,7 @@
 				2C3373CC1A2628B5002918A0 /* SDWebImageDownloader.m in Sources */,
 				0446961A19EFA68800EF71A3 /* BaseViewController.m in Sources */,
 				2C3373D21A2628B5002918A0 /* UIImage+MultiFormat.m in Sources */,
+				2CF1239F1A3673BF00EE1430 /* MerchantListViewController.m in Sources */,
 				04EB66FE19FF6D990043D120 /* JSONModelError.m in Sources */,
 				2C7D336E1A221C55002C4A9A /* FMDatabasePool.m in Sources */,
 				2C01A5041A2CC4E300FAA7D8 /* InfoTableViewCell.m in Sources */,
