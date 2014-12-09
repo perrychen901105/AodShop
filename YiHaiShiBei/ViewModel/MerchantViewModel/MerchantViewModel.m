@@ -36,4 +36,20 @@
     }];
 }
 
+
+- (void)getMerchantListWithCatId:(NSInteger)catID Start:(NSInteger)numStart count:(NSInteger)numCount
+{
+    if (self.merchantService == nil) {
+        self.merchantService = [[MerchantRequestService alloc] init];
+    }
+    __weak MerchantViewModel *weakSelf = self;
+    [self.merchantService getMerchantListWithCatId:catID startNum:numStart Number:numCount success:^(NSString *strResponse) {
+        
+    } error:^(NSInteger errorCode, NSString *strError) {
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:errMsg:withType:)]) {
+            [weakSelf.delegate httpError:errorCode errMsg:strError withType:TypeRequestAllMerchantList];
+        }
+    }];
+}
+
 @end

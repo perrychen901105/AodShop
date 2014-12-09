@@ -11,7 +11,8 @@
 
 typedef enum EnumRequestType
 {
-    TypeRequestAllMTypeList = 10
+    TypeRequestAllMTypeList = 10,
+    TypeRequestAllMerchantList
 }EnumRequestType;
 
 @protocol MerchantViewModelDelegate <NSObject>
@@ -28,5 +29,6 @@ typedef enum EnumRequestType
 @property (nonatomic, strong) NSMutableArray *arrMerchantType;
 
 - (void)getMerchantTypeListWithStart:(NSInteger)numStart count:(NSInteger)numCount;
+- (void)getMerchantListWithCatId:(NSInteger)catID Start:(NSInteger)numStart count:(NSInteger)numCount;
 
 @end

@@ -10,9 +10,26 @@
 
 @implementation MerchantRequestService
 
-static NSString *ActionMerchantList = @"getProductCatList";
+static NSString *ActionMerchantTypeList = @"getProductCatList";
+static NSString *ActionMerchantList = @"getBusinessListByCat";
 
 - (void)getMerchantTypeListWithStartNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantTypeListSuccessBlock)successBlock error:(GetMerchantTypeListFailBlock)errorBlock
+{
+    NSMutableString *strRequest = [[NSMutableString alloc] initWithString:@""];
+    if (numStart >= 0) {
+        [strRequest appendFormat:@"/%d",numStart];
+    }
+    if (numCount >= 0) {
+        [strRequest appendFormat:@"/%d",numCount];
+    }
+    [self getRequestToServer:ActionMerchantTypeList requestPara:strRequest success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+- (void)getMerchantListWithCatId:(NSInteger)catId startNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantListSuccessBlock)successBlock error:(GetMerchantListFailBlock)errorBlock
 {
     NSMutableString *strRequest = [[NSMutableString alloc] initWithString:@""];
     if (numStart >= 0) {
