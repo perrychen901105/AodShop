@@ -47,7 +47,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="1ZR-hm-NSB" kind="push" id="AIL-tP-Kk4"/>
+                                            <segue destination="1ZR-hm-NSB" kind="push" identifier="segueMerchantList" id="AIL-tP-Kk4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
