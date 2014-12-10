@@ -10,4 +10,6 @@
 
 @interface MerchantListViewController : BaseViewController
 
+@property (nonatomic, assign) NSInteger intCatId;
+
 @end
