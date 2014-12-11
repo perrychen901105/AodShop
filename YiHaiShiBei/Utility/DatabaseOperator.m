@@ -29,6 +29,7 @@
     return instance;
 }
 
+#pragma mark - 首页
 #pragma mark - Locations
 - (void)insertAllLocations:(NSArray *)arrAllLocations
 {
@@ -324,5 +325,27 @@
     return ;
 
 }
+
+
+#pragma mark - 商户
+/**
+ CREATE TABLE "MerchantType" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "name" VARCHAR, "picture" VARCHAR, "productNumber" INTEGER, "infoNumber" INTEGER, "sort" INTEGER, "status" INTEGER)
+ */
+- (void)insertAllMerchantTypes:(NSMutableArray *)arrTypes
+{
+    
+}
+//- (NSMutableArray *)getAllMerchantTypes
+//{
+//    
+//}
+- (void)removeAllMerchantTypes
+{
+    
+}
+
+/**
+ CREATE TABLE "MerchantList" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "name" VARCHAR, "address" VARCHAR, "email" VARCHAR, "phone" VARCHAR, "catId" INTEGER, "levelId" INTEGER, "districtId" INTEGER, "avatar" VARCHAR, "catName" VARCHAR, "districtName" VARCHAR, "sort" INTEGER, "status" INTEGER)
+ */
 
 @end

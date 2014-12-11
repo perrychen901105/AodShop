@@ -11,6 +11,7 @@
 
 + (DatabaseOperator *)getInstance;
 
+#pragma mark - 首页
 /**
  location
  */
@@ -33,4 +34,18 @@
 - (void)insertAllMessages:(NSMutableArray *)arrMsgs withDistrictId:(NSInteger)districtid;
 - (NSMutableArray *)getAllMessagesWithDistrictId:(NSInteger)districtid;
 - (void)removeAllMessagesWithDistrictId:(NSInteger)districtid;
+
+
+#pragma mark - 商户
+/**
+ MerchantType
+ */
+- (void)insertAllMerchantTypes:(NSMutableArray *)arrTypes;
+- (NSMutableArray *)getAllMerchantTypes;
+- (void)removeAllMerchantTypes;
+
+/**
+ MerchantList
+ */
+
 @end
