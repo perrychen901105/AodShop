@@ -7,8 +7,10 @@
 //
 
 #import "MerchantIndexViewController.h"
+#import "MerchantListViewController.h"
 #import "MerchantViewModel.h"
 #import "MerchantModel.h"
+#import "MJRefresh.h"
 @interface MerchantIndexViewController ()<MerchantViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
@@ -29,15 +31,13 @@
     return self;
 }
 
-- (void)getMerchantTypeList
-{
-    [self.viewModelMerchant getMerchantTypeListWithStart:-1 count:-1];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self getMerchantTypeList];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)viewDidLoad
@@ -46,6 +46,14 @@
     [self setNaviBarTitle:@"商户"];
     self.viewModelMerchant = [[MerchantViewModel alloc] init];
     self.viewModelMerchant.delegate = self;
+    
+    __weak MerchantIndexViewController *weakSelf = self;
+    [self.tbViewContent addHeaderWithCallback:^{
+        if (weakSelf.viewModelMerchant) {
+            [weakSelf.viewModelMerchant getMerchantTypeListWithStart:-1 count:-1];
+        }
+    }];
+    [self.tbViewContent headerBeginRefreshing];
     
     // Do any additional setup after loading the view.
 }
@@ -64,11 +72,12 @@
             [self.tbViewContent reloadData];
         }
     }
+    [self.tbViewContent headerEndRefreshing];
 }
 
 - (void)httpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumRequestType)typeRequest
 {
-    
+    [self.tbViewContent headerEndRefreshing];
 }
 
 #pragma mark - UITableView methods
@@ -99,7 +108,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"segueMerchantList"]) {
-        
+        UITableViewCell *cellSelect = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tbViewContent indexPathForCell:cellSelect];
+        MerchantListViewController *viewControllerListMerchant = (MerchantListViewController *)segue.destinationViewController;
+        MerchantTypeModel *modelType = self.viewModelMerchant.arrMerchantType[indexPath.row];
+        viewControllerListMerchant.intCatId = modelType.merchantTypeId;
     }
 }
 

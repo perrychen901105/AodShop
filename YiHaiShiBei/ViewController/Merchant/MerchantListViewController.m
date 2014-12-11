@@ -7,26 +7,59 @@
 //
 
 #import "MerchantListViewController.h"
+#import "UIImageView+WebCache.h"
+#import "ASStarRatingView.h"
+#import "MerchantViewModel.h"
+#import "MerchantModel.h"
+#import "MJRefresh.h"
+#import "AppConfig.h"
+#import "MerchantInfoCell.h"
 
-@interface MerchantListViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface MerchantListViewController ()<MerchantViewModelDelegate,UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
+
+@property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
 @end
 
 @implementation MerchantListViewController
 
+- (void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNaviBarTitle:@"商户列表"];
+    [self setBackButton];
+    
+    self.viewModelMerchant = [[MerchantViewModel alloc] init];
+    self.viewModelMerchant.delegate = self;
+    
+    __weak MerchantListViewController *weakSelf = self;
+    [self.tbViewContent addHeaderWithCallback:^{
+        if (weakSelf.viewModelMerchant) {
+            [weakSelf.viewModelMerchant getMerchantListWithCatId:weakSelf.intCatId Start:-1 count:-1];
+        }
+    }];
+    [self.tbViewContent headerBeginRefreshing];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)getMerchantList
-{
-    
 }
 
 /*
@@ -39,15 +72,37 @@
 }
 */
 
+#pragma mark - Merchant View model methods
+- (void)httpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumRequestType)typeRequest
+{
+    [self.tbViewContent headerEndRefreshing];
+}
+
+- (void)httpSuccessWithTag:(EnumRequestType)typeRequest
+{
+    if (self.viewModelMerchant.arrMerchantList.count > 0) {
+        [self.tbViewContent reloadData];
+    }
+    [self.tbViewContent headerEndRefreshing];
+}
+
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    MerchantInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MerchantInfoCell"];
+    MerchantModel *model = self.viewModelMerchant.arrMerchantList[indexPath.row];
+    cell.lblMerchantName.text = model.merchantCompanyName;
+    cell.lblMerchantPhone.text = model.merchantPhone;
+    [cell.imgViewAvatar sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.merchantAvatar]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    cell.viewRating.canEdit = NO;
+    cell.viewRating.maxRating = 5;
+    cell.viewRating.rating = model.merchantLevelId;
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.viewModelMerchant.arrMerchantList.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

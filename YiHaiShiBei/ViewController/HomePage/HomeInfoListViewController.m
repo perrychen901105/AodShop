@@ -25,14 +25,6 @@
 
 @implementation HomeInfoListViewController
 
-
-- (void)getAllInfoList
-{
-    if (self.viewModelIndex) {
-        [self.viewModelIndex getAllInfoList:self.apps.storedDistrictID startNum:-1 num:-1];
-    }
-}
-
 - (void)backAction
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -47,7 +39,9 @@
     
     __weak HomeInfoListViewController *weakSelf = self;
     [self.tbViewContent addHeaderWithCallback:^{
-        [weakSelf getAllInfoList];
+        if (weakSelf.viewModelIndex) {
+            [weakSelf.viewModelIndex getAllInfoList:self.apps.storedDistrictID startNum:-1 num:-1];
+        }
     }];
     
     [self.viewModelIndex getCachedInfoList:self.apps.storedDistrictID];

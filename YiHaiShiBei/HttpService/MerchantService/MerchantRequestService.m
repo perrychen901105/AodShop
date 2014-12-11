@@ -7,6 +7,7 @@
 //
 
 #import "MerchantRequestService.h"
+#import "MJRefresh.h"d
 
 @implementation MerchantRequestService
 
@@ -32,6 +33,7 @@ static NSString *ActionMerchantList = @"getBusinessListByCat";
 - (void)getMerchantListWithCatId:(NSInteger)catId startNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantListSuccessBlock)successBlock error:(GetMerchantListFailBlock)errorBlock
 {
     NSMutableString *strRequest = [[NSMutableString alloc] initWithString:@""];
+    [strRequest appendFormat:@"/%d",catId];
     if (numStart >= 0) {
         [strRequest appendFormat:@"/%d",numStart];
     }

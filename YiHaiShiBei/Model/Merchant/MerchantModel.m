@@ -10,6 +10,22 @@
 #import "JSONKeyMapper.h"
 @implementation MerchantModel
 
++(JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"User.id":@"merchantUserId",
+                                                       @"User.company_name":@"merchantCompanyName",
+                                                       @"User.company_addr":@"merchantCompanyAddr",
+                                                       @"User.email":@"merchantEmail",
+                                                       @"User.phone":@"merchantPhone",
+                                                       @"User.user_cat_id":@"merchantCatId",
+                                                       @"User.level_id":@"merchantLevelId",
+                                                       @"User.district_id":@"merchantDistrictId",
+                                                       @"User.avatar":@"merchantAvatar",
+                                                       @"UserCat.name":@"merchantCatName",
+                                                       @"District.name":@"merchantDistrictName"
+                                                       }];
+}
 @end
 
 @implementation MerchantTypeModel

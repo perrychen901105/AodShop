@@ -12,7 +12,19 @@
 @end
 
 
-@interface MerchantModel : BaseModel
+@interface MerchantModel : JSONModel
+
+@property (nonatomic, assign) NSInteger merchantUserId;
+@property (nonatomic, strong) NSString *merchantCompanyName;
+@property (nonatomic, strong) NSString *merchantCompanyAddr;
+@property (nonatomic, strong) NSString *merchantEmail;
+@property (nonatomic, strong) NSString *merchantPhone;
+@property (nonatomic, assign) NSInteger merchantCatId;
+@property (nonatomic, assign) NSInteger merchantLevelId;
+@property (nonatomic, assign) NSInteger merchantDistrictId;
+@property (nonatomic, strong) NSString *merchantAvatar;
+@property (nonatomic, strong) NSString *merchantCatName;
+@property (nonatomic, strong) NSString *merchantDistrictName;
 
 @end
 

@@ -50,6 +50,8 @@
 		2C01A51C1A2CCC3400FAA7D8 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01A5131A2CCC3400FAA7D8 /* UIScrollView+MJRefresh.m */; };
 		2C01A51D1A2CCC3400FAA7D8 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01A5151A2CCC3400FAA7D8 /* UIView+MJExtension.m */; };
 		2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */; };
+		2C0C17031A39ED730015F53F /* MerchantInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C17021A39ED730015F53F /* MerchantInfoCell.m */; };
+		2C0C17071A39EE5A0015F53F /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C17061A39EE5A0015F53F /* ASStarRatingView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */; };
 		2C258EAE1A276B7B00CE9F0D /* MerchantRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */; };
 		2C258EB21A276F0400CE9F0D /* MerchantViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C258EB11A276F0400CE9F0D /* MerchantViewModel.m */; };
@@ -216,6 +218,10 @@
 		2C03C8F21A07C7C900EB90FD /* ProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewModel.h; sourceTree = "<group>"; };
 		2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewModel.m; sourceTree = "<group>"; };
 		2C03C8F51A07C7F100EB90FD /* UserProfileProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileProtocol.h; sourceTree = "<group>"; };
+		2C0C17011A39ED730015F53F /* MerchantInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantInfoCell.h; sourceTree = "<group>"; };
+		2C0C17021A39ED730015F53F /* MerchantInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantInfoCell.m; sourceTree = "<group>"; };
+		2C0C17051A39EE5A0015F53F /* ASStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStarRatingView.h; sourceTree = "<group>"; };
+		2C0C17061A39EE5A0015F53F /* ASStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStarRatingView.m; sourceTree = "<group>"; };
 		2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = AodShop.sqlite; sourceTree = "<group>"; };
 		2C258EAC1A276B7B00CE9F0D /* MerchantRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantRequestService.h; sourceTree = "<group>"; };
 		2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantRequestService.m; sourceTree = "<group>"; };
@@ -454,6 +460,7 @@
 		0446961E19EFB16000EF71A3 /* Merchant */ = {
 			isa = PBXGroup;
 			children = (
+				2C0C17001A39ED430015F53F /* MerchantCell */,
 				046643E019F7A12C0060C9CC /* MerchantIndexViewController.h */,
 				046643E119F7A12C0060C9CC /* MerchantIndexViewController.m */,
 				2CF1239D1A3673BF00EE1430 /* MerchantListViewController.h */,
@@ -613,6 +620,24 @@
 			path = ProfileViewModel;
 			sourceTree = "<group>";
 		};
+		2C0C17001A39ED430015F53F /* MerchantCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C17011A39ED730015F53F /* MerchantInfoCell.h */,
+				2C0C17021A39ED730015F53F /* MerchantInfoCell.m */,
+			);
+			path = MerchantCell;
+			sourceTree = "<group>";
+		};
+		2C0C17041A39EE5A0015F53F /* ASStarRatingView */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C17051A39EE5A0015F53F /* ASStarRatingView.h */,
+				2C0C17061A39EE5A0015F53F /* ASStarRatingView.m */,
+			);
+			path = ASStarRatingView;
+			sourceTree = "<group>";
+		};
 		2C258EAB1A276B5700CE9F0D /* MerchantService */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,6 +761,7 @@
 		2C433E8119EECC7700129479 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				2C0C17041A39EE5A0015F53F /* ASStarRatingView */,
 				2C01A5051A2CCC3400FAA7D8 /* MJRefresh */,
 				2C3373A51A2628B5002918A0 /* SDWebImage */,
 				2C7D33601A221C55002C4A9A /* FMDatabase */,
@@ -1078,6 +1104,7 @@
 				2C433EA619EED4C900129479 /* ASIDataCompressor.m in Sources */,
 				2C3373C91A2628B5002918A0 /* SDImageCache.m in Sources */,
 				2C3373CC1A2628B5002918A0 /* SDWebImageDownloader.m in Sources */,
+				2C0C17071A39EE5A0015F53F /* ASStarRatingView.m in Sources */,
 				0446961A19EFA68800EF71A3 /* BaseViewController.m in Sources */,
 				2C3373D21A2628B5002918A0 /* UIImage+MultiFormat.m in Sources */,
 				2CF1239F1A3673BF00EE1430 /* MerchantListViewController.m in Sources */,
@@ -1110,6 +1137,7 @@
 				2CA9E2AA1A0922290078176D /* CommoneTools.m in Sources */,
 				2C433EAB19EED4C900129479 /* ASIInputStream.m in Sources */,
 				2CEF60591A150026001B7B53 /* BannerModel.m in Sources */,
+				2C0C17031A39ED730015F53F /* MerchantInfoCell.m in Sources */,
 				046643E519F7A1360060C9CC /* MoreIndexViewController.m in Sources */,
 				2C258EAE1A276B7B00CE9F0D /* MerchantRequestService.m in Sources */,
 				2CC315701A2AC33C00D63E46 /* MerchantListModel.m in Sources */,

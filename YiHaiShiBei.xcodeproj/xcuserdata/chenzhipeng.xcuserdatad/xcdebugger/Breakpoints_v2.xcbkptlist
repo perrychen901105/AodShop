@@ -73,7 +73,7 @@
                   symbolName = "-[LocationListViewController backAction]"
                   moduleName = "YiHaiShiBei"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/Location/LocationListViewController.m"
-                  timestampString = "439748540.042592"
+                  timestampString = "440005289.380509"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "117"
@@ -87,7 +87,7 @@
                   symbolName = "__40-[LocationListViewController backAction]_block_invoke"
                   moduleName = "YiHaiShiBei"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/Location/LocationListViewController.m"
-                  timestampString = "439748540.042688"
+                  timestampString = "440005289.38069"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -110,22 +110,6 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/HttpService/HttpRequestService.m"
-            timestampString = "439748547.828328"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "-getRequestToServer:requestPara:success:error:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
