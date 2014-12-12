@@ -21,11 +21,11 @@ typedef void (^GetAllInfoListFailBlock)(NSString *strFail);
 typedef void (^GetAllMessageListSuccessBlock)(NSString *strResponse);
 typedef void (^GetAllMessageListFailBlock)(NSString *strFail);
 
-typedef void (^GetAllGrouponListSuccessBlock)(NSString *strResponse);
-typedef void (^GetAllGrouponListFailBlock)(NSInteger errorCode, NSString *errorMsg);
+
 
 @interface HomeIndexService : HttpRequestService
 
+// 获取所有地址列表
 - (void)getAllLocationList:(GetLocationListSuccessBlock)successBlock error:(GetLocationListFailBlock)errorBlock;
 
 
@@ -38,6 +38,4 @@ typedef void (^GetAllGrouponListFailBlock)(NSInteger errorCode, NSString *errorM
 // 获取所有消息列表
 - (void)getAllMessageList:(NSInteger)districtID start:(NSInteger)start num:(NSInteger)num success:(GetAllMessageListSuccessBlock)successBlock error:(GetAllMessageListFailBlock)errorBlock;
 
-// 获取所有团购列表
-- (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass isOnsale:(NSInteger)isOnsale start:(NSInteger)start num:(NSInteger)num success:(GetAllGrouponListSuccessBlock)successBlock error:(GetAllGrouponListFailBlock)errorBlock;
 @end

@@ -409,7 +409,7 @@
     }
     NSMutableArray *arrValues = [@[] mutableCopy];
     for (MerchantModel *modelMerchant in arrList) {
-        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@','%@','%@',%d,%d,%d,'%@','%@')",modelMerchant.merchantUserId,modelMerchant.merchantCompanyName,modelMerchant.merchantCompanyAddr,modelMerchant.merchantEmail,modelMerchant.merchantPhone,modelMerchant.merchantCatId,modelMerchant.merchantLevelId,modelMerchant.merchantDistrictId,modelMerchant.merchantAvatar,modelMerchant.merchantDistrictName];
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@','%@','%@',%d,%d,%d,'%@','%@','%@')",modelMerchant.merchantUserId,modelMerchant.merchantCompanyName,modelMerchant.merchantCompanyAddr,modelMerchant.merchantEmail,modelMerchant.merchantPhone,modelMerchant.merchantCatId,modelMerchant.merchantLevelId,modelMerchant.merchantDistrictId,modelMerchant.merchantAvatar,modelMerchant.merchantCatName,modelMerchant.merchantDistrictName];
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];

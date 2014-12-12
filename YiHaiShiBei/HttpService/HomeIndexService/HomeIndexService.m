@@ -80,15 +80,6 @@ static NSString *ActionAllInfos    = @"getInfomations";
     }];
 }
 
-// 获取所有团购列表
-- (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass isOnsale:(NSInteger)isOnsale start:(NSInteger)start num:(NSInteger)num success:(GetAllGrouponListSuccessBlock)successBlock error:(GetAllGrouponListFailBlock)errorBlock
-{
-//    NSString *strGetAllLocation = @"/2";
-//    [self getRequestToServer:ActionAllLocation requestPara:strGetAllLocation success:^(NSString *responseString) {
-//        successBlock(responseString);
-//    } error:^(NSInteger errorCode, NSString *errorMessage) {
-//        errorBlock(errorMessage);
-//    }];
-}
+
 
 @end

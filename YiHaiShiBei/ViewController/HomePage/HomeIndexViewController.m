@@ -19,11 +19,12 @@
 
 #import "AdvertiseModel.h"
 #import "ProfileViewModel.h"
-@interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate>
+#import "PurchaseViewModel.h"
+@interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate, PurchaseViewModelDelegate>
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
 
 @property (nonatomic, strong) ProfileViewModel *viewModelProfile;
-
+@property (nonatomic, strong) PurchaseViewModel *viewModelPurchase;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewBanner;
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
@@ -76,12 +77,12 @@
     self.viewModelIndex = [[HomeIndexViewModel alloc] init];
     self.viewModelIndex.delegate = self;
     
+    
+    
     self.viewModelProfile = [[ProfileViewModel alloc] init];
     
     [self setNaviBarTitle:nil];
     [self setSearchAndCityButton];
-    [self setUserIconButton];
-    [self setupBannerView];
     [self requestForBannerList];
     
     NSString *strPreviousSelectCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
@@ -161,6 +162,19 @@
     
 }
 
+#pragma mark - PurchaseViewModel delegate methods
+- (void)purchaseRequestSuccessWithTag:(EnumRequestType)type
+{
+    if (type == TypeRequestAllPurchaseList) {
+        
+    }
+}
+
+- (void)purchaseRequestError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type
+{
+    
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -224,7 +238,7 @@
     } else if (indexPath.row == 2) {
         
     } else if (indexPath.row == 3) {
-        [self performSegueWithIdentifier:SEGUE_GROUPON sender:indexPath];
+//        [self performSegueWithIdentifier:SEGUE_GROUPON sender:indexPath];
     }
 }
 
