@@ -32,4 +32,7 @@ typedef enum EnumRequestType
 - (void)getMerchantTypeListWithStart:(NSInteger)numStart count:(NSInteger)numCount;
 - (void)getMerchantListWithCatId:(NSInteger)catID Start:(NSInteger)numStart count:(NSInteger)numCount;
 
+- (void)getCachedMerchantType;
+- (void)getCachedMerchantListWithCatId:(NSInteger)catId;
+
 @end

@@ -53,8 +53,12 @@
             [weakSelf.viewModelMerchant getMerchantListWithCatId:weakSelf.intCatId Start:-1 count:-1];
         }
     }];
-    [self.tbViewContent headerBeginRefreshing];
-    // Do any additional setup after loading the view.
+    [self.viewModelMerchant getCachedMerchantListWithCatId:self.intCatId];
+    if (self.viewModelMerchant.arrMerchantList.count > 0) {
+        [self.tbViewContent reloadData];
+    } else {
+        [self.tbViewContent headerBeginRefreshing];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

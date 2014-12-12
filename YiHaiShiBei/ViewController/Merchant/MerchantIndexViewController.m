@@ -53,8 +53,12 @@
             [weakSelf.viewModelMerchant getMerchantTypeListWithStart:-1 count:-1];
         }
     }];
-    [self.tbViewContent headerBeginRefreshing];
-    
+    [self.viewModelMerchant getCachedMerchantType];
+    if (self.viewModelMerchant.arrMerchantType.count > 0) {
+        [self.tbViewContent reloadData];
+    } else {
+        [self.tbViewContent headerBeginRefreshing];
+    }    
     // Do any additional setup after loading the view.
 }
 

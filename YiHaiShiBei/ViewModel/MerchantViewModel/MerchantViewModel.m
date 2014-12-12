@@ -8,6 +8,7 @@
 
 #import "MerchantViewModel.h"
 #import "MerchantListModel.h"
+#import "DatabaseOperator.h"
 
 @implementation MerchantViewModel
 
@@ -21,7 +22,13 @@
         MerchantTypeListModel *listModel = [[MerchantTypeListModel alloc] initWithString:strResponse error:nil];
         if (listModel.success == 0) {
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
+                if (weakSelf.arrMerchantType.count > 0) {
+                    [weakSelf.arrMerchantType removeAllObjects];
+                }
                 weakSelf.arrMerchantType = [listModel.arrMerchantType mutableCopy];
+                if (weakSelf.arrMerchantType.count > 0) {
+                    [[DatabaseOperator getInstance] insertAllMerchantTypes:weakSelf.arrMerchantType];
+                }
                 [weakSelf.delegate httpSuccessWithTag:TypeRequestAllMTypeList];
             }
         } else {
@@ -60,7 +67,7 @@
                     [weakSelf.arrMerchantList addObject:model];
                 }
                 if (weakSelf.arrMerchantList.count > 0) {
-                    
+                    [[DatabaseOperator getInstance] insertAllMerchantList:weakSelf.arrMerchantList withCateId:catID];
                 }
                 [weakSelf.delegate httpSuccessWithTag:TypeRequestAllMerchantList];
             }
@@ -76,4 +83,13 @@
     }];
 }
 
+#pragma mark - get cached methods
+- (void)getCachedMerchantType
+{
+    self.arrMerchantType = [[DatabaseOperator getInstance] getAllMerchantTypes];
+}
+- (void)getCachedMerchantListWithCatId:(NSInteger)catId
+{
+    self.arrMerchantList = [[DatabaseOperator getInstance] getAllMerchantListWithCatId:catId];
+}
 @end

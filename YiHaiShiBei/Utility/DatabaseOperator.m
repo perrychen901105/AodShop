@@ -13,6 +13,7 @@
 #import "LocationModel.h"
 #import "InformationListModel.h"
 #import "MsgListModel.h"
+#import "MerchantModel.h"
 
 @implementation DatabaseOperator
 {
@@ -320,32 +321,154 @@
     if (dbSuccess) {
         NSLog(@"success");
     }
-    
     [db close];
     return ;
-
 }
 
 
 #pragma mark - 商户
+#pragma mark - 商户分类
 /**
  CREATE TABLE "MerchantType" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "name" VARCHAR, "picture" VARCHAR, "productNumber" INTEGER, "infoNumber" INTEGER, "sort" INTEGER, "status" INTEGER)
  */
 - (void)insertAllMerchantTypes:(NSMutableArray *)arrTypes
 {
-    
-}
-//- (NSMutableArray *)getAllMerchantTypes
-//{
-//    
-//}
-- (void)removeAllMerchantTypes
-{
-    
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    NSMutableArray *arrValues = [@[] mutableCopy];
+    for (MerchantTypeModel *modelType in arrTypes) {
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%d,%d)",modelType.merchantTypeId,modelType.name, modelType.picture,modelType.product_number, modelType.info_number];
+        [arrValues addObject:strValues];
+    }
+    NSString *strAllValue = [arrValues componentsJoinedByString:@","];
+    NSString *strExec = [NSString stringWithFormat:@"insert or replace into MerchantType(id, name, picture, productNumber, infoNumber) values %@",strAllValue];
+    BOOL dbSuccess = [db executeUpdate:strExec];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    db = nil;
 }
 
+- (NSMutableArray *)getAllMerchantTypes
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return [@[] mutableCopy];
+    }
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM MerchantType"];
+    FMResultSet *rs = [db executeQuery:strSql];
+    NSMutableArray *arrTypes = [@[] mutableCopy];
+    while ([rs next]) {
+        MerchantTypeModel *model = [[MerchantTypeModel alloc] init];
+        model.merchantTypeId = [rs intForColumn:@"id"];
+        model.name = [rs stringForColumn:@"name"];
+        model.picture = [rs stringForColumn:@"picture"];
+        model.product_number = [rs intForColumn:@"productNumber"];
+        model.info_number = [rs intForColumn:@"infoNumber"];
+#ifdef DEBUG
+        NSLog(@"model is %@",model);
+#endif
+        [arrTypes addObject:model];
+    }
+    [db close];
+    return arrTypes;
+}
+
+- (void)removeAllMerchantTypes
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM MerchantType"];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    return ;
+}
+
+#pragma mark - 商户列表
 /**
  CREATE TABLE "MerchantList" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "name" VARCHAR, "address" VARCHAR, "email" VARCHAR, "phone" VARCHAR, "catId" INTEGER, "levelId" INTEGER, "districtId" INTEGER, "avatar" VARCHAR, "catName" VARCHAR, "districtName" VARCHAR, "sort" INTEGER, "status" INTEGER)
  */
-
+- (void)insertAllMerchantList:(NSMutableArray *)arrList withCateId:(NSInteger)catId
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    NSMutableArray *arrValues = [@[] mutableCopy];
+    for (MerchantModel *modelMerchant in arrList) {
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@','%@','%@',%d,%d,%d,'%@','%@')",modelMerchant.merchantUserId,modelMerchant.merchantCompanyName,modelMerchant.merchantCompanyAddr,modelMerchant.merchantEmail,modelMerchant.merchantPhone,modelMerchant.merchantCatId,modelMerchant.merchantLevelId,modelMerchant.merchantDistrictId,modelMerchant.merchantAvatar,modelMerchant.merchantDistrictName];
+        [arrValues addObject:strValues];
+    }
+    NSString *strAllValue = [arrValues componentsJoinedByString:@","];
+    NSString *strExec = [NSString stringWithFormat:@"insert or replace into MerchantList(id, name, address, email, phone, catId, levelId, districtId, avatar, catName, districtName) values %@",strAllValue];
+    BOOL dbSuccess = [db executeUpdate:strExec];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    db = nil;
+}
+- (NSMutableArray *)getAllMerchantListWithCatId:(NSInteger)catId
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return [@[] mutableCopy];
+    }
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM MerchantList where catId = %d",catId];
+#ifdef DEBUG
+    NSLog(@"sql is %@",strSql);
+#endif
+    FMResultSet *rs = [db executeQuery:strSql];
+    NSMutableArray *arrList = [@[] mutableCopy];
+    while ([rs next]) {
+        MerchantModel *model = [[MerchantModel alloc] init];
+        model.merchantUserId = [rs intForColumn:@"id"];
+        model.merchantCompanyName = [rs stringForColumn:@"name"];
+        model.merchantCompanyAddr = [rs stringForColumn:@"address"];
+        model.merchantEmail = [rs stringForColumn:@"email"];
+        model.merchantPhone = [rs stringForColumn:@"phone"];
+        model.merchantCatId = [rs intForColumn:@"catId"];
+        model.merchantLevelId = [rs intForColumn:@"levelId"];
+        model.merchantDistrictId = [rs intForColumn:@"districtId"];
+        model.merchantAvatar = [rs stringForColumn:@"avatar"];
+        model.merchantCatName = [rs stringForColumn:@"catName"];
+        model.merchantDistrictName = [rs stringForColumn:@"districtName"];
+#ifdef DEBUG
+        NSLog(@"model is %@",model);
+#endif
+        [arrList addObject:model];
+    }
+    [db close];
+    return arrList;
+}
+- (void)removeAllMerchantListWithCatId:(NSInteger)catId
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM MerchantList where catId = %d",catId];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    return ;
+}
 @end

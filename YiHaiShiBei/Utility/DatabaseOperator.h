@@ -47,5 +47,8 @@
 /**
  MerchantList
  */
+- (void)insertAllMerchantList:(NSMutableArray *)arrList withCateId:(NSInteger)catId;
+- (NSMutableArray *)getAllMerchantListWithCatId:(NSInteger)catId;
+- (void)removeAllMerchantListWithCatId:(NSInteger)catId;
 
 @end
