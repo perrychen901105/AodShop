@@ -22,4 +22,6 @@
 #define K_USER_SELECTED_DISTRICT_ID @"userSelectedDistrictId"
 #define K_USER_SELECTED_CITY_NAME @"userSelectedCityName"
 
+#define COLOR_TITLE_DEFAULT [UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f]
+
 #endif

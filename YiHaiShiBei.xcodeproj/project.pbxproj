@@ -104,6 +104,7 @@
 		2CA9E2AB1A0922290078176D /* HUDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9E2A91A0922290078176D /* HUDHelper.m */; };
 		2CA9E2AD1A0929C00078176D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AC1A0929C00078176D /* UIKit.framework */; };
 		2CA9E2AF1A0929DA0078176D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AE1A0929DA0078176D /* Foundation.framework */; };
+		2CB1EBD31A3C8DBC0071B90F /* HomePurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */; };
 		2CC3156D1A2AC13200D63E46 /* MerchantModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3156C1A2AC13200D63E46 /* MerchantModel.m */; };
 		2CC315701A2AC33C00D63E46 /* MerchantListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3156F1A2AC33C00D63E46 /* MerchantListModel.m */; };
 		2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */; };
@@ -325,6 +326,8 @@
 		2CA9E2A91A0922290078176D /* HUDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDHelper.m; sourceTree = "<group>"; };
 		2CA9E2AC1A0929C00078176D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CA9E2AE1A0929DA0078176D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2CB1EBD11A3C8DBC0071B90F /* HomePurchaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePurchaseTableViewCell.h; sourceTree = "<group>"; };
+		2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePurchaseTableViewCell.m; sourceTree = "<group>"; };
 		2CC3156B1A2AC13200D63E46 /* MerchantModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantModel.h; sourceTree = "<group>"; };
 		2CC3156C1A2AC13200D63E46 /* MerchantModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantModel.m; sourceTree = "<group>"; };
 		2CC3156E1A2AC33C00D63E46 /* MerchantListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantListModel.h; sourceTree = "<group>"; };
@@ -600,6 +603,8 @@
 				2C01A5031A2CC4E300FAA7D8 /* InfoTableViewCell.m */,
 				2C8183141A2F65B700FFB28D /* MsgTableViewCell.h */,
 				2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */,
+				2CB1EBD11A3C8DBC0071B90F /* HomePurchaseTableViewCell.h */,
+				2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */,
 			);
 			path = HomeIndexCell;
 			sourceTree = "<group>";
@@ -1218,6 +1223,7 @@
 				2C7D33701A221C55002C4A9A /* FMResultSet.m in Sources */,
 				040C051819FE38B6009FD61D /* HomeIndexViewModel.m in Sources */,
 				2C7D336F1A221C55002C4A9A /* FMDatabaseQueue.m in Sources */,
+				2CB1EBD31A3C8DBC0071B90F /* HomePurchaseTableViewCell.m in Sources */,
 				2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */,
 				2C433EA819EED4C900129479 /* ASIDownloadCache.m in Sources */,
 			);

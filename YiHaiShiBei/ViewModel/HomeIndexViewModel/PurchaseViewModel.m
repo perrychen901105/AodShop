@@ -7,6 +7,7 @@
 //
 
 #import "PurchaseViewModel.h"
+#import "PurchaseModel.h"
 
 @implementation PurchaseViewModel
 
@@ -15,10 +16,37 @@
     if (self.purchaseService == nil) {
         self.purchaseService = [[PurchaseRequestService alloc] init];
     }
+    if (self.arrAllPurchaseList == nil) {
+        self.arrAllPurchaseList = [@[] mutableCopy];
+    }
+    __weak PurchaseViewModel *weakSelf = self;
     [self.purchaseService getAllPurchaseListWithUserId:userID districtID:districtID productCatId:productCatID start:start num:num success:^(NSString *strResponse) {
-        
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(purchaseRequestSuccessWithTag:)]) {
+                if (weakSelf.arrAllPurchaseList.count > 0) {
+                    [weakSelf.arrAllPurchaseList removeAllObjects];
+                }
+                for (NSDictionary *dicPur in dicRoot[@"data"][@"ProductPurchasesList"]) {
+                    PurchaseModel *model = [[PurchaseModel alloc] initWithDictionary:dicPur error:nil];
+                    [weakSelf.arrAllPurchaseList addObject:model];
+                }
+                if (weakSelf.arrAllPurchaseList.count > 0) {
+                    
+                }
+                [weakSelf.delegate purchaseRequestSuccessWithTag:TypeRequestAllPurchaseList];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+                [weakSelf.delegate purchaseRequestError:intResponseCode message:strResponseMsg type:TypeRequestAllPurchaseList];
+            }
+        }
     } error:^(NSInteger errorCode, NSString *errorMsg) {
-        
+        if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+            [weakSelf.delegate purchaseRequestError:errorCode message:errorMsg type:TypeRequestAllPurchaseList];
+        }
     }];
 }
 

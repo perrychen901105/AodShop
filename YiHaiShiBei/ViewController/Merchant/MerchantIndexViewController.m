@@ -11,6 +11,7 @@
 #import "MerchantViewModel.h"
 #import "MerchantModel.h"
 #import "MJRefresh.h"
+#import "AppConfig.h"
 @interface MerchantIndexViewController ()<MerchantViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
@@ -90,6 +91,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MerchantTypeCell"];
     MerchantTypeModel *modelType = self.viewModelMerchant.arrMerchantType[indexPath.row];
     cell.textLabel.text = modelType.name;
+    cell.textLabel.textColor = COLOR_TITLE_DEFAULT;
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
     return cell;
 }
 

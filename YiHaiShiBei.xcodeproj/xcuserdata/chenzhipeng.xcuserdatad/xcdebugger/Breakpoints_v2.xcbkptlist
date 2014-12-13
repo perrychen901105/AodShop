@@ -71,9 +71,9 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[LocationListViewController backAction]"
-                  moduleName = "YiHaiShiBei"
+                  moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/Location/LocationListViewController.m"
-                  timestampString = "440084070.023498"
+                  timestampString = "440181959.950492"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "117"
@@ -85,9 +85,9 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__40-[LocationListViewController backAction]_block_invoke"
-                  moduleName = "YiHaiShiBei"
+                  moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/Location/LocationListViewController.m"
-                  timestampString = "440084070.02367"
+                  timestampString = "440181959.950581"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -142,6 +142,54 @@
             startingLineNumber = "93"
             endingLineNumber = "93"
             landmarkName = "-getCachedMerchantListWithCatId:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YiHaiShiBei/ViewController/HomePage/HomeIndexViewController.m"
+            timestampString = "440170193.550653"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "-purchaseRequestSuccessWithTag:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YiHaiShiBei/ViewController/HomePage/HomePurchaseListViewController.m"
+            timestampString = "440181249.991964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-purchaseRequestSuccessWithTag:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YiHaiShiBei/ViewModel/HomeIndexViewModel/PurchaseViewModel.m"
+            timestampString = "440181296.168215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "-getAllPurchaseList:districtID:productCateID:start:num:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

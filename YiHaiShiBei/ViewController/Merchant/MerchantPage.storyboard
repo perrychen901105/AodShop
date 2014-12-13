@@ -40,11 +40,24 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MerchantTypeCell" id="vMy-fH-ch9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MerchantTypeCell" id="vMy-fH-ch9">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vMy-fH-ch9" id="ody-1L-RQD">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_icon" translatesAutoresizingMaskIntoConstraints="NO" id="h5f-bq-SOh">
+                                                    <rect key="frame" x="304" y="15" width="8" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="8" id="B49-KQ-8DS"/>
+                                                        <constraint firstAttribute="height" constant="13" id="wOs-YD-lPr"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="h5f-bq-SOh" secondAttribute="trailing" constant="8" id="Wob-Ki-gZW"/>
+                                                <constraint firstAttribute="centerY" secondItem="h5f-bq-SOh" secondAttribute="centerY" id="eV7-X7-bak"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="1ZR-hm-NSB" kind="push" identifier="segueMerchantList" id="AIL-tP-Kk4"/>

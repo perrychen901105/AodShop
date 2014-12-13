@@ -78,7 +78,7 @@
     self.viewModelIndex.delegate = self;
     
     self.viewModelPurchase = [[PurchaseViewModel alloc] init];
-    
+    self.viewModelPurchase.delegate = self;
     
     self.viewModelProfile = [[ProfileViewModel alloc] init];
     
@@ -164,14 +164,14 @@
 }
 
 #pragma mark - PurchaseViewModel delegate methods
-- (void)purchaseRequestSuccessWithTag:(EnumRequestType)type
+- (void)purchaseRequestSuccessWithTag:(EnumPurchaseRequestType)type
 {
     if (type == TypeRequestAllPurchaseList) {
         
     }
 }
 
-- (void)purchaseRequestError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type
+- (void)purchaseRequestError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumPurchaseRequestType)type
 {
     
 }
@@ -235,9 +235,9 @@
         else {
             [self showOnlyLabelHud:@"请选择地区" withView:self.view];
         }
-        
+    
     } else if (indexPath.row == 2) {
-        [self.viewModelPurchase getAllPurchaseList:self.apps.storedUserID districtID:self.apps.storedDistrictID productCateID:0 start:-1 num:-1];
+        [self performSegueWithIdentifier:@"seguePurchaseList" sender:indexPath];
     } else if (indexPath.row == 3) {
         [self.viewModelPurchase getAllGrouponList:self.apps.storedDistrictID isPass:1 IsOnsale:1 start:-1 num:-1];
 //        [self performSegueWithIdentifier:SEGUE_GROUPON sender:indexPath];
