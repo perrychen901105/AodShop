@@ -77,6 +77,7 @@
     self.viewModelIndex = [[HomeIndexViewModel alloc] init];
     self.viewModelIndex.delegate = self;
     
+    self.viewModelPurchase = [[PurchaseViewModel alloc] init];
     
     
     self.viewModelProfile = [[ProfileViewModel alloc] init];
@@ -236,8 +237,9 @@
         }
         
     } else if (indexPath.row == 2) {
-        
+        [self.viewModelPurchase getAllPurchaseList:self.apps.storedUserID districtID:self.apps.storedDistrictID productCateID:0 start:-1 num:-1];
     } else if (indexPath.row == 3) {
+        [self.viewModelPurchase getAllGrouponList:self.apps.storedDistrictID isPass:1 IsOnsale:1 start:-1 num:-1];
 //        [self performSegueWithIdentifier:SEGUE_GROUPON sender:indexPath];
     }
 }
