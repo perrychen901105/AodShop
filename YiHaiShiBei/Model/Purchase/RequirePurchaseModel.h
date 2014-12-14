@@ -8,7 +8,7 @@
 
 #import "JSONModel.h"
 
-@interface PurchaseModel : JSONModel
+@interface RequirePurchaseModel : JSONModel
 
 @property (nonatomic, assign) NSInteger purchaseID;
 @property (nonatomic, assign) NSInteger purchaseUserID;

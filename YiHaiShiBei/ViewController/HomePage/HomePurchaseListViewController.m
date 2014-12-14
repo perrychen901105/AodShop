@@ -7,7 +7,7 @@
 //
 
 #import "HomePurchaseListViewController.h"
-#import "PurchaseModel.h"
+#import "RequirePurchaseModel.h"
 #import "PurchaseViewModel.h"
 #import "HomePurchaseTableViewCell.h"
 #import "MJRefresh.h"
@@ -81,7 +81,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomePurchaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomePurchaseTableViewCell"];
-    PurchaseModel *model = self.viewModelPurchase.arrAllPurchaseList[indexPath.row];
+    RequirePurchaseModel *model = self.viewModelPurchase.arrAllPurchaseList[indexPath.row];
     cell.lblTitle.text = [NSString stringWithFormat:@"标题: %@",model.purchaseTitle];
     cell.lblContent.text = [NSString stringWithFormat:@"内容: %@",model.purchaseInfo];
     return cell;

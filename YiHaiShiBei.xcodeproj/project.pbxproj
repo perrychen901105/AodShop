@@ -100,6 +100,7 @@
 		2C7D33751A2222E0002C4A9A /* DatabaseOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7D33741A2222DF002C4A9A /* DatabaseOperator.m */; };
 		2C8183161A2F65B700FFB28D /* MsgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */; };
 		2C8183191A2F75CD00FFB28D /* InforDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8183181A2F75CD00FFB28D /* InforDetailViewController.m */; };
+		2C9FB54A1A3D66650056DA6A /* RequirePurchaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FB5491A3D66650056DA6A /* RequirePurchaseModel.m */; };
 		2CA9E2AA1A0922290078176D /* CommoneTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9E2A71A0922290078176D /* CommoneTools.m */; };
 		2CA9E2AB1A0922290078176D /* HUDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9E2A91A0922290078176D /* HUDHelper.m */; };
 		2CA9E2AD1A0929C00078176D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AC1A0929C00078176D /* UIKit.framework */; };
@@ -112,7 +113,6 @@
 		2CD091B41A30C6D20049E22E /* MsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD091B31A30C6D20049E22E /* MsgDetailViewController.m */; };
 		2CD0BDAC1A0F73310004F44C /* ChooseLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BDAB1A0F73310004F44C /* ChooseLocationViewController.m */; };
 		2CD0BDAE1A0F73430004F44C /* ChooseLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD0BDAD1A0F73430004F44C /* ChooseLocation.storyboard */; };
-		2CD227EF1A3BEFD300195E0F /* PurchaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD227EE1A3BEFD300195E0F /* PurchaseModel.m */; };
 		2CD227F21A3BEFE700195E0F /* GrouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD227F11A3BEFE700195E0F /* GrouponModel.m */; };
 		2CDA1DDC19EEA50E0001FC43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DDB19EEA50E0001FC43 /* main.m */; };
 		2CDA1DDF19EEA50E0001FC43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DDE19EEA50E0001FC43 /* AppDelegate.m */; };
@@ -320,6 +320,8 @@
 		2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewCell.m; sourceTree = "<group>"; };
 		2C8183171A2F75CD00FFB28D /* InforDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InforDetailViewController.h; sourceTree = "<group>"; };
 		2C8183181A2F75CD00FFB28D /* InforDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InforDetailViewController.m; sourceTree = "<group>"; };
+		2C9FB5481A3D66650056DA6A /* RequirePurchaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirePurchaseModel.h; sourceTree = "<group>"; };
+		2C9FB5491A3D66650056DA6A /* RequirePurchaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirePurchaseModel.m; sourceTree = "<group>"; };
 		2CA9E2A61A0922290078176D /* CommoneTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommoneTools.h; sourceTree = "<group>"; };
 		2CA9E2A71A0922290078176D /* CommoneTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommoneTools.m; sourceTree = "<group>"; };
 		2CA9E2A81A0922290078176D /* HUDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDHelper.h; sourceTree = "<group>"; };
@@ -341,8 +343,6 @@
 		2CD0BDAA1A0F73310004F44C /* ChooseLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLocationViewController.h; sourceTree = "<group>"; };
 		2CD0BDAB1A0F73310004F44C /* ChooseLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLocationViewController.m; sourceTree = "<group>"; };
 		2CD0BDAD1A0F73430004F44C /* ChooseLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChooseLocation.storyboard; sourceTree = "<group>"; };
-		2CD227ED1A3BEFD300195E0F /* PurchaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseModel.h; sourceTree = "<group>"; };
-		2CD227EE1A3BEFD300195E0F /* PurchaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseModel.m; sourceTree = "<group>"; };
 		2CD227F01A3BEFE700195E0F /* GrouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrouponModel.h; sourceTree = "<group>"; };
 		2CD227F11A3BEFE700195E0F /* GrouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrouponModel.m; sourceTree = "<group>"; };
 		2CDA1DD619EEA50E0001FC43 /* 艺海拾贝.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "艺海拾贝.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -913,8 +913,8 @@
 		2CD227EC1A3BEFA100195E0F /* Purchase */ = {
 			isa = PBXGroup;
 			children = (
-				2CD227ED1A3BEFD300195E0F /* PurchaseModel.h */,
-				2CD227EE1A3BEFD300195E0F /* PurchaseModel.m */,
+				2C9FB5481A3D66650056DA6A /* RequirePurchaseModel.h */,
+				2C9FB5491A3D66650056DA6A /* RequirePurchaseModel.m */,
 				2CD227F01A3BEFE700195E0F /* GrouponModel.h */,
 				2CD227F11A3BEFE700195E0F /* GrouponModel.m */,
 			);
@@ -1171,7 +1171,6 @@
 				2CA9E2AA1A0922290078176D /* CommoneTools.m in Sources */,
 				2C433EAB19EED4C900129479 /* ASIInputStream.m in Sources */,
 				2CEF60591A150026001B7B53 /* BannerModel.m in Sources */,
-				2CD227EF1A3BEFD300195E0F /* PurchaseModel.m in Sources */,
 				2C0C17031A39ED730015F53F /* MerchantInfoCell.m in Sources */,
 				046643E519F7A1360060C9CC /* MoreIndexViewController.m in Sources */,
 				2C258EAE1A276B7B00CE9F0D /* MerchantRequestService.m in Sources */,
@@ -1189,6 +1188,7 @@
 				2C31B6A71A2E070F0097F8AE /* InformationListModel.m in Sources */,
 				2C7D336C1A221C55002C4A9A /* FMDatabase.m in Sources */,
 				2C7D336D1A221C55002C4A9A /* FMDatabaseAdditions.m in Sources */,
+				2C9FB54A1A3D66650056DA6A /* RequirePurchaseModel.m in Sources */,
 				2C433ED519EED87200129479 /* MBProgressHUD.m in Sources */,
 				04EB66FC19FF6D990043D120 /* JSONModelArray.m in Sources */,
 				2C433EA719EED4C900129479 /* ASIDataDecompressor.m in Sources */,

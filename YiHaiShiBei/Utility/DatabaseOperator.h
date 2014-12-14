@@ -35,6 +35,12 @@
 - (NSMutableArray *)getAllMessagesWithDistrictId:(NSInteger)districtid;
 - (void)removeAllMessagesWithDistrictId:(NSInteger)districtid;
 
+/**
+ 求购
+ */
+- (void)insertAllRequirePurchase:(NSMutableArray *)arrData;
+- (NSMutableArray *)getALlRequirePuchaseList;
+- (void)removeAllRequirePurchaseList;
 
 #pragma mark - 商户
 /**

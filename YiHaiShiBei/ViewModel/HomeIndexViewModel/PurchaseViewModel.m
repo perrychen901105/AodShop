@@ -7,7 +7,7 @@
 //
 
 #import "PurchaseViewModel.h"
-#import "PurchaseModel.h"
+#import "RequirePurchaseModel.h"
 
 @implementation PurchaseViewModel
 
@@ -30,7 +30,7 @@
                     [weakSelf.arrAllPurchaseList removeAllObjects];
                 }
                 for (NSDictionary *dicPur in dicRoot[@"data"][@"ProductPurchasesList"]) {
-                    PurchaseModel *model = [[PurchaseModel alloc] initWithDictionary:dicPur error:nil];
+                    RequirePurchaseModel *model = [[RequirePurchaseModel alloc] initWithDictionary:dicPur error:nil];
                     [weakSelf.arrAllPurchaseList addObject:model];
                 }
                 if (weakSelf.arrAllPurchaseList.count > 0) {

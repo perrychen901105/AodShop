@@ -14,6 +14,7 @@
 #import "InformationListModel.h"
 #import "MsgListModel.h"
 #import "MerchantModel.h"
+#import "RequirePurchaseModel.h"
 
 @implementation DatabaseOperator
 {
@@ -325,6 +326,56 @@
     return ;
 }
 
+/**
+ 求购
+ */
+- (void)insertAllRequirePurchase:(NSMutableArray *)arrData
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    NSMutableArray *arrValues = [@[] mutableCopy];
+    for (RequirePurchaseModel *model in arrData) {
+        NSString *strValues = [NSString stringWithFormat:@"(%d,%d,'%@','%@','%@',%d,'%@','%@',%d,'%@','%@','%@','%@','%@',%d,%d,'%@','%@')",model.purchaseID,model.purchaseUserID,model.purchaseTitle,model.purchaseInfo,model.purchaseTime,model.purchaseIsPass,model.purchasePassTime,model.backup,model.purchaseDistrictID,model.purchaseDistrictName,model.purchaseUsrName,model.purchaseAvatar,model.purchaseUsrEmail,model.purchaseUsrPhone,model.purchaseUsrIsPass,model.purchaseCatID,model.purchaseCatName,model.purchaseCatPic];
+        [arrValues addObject:strValues];
+    }
+    NSString *strAllValue = [arrValues componentsJoinedByString:@","];
+    NSString *strExec = [NSString stringWithFormat:@"insert or replace into RequirePurchaseList(id, name, picture, productNumber, infoNumber) values %@",strAllValue];
+    BOOL dbSuccess = [db executeUpdate:strExec];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    db = nil;
+}
+- (NSMutableArray *)getALlRequirePuchaseList
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return [@[] mutableCopy];
+    }
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM RequirePurchaseList"];
+    FMResultSet *rs = [db executeQuery:strSql];
+    NSMutableArray *arrList = [@[] mutableCopy];
+    while ([rs next]) {
+        RequirePurchaseModel *model = [[RequirePurchaseModel alloc] init];
+#ifdef DEBUG
+        NSLog(@"model is %@",model);
+#endif
+        [arrList addObject:model];
+    }
+    [db close];
+    return arrList;
+
+}
+
+- (void)removeAllRequirePurchaseList
+{
+    
+}
 
 #pragma mark - 商户
 #pragma mark - 商户分类

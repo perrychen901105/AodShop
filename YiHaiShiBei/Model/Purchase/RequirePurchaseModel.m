@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 perry. All rights reserved.
 //
 
-#import "PurchaseModel.h"
+#import "RequirePurchaseModel.h"
 #import "JSONKeyMapper.h"
-@implementation PurchaseModel
+@implementation RequirePurchaseModel
 
 +(JSONKeyMapper *)keyMapper
 {
