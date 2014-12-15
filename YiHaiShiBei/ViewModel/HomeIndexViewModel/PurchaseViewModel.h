@@ -34,6 +34,7 @@ typedef enum EnumPurchaseRequestType
 - (void)getAllPurchaseList:(NSInteger)userID districtID:(NSInteger)districtID productCateID:(NSInteger)productCatID start:(NSInteger)start num:(NSInteger)num;
 - (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass IsOnsale:(NSInteger)isOnsale start:(NSInteger)numStart num:(NSInteger)num;
 
-//- (void)getCachedPurchaseList
+- (void)getCachedRequirePurchaseList;
+- (void)getCachedGrouponList;
 
 @end

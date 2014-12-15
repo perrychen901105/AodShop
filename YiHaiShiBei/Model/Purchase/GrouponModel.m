@@ -7,7 +7,20 @@
 //
 
 #import "GrouponModel.h"
-
+#import "JSONKeyMapper.h"
 @implementation GrouponModel
++(JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"GrouppurchaseProduct.id":@"grouponID",
+                                                       @"GrouppurchaseProduct.user_id":@"name",
+                                                       @"GrouppurchaseProduct.title":@"picture",
+                                                       @"GrouppurchaseProduct.purchase_info":@"price",
+                                                       @"GrouppurchaseProduct.district_id":@"number",
+                                                       @"GrouppurchaseProduct.product_cat_id":@"sort",
+                                                       @"GrouppurchaseProduct.purchase_time":@"isPass",
+                                                       @"GrouppurchaseProduct.is_pass":@"isOnSale"
+                                                       }];
+}
 
 @end

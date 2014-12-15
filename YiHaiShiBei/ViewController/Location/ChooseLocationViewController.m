@@ -145,6 +145,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     self.apps.selectedLocation = self.selectedLocation;
     self.apps.storedDistrictID = self.selectedLocation.intDistrinctId;
+    [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }

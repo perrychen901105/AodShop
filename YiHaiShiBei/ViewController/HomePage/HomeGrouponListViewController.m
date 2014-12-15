@@ -7,18 +7,45 @@
 //
 
 #import "HomeGrouponListViewController.h"
+#import "PurchaseViewModel.h"
+#import "GrouponModel.h"
+#import "MJRefresh.h"
+#import "AppConfig.h"
 
-@interface HomeGrouponListViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface HomeGrouponListViewController ()<UITableViewDataSource, UITableViewDelegate, PurchaseViewModelDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
+
+@property (nonatomic, strong) PurchaseViewModel *viewModelPurchase;
 
 @end
 
 @implementation HomeGrouponListViewController
 
+- (void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNaviBarTitle:@"寻求团购"];
+    [self setBackButton];
+    self.viewModelPurchase = [[PurchaseViewModel alloc] init];
+    self.viewModelPurchase.delegate = self;
+    
+    __weak HomeGrouponListViewController *weakSelf = self;
+    [self.tbViewContent addHeaderWithCallback:^{
+        if (weakSelf.viewModelPurchase) {
+            [weakSelf.viewModelPurchase getAllGrouponList:self.apps.storedDistrictID isPass:1 IsOnsale:1 start:-1 num:-1];
+        }
+    }];
+    [self.viewModelPurchase getCachedGrouponList];
+    if (self.viewModelPurchase.arrAllGrouponList.count > 0) {
+        [self.tbViewContent reloadData];
+    } else {
+        [self.tbViewContent headerBeginRefreshing];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -36,6 +63,18 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - PurchaseViewModel methods
+- (void)purchaseRequestError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumPurchaseRequestType)type
+{
+    [self.tbViewContent headerEndRefreshing];
+}
+
+- (void)purchaseRequestSuccessWithTag:(EnumPurchaseRequestType)type
+{
+    [self.tbViewContent reloadData];
+    [self.tbViewContent headerEndRefreshing];
+}
 
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

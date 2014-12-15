@@ -8,6 +8,8 @@
 
 #import "PurchaseViewModel.h"
 #import "RequirePurchaseModel.h"
+#import "GrouponModel.h"
+#import "DatabaseOperator.h"
 
 @implementation PurchaseViewModel
 
@@ -34,7 +36,8 @@
                     [weakSelf.arrAllPurchaseList addObject:model];
                 }
                 if (weakSelf.arrAllPurchaseList.count > 0) {
-                    
+                    [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
+                    [[DatabaseOperator getInstance] insertAllRequirePurchase:weakSelf.arrAllPurchaseList];
                 }
                 [weakSelf.delegate purchaseRequestSuccessWithTag:TypeRequestAllPurchaseList];
             }
@@ -55,11 +58,54 @@
     if (self.purchaseService == nil) {
         self.purchaseService = [[PurchaseRequestService alloc] init];
     }
+    if (self.arrAllGrouponList == nil) {
+        self.arrAllGrouponList = [@[] mutableCopy];
+    }
+    __weak PurchaseViewModel *weakSelf = self;
     [self.purchaseService getAllGrouponList:districtID isPass:isPass isOnsale:isOnsale start:numStart num:num success:^(NSString *strResponse) {
-        
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(purchaseRequestSuccessWithTag:)]) {
+                if (weakSelf.arrAllGrouponList.count > 0) {
+                    [weakSelf.arrAllGrouponList removeAllObjects];
+                }
+                for (NSDictionary *dicGroup in dicRoot[@"data"][@"grouppurchase"]) {
+                    GrouponModel *model = [[GrouponModel alloc] initWithDictionary:dicGroup error:nil];
+                    [weakSelf.arrAllGrouponList addObject:model];
+                }
+                if (weakSelf.arrAllGrouponList.count > 0) {
+//                    [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
+//                    [[DatabaseOperator getInstance] insertAllRequirePurchase:weakSelf.arrAllPurchaseList];
+                }
+                [weakSelf.delegate purchaseRequestSuccessWithTag:TypeRequestAllGrouponList];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+                [weakSelf.delegate purchaseRequestError:intResponseCode message:strResponseMsg type:TypeRequestAllGrouponList];
+            }
+        }
     } error:^(NSInteger errorCode, NSString *errorMsg) {
-        
+        if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+            [weakSelf.delegate purchaseRequestError:errorCode message:errorMsg type:TypeRequestAllGrouponList];
+        }
     }];
+}
+
+- (void)getCachedRequirePurchaseList
+{
+    if (self.arrAllPurchaseList == nil) {
+        self.arrAllPurchaseList = [@[] mutableCopy];
+    }
+    self.arrAllPurchaseList = [[DatabaseOperator getInstance] getALlRequirePuchaseList];
+}
+
+- (void)getCachedGrouponList
+{
+    if (self.arrAllGrouponList == nil) {
+        self.arrAllGrouponList = [@[] mutableCopy];
+    }
 }
 
 @end

@@ -41,7 +41,13 @@
             [weakSelf.viewModelPurchase getAllPurchaseList:self.apps.storedUserID districtID:self.apps.storedDistrictID productCateID:0 start:-1 num:-1];
         }
     }];
-    [self.tbViewContent headerBeginRefreshing];
+    [self.viewModelPurchase getCachedRequirePurchaseList];
+    if (self.viewModelPurchase.arrAllPurchaseList.count > 0) {
+        [self.tbViewContent reloadData];
+    } else {
+        [self.tbViewContent headerBeginRefreshing];
+    }
+    
     // Do any additional setup after loading the view.
 }
 

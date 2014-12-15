@@ -342,7 +342,7 @@
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
-    NSString *strExec = [NSString stringWithFormat:@"insert or replace into RequirePurchaseList(id, name, picture, productNumber, infoNumber) values %@",strAllValue];
+    NSString *strExec = [NSString stringWithFormat:@"insert or replace into RequirePurchaseList(id, userID, title, info, purchaseTime, ispass, passTime, backup, distirctID, districtName, username, avatar, email, phone, userIsPass, catID, catName, catPic) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
         NSLog(@"success");
@@ -362,6 +362,24 @@
     NSMutableArray *arrList = [@[] mutableCopy];
     while ([rs next]) {
         RequirePurchaseModel *model = [[RequirePurchaseModel alloc] init];
+        model.purchaseID = [rs intForColumn:@"id"];
+        model.purchaseUserID = [rs intForColumn:@"userID"];
+        model.purchaseTitle = [rs stringForColumn:@"title"];
+        model.purchaseInfo = [rs stringForColumn:@"info"];
+        model.purchaseTime = [rs stringForColumn:@"purchaseTime"];
+        model.purchaseIsPass = [rs intForColumn:@"ispass"];
+        model.purchasePassTime = [rs stringForColumn:@"passTime"];
+        model.backup = [rs stringForColumn:@"backup"];
+        model.purchaseDistrictID = [rs intForColumn:@"distirctID"];
+        model.purchaseDistrictName = [rs stringForColumn:@"districtName"];
+        model.purchaseUsrName = [rs stringForColumn:@"username"];
+        model.purchaseAvatar = [rs stringForColumn:@"avatar"];
+        model.purchaseUsrEmail = [rs stringForColumn:@"email"];
+        model.purchaseUsrPhone = [rs stringForColumn:@"phone"];
+        model.purchaseUsrIsPass = [rs intForColumn:@"userIsPass"];
+        model.purchaseCatID = [rs intForColumn:@"catID"];
+        model.purchaseCatName = [rs stringForColumn:@"catName"];
+        model.purchaseCatPic = [rs stringForColumn:@"catPic"];
 #ifdef DEBUG
         NSLog(@"model is %@",model);
 #endif
@@ -374,7 +392,18 @@
 
 - (void)removeAllRequirePurchaseList
 {
-    
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM RequirePurchaseList"];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    return ;
 }
 
 #pragma mark - 商户

@@ -66,6 +66,7 @@
                     [weakSelf.arrAllInfos addObject:model];
                 }
                 if (weakSelf.arrAllInfos.count > 0) {
+                    [[DatabaseOperator getInstance] removeAllInforsWithDistrictId:distrinctID];
                     [[DatabaseOperator getInstance] insertAllInformations:weakSelf.arrAllInfos withDistrictId:distrinctID];
                 }
                 
@@ -107,6 +108,7 @@
                     [weakSelf.arrAllMessages addObject:model];
                 }
                 if (weakSelf.arrAllMessages.count > 0) {
+                    [[DatabaseOperator getInstance] removeAllMessagesWithDistrictId:distrinctID];
                     [[DatabaseOperator getInstance] insertAllMessages:weakSelf.arrAllMessages withDistrictId:distrinctID];
                 }
                 [weakSelf.delegate httpSuccessWithTag:TypeRequestAllMessage];
