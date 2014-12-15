@@ -15,6 +15,7 @@
 #import "MsgListModel.h"
 #import "MerchantModel.h"
 #import "RequirePurchaseModel.h"
+#import "GrouponModel.h"
 
 @implementation DatabaseOperator
 {
@@ -398,6 +399,76 @@
         return ;
     }
     NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM RequirePurchaseList"];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    return ;
+}
+
+/**
+ *  团购
+ */
+- (void)insertAllGrouponList:(NSMutableArray *)arrData
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    NSMutableArray *arrValues = [@[] mutableCopy];
+    for (GrouponModel *model in arrData) {
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%f,%d,%d,%d,%d)",model.grouponID,model.name,model.picture,model.price,model.number,model.sort,model.isPass,model.isOnSale];
+        [arrValues addObject:strValues];
+    }
+    NSString *strAllValue = [arrValues componentsJoinedByString:@","];
+    NSString *strExec = [NSString stringWithFormat:@"insert into grouponList(grouponID, name, picture, price, number, sort, isPass, isOnSale) values %@",strAllValue];
+    BOOL dbSuccess = [db executeUpdate:strExec];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    db = nil;
+
+}
+- (NSMutableArray *)getAllGrouponList
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return [@[] mutableCopy];
+    }
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM grouponList"];
+    FMResultSet *rs = [db executeQuery:strSql];
+    NSMutableArray *arrList = [@[] mutableCopy];
+    while ([rs next]) {
+        GrouponModel *model = [[GrouponModel alloc] init];
+        model.grouponID = [rs intForColumn:@"grouponID"];
+        model.name = [rs stringForColumn:@"name"];
+        model.picture = [rs stringForColumn:@"picture"];
+        model.price = [rs doubleForColumn:@"price"];
+        model.number = [rs intForColumn:@"number"];
+        model.sort = [rs intForColumn:@"sort"];
+        model.isPass = [rs intForColumn:@"isPass"];
+        model.isOnSale = [rs intForColumn:@"isOnSale"];
+#ifdef DEBUG
+        NSLog(@"model is %@",model);
+#endif
+        [arrList addObject:model];
+    }
+    [db close];
+    return arrList;
+}
+- (void)removeAllGrouponList
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM grouponList"];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");

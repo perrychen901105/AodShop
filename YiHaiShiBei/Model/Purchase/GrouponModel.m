@@ -13,13 +13,13 @@
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
                                                        @"GrouppurchaseProduct.id":@"grouponID",
-                                                       @"GrouppurchaseProduct.user_id":@"name",
-                                                       @"GrouppurchaseProduct.title":@"picture",
-                                                       @"GrouppurchaseProduct.purchase_info":@"price",
-                                                       @"GrouppurchaseProduct.district_id":@"number",
-                                                       @"GrouppurchaseProduct.product_cat_id":@"sort",
-                                                       @"GrouppurchaseProduct.purchase_time":@"isPass",
-                                                       @"GrouppurchaseProduct.is_pass":@"isOnSale"
+                                                       @"GrouppurchaseProduct.name":@"name",
+                                                       @"GrouppurchaseProduct.picture":@"picture",
+                                                       @"GrouppurchaseProduct.price":@"price",
+                                                       @"GrouppurchaseProduct.number":@"number",
+                                                       @"GrouppurchaseProduct.sort":@"sort",
+                                                       @"GrouppurchaseProduct.is_pass":@"isPass",
+                                                       @"GrouppurchaseProduct.is_onsale":@"isOnSale"
                                                        }];
 }
 

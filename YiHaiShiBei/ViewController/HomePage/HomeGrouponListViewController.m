@@ -7,6 +7,8 @@
 //
 
 #import "HomeGrouponListViewController.h"
+#import "UIImageView+WebCache.h"
+#import "GrouponTableViewCell.h"
 #import "PurchaseViewModel.h"
 #import "GrouponModel.h"
 #import "MJRefresh.h"
@@ -79,14 +81,18 @@
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellHomeGroupon"];
-    cell.textLabel.text = @"a";
+    GrouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GrouponTableViewCell"];
+    GrouponModel *model = self.viewModelPurchase.arrAllGrouponList[indexPath.row];
+    [cell.imgViewPicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    cell.lblTitle.text  = [NSString stringWithFormat:@"商品名: %@",model.name];
+    cell.lblPrice.text = [NSString stringWithFormat:@"团购价: %.2f",model.price];
+    cell.lblNumber.text = [NSString stringWithFormat:@"剩余数量: %d",model.number];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.viewModelPurchase.arrAllGrouponList.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

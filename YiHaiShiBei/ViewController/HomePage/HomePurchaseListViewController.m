@@ -28,13 +28,30 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)addPuchaseAction:(id)sender
+{
+    [self performSegueWithIdentifier:@"segueAddPurchase" sender:sender];
+}
+
+- (void)addPuchaseBtnFunc
+{
+    UIButton *btnAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnAdd.frame = CGRectMake(0, 0, 60, 30);
+    [btnAdd setTitle:@"添加求购" forState:UIControlStateNormal];
+    [btnAdd setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnAdd.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [btnAdd setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
+    [btnAdd addTarget:self action:@selector(addPuchaseAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnAdd];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModelPurchase = [[PurchaseViewModel alloc]  init];
     self.viewModelPurchase.delegate = self;
     [self setNaviBarTitle:@"求购列表"];
     [self setBackButton];
-    
+    [self addPuchaseBtnFunc];
     __weak HomePurchaseListViewController *weakSelf = self;
     [self.tbViewContent addHeaderWithCallback:^{
         if (weakSelf.viewModelPurchase) {

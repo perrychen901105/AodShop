@@ -122,6 +122,8 @@
 		2CDA1DF619EEA50E0001FC43 /* YiHaiShiBeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DF519EEA50E0001FC43 /* YiHaiShiBeiTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2CEF60591A150026001B7B53 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF60581A150026001B7B53 /* BannerModel.m */; };
 		2CF1239F1A3673BF00EE1430 /* MerchantListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF1239E1A3673BF00EE1430 /* MerchantListViewController.m */; };
+		2CF8BC8C1A3F165600A347EA /* GrouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8BC8B1A3F165600A347EA /* GrouponTableViewCell.m */; };
+		2CF8BC921A3F341400A347EA /* AddPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8BC911A3F341400A347EA /* AddPurchaseViewController.m */; };
 		2CFD71911A0A80EE00A9902D /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFD71901A0A80EE00A9902D /* UserModel.m */; };
 		2CFFA0081A1CE33A0089B5AC /* HomeInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA0071A1CE33A0089B5AC /* HomeInfoListViewController.m */; };
 		2CFFA00B1A1CE3470089B5AC /* HomeMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA00A1A1CE3470089B5AC /* HomeMessageListViewController.m */; };
@@ -360,6 +362,10 @@
 		2CEF60581A150026001B7B53 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
 		2CF1239D1A3673BF00EE1430 /* MerchantListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantListViewController.h; sourceTree = "<group>"; };
 		2CF1239E1A3673BF00EE1430 /* MerchantListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantListViewController.m; sourceTree = "<group>"; };
+		2CF8BC8A1A3F165600A347EA /* GrouponTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrouponTableViewCell.h; sourceTree = "<group>"; };
+		2CF8BC8B1A3F165600A347EA /* GrouponTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrouponTableViewCell.m; sourceTree = "<group>"; };
+		2CF8BC901A3F341400A347EA /* AddPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPurchaseViewController.h; sourceTree = "<group>"; };
+		2CF8BC911A3F341400A347EA /* AddPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPurchaseViewController.m; sourceTree = "<group>"; };
 		2CFD718F1A0A80EE00A9902D /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		2CFD71901A0A80EE00A9902D /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		2CFFA0061A1CE33A0089B5AC /* HomeInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeInfoListViewController.h; sourceTree = "<group>"; };
@@ -471,6 +477,8 @@
 				2CFFA00D1A1CE3670089B5AC /* HomeGrouponListViewController.m */,
 				2CFFA00F1A1CE37E0089B5AC /* HomePurchaseListViewController.h */,
 				2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */,
+				2CF8BC901A3F341400A347EA /* AddPurchaseViewController.h */,
+				2CF8BC911A3F341400A347EA /* AddPurchaseViewController.m */,
 				0446962419EFB2FF00EF71A3 /* HomePage.storyboard */,
 			);
 			path = HomePage;
@@ -605,6 +613,8 @@
 				2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */,
 				2CB1EBD11A3C8DBC0071B90F /* HomePurchaseTableViewCell.h */,
 				2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */,
+				2CF8BC8A1A3F165600A347EA /* GrouponTableViewCell.h */,
+				2CF8BC8B1A3F165600A347EA /* GrouponTableViewCell.m */,
 			);
 			path = HomeIndexCell;
 			sourceTree = "<group>";
@@ -1207,6 +1217,7 @@
 				04EB66FD19FF6D990043D120 /* JSONModelClassProperty.m in Sources */,
 				2CFFA0111A1CE37E0089B5AC /* HomePurchaseListViewController.m in Sources */,
 				04EB670119FF6D990043D120 /* JSONHTTPClient.m in Sources */,
+				2CF8BC921A3F341400A347EA /* AddPurchaseViewController.m in Sources */,
 				2CFFA00E1A1CE3670089B5AC /* HomeGrouponListViewController.m in Sources */,
 				04EB670819FF6F330043D120 /* LocationModel.m in Sources */,
 				2C01A51D1A2CCC3400FAA7D8 /* UIView+MJExtension.m in Sources */,
@@ -1216,6 +1227,7 @@
 				2C01A5191A2CCC3400FAA7D8 /* MJRefreshFooterView.m in Sources */,
 				2C5EC2DD1A3B503000DF1F84 /* PurchaseViewModel.m in Sources */,
 				2C01A51C1A2CCC3400FAA7D8 /* UIScrollView+MJRefresh.m in Sources */,
+				2CF8BC8C1A3F165600A347EA /* GrouponTableViewCell.m in Sources */,
 				2C3373D31A2628B5002918A0 /* UIImage+WebP.m in Sources */,
 				040D62111A0336B2009AB9B2 /* RegisterRootViewController.m in Sources */,
 				04EB66FF19FF6D990043D120 /* NSArray+JSONModel.m in Sources */,

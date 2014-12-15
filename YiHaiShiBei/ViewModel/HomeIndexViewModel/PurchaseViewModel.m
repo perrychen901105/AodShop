@@ -76,8 +76,8 @@
                     [weakSelf.arrAllGrouponList addObject:model];
                 }
                 if (weakSelf.arrAllGrouponList.count > 0) {
-//                    [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
-//                    [[DatabaseOperator getInstance] insertAllRequirePurchase:weakSelf.arrAllPurchaseList];
+                    [[DatabaseOperator getInstance] removeAllGrouponList];
+                    [[DatabaseOperator getInstance] insertAllGrouponList:weakSelf.arrAllGrouponList];
                 }
                 [weakSelf.delegate purchaseRequestSuccessWithTag:TypeRequestAllGrouponList];
             }
@@ -106,6 +106,7 @@
     if (self.arrAllGrouponList == nil) {
         self.arrAllGrouponList = [@[] mutableCopy];
     }
+    self.arrAllGrouponList = [[DatabaseOperator getInstance] getAllGrouponList];
 }
 
 @end

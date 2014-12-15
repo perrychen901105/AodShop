@@ -42,6 +42,13 @@
 - (NSMutableArray *)getALlRequirePuchaseList;
 - (void)removeAllRequirePurchaseList;
 
+/**
+ *  团购
+ */
+- (void)insertAllGrouponList:(NSMutableArray *)arrData;
+- (NSMutableArray *)getAllGrouponList;
+- (void)removeAllGrouponList;
+
 #pragma mark - 商户
 /**
  MerchantType

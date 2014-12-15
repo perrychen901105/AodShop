@@ -239,8 +239,7 @@
     } else if (indexPath.row == 2) {
         [self performSegueWithIdentifier:@"seguePurchaseList" sender:indexPath];
     } else if (indexPath.row == 3) {
-        [self.viewModelPurchase getAllGrouponList:self.apps.storedDistrictID isPass:1 IsOnsale:1 start:-1 num:-1];
-//        [self performSegueWithIdentifier:SEGUE_GROUPON sender:indexPath];
+        [self performSegueWithIdentifier:SEGUE_GROUPON sender:indexPath];
     }
 }
 
