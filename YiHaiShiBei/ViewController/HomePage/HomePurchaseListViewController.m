@@ -55,7 +55,7 @@
     __weak HomePurchaseListViewController *weakSelf = self;
     [self.tbViewContent addHeaderWithCallback:^{
         if (weakSelf.viewModelPurchase) {
-            [weakSelf.viewModelPurchase getAllPurchaseList:self.apps.storedUserID districtID:self.apps.storedDistrictID productCateID:0 start:-1 num:-1];
+            [weakSelf.viewModelPurchase getAllPurchaseList:-1 districtID:-1 productCateID:0 start:-1 num:-1];
         }
     }];
     [self.viewModelPurchase getCachedRequirePurchaseList];
