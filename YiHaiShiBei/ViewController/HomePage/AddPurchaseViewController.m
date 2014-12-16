@@ -165,15 +165,11 @@
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString *title = self.theData[row];
-    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:COLOR_TITLE_DEFAULT,NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}];
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:COLOR_TITLE_DEFAULT,NSFontAttributeName:[UIFont boldSystemFontOfSize:15]}];
     
     return attString;
     
 }
-
-//-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-//    return self.theData[row];
-//}
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.tfChooseType.text = self.theData[row];

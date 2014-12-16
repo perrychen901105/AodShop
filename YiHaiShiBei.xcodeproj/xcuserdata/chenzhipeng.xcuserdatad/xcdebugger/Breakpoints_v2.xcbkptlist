@@ -73,7 +73,7 @@
                   symbolName = "-[LocationListViewController backAction]"
                   moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/Location/LocationListViewController.m"
-                  timestampString = "440354159.231844"
+                  timestampString = "440380490.849031"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "117"
@@ -87,7 +87,7 @@
                   symbolName = "__40-[LocationListViewController backAction]_block_invoke"
                   moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/Location/LocationListViewController.m"
-                  timestampString = "440354159.231969"
+                  timestampString = "440380490.849188"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -109,22 +109,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/ViewController/Merchant/MerchantListViewController.m"
-            timestampString = "440083988.918693"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

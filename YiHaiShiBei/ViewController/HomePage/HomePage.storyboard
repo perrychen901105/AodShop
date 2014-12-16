@@ -85,11 +85,11 @@
                         <viewControllerLayoutGuide type="bottom" id="gVT-9W-mn4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Gh-4j-r8O">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IlX-4E-sc5">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -166,7 +166,6 @@
                             <constraint firstItem="IlX-4E-sc5" firstAttribute="top" secondItem="zoX-Ts-f0W" secondAttribute="bottom" id="t7W-CT-5Wb"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="GQP-wp-QNO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>

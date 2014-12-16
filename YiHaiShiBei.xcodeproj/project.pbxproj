@@ -55,6 +55,7 @@
 		2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */; };
 		2C258EAE1A276B7B00CE9F0D /* MerchantRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */; };
 		2C258EB21A276F0400CE9F0D /* MerchantViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C258EB11A276F0400CE9F0D /* MerchantViewModel.m */; };
+		2C2E09351A3FA83700FF6FB2 /* ProductRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E09341A3FA83700FF6FB2 /* ProductRequestService.m */; };
 		2C31B6A71A2E070F0097F8AE /* InformationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B6A61A2E070F0097F8AE /* InformationListModel.m */; };
 		2C3373C71A2628B5002918A0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3373A71A2628B5002918A0 /* MKAnnotationView+WebCache.m */; };
 		2C3373C81A2628B5002918A0 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3373A91A2628B5002918A0 /* NSData+ImageContentType.m */; };
@@ -234,6 +235,8 @@
 		2C258EAD1A276B7B00CE9F0D /* MerchantRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantRequestService.m; sourceTree = "<group>"; };
 		2C258EB01A276F0400CE9F0D /* MerchantViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantViewModel.h; sourceTree = "<group>"; };
 		2C258EB11A276F0400CE9F0D /* MerchantViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantViewModel.m; sourceTree = "<group>"; };
+		2C2E09331A3FA83700FF6FB2 /* ProductRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductRequestService.h; sourceTree = "<group>"; };
+		2C2E09341A3FA83700FF6FB2 /* ProductRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductRequestService.m; sourceTree = "<group>"; };
 		2C31B6A51A2E070F0097F8AE /* InformationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationListModel.h; sourceTree = "<group>"; };
 		2C31B6A61A2E070F0097F8AE /* InformationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationListModel.m; sourceTree = "<group>"; };
 		2C3373A61A2628B5002918A0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -687,6 +690,15 @@
 			path = MerchantViewModel;
 			sourceTree = "<group>";
 		};
+		2C2E09321A3FA82000FF6FB2 /* ProductService */ = {
+			isa = PBXGroup;
+			children = (
+				2C2E09331A3FA83700FF6FB2 /* ProductRequestService.h */,
+				2C2E09341A3FA83700FF6FB2 /* ProductRequestService.m */,
+			);
+			path = ProductService;
+			sourceTree = "<group>";
+		};
 		2C3373A51A2628B5002918A0 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +742,7 @@
 		2C433E7C19EEC91600129479 /* HttpService */ = {
 			isa = PBXGroup;
 			children = (
+				2C2E09321A3FA82000FF6FB2 /* ProductService */,
 				2C258EAB1A276B5700CE9F0D /* MerchantService */,
 				04AA31901A00B5E900623D30 /* ProfileService */,
 				040C051119FE1D46009FD61D /* HomeIndexService */,
@@ -1232,6 +1245,7 @@
 				040D62111A0336B2009AB9B2 /* RegisterRootViewController.m in Sources */,
 				04EB66FF19FF6D990043D120 /* NSArray+JSONModel.m in Sources */,
 				2C3373CE1A2628B5002918A0 /* SDWebImageManager.m in Sources */,
+				2C2E09351A3FA83700FF6FB2 /* ProductRequestService.m in Sources */,
 				2C7D33701A221C55002C4A9A /* FMResultSet.m in Sources */,
 				040C051819FE38B6009FD61D /* HomeIndexViewModel.m in Sources */,
 				2C7D336F1A221C55002C4A9A /* FMDatabaseQueue.m in Sources */,
