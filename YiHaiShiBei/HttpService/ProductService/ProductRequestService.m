@@ -10,4 +10,60 @@
 
 @implementation ProductRequestService
 
+static NSString *ActionGetProductCatList = @"getProductCatList";
+static NSString *ActionGetProductList = @"getProductsListByCat";
+static NSString *ActionPostAddPurchase = @"addProductPurchase";
+
+- (void)getProductTypeListWithStart:(NSInteger)start number:(NSInteger)num success:(GetAllProductCatListSuccessBlock)successBlock error:(GetAllProductCatListFailBlock)errorBlock
+{
+    NSMutableString *strRequest = [[NSMutableString alloc] initWithString:@""];
+    if (start >= 0) {
+        [strRequest appendFormat:@"/%d",start];
+    }
+    if (num >= 0) {
+        [strRequest appendFormat:@"/%d",num];
+    }
+    [self getRequestToServer:ActionGetProductCatList requestPara:strRequest success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+- (void)getProductListWithCatId:(NSInteger)catId start:(NSInteger)start num:(NSInteger)num success:(GetAllProductListSuccessBlock)successBlock error:(GetAllProductListFailBlock)errorBlock
+{
+    NSMutableString *strRequest = [[NSMutableString alloc] initWithString:@""];
+    [strRequest appendFormat:@"/%d",catId];
+    if (start >= 0) {
+        [strRequest appendFormat:@"/%d",start];
+    }
+    if (num >= 0) {
+        [strRequest appendFormat:@"/%d",num];
+    }
+    [self getRequestToServer:ActionGetProductList requestPara:strRequest success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+/**
+ *  @brief addProductPurchase      post
+ *  @paras userid, appkey, title, purchaseinfo, districtid, productcatid,content
+ */
+- (void)postAddProductPurchaseWithUsrID:(NSInteger)userid appKey:(NSString *)appKey title:(NSString *)title purchaseInfo:(NSString *)info districtID:(NSInteger)districtID productcatid:(NSInteger)catID success:(PostAddPurchaseSuccessBlock)successBlock error:(PostAddPurchaseFailBlock)errorBlock
+{
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    dicParas[@"userid"] = [NSString stringWithFormat:@"%d",userid];
+    dicParas[@"appkey"] = [NSString stringWithFormat:@"%@",appKey];
+    dicParas[@"title"] = [NSString stringWithFormat:@"%@",title];
+    dicParas[@"purchaseinfo"] = [NSString stringWithFormat:@"%@",info];
+    dicParas[@"districtid"] = [NSString stringWithFormat:@"%d",districtID];
+    dicParas[@"productcatid"] = [NSString stringWithFormat:@"%d",catID];
+    [self postRequestToServer:ActionPostAddPurchase dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
 @end

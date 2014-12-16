@@ -38,6 +38,7 @@
 		04EB670419FF6D990043D120 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB66FA19FF6D990043D120 /* JSONValueTransformer.m */; };
 		04EB670819FF6F330043D120 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB670719FF6F330043D120 /* LocationModel.m */; };
 		263F2D561A122EEA00BC7AC7 /* LocationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F2D551A122EEA00BC7AC7 /* LocationListViewController.m */; };
+		26C99FAA1A402AFE00D28C85 /* ProductViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C99FA91A402AFE00D28C85 /* ProductViewModel.m */; };
 		26CA72221A10DB44000DEE5F /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CA72211A10DB44000DEE5F /* LocationViewModel.m */; };
 		26FCFE071A25F3A000A53FC7 /* AdvertiseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCFE061A25F3A000A53FC7 /* AdvertiseModel.m */; };
 		2C01A5041A2CC4E300FAA7D8 /* InfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01A5031A2CC4E300FAA7D8 /* InfoTableViewCell.m */; };
@@ -201,6 +202,8 @@
 		04EB670719FF6F330043D120 /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
 		263F2D541A122EEA00BC7AC7 /* LocationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationListViewController.h; sourceTree = "<group>"; };
 		263F2D551A122EEA00BC7AC7 /* LocationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationListViewController.m; sourceTree = "<group>"; };
+		26C99FA81A402AFE00D28C85 /* ProductViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductViewModel.h; sourceTree = "<group>"; };
+		26C99FA91A402AFE00D28C85 /* ProductViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductViewModel.m; sourceTree = "<group>"; };
 		26CA72201A10DB44000DEE5F /* LocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewModel.h; sourceTree = "<group>"; };
 		26CA72211A10DB44000DEE5F /* LocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewModel.m; sourceTree = "<group>"; };
 		26FCFE051A25F3A000A53FC7 /* AdvertiseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertiseModel.h; sourceTree = "<group>"; };
@@ -598,6 +601,15 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		26C99FA71A402AE700D28C85 /* ProductViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				26C99FA81A402AFE00D28C85 /* ProductViewModel.h */,
+				26C99FA91A402AFE00D28C85 /* ProductViewModel.m */,
+			);
+			path = ProductViewModel;
+			sourceTree = "<group>";
+		};
 		26CA721F1A10DB34000DEE5F /* LocationViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -778,6 +790,7 @@
 		2C433E7F19EEC91600129479 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				26C99FA71A402AE700D28C85 /* ProductViewModel */,
 				2C258EAF1A276EEF00CE9F0D /* MerchantViewModel */,
 				26CA721F1A10DB34000DEE5F /* LocationViewModel */,
 				2C03C8F11A07C7A200EB90FD /* ProfileViewModel */,
@@ -1171,6 +1184,7 @@
 				2CA9E2AB1A0922290078176D /* HUDHelper.m in Sources */,
 				2C433EAA19EED4C900129479 /* ASIHTTPRequest.m in Sources */,
 				2C433EA519EED4C900129479 /* ASIAuthenticationDialog.m in Sources */,
+				26C99FAA1A402AFE00D28C85 /* ProductViewModel.m in Sources */,
 				2C433EA919EED4C900129479 /* ASIFormDataRequest.m in Sources */,
 				2CDA1DDF19EEA50E0001FC43 /* AppDelegate.m in Sources */,
 				2C8183161A2F65B700FFB28D /* MsgTableViewCell.m in Sources */,

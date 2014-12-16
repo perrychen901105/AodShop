@@ -7,7 +7,6 @@
 //
 
 #import "MerchantRequestService.h"
-#import "MJRefresh.h"d
 
 @implementation MerchantRequestService
 
