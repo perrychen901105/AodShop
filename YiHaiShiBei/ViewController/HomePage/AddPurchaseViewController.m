@@ -7,8 +7,10 @@
 //
 
 #import "AddPurchaseViewController.h"
+#import "ProductViewModel.h"
+#import "ProductModel.h"
 #import "AppConfig.h"
-@interface AddPurchaseViewController ()<UITextFieldDelegate, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface AddPurchaseViewController ()<UITextFieldDelegate, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, ProductViewModelDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewContent;
 
@@ -22,7 +24,11 @@
 
 @property (nonatomic, assign) NSInteger selectTag;
 
+@property (nonatomic, assign) NSInteger selectCatID;
+
 @property (strong,nonatomic) NSArray *theData;
+
+@property (strong, nonatomic) ProductViewModel *viewModelProduct;
 
 - (IBAction)btnpressed_submit:(id)sender;
 @end
@@ -34,10 +40,17 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)getProductCategory
+{
+    [self showProgressLabelHud:@"正在请求中..." withView:self.view];
+    [self.viewModelProduct getProductTypeListWithStart:-1 count:-1];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNaviBarTitle:@"添加求购商品"];
     [self setBackButton];
+    self.selectCatID = 0;
     
     self.selectTag = 0;
     self.tfAddTitle.tag = 1;
@@ -49,14 +62,14 @@
     self.tvContent.textContainer.lineFragmentPadding = 0;
     self.tvContent.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5);
     
-    
+    self.viewModelProduct = [[ProductViewModel alloc] init];
+    self.viewModelProduct.delegate = self;
+    [self getProductCategory];
     
     UIPickerView *picker = [[UIPickerView alloc] init];
-    
     picker.dataSource = self;
     picker.delegate = self;
     self.tfChooseType.inputView = picker;
-    self.theData = @[@"one",@"two",@"three",@"four"];
 
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 0)];
     self.tfAddTitle.leftView = paddingView;
@@ -67,7 +80,6 @@
     self.tfChooseType.leftViewMode = UITextFieldViewModeAlways;
     UITapGestureRecognizer *gesDismissKeyboard = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissInputView)];
     [self.scrollViewContent addGestureRecognizer:gesDismissKeyboard];
-    // Do any additional setup after loading the view.
 }
 
 - (void)dismissInputView
@@ -96,6 +108,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Product viewmodel methods
+- (void)productHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumProductRequestType)typeRequest
+{
+    [self hideHudWithDelay:0];
+}
+
+- (void)productHttpSuccessWithTag:(EnumProductRequestType)typeRequest
+{
+    if (typeRequest == ProductRequestAllTypeList) {
+        self.theData = self.viewModelProduct.arrAllProCatList;
+    } else if (typeRequest == ProductRequestAddPurchase) {
+        
+    }
+    
+    [self hideHudWithDelay:0];
 }
 
 #pragma mark - Keyboard methods
@@ -139,6 +168,14 @@
 }
 
 #pragma mark - UITextField methods
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField.tag == 2) {
+        return NO;
+    }
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     if (textField.tag == 1) {
@@ -164,29 +201,22 @@
 
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSString *title = self.theData[row];
+    ProductCatModel *model = self.theData[row];
+    NSString *title = model.name;
     NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:COLOR_TITLE_DEFAULT,NSFontAttributeName:[UIFont boldSystemFontOfSize:15]}];
     
     return attString;
-    
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.tfChooseType.text = self.theData[row];
-//    [self.tfChooseType resignFirstResponder];
+    ProductCatModel *model = self.theData[row];
+    self.selectCatID = model.catID;
+    self.tfChooseType.text = model.name;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)btnpressed_submit:(id)sender {
     [self dismissInputView];
+    
+    [self.viewModelProduct postToPurchaseWithUsrID:self.apps.storedUserID appKey:self.apps.stroedAppKey title:self.tfAddTitle.text purchaseInfo:self.tvContent.text districtID:self.apps.storedDistrictID productcatid:self.selectCatID];
 }
 @end

@@ -72,7 +72,7 @@
                     [weakSelf.arrAllGrouponList removeAllObjects];
                 }
                 for (NSDictionary *dicGroup in dicRoot[@"data"][@"grouppurchase"]) {
-                    GrouponModel *model = [[GrouponModel alloc] initWithDictionary:dicGroup error:nil];
+                    GrouponModel *model = [[GrouponModel alloc] initWithDictionary:dicGroup[@"GrouppurchaseProduct"] error:nil];
                     [weakSelf.arrAllGrouponList addObject:model];
                 }
                 if (weakSelf.arrAllGrouponList.count > 0) {

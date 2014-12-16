@@ -73,7 +73,7 @@
                   symbolName = "-[LocationListViewController backAction]"
                   moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/Location/LocationListViewController.m"
-                  timestampString = "440380490.849031"
+                  timestampString = "440437188.783613"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "117"
@@ -87,7 +87,7 @@
                   symbolName = "__40-[LocationListViewController backAction]_block_invoke"
                   moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/Location/LocationListViewController.m"
-                  timestampString = "440380490.849188"
+                  timestampString = "440437188.783719"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -119,28 +119,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/ViewModel/MerchantViewModel/MerchantViewModel.m"
-            timestampString = "440084008.673813"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-getCachedMerchantListWithCatId:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "YiHaiShiBei/ViewController/HomePage/HomeIndexViewController.m"
-            timestampString = "440170193.550653"
+            timestampString = "440436825.060954"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-purchaseRequestSuccessWithTag:"
             landmarkType = "5">
          </BreakpointContent>
@@ -158,6 +142,38 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "-getAllPurchaseList:districtID:productCateID:start:num:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YiHaiShiBei/HttpService/HttpRequestService.m"
+            timestampString = "440436997.620283"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-postRequestToServer:dicParams:success:error:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YiHaiShiBei/ViewController/Register/RegisterRootViewController.m"
+            timestampString = "440437190.731199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-LoginSuccess"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

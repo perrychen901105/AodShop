@@ -111,6 +111,8 @@
 {
     [self showOnlyLabelHud:@"登陆成功" withView:self.view];
     self.apps.modelUser = self.viewModleProfile.modelUser;
+    self.apps.storedUserID = [self.viewModleProfile.modelUser.userId intValue];
+    self.apps.stroedAppKey = self.viewModleProfile.modelUser.appkey;
     self.HUD.delegate = self;
     self.HUD.tag = 1;
 }

@@ -85,6 +85,7 @@
     [self setNaviBarTitle:nil];
     [self setSearchAndCityButton];
     [self requestForBannerList];
+    [self setUserIconButton];
     
     NSString *strPreviousSelectCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
     if (strPreviousSelectCityName != nil) {
@@ -92,8 +93,6 @@
     } else {
         self.lblCity.text = @"地址";
     }
-//    [self.viewModelIndex getAllBannersList:1 start:-1 num:-1];
-    
 //    HttpRequestService *requestUpload = [[HttpRequestService alloc] init];
 //    UIImage *imgOne = [UIImage imageNamed:@"tabbar_moreSelected"];
 //    NSMutableDictionary *dicPost = [[NSMutableDictionary alloc] init];
@@ -116,7 +115,7 @@
 - (void)userLoginAction
 {
     if (self.apps.modelUser) {
-        [self.viewModelProfile getUserInfo:self.apps.modelUser.userId appKey:self.apps.modelUser.appkey];
+        [self.viewModelProfile getUserInfo:[NSString stringWithFormat:@"%d",self.apps.modelUser.userId] appKey:self.apps.modelUser.appkey];
     } else {
         // 未登录
         UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];

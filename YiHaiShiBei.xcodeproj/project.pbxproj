@@ -108,6 +108,7 @@
 		2CA9E2AD1A0929C00078176D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AC1A0929C00078176D /* UIKit.framework */; };
 		2CA9E2AF1A0929DA0078176D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AE1A0929DA0078176D /* Foundation.framework */; };
 		2CB1EBD31A3C8DBC0071B90F /* HomePurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */; };
+		2CB979891A40817E0072E996 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB979881A40817E0072E996 /* ProductModel.m */; };
 		2CC3156D1A2AC13200D63E46 /* MerchantModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3156C1A2AC13200D63E46 /* MerchantModel.m */; };
 		2CC315701A2AC33C00D63E46 /* MerchantListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3156F1A2AC33C00D63E46 /* MerchantListModel.m */; };
 		2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */; };
@@ -338,6 +339,8 @@
 		2CA9E2AE1A0929DA0078176D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2CB1EBD11A3C8DBC0071B90F /* HomePurchaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePurchaseTableViewCell.h; sourceTree = "<group>"; };
 		2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePurchaseTableViewCell.m; sourceTree = "<group>"; };
+		2CB979871A40817E0072E996 /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
+		2CB979881A40817E0072E996 /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
 		2CC3156B1A2AC13200D63E46 /* MerchantModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantModel.h; sourceTree = "<group>"; };
 		2CC3156C1A2AC13200D63E46 /* MerchantModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantModel.m; sourceTree = "<group>"; };
 		2CC3156E1A2AC33C00D63E46 /* MerchantListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantListModel.h; sourceTree = "<group>"; };
@@ -767,6 +770,7 @@
 		2C433E7D19EEC91600129479 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2CB979861A40815E0072E996 /* Product */,
 				2CD227EC1A3BEFA100195E0F /* Purchase */,
 				2CC3156A1A2AC10D00D63E46 /* Merchant */,
 				2CEF60561A14FFDD001B7B53 /* HomeIndex */,
@@ -921,6 +925,15 @@
 				2C7D33741A2222DF002C4A9A /* DatabaseOperator.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		2CB979861A40815E0072E996 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				2CB979871A40817E0072E996 /* ProductModel.h */,
+				2CB979881A40817E0072E996 /* ProductModel.m */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 		2CC3156A1A2AC10D00D63E46 /* Merchant */ = {
@@ -1201,6 +1214,7 @@
 				2CD227F21A3BEFE700195E0F /* GrouponModel.m in Sources */,
 				2C01A51A1A2CCC3400FAA7D8 /* MJRefreshHeaderView.m in Sources */,
 				2C01A5181A2CCC3400FAA7D8 /* MJRefreshConst.m in Sources */,
+				2CB979891A40817E0072E996 /* ProductModel.m in Sources */,
 				040C051419FE22F3009FD61D /* HomeIndexService.m in Sources */,
 				2C7D33751A2222E0002C4A9A /* DatabaseOperator.m in Sources */,
 				2C3373D01A2628B5002918A0 /* UIButton+WebCache.m in Sources */,

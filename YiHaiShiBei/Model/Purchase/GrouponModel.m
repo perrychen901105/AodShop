@@ -12,14 +12,14 @@
 +(JSONKeyMapper *)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"GrouppurchaseProduct.id":@"grouponID",
-                                                       @"GrouppurchaseProduct.name":@"name",
-                                                       @"GrouppurchaseProduct.picture":@"picture",
-                                                       @"GrouppurchaseProduct.price":@"price",
-                                                       @"GrouppurchaseProduct.number":@"number",
-                                                       @"GrouppurchaseProduct.sort":@"sort",
-                                                       @"GrouppurchaseProduct.is_pass":@"isPass",
-                                                       @"GrouppurchaseProduct.is_onsale":@"isOnSale"
+                                                       @"id":@"grouponID",
+                                                       @"name":@"name",
+                                                       @"picture":@"picture",
+                                                       @"price":@"price",
+                                                       @"number":@"number",
+                                                       @"sort":@"sort",
+                                                       @"is_pass":@"isPass",
+                                                       @"is_onsale":@"isOnSale"
                                                        }];
 }
 
