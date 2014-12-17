@@ -64,4 +64,12 @@
 - (NSMutableArray *)getAllMerchantListWithCatId:(NSInteger)catId;
 - (void)removeAllMerchantListWithCatId:(NSInteger)catId;
 
+#pragma mark - 商品
+/**
+ *  商品分类
+ */
+- (void)insertAllProductType:(NSMutableArray *)arrList;
+- (NSMutableArray *)getAllProductTypes;
+- (void)removeAllProductTypes;
+
 @end

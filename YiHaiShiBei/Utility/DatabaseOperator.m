@@ -16,6 +16,7 @@
 #import "MerchantModel.h"
 #import "RequirePurchaseModel.h"
 #import "GrouponModel.h"
+#import "ProductModel.h"
 
 @implementation DatabaseOperator
 {
@@ -622,4 +623,64 @@
     [db close];
     return ;
 }
+
+#pragma mark - 商品
+/**
+ CREATE TABLE "ProductType" ("catID" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "name" VARCHAR, "picture" VARCHAR, "product_number" INTEGER, "info_number" INTEGER, "sort" INTEGER, "created" VARCHAR, "modified" VARCHAR, "status" INTEGER)
+ */
+/**
+ *  商品分类
+ */
+- (void)insertAllProductType:(NSMutableArray *)arrList
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    NSMutableArray *arrValues = [@[] mutableCopy];
+    for (ProductCatModel *modelType in arrList) {
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%d,%d)",modelType.merchantTypeId,modelType.name, modelType.picture,modelType.product_number, modelType.info_number];
+        [arrValues addObject:strValues];
+    }
+    NSString *strAllValue = [arrValues componentsJoinedByString:@","];
+    NSString *strExec = [NSString stringWithFormat:@"insert or replace into MerchantType(id, name, picture, productNumber, infoNumber) values %@",strAllValue];
+    BOOL dbSuccess = [db executeUpdate:strExec];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    db = nil;
+
+}
+- (NSMutableArray *)getAllProductTypes
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return [@[] mutableCopy];
+    }
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM MerchantType"];
+    FMResultSet *rs = [db executeQuery:strSql];
+    NSMutableArray *arrTypes = [@[] mutableCopy];
+    while ([rs next]) {
+        MerchantTypeModel *model = [[MerchantTypeModel alloc] init];
+        model.merchantTypeId = [rs intForColumn:@"id"];
+        model.name = [rs stringForColumn:@"name"];
+        model.picture = [rs stringForColumn:@"picture"];
+        model.product_number = [rs intForColumn:@"productNumber"];
+        model.info_number = [rs intForColumn:@"infoNumber"];
+#ifdef DEBUG
+        NSLog(@"model is %@",model);
+#endif
+        [arrTypes addObject:model];
+    }
+    [db close];
+    return arrTypes;
+}
+- (void)removeAllProductTypes
+{
+    
+}
+
 @end

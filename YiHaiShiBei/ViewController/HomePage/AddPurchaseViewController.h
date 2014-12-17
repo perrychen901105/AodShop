@@ -10,6 +10,6 @@
 
 @interface AddPurchaseViewController : BaseViewController
 
-
+@property (nonatomic, copy) void(^AddPurchaseBlock)(BOOL isSuccess);
 
 @end

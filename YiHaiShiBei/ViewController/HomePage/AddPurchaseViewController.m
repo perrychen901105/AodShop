@@ -10,7 +10,7 @@
 #import "ProductViewModel.h"
 #import "ProductModel.h"
 #import "AppConfig.h"
-@interface AddPurchaseViewController ()<UITextFieldDelegate, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, ProductViewModelDelegate>
+@interface AddPurchaseViewController ()<UITextFieldDelegate, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, ProductViewModelDelegate,MBProgressHUDDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewContent;
 
@@ -120,11 +120,29 @@
 {
     if (typeRequest == ProductRequestAllTypeList) {
         self.theData = self.viewModelProduct.arrAllProCatList;
+        if (self.viewModelProduct.arrAllProCatList.count > 0) {
+            ProductCatModel *model = self.viewModelProduct.arrAllProCatList[0];
+            self.tfChooseType.text = model.name;
+            self.selectCatID = model.catID;
+        }
+        [self hideHudWithDelay:0];
     } else if (typeRequest == ProductRequestAddPurchase) {
         
+        [self showOnlyLabelHud:@"提交成功" withView:self.view];
+        self.HUD.delegate = self;
+        self.HUD.tag = 100;
     }
     
-    [self hideHudWithDelay:0];
+}
+
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    if (hud.tag == 100) {
+        if (self.AddPurchaseBlock) {
+            self.AddPurchaseBlock(YES);
+        }
+        [self backAction];
+    }
 }
 
 #pragma mark - Keyboard methods
@@ -216,7 +234,34 @@
 
 - (IBAction)btnpressed_submit:(id)sender {
     [self dismissInputView];
+    NSString *strPurchaseTitle = [self.tfAddTitle.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *strPurchaseInfo = [self.tvContent.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    [self.viewModelProduct postToPurchaseWithUsrID:self.apps.storedUserID appKey:self.apps.stroedAppKey title:self.tfAddTitle.text purchaseInfo:self.tvContent.text districtID:self.apps.storedDistrictID productcatid:self.selectCatID];
+    if (self.apps.storedDistrictID <= 0) {
+        [self showOnlyLabelHud:@"请选择地区" withView:self.view];
+        return;
+    }
+    if (self.apps.storedUserID <= 0) {
+        [self showOnlyLabelHud:@"请登录" withView:self.view];
+        return;
+    }
+    if (self.selectCatID <= 0) {
+        [self showOnlyLabelHud:@"请选择分类" withView:self.view];
+        return;
+    }
+    if (strPurchaseTitle.length <= 0) {
+        [self showOnlyLabelHud:@"请填写标题" withView:self.view];
+        return;
+    } else if (strPurchaseTitle.length > 10) {
+        [self showOnlyLabelHud:@"标题不能超过10个字" withView:self.view];
+        return;
+    }
+    if (strPurchaseInfo.length <= 0) {
+        [self showOnlyLabelHud:@"请填写内容" withView:self.view];
+        return;
+    }
+    
+    [self showProgressLabelHud:@"正在提交中..." withView:self.view];
+    [self.viewModelProduct postToPurchaseWithUsrID:self.apps.storedUserID appKey:self.apps.stroedAppKey title:strPurchaseTitle purchaseInfo:strPurchaseInfo districtID:self.apps.storedDistrictID productcatid:self.selectCatID];
 }
 @end
