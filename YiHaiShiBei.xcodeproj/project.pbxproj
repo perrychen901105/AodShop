@@ -108,6 +108,7 @@
 		2CA9E2AD1A0929C00078176D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AC1A0929C00078176D /* UIKit.framework */; };
 		2CA9E2AF1A0929DA0078176D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9E2AE1A0929DA0078176D /* Foundation.framework */; };
 		2CB1EBD31A3C8DBC0071B90F /* HomePurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */; };
+		2CB2F8911A41B94D00D40F6E /* SupplyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2F8901A41B94D00D40F6E /* SupplyListViewController.m */; };
 		2CB979891A40817E0072E996 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB979881A40817E0072E996 /* ProductModel.m */; };
 		2CC3156D1A2AC13200D63E46 /* MerchantModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3156C1A2AC13200D63E46 /* MerchantModel.m */; };
 		2CC315701A2AC33C00D63E46 /* MerchantListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3156F1A2AC33C00D63E46 /* MerchantListModel.m */; };
@@ -339,6 +340,8 @@
 		2CA9E2AE1A0929DA0078176D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2CB1EBD11A3C8DBC0071B90F /* HomePurchaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePurchaseTableViewCell.h; sourceTree = "<group>"; };
 		2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePurchaseTableViewCell.m; sourceTree = "<group>"; };
+		2CB2F88F1A41B94D00D40F6E /* SupplyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyListViewController.h; sourceTree = "<group>"; };
+		2CB2F8901A41B94D00D40F6E /* SupplyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplyListViewController.m; sourceTree = "<group>"; };
 		2CB979871A40817E0072E996 /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
 		2CB979881A40817E0072E996 /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
 		2CC3156B1A2AC13200D63E46 /* MerchantModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantModel.h; sourceTree = "<group>"; };
@@ -521,6 +524,8 @@
 			children = (
 				0446962619EFBB1C00EF71A3 /* SupplyIndexViewController.h */,
 				0446962719EFBB1C00EF71A3 /* SupplyIndexViewController.m */,
+				2CB2F88F1A41B94D00D40F6E /* SupplyListViewController.h */,
+				2CB2F8901A41B94D00D40F6E /* SupplyListViewController.m */,
 				0446962919EFBB3700EF71A3 /* SupplyIndex.storyboard */,
 			);
 			path = Supply;
@@ -1238,6 +1243,7 @@
 				2C433EAC19EED4C900129479 /* ASINetworkQueue.m in Sources */,
 				2C31B6A71A2E070F0097F8AE /* InformationListModel.m in Sources */,
 				2C7D336C1A221C55002C4A9A /* FMDatabase.m in Sources */,
+				2CB2F8911A41B94D00D40F6E /* SupplyListViewController.m in Sources */,
 				2C7D336D1A221C55002C4A9A /* FMDatabaseAdditions.m in Sources */,
 				2C9FB54A1A3D66650056DA6A /* RequirePurchaseModel.m in Sources */,
 				2C433ED519EED87200129479 /* MBProgressHUD.m in Sources */,

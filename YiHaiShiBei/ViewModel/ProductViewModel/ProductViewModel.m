@@ -7,6 +7,7 @@
 //
 
 #import "ProductViewModel.h"
+#import "DatabaseOperator.h"
 #import "ProductModel.h"
 
 @implementation ProductViewModel
@@ -35,7 +36,8 @@
                     [weakSelf.arrAllProCatList addObject:modelCat];
                 }
                 if (weakSelf.arrAllProCatList.count > 0) {
-                    
+                    [[DatabaseOperator getInstance] removeAllProductTypes];
+                    [[DatabaseOperator getInstance] insertAllProductType:weakSelf.arrAllProCatList];
                 }
                 [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAllTypeList];
             }
@@ -60,8 +62,23 @@
         NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
         NSInteger intResponseCode = [dicRoot[@"success"] intValue];
         NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpSuccessWithTag:)]) {
+                if (weakSelf.arrAllProductList.count > 0) {
+                    [weakSelf.arrAllProductList removeAllObjects];
+                }
+                
+                [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAllList];
+            }
+        } else {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
+                [weakSelf.delegate productHttpError:intResponseCode errMsg:strResponseMsg withType:ProductRequestAllList];
+            }
+        }
     } error:^(NSInteger errorCode, NSString *errorMsg) {
-        
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
+            [weakSelf.delegate productHttpError:errorCode errMsg:errorMsg withType:ProductRequestAllList];
+        }
     }];
 }
 
@@ -89,6 +106,14 @@
             [weakSelf.delegate productHttpError:errorCode errMsg:errorMsg withType:ProductRequestAllTypeList];
         }
     }];
+}
+
+- (void)getCachedProductTypeList
+{
+    if (self.arrAllProCatList == nil) {
+        self.arrAllProCatList = [@[] mutableCopy];
+    }
+    self.arrAllProCatList = [[DatabaseOperator getInstance] getAllProductTypes];
 }
 
 @end

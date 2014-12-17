@@ -492,11 +492,11 @@
     }
     NSMutableArray *arrValues = [@[] mutableCopy];
     for (MerchantTypeModel *modelType in arrTypes) {
-        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%d,%d)",modelType.merchantTypeId,modelType.name, modelType.picture,modelType.product_number, modelType.info_number];
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@')",modelType.merchantTypeId,modelType.name];
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
-    NSString *strExec = [NSString stringWithFormat:@"insert or replace into MerchantType(id, name, picture, productNumber, infoNumber) values %@",strAllValue];
+    NSString *strExec = [NSString stringWithFormat:@"insert or replace into MerchantType(id, name, ) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
         NSLog(@"success");
@@ -519,9 +519,7 @@
         MerchantTypeModel *model = [[MerchantTypeModel alloc] init];
         model.merchantTypeId = [rs intForColumn:@"id"];
         model.name = [rs stringForColumn:@"name"];
-        model.picture = [rs stringForColumn:@"picture"];
-        model.product_number = [rs intForColumn:@"productNumber"];
-        model.info_number = [rs intForColumn:@"infoNumber"];
+
 #ifdef DEBUG
         NSLog(@"model is %@",model);
 #endif
@@ -640,11 +638,11 @@
     }
     NSMutableArray *arrValues = [@[] mutableCopy];
     for (ProductCatModel *modelType in arrList) {
-        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%d,%d,%d,'%@','%@')",modelType.catID,modelType.name,modelType.picture,modelType];
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%d,%d, %d,'%@','%@')",modelType.catID,modelType.name,modelType.picture,modelType.product_number,modelType.info_number,modelType.sort,modelType.created,modelType.modified];
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
-    NSString *strExec = [NSString stringWithFormat:@"insert or replace into MerchantType(id, name, picture, productNumber, infoNumber) values %@",strAllValue];
+    NSString *strExec = [NSString stringWithFormat:@"insert into ProductType(catID, name, picture, product_number, info_number, sort, created, modified) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
         NSLog(@"success");
@@ -660,16 +658,19 @@
         // error
         return [@[] mutableCopy];
     }
-    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM MerchantType"];
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM ProductType"];
     FMResultSet *rs = [db executeQuery:strSql];
     NSMutableArray *arrTypes = [@[] mutableCopy];
     while ([rs next]) {
-        MerchantTypeModel *model = [[MerchantTypeModel alloc] init];
-        model.merchantTypeId = [rs intForColumn:@"id"];
+        ProductCatModel *model = [[ProductCatModel alloc] init];
+        model.catID = [rs intForColumn:@"catID"];
         model.name = [rs stringForColumn:@"name"];
         model.picture = [rs stringForColumn:@"picture"];
-        model.product_number = [rs intForColumn:@"productNumber"];
-        model.info_number = [rs intForColumn:@"infoNumber"];
+        model.product_number = [rs intForColumn:@"product_number"];
+        model.info_number = [rs intForColumn:@"info_number"];
+        model.sort = [rs intForColumn:@"sort"];
+        model.created = [rs stringForColumn:@"created"];
+        model.modified = [rs stringForColumn:@"modified"];
 #ifdef DEBUG
         NSLog(@"model is %@",model);
 #endif
@@ -680,7 +681,19 @@
 }
 - (void)removeAllProductTypes
 {
-    
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM ProductType"];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    return ;
 }
 
 @end

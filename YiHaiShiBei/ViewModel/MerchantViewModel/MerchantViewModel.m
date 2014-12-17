@@ -19,13 +19,19 @@
     }
     __weak MerchantViewModel *weakSelf = self;
     [self.merchantService getMerchantTypeListWithStartNum:numStart Number:numCount success:^(NSString *strResponse) {
-        MerchantTypeListModel *listModel = [[MerchantTypeListModel alloc] initWithString:strResponse error:nil];
-        if (listModel.success == 0) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+//        MerchantTypeListModel *listModel = [[MerchantTypeListModel alloc] initWithString:strResponse error:nil];
+        if (intResponseCode == 0) {
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
                 if (weakSelf.arrMerchantType.count > 0) {
                     [weakSelf.arrMerchantType removeAllObjects];
                 }
-                weakSelf.arrMerchantType = [listModel.arrMerchantType mutableCopy];
+                for (NSDictionary *dic in dicRoot[@"data"][@"usercatlist"]) {
+                    MerchantTypeModel *model = [[MerchantTypeModel alloc] initWithDictionary:dic[@"UserCat"] error:nil];
+                    [weakSelf.arrMerchantType addObject:model];
+                }
                 if (weakSelf.arrMerchantType.count > 0) {
                     [[DatabaseOperator getInstance] insertAllMerchantTypes:weakSelf.arrMerchantType];
                 }
@@ -33,7 +39,7 @@
             }
         } else {
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:errMsg:withType:)]) {
-                [weakSelf.delegate httpError:listModel.success errMsg:listModel.message withType:TypeRequestAllMTypeList];
+                [weakSelf.delegate httpError:intResponseCode errMsg:strResponseMsg withType:TypeRequestAllMTypeList];
             }
         }
     } error:^(NSInteger errorCode, NSString *strError) {

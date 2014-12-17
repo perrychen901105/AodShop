@@ -34,4 +34,6 @@ typedef enum EnumProductRequestType
 - (void)getProductListWithCatid:(NSInteger)catID start:(NSInteger)start count:(NSInteger)count;
 - (void)postToPurchaseWithUsrID:(NSInteger)userid appKey:(NSString *)appKey title:(NSString *)title purchaseInfo:(NSString *)info districtID:(NSInteger)districtID productcatid:(NSInteger)catID;
 
+- (void)getCachedProductTypeList;
+
 @end

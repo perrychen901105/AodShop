@@ -10,7 +10,7 @@
 
 @implementation MerchantRequestService
 
-static NSString *ActionMerchantTypeList = @"getProductCatList";
+static NSString *ActionMerchantTypeList = @"getUserCatList";
 static NSString *ActionMerchantList = @"getBusinessListByCat";
 
 - (void)getMerchantTypeListWithStartNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantTypeListSuccessBlock)successBlock error:(GetMerchantTypeListFailBlock)errorBlock
