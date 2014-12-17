@@ -640,7 +640,7 @@
     }
     NSMutableArray *arrValues = [@[] mutableCopy];
     for (ProductCatModel *modelType in arrList) {
-        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%d,%d)",modelType.merchantTypeId,modelType.name, modelType.picture,modelType.product_number, modelType.info_number];
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%d,%d,%d,'%@','%@')",modelType.catID,modelType.name,modelType.picture,modelType];
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
