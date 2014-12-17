@@ -496,7 +496,7 @@
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
-    NSString *strExec = [NSString stringWithFormat:@"insert or replace into MerchantType(id, name, ) values %@",strAllValue];
+    NSString *strExec = [NSString stringWithFormat:@"insert or replace into MerchantType(id, name ) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
         NSLog(@"success");
