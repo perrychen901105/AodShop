@@ -9,7 +9,7 @@
 #import "SupplyListViewController.h"
 #import "ProductViewModel.h"
 
-@interface SupplyListViewController ()
+@interface SupplyListViewController ()<ProductViewModelDelegate>
 
 @property (nonatomic, strong) ProductViewModel *viewModelProduct;
 
@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModelProduct = [[ProductViewModel alloc] init];
+    self.viewModelProduct.delegate = self;
     [self.viewModelProduct getProductListWithCatid:self.intCatid start:-1 count:-1];
     // Do any additional setup after loading the view.
 }
@@ -38,5 +39,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - ProductViewmodel methods
+- (void)productHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumProductRequestType)typeRequest
+{
+    
+}
+
+- (void)productHttpSuccessWithTag:(EnumProductRequestType)typeRequest
+{
+    
+}
 
 @end
