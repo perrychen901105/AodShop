@@ -67,7 +67,13 @@
                 if (weakSelf.arrAllProductList.count > 0) {
                     [weakSelf.arrAllProductList removeAllObjects];
                 }
-                
+                for (NSDictionary *dic in dicRoot[@"data"][@"productList"]) {
+                    ProductModel *model = [[ProductModel alloc] initWithDictionary:dic error:nil];
+                    [weakSelf.arrAllProductList addObject:model];
+                }
+                if (weakSelf.arrAllProductList.count > 0) {
+                    
+                }
                 [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAllList];
             }
         } else {
