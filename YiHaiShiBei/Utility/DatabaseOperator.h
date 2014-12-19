@@ -72,4 +72,10 @@
 - (NSMutableArray *)getAllProductTypes;
 - (void)removeAllProductTypes;
 
+/**
+ *  商品列表
+ */
+- (void)insertAllProductList:(NSMutableArray *)arrList withCatId:(NSInteger)catId;
+- (NSMutableArray *)getAllProductListWithCatId:(NSInteger)catId;
+- (void)removeAllProductListWithCatId:(NSInteger)catId;
 @end

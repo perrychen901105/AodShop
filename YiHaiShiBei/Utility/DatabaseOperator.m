@@ -696,4 +696,38 @@
     return ;
 }
 
+/**
+ *  商品列表
+ *  CREATE TABLE "ProductList" ("productID"1 "productName"2 VARCHAR, "productPicture"3 VARCHAR, "price"4 FLOAT, "productNum"5 INTEGER, "productClick"6 INTEGER, "districtID"7 INTEGER, "productCatID"8 INTEGER, "userID" 9INTEGER, "releaseDate"10 VARCHAR, "isPass"11 INTEGER, "backup"12 TEXT, "isOnSale"13 INTEGER, "districtName"14 VARCHAR, "productCatName"15 VARCHAR, "username"16 VARCHAR, "userEmail" 17VARCHAR, "avatar"18 VARCHAR, "userPhone"19 VARCHAR, "companyName" 20VARCHAR, "companyAddr"21 VARCHAR)
+ */
+- (void)insertAllProductList:(NSMutableArray *)arrList withCatId:(NSInteger)catId
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    NSMutableArray *arrValues = [@[] mutableCopy];
+    for (ProductModel *modelPro in arrList) {
+        NSString *strValues = [NSString stringWithFormat:@"(%ld,'%@','%@',%f,%ld,%ld,%ld,%ld,%ld,'%@',%ld,'%@',%ld,'%@','%@','%@','%@','%@','%@','%@','%@')",modelPro.productID,modelPro.productName,modelPro.productPicture,modelPro.price,modelPro.productNum,modelPro.productClick,modelPro.districtID,modelPro.productCatID,modelPro.userID,modelPro.releaseDate,modelPro.isPass,modelPro.backup,modelPro.isOnSale,modelPro.DistrictName,modelPro.productCatName,modelPro.username,modelPro.userEmail,modelPro.avatar,modelPro.userPhone,modelPro.companyName,modelPro.companyAddr];
+        [arrValues addObject:strValues];
+    }
+    NSString *strAllValue = [arrValues componentsJoinedByString:@","];
+    NSString *strExec = [NSString stringWithFormat:@"insert into ProductList(productID, name, address, email, phone, catId, levelId, districtId, avatar, catName, districtName) values %@",strAllValue];
+    BOOL dbSuccess = [db executeUpdate:strExec];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    db = nil;
+}
+- (NSMutableArray *)getAllProductListWithCatId:(NSInteger)catId
+{
+    
+}
+- (void)removeAllProductListWithCatId:(NSInteger)catId
+{
+    
+}
+
 @end
