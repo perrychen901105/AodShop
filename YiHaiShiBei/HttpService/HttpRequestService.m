@@ -55,7 +55,7 @@
     }
     
     [request setRequestMethod:@"POST"];
-    [request setTimeOutSeconds:60];
+    [request setTimeOutSeconds:30];
    
     [request startAsynchronous];
     [request setCompletionBlock:^{
@@ -87,7 +87,7 @@
     
     
     [request setRequestMethod:@"POST"];
-    [request setTimeOutSeconds:60];
+    [request setTimeOutSeconds:30];
     
     [request startAsynchronous];
     [request setCompletionBlock:^{

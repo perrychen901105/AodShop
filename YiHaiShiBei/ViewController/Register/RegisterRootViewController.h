@@ -8,6 +8,12 @@
 
 #import "BaseViewController.h"
 
+typedef void (^UserloginSuccessBlock)(BOOL success);
+
 @interface RegisterRootViewController : BaseViewController<MBProgressHUDDelegate>
+
+@property (nonatomic, strong) UserloginSuccessBlock blockSuccess;
+
+- (void)loginDidSuccess:(UserloginSuccessBlock)blockTemp;
 
 @end

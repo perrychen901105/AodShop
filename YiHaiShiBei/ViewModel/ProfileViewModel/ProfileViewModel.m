@@ -79,4 +79,69 @@
     }];
 }
 
+- (void)updateUserInfo:(NSInteger)userId appKey:(NSString *)appKey realname:(NSString *)realname email:(NSString *)email phone:(NSString *)phone
+{
+    if (self.profileRequest == nil) {
+        self.profileRequest = [[ProfileRequestService alloc] init];
+    }
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",(long)userId] forKey:@"userid"];
+    [dicParas setObject:appKey forKey:@"appkey"];
+    if (realname.length > 0) {
+        [dicParas setObject:realname forKey:@"realname"];
+    }
+    if (email.length > 0) {
+        [dicParas setObject:email forKey:@"email"];
+    }
+    if ([phone length] > 0) {
+        [dicParas setObject:phone forKey:@"phone"];
+    }
+    [self.profileRequest updateUserInfo:dicParas success:^(NSString *strResponse) {
+        BaseModel *modelBase = [[BaseModel alloc] initWithString:strResponse error:nil];
+        if (modelBase.success == 0) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(UpdateUserInfoSuccess)]) {
+                [self.delegate UpdateUserInfoSuccess];
+            }
+        } else {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(UpdateUserInfoFail:errorMsg:)]) {
+                [self.delegate UpdateUserInfoFail:modelBase.success errorMsg:modelBase.message];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *strError) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(UpdateUserInfoFail:errorMsg:)]) {
+            [self.delegate UpdateUserInfoFail:errorCode errorMsg:strError];
+        }
+    }];
+}
+
+- (void)updatePwd:(NSInteger)userId appKey:(NSString *)appKey oldpassword:(NSString *)oldpassword newpassword:(NSString *)newpassword repassword:(NSString *)repassword
+{
+    if (self.profileRequest == nil) {
+        self.profileRequest = [[ProfileRequestService alloc] init];
+    }
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",userId] forKey:@"userid"];
+    [dicParas setObject:appKey forKey:@"appkey"];
+    [dicParas setObject:oldpassword forKey:@"oldpassword"];
+    [dicParas setObject:newpassword forKey:@"newpassword"];
+    [dicParas setObject:repassword forKey:@"repassword"];
+    
+    [self.profileRequest updatePwd:dicParas success:^(NSString *strResponse) {
+        BaseModel *modelBase = [[BaseModel alloc] initWithString:strResponse error:nil];
+        if (modelBase.success == 0) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(updateUserPwdSuccess)]) {
+                [self.delegate updateUserPwdSuccess];
+            }
+        } else {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(updateUserPwdFail:errorMsg:)]) {
+                [self.delegate updateUserPwdFail:modelBase.success errorMsg:modelBase.message];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *strError) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(updateUserPwdFail:errorMsg:)]) {
+            [self.delegate updateUserPwdFail:errorCode errorMsg:strError];
+        }
+    }];
+}
+
 @end

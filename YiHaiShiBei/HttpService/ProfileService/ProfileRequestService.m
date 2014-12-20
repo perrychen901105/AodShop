@@ -13,6 +13,8 @@
 static NSString *ActionRegister = @"register";
 static NSString *ActionLogin = @"login";
 static NSString *ActionGetUserInfo = @"getUserInfo";
+static NSString *ActionUpdateUserInfo = @"editUserInfo";
+static NSString *ActionUpdatePwd = @"editUserPassword";
 
 - (void)userRegisterWithUserName:(NSString *)userName password:(NSString *)pwd district:(NSInteger)disId success:(RegisterSuccessBlock)successBlock error:(RegisterFailBlock)errorBlock
 {
@@ -49,6 +51,23 @@ static NSString *ActionGetUserInfo = @"getUserInfo";
         errorBlock(errorCode, errorMessage);
     }];
     
+}
+
+- (void)updateUserInfo:(NSMutableDictionary *)dicParas success:(UpdateUserInfoSuccessBlock)successBlock error:(UpdateUserInfoFailBlock)errorBlock
+{
+    [self postRequestToServer:ActionUpdateUserInfo dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+- (void)updatePwd:(NSMutableDictionary *)dicParas success:(UpdatePwdSuccessBlock)successBlock error:(UpdatePwdFailBlock)errorBlock
+{
+    [self postRequestToServer:ActionUpdatePwd dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
 }
 
 @end

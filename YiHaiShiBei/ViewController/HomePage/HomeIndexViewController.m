@@ -116,11 +116,11 @@
 
 - (void)requestForBannerList
 {
-    
+    [self setupBannerView];
     if (self.apps.storedDistrictID > 0) {
         [self.viewModelIndex getAllBannersList:self.apps.storedDistrictID start:-1 num:-1];
     } else {
-        [self setupBannerView];
+//        [self setupBannerView];
     }
 }
 

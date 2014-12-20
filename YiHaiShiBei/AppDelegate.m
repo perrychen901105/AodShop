@@ -95,6 +95,9 @@
     self.storedCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
     self.storedDistrictID = [[[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_DISTRICT_ID] intValue];
     
+    self.storedUserID = [[[NSUserDefaults standardUserDefaults] objectForKey:K_USER_LOGIN_USERID] intValue];
+    self.storedUserName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_LOGIN_NAME];
+    self.stroedAppKey = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_LOGIN_APPKEY];
     
     [self copyDBtoDocument];
     

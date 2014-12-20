@@ -33,13 +33,13 @@ static NSString *ActionPostAddPurchase = @"addProductPurchase";
 - (void)getProductListWithCatId:(NSInteger)catId districtID:(NSInteger)districtID start:(NSInteger)start num:(NSInteger)num success:(GetAllProductListSuccessBlock)successBlock error:(GetAllProductListFailBlock)errorBlock
 {
     NSMutableString *strRequest = [[NSMutableString alloc] initWithString:@""];
-    [strRequest appendFormat:@"/%d",catId];
-    [strRequest appendFormat:@"/%d",districtID];
+    [strRequest appendFormat:@"/%ld",catId];
+    [strRequest appendFormat:@"/%ld",districtID];
     if (start >= 0) {
-        [strRequest appendFormat:@"/%d",start];
+        [strRequest appendFormat:@"/%ld",start];
     }
     if (num >= 0) {
-        [strRequest appendFormat:@"/%d",num];
+        [strRequest appendFormat:@"/%ld",num];
     }
     [self getRequestToServer:ActionGetProductList requestPara:strRequest success:^(NSString *responseString) {
         successBlock(responseString);

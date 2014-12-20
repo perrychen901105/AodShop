@@ -55,7 +55,6 @@
     } else {
         [self.tbViewContent reloadData];
     }
-    
     // Do any additional setup after loading the view.
 }
 
@@ -82,6 +81,7 @@
 
 - (void)productHttpSuccessWithTag:(EnumProductRequestType)typeRequest
 {
+    [self.tbViewContent reloadData];
     [self.tbViewContent headerEndRefreshing];
 }
 
@@ -90,10 +90,10 @@
 {
     productInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProductInfoCell"];
     ProductModel *model = self.viewModelProduct.arrAllProductList[indexPath.row];
-    cell.lblTitle.text = model.productName;
-    cell.lblReleaseTime.text = model.releaseDate;
+    cell.lblTitle.text = [NSString stringWithFormat:@"标题: %@",model.productName];
+    cell.lblReleaseTime.text = [NSString stringWithFormat:@"发布时间: %@",model.releaseDate];//model.releaseDate;
     [cell.imgViewPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.productPicture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
-    cell.lblPrice.text = [NSString stringWithFormat:@"%f",model.price];
+    cell.lblPrice.text = [NSString stringWithFormat:@"￥ %.2f",model.price];
     return cell;
 }
 
@@ -105,6 +105,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] init];
+    
+    return view;
 }
 
 @end

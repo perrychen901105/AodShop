@@ -24,4 +24,8 @@
 
 - (void)getUserInfo:(NSString *)userId appKey:(NSString *)appKey;
 
+- (void)updateUserInfo:(NSInteger)userId appKey:(NSString *)appKey realname:(NSString *)realname email:(NSString *)email phone:(NSString *)phone;
+
+- (void)updatePwd:(NSInteger)userId appKey:(NSString *)appKey oldpassword:(NSString *)oldpassword newpassword:(NSString *)newpassword repassword:(NSString *)repassword;
+
 @end

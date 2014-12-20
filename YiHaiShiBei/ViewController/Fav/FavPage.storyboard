@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="atl-2N-wRC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="atl-2N-wRC">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="qb3-VM-TJ9">
             <objects>
                 <navigationController definesPresentationContext="YES" id="atl-2N-wRC" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eRS-bw-u6r">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -23,7 +25,7 @@
         <!--Fav Index View Controller-->
         <scene sceneID="kbw-ax-2eL">
             <objects>
-                <viewController id="Z1U-og-2xW" customClass="FavIndexViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Z1U-og-2xW" customClass="FavIndexViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="as4-0P-yNj"/>
                         <viewControllerLayoutGuide type="bottom" id="Tqz-Rh-wBO"/>
@@ -31,13 +33,48 @@
                     <view key="view" contentMode="scaleToFill" id="Ndd-9q-agd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pmd-60-PIk">
+                                <rect key="frame" x="16" y="84" width="288" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ARc-xi-FVZ"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="商品收藏"/>
+                                    <segment title="资讯收藏"/>
+                                    <segment title="团购收藏"/>
+                                    <segment title="商户收藏"/>
+                                </segments>
+                                <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segValueChanged:" destination="Z1U-og-2xW" eventType="valueChanged" id="2c1-a9-ZYg"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XzG-TP-2ol">
+                                <rect key="frame" x="0.0" y="132" width="320" height="387"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XzG-TP-2ol" firstAttribute="leading" secondItem="Ndd-9q-agd" secondAttribute="leading" id="6zs-wu-bAd"/>
+                            <constraint firstItem="XzG-TP-2ol" firstAttribute="top" secondItem="pmd-60-PIk" secondAttribute="bottom" constant="8" id="ANK-yL-TCM"/>
+                            <constraint firstAttribute="trailing" secondItem="pmd-60-PIk" secondAttribute="trailing" constant="16" id="LXC-Qh-tli"/>
+                            <constraint firstItem="pmd-60-PIk" firstAttribute="top" secondItem="as4-0P-yNj" secondAttribute="bottom" constant="20" id="ZIQ-4g-MPM"/>
+                            <constraint firstItem="Tqz-Rh-wBO" firstAttribute="top" secondItem="XzG-TP-2ol" secondAttribute="bottom" id="baf-RZ-4uw"/>
+                            <constraint firstItem="pmd-60-PIk" firstAttribute="leading" secondItem="Ndd-9q-agd" secondAttribute="leading" constant="16" id="eEh-m2-dso"/>
+                            <constraint firstAttribute="trailing" secondItem="XzG-TP-2ol" secondAttribute="trailing" id="kRL-8l-olF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WeE-bH-5dd"/>
+                    <connections>
+                        <outlet property="segControlFav" destination="pmd-60-PIk" id="FJ9-a1-F8K"/>
+                        <outlet property="tbViewContent" destination="XzG-TP-2ol" id="orL-2H-N5c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toh-Zr-i1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="45" y="-94"/>
+            <point key="canvasLocation" x="46" y="-78"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -19,7 +19,9 @@
 @property (assign, nonatomic) NSInteger storedDistrictID;
 @property (strong, nonatomic) NSString *storedCityName;
 @property (assign, nonatomic) NSInteger storedUserID;
+@property (strong, nonatomic) NSString *storedUserName;
 @property (strong, nonatomic) NSString *stroedAppKey;
+
 
 + (NSString *)getCacheDatabasePath;
 

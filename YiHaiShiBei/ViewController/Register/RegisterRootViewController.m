@@ -9,6 +9,7 @@
 #import "RegisterRootViewController.h"
 #import "ProfileViewModel.h"
 #import "UserProfileProtocol.h"
+#import "AppConfig.h"
 
 //#import "MBProgressHUD.h"
 @interface RegisterRootViewController ()<UITextFieldDelegate, UserProfileProtocol>
@@ -113,6 +114,12 @@
     self.apps.modelUser = self.viewModleProfile.modelUser;
     self.apps.storedUserID = [self.viewModleProfile.modelUser.userId intValue];
     self.apps.stroedAppKey = self.viewModleProfile.modelUser.appkey;
+    self.apps.storedUserName = self.viewModleProfile.modelUser.username;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",self.apps.storedUserID] forKey:K_USER_LOGIN_USERID];
+    [[NSUserDefaults standardUserDefaults] setObject:self.apps.stroedAppKey forKey:K_USER_LOGIN_APPKEY];
+    [[NSUserDefaults standardUserDefaults] setObject:self.apps.storedUserName forKey:K_USER_LOGIN_NAME];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     self.HUD.delegate = self;
     self.HUD.tag = 1;
 }
@@ -127,9 +134,17 @@
 {
     if (hud.tag == 1) {
         [self dismissViewControllerAnimated:YES completion:^{
+            if (self.blockSuccess) {
+                self.blockSuccess(YES);
+            }
         }];
 
     }
+}
+
+- (void)loginDidSuccess:(UserloginSuccessBlock)blockTemp
+{
+    self.blockSuccess = blockTemp;
 }
 
 #pragma mark - UITextField methods

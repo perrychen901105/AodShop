@@ -7,14 +7,17 @@
 //
 
 #import "MoreIndexViewController.h"
+#import "RegisterRootViewController.h"
 #import "MoreCell.h"
+#import "AppConfig.h"
 #import "LogoutCell.h"
+#import "ChangeUserInfoViewController.h"
+#import "ChangePwdViewController.h"
 
 @interface MoreIndexViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
-@property (weak, nonatomic) IBOutlet UITableViewCell *cellQuit;
-@property (weak, nonatomic) IBOutlet UIView *viewQuitOut;
+
 
 @end
 
@@ -35,6 +38,12 @@
     [self setNaviBarTitle:nil];
     [self setSearchAndCityButton];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tbViewContent reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,16 +67,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCell"];
-    cell.viewBack.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    cell.viewBack.layer.borderWidth = 1.0f;
+    cell.viewBack.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
+    cell.viewBack.layer.borderWidth = 0.5f;
     
     LogoutCell *cellLogout = [tableView dequeueReusableCellWithIdentifier:@"LogoutCell"];
     cellLogout.viewLogout.layer.cornerRadius = 5.0f;
     cellLogout.viewLogout.layer.masksToBounds = YES;
+
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            if (self.apps.modelUser) {
-                cell.lblTitle.text = [NSString stringWithFormat:@"%@/注册",self.apps.modelUser.username];
+            if (self.apps.storedUserID > 0) {
+                cell.lblTitle.text = [NSString stringWithFormat:@"%@/注册",self.apps.storedUserName];
             } else {
                 cell.lblTitle.text = @"登陆/注册";
             }
@@ -79,6 +89,7 @@
     } else if(indexPath.section == 1) {
         cell.lblTitle.text = @"联系我们";
     } else {
+        [cellLogout.btnLogout addTarget:self action:@selector(logoutAction) forControlEvents:UIControlEventTouchUpInside];
         return cellLogout;
     }
     return cell;
@@ -121,23 +132,48 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            if (self.apps.modelUser) {
-            } else {
-                // 未登录
-                UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-                [self presentViewController:viewControllerRoot animated:YES completion:^{
-                }];
-            }
+            UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            RegisterRootViewController *viewControllerRegister = (RegisterRootViewController *)[[viewControllerRoot viewControllers] objectAtIndex:0];
+            [viewControllerRegister loginDidSuccess:^(BOOL success) {
+                [self showOnlyLabelHud:[NSString stringWithFormat:@"%@欢迎回来",self.apps.storedUserName] withView:self.view];
+                [self.tbViewContent reloadData];
+            }];
+            [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+            }];
         } else if (indexPath.row == 1) {
-            
+            if (self.apps.storedUserID <= 0) {
+                [self showOnlyLabelHud:@"请先登录..." withView:self.view];
+                return;
+            }
+            UIStoryboard *sbMore = [UIStoryboard storyboardWithName:@"MorePage" bundle:nil];
+            ChangeUserInfoViewController *viewController = [sbMore instantiateViewControllerWithIdentifier:@"ChangeUserInfoViewController"];
+            [self.navigationController pushViewController:viewController animated:YES];
         } else {
-            
+            if (self.apps.storedUserID <= 0) {
+                [self showOnlyLabelHud:@"请先登录..." withView:self.view];
+                return;
+            }
+            UIStoryboard *sbMore = [UIStoryboard storyboardWithName:@"MorePage" bundle:nil];
+            ChangePwdViewController *viewController = [sbMore instantiateViewControllerWithIdentifier:@"ChangePwdViewController"];
+            [self.navigationController pushViewController:viewController animated:YES];
         }
     } else if (indexPath.section == 1) {
         
     } else {
-        
+        [self logoutAction];
     }
+}
+
+- (void)logoutAction
+{
+    self.apps.storedUserID = 0;
+    self.apps.storedUserName = @"";
+    self.apps.stroedAppKey = @"";
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:K_USER_LOGIN_APPKEY];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:K_USER_LOGIN_NAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:K_USER_LOGIN_USERID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.tbViewContent reloadData];
 }
 
 @end

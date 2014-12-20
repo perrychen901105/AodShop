@@ -17,4 +17,10 @@
 - (void)RegisterSuccess;
 - (void)RegisterFailed:(NSString*)strMessage;
 
+- (void)UpdateUserInfoSuccess;
+- (void)UpdateUserInfoFail:(NSInteger)errorCode errorMsg:(NSString *)errorMsg;
+
+- (void)updateUserPwdSuccess;
+- (void)updateUserPwdFail:(NSInteger)errorCode errorMsg:(NSString *)errorMsg;
+
 @end
