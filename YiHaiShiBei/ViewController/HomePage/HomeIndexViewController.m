@@ -98,7 +98,6 @@
     [self setNaviBarTitle:nil];
     [self setSearchAndCityButton];
     [self requestForBannerList];
-    [self setUserIconButton];
     
     NSString *strPreviousSelectCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
     if (strPreviousSelectCityName != nil) {

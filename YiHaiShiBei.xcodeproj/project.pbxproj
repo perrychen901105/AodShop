@@ -125,6 +125,8 @@
 		2CDA1DEA19EEA50E0001FC43 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CDA1DE819EEA50E0001FC43 /* LaunchScreen.xib */; };
 		2CDA1DF619EEA50E0001FC43 /* YiHaiShiBeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA1DF519EEA50E0001FC43 /* YiHaiShiBeiTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2CE7EEC61A4571FD006A1A0A /* productInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7EEC51A4571FD006A1A0A /* productInfoCell.m */; };
+		2CE7EECA1A4596B8006A1A0A /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7EEC91A4596B8006A1A0A /* MoreCell.m */; };
+		2CE7EECD1A459B58006A1A0A /* LogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7EECC1A459B58006A1A0A /* LogoutCell.m */; };
 		2CEF60591A150026001B7B53 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF60581A150026001B7B53 /* BannerModel.m */; };
 		2CF1239F1A3673BF00EE1430 /* MerchantListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF1239E1A3673BF00EE1430 /* MerchantListViewController.m */; };
 		2CF8BC8C1A3F165600A347EA /* GrouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8BC8B1A3F165600A347EA /* GrouponTableViewCell.m */; };
@@ -373,6 +375,10 @@
 		2CDA1DF519EEA50E0001FC43 /* YiHaiShiBeiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YiHaiShiBeiTests.m; sourceTree = "<group>"; };
 		2CE7EEC41A4571FD006A1A0A /* productInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productInfoCell.h; sourceTree = "<group>"; };
 		2CE7EEC51A4571FD006A1A0A /* productInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = productInfoCell.m; sourceTree = "<group>"; };
+		2CE7EEC81A4596B8006A1A0A /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
+		2CE7EEC91A4596B8006A1A0A /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
+		2CE7EECB1A459B58006A1A0A /* LogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutCell.h; sourceTree = "<group>"; };
+		2CE7EECC1A459B58006A1A0A /* LogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutCell.m; sourceTree = "<group>"; };
 		2CEF60571A150026001B7B53 /* BannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
 		2CEF60581A150026001B7B53 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
 		2CF1239D1A3673BF00EE1430 /* MerchantListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantListViewController.h; sourceTree = "<group>"; };
@@ -515,6 +521,7 @@
 		0446961F19EFB16000EF71A3 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				2CE7EEC71A4596A7006A1A0A /* MoreCell */,
 				046643E319F7A1360060C9CC /* MoreIndexViewController.h */,
 				046643E419F7A1360060C9CC /* MoreIndexViewController.m */,
 				046643EC19F7A1700060C9CC /* MorePage.storyboard */,
@@ -1054,6 +1061,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2CE7EEC71A4596A7006A1A0A /* MoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CE7EEC81A4596B8006A1A0A /* MoreCell.h */,
+				2CE7EEC91A4596B8006A1A0A /* MoreCell.m */,
+				2CE7EECB1A459B58006A1A0A /* LogoutCell.h */,
+				2CE7EECC1A459B58006A1A0A /* LogoutCell.m */,
+			);
+			path = MoreCell;
+			sourceTree = "<group>";
+		};
 		2CEF60561A14FFDD001B7B53 /* HomeIndex */ = {
 			isa = PBXGroup;
 			children = (
@@ -1213,6 +1231,7 @@
 				2CDA1DDF19EEA50E0001FC43 /* AppDelegate.m in Sources */,
 				2C8183161A2F65B700FFB28D /* MsgTableViewCell.m in Sources */,
 				2CD0BDAC1A0F73310004F44C /* ChooseLocationViewController.m in Sources */,
+				2CE7EECA1A4596B8006A1A0A /* MoreCell.m in Sources */,
 				2C01A5171A2CCC3400FAA7D8 /* MJRefreshBaseView.m in Sources */,
 				040C051019FE10AE009FD61D /* HttpRequestService.m in Sources */,
 				2CC3156D1A2AC13200D63E46 /* MerchantModel.m in Sources */,
@@ -1261,6 +1280,7 @@
 				04AA31931A00B63D00623D30 /* ProfileRequestService.m in Sources */,
 				2C5EC2DA1A3B4AC300DF1F84 /* PurchaseRequestService.m in Sources */,
 				2CD091B41A30C6D20049E22E /* MsgDetailViewController.m in Sources */,
+				2CE7EECD1A459B58006A1A0A /* LogoutCell.m in Sources */,
 				04EB670219FF6D990043D120 /* JSONModel+networking.m in Sources */,
 				2CFFA0081A1CE33A0089B5AC /* HomeInfoListViewController.m in Sources */,
 				2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */,

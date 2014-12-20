@@ -47,7 +47,6 @@
     [self setNaviBarTitle:@"商户"];
     self.viewModelMerchant = [[MerchantViewModel alloc] init];
     self.viewModelMerchant.delegate = self;
-    
     __weak MerchantIndexViewController *weakSelf = self;
     [self.tbViewContent addHeaderWithCallback:^{
         if (weakSelf.viewModelMerchant) {
