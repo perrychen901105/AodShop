@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) CurrentLocationModel *selectedLocation;
 @property (assign, nonatomic) NSInteger storedDistrictID;
+@property (strong, nonatomic) NSString *storedCityName;
 @property (assign, nonatomic) NSInteger storedUserID;
 @property (strong, nonatomic) NSString *stroedAppKey;
 

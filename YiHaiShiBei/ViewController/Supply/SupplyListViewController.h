@@ -10,4 +10,5 @@
 
 @interface SupplyListViewController : BaseViewController
 @property (nonatomic, assign) NSInteger intCatid;
+@property (nonatomic, strong) NSString *strCatName;
 @end

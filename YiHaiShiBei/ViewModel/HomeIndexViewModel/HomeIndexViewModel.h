@@ -24,6 +24,8 @@ typedef enum EnumRequestType
 - (void)httpSuccessWithTag:(EnumRequestType)type;
 - (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumRequestType)type;
 
+- (void)hasNewMessage:(BOOL)boolHasMsg;
+
 @end
 
 @interface HomeIndexViewModel : NSObject
@@ -40,6 +42,7 @@ typedef enum EnumRequestType
 - (void)getAllInfoList:(NSInteger)distrinctID startNum:(NSInteger)numStart num:(NSInteger)num;
 - (void)getAllMsgList:(NSInteger)distrinctID startNum:(NSInteger)numStart num:(NSInteger)num;
 
+- (void)checkNewMsg:(NSInteger)districtID;
 
 - (void)getCachedInfoList:(NSInteger)districtID;
 - (void)getCachedMsgList:(NSInteger)districtID;

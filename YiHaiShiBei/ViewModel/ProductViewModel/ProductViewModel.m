@@ -52,13 +52,13 @@
         }
     }];
 }
-- (void)getProductListWithCatid:(NSInteger)catID start:(NSInteger)start count:(NSInteger)count
+- (void)getProductListWithCatid:(NSInteger)catID districtID:(NSInteger)districtID start:(NSInteger)start count:(NSInteger)count
 {
     if (self.productService == nil) {
         self.productService = [[ProductRequestService alloc] init];
     }
     __weak ProductViewModel *weakSelf = self;
-    [self.productService getProductListWithCatId:catID start:start num:count success:^(NSString *strResponse) {
+    [self.productService getProductListWithCatId:catID districtID:districtID start:start num:count success:^(NSString *strResponse) {
         NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
         NSInteger intResponseCode = [dicRoot[@"success"] intValue];
         NSString *strResponseMsg = dicRoot[@"message"];
@@ -72,7 +72,8 @@
                     [weakSelf.arrAllProductList addObject:model];
                 }
                 if (weakSelf.arrAllProductList.count > 0) {
-                    
+                    [[DatabaseOperator getInstance] removeAllProductListWithCatId:catID];
+                    [[DatabaseOperator getInstance] insertAllProductList:weakSelf.arrAllProductList withCatId:catID];
                 }
                 [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAllList];
             }
@@ -122,4 +123,11 @@
     self.arrAllProCatList = [[DatabaseOperator getInstance] getAllProductTypes];
 }
 
+- (void)getCachedProductList:(NSInteger)catID
+{
+    if (self.arrAllProductList == nil) {
+        self.arrAllProductList = [@[] mutableCopy];
+    }
+    self.arrAllProductList = [[DatabaseOperator getInstance] getAllProductListWithCatId:catID];
+}
 @end

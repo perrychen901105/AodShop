@@ -50,7 +50,7 @@
 }
 
 
-- (void)getMerchantListWithCatId:(NSInteger)catID Start:(NSInteger)numStart count:(NSInteger)numCount
+- (void)getMerchantListWithCatId:(NSInteger)catID districtID:(NSInteger)districtID Start:(NSInteger)numStart count:(NSInteger)numCount
 {
     if (self.merchantService == nil) {
         self.merchantService = [[MerchantRequestService alloc] init];
@@ -59,7 +59,7 @@
         self.arrMerchantList = [[NSMutableArray alloc] init];
     }
     __weak MerchantViewModel *weakSelf = self;
-    [self.merchantService getMerchantListWithCatId:catID startNum:numStart Number:numCount success:^(NSString *strResponse) {
+    [self.merchantService getMerchantListWithCatId:catID districtID:(NSInteger)districtID startNum:numStart Number:numCount success:^(NSString *strResponse) {
         NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
         NSInteger intResponseCode = [dicRoot[@"success"] intValue];
         NSString *strResponseMsg = dicRoot[@"message"];

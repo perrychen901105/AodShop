@@ -23,6 +23,9 @@
     }
     __weak PurchaseViewModel *weakSelf = self;
     [self.purchaseService getAllPurchaseListWithUserId:userID districtID:districtID productCatId:productCatID start:start num:num success:^(NSString *strResponse) {
+#ifdef DEBUG
+        NSLog(@"THE response is %@",strResponse);
+#endif
         NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
         NSInteger intResponseCode = [dicRoot[@"success"] intValue];
         NSString *strResponseMsg = dicRoot[@"message"];
@@ -32,7 +35,11 @@
                     [weakSelf.arrAllPurchaseList removeAllObjects];
                 }
                 for (NSDictionary *dicPur in dicRoot[@"data"][@"ProductPurchasesList"]) {
+                    
                     RequirePurchaseModel *model = [[RequirePurchaseModel alloc] initWithDictionary:dicPur error:nil];
+                    if (model == nil) {
+                        continue;
+                    }
                     [weakSelf.arrAllPurchaseList addObject:model];
                 }
                 if (weakSelf.arrAllPurchaseList.count > 0) {

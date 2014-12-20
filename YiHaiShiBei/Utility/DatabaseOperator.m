@@ -12,7 +12,7 @@
 
 #import "LocationModel.h"
 #import "InformationListModel.h"
-#import "MsgListModel.h"
+//#import "MsgListModel.h"
 #import "MerchantModel.h"
 #import "RequirePurchaseModel.h"
 #import "GrouponModel.h"
@@ -258,6 +258,41 @@
 }
 
 #pragma mark - Message
+- (BOOL)hasNewMsg:(MsgModel *)modelMsg districtID:(NSInteger)districtID
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return NO;
+    }
+    
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM Message where id = %ld",modelMsg.msgId];
+#ifdef DEBUG
+    NSLog(@"sql is %@",strSql);
+#endif
+    BOOL hasNew = NO;
+    FMResultSet *rs = [db executeQuery:strSql];
+    
+    while ([rs next]) {
+        NSLog(@"the rs is %@",[rs resultDictionary]);
+        if ([rs resultDictionary]) {
+            MsgModel *model = [[MsgModel alloc] init];
+            model.msgId = [[[rs resultDictionary] objectForKey:@"id"] intValue];
+            model.content = [[rs resultDictionary] objectForKey:@"content"];
+            if ([model.content isEqualToString:modelMsg.content]) {
+                hasNew = NO;
+            } else {
+                hasNew = YES;
+            }
+        } else {
+            hasNew = YES;
+        }
+    }
+
+    [db close];
+    return hasNew;
+}
+
 - (void)insertAllMessages:(NSMutableArray *)arrMsgs withDistrictId:(NSInteger)districtid
 {
     FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
@@ -287,7 +322,7 @@
         // error
         return [@[] mutableCopy];
     }
-    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM Message where district_id = %d",districtid];
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM Message where district_id = %ld",districtid];
 #ifdef DEBUG
     NSLog(@"sql is %@",strSql);
 #endif
@@ -713,7 +748,7 @@
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
-    NSString *strExec = [NSString stringWithFormat:@"insert into ProductList(productID, name, address, email, phone, catId, levelId, districtId, avatar, catName, districtName) values %@",strAllValue];
+    NSString *strExec = [NSString stringWithFormat:@"insert into ProductList(productID, productName, productPicture, price, productNum, productClick, districtID, productCatID, userID, releaseDate, isPass, backup, isOnSale, districtName, productCatName, username, userEmail, avatar, userPhone, companyName, companyAddr) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
         NSLog(@"success");
@@ -723,11 +758,60 @@
 }
 - (NSMutableArray *)getAllProductListWithCatId:(NSInteger)catId
 {
-    
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return [@[] mutableCopy];
+    }
+    NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM ProductList where productCatID = %d",catId];
+    FMResultSet *rs = [db executeQuery:strSql];
+    NSMutableArray *arrTypes = [@[] mutableCopy];
+    while ([rs next]) {
+        ProductModel *model = [[ProductModel alloc] init];
+        model.productID = [rs intForColumn:@"productID"];
+        model.productName = [rs stringForColumn:@"productName"];
+        model.productPicture = [rs stringForColumn:@"productPicture"];
+        model.price = [rs doubleForColumn:@"price"];
+        model.productNum = [rs intForColumn:@"productNum"];
+        model.productClick = [rs intForColumn:@"productClick"];
+        model.districtID = [rs intForColumn:@"districtID"];
+        model.productCatID = [rs intForColumn:@"productCatID"];
+        model.userID = [rs intForColumn:@"userID"];
+        model.releaseDate = [rs stringForColumn:@"releaseDate"];
+        model.isPass = [rs intForColumn:@"isPass"];
+        model.backup = [rs stringForColumn:@"backup"];
+        model.isOnSale = [rs intForColumn:@"isOnSale"];
+        model.districtName = [rs stringForColumn:@"districtName"];
+        model.productCatName = [rs stringForColumn:@"productCatName"];
+        model.username = [rs stringForColumn:@"username"];
+        model.userEmail = [rs stringForColumn:@"userEmail"];
+        model.avatar = [rs stringForColumn:@"avatar"];
+        model.userPhone = [rs stringForColumn:@"userPhone"];
+        model.companyName = [rs stringForColumn:@"companyName"];
+        model.companyAddr = [rs stringForColumn:@"companyAddr"];
+#ifdef DEBUG
+        NSLog(@"model is %@",model);
+#endif
+        [arrTypes addObject:model];
+    }
+    [db close];
+    return arrTypes;
 }
 - (void)removeAllProductListWithCatId:(NSInteger)catId
 {
-    
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM ProductList where productCatID = %d",catId];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    return ;
 }
 
 @end

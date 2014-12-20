@@ -47,10 +47,22 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnAdd];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.viewModelPurchase.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.viewModelPurchase.delegate = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModelPurchase = [[PurchaseViewModel alloc]  init];
-    self.viewModelPurchase.delegate = self;
+    
     [self setNaviBarTitle:@"求购列表"];
     [self setBackButton];
     [self addPuchaseBtnFunc];

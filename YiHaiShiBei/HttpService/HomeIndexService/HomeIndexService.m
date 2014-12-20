@@ -46,13 +46,13 @@ static NSString *ActionAllInfos    = @"getInfomations";
 - (void)getAllInforList:(NSInteger)distrinctID start:(NSInteger)start num:(NSInteger)num success:(GetAllBannerListSuccessBlock)successBlock error:(GetAllBannerListFailBlock)errorBlock
 {
     NSMutableDictionary *dicParas = [@{@"typeid":@1,
-                                       @"districtid":[NSString stringWithFormat:@"%d",distrinctID]} mutableCopy];
+                                       @"districtid":[NSString stringWithFormat:@"%ld",distrinctID]} mutableCopy];
     
     if (start >= 0) {
-        dicParas[@"start"] = [NSString stringWithFormat:@"%d",start];
+        dicParas[@"start"] = [NSString stringWithFormat:@"%ld",start];
     }
     if (num >= 0) {
-        dicParas[@"number"] = [NSString stringWithFormat:@"%d",num];
+        dicParas[@"number"] = [NSString stringWithFormat:@"%ld",num];
     }
     [self postRequestToServer:ActionAllInfos dicParams:dicParas success:^(NSString *responseString) {
         successBlock(responseString);
@@ -65,14 +65,13 @@ static NSString *ActionAllInfos    = @"getInfomations";
 - (void)getAllMessageList:(NSInteger)districtID start:(NSInteger)start num:(NSInteger)num success:(GetAllMessageListSuccessBlock)successBlock error:(GetAllMessageListFailBlock)errorBlock
 {
     NSMutableDictionary *dicParas = [@{@"typeid":@2,
-                                       @"order":@"Information.modified desc",
-                                       @"districtid":[NSString stringWithFormat:@"%d",districtID]} mutableCopy];
+                                       @"districtid":[NSString stringWithFormat:@"%ld",districtID]} mutableCopy];
     
     if (start >= 0) {
-        dicParas[@"start"] = [NSString stringWithFormat:@"%d",start];
+        dicParas[@"start"] = [NSString stringWithFormat:@"%ld",start];
     }
     if (num >= 0) {
-        dicParas[@"number"] = [NSString stringWithFormat:@"%d",num];
+        dicParas[@"number"] = [NSString stringWithFormat:@"%ld",num];
     }
     [self postRequestToServer:ActionAllInfos dicParams:dicParas success:^(NSString *responseString) {
         successBlock(responseString);

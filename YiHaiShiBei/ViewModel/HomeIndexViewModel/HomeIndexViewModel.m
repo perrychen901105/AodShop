@@ -125,6 +125,34 @@
     }];
 }
 
+- (void)checkNewMsg:(NSInteger)districtID
+{
+    if (self.homeService == nil) {
+        self.homeService = [[HomeIndexService alloc] init];
+    }
+    __weak HomeIndexViewModel *weakSelf = self;
+    [self.homeService getAllMessageList:districtID start:0 num:1 success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(hasNewMessage:)]) {
+                MsgModel *model = nil;
+                for (NSDictionary *dicInformation in dicRoot[@"data"][@"information"]) {
+                    model = [[MsgModel alloc] initWithDictionary:dicInformation[@"Information"] error:nil];
+                    model.userName = dicInformation[@"User"][@"username"];
+                }
+                if (model != nil) {
+                    BOOL boolNew = [[DatabaseOperator getInstance] hasNewMsg:model districtID:districtID];
+                    [weakSelf.delegate hasNewMessage:boolNew];
+                }
+            }
+        } else {
+        }
+    } error:^(NSString *strFail) {
+    }];
+}
+
 #pragma mark - get cached methods
 - (void)getCachedInfoList:(NSInteger)districtID
 {

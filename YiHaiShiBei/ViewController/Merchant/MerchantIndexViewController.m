@@ -120,6 +120,7 @@
         MerchantListViewController *viewControllerListMerchant = (MerchantListViewController *)segue.destinationViewController;
         MerchantTypeModel *modelType = self.viewModelMerchant.arrMerchantType[indexPath.row];
         viewControllerListMerchant.intCatId = modelType.merchantTypeId;
+        viewControllerListMerchant.strCatName = modelType.name;
     }
 }
 

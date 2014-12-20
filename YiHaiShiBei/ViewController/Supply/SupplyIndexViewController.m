@@ -86,6 +86,7 @@
         SupplyListViewController *viewControllerList = (SupplyListViewController *)segue.destinationViewController;
         ProductCatModel *modelType = self.viewModelProduct.arrAllProCatList[indexPath.row];
         viewControllerList.intCatid = modelType.catID;
+        viewControllerList.strCatName = modelType.name;
     }
 }
 

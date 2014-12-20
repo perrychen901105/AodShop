@@ -41,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNaviBarTitle:@"商户列表"];
+    [self setNaviBarTitle:self.strCatName];
     [self setBackButton];
     
     self.viewModelMerchant = [[MerchantViewModel alloc] init];
@@ -50,7 +50,7 @@
     __weak MerchantListViewController *weakSelf = self;
     [self.tbViewContent addHeaderWithCallback:^{
         if (weakSelf.viewModelMerchant) {
-            [weakSelf.viewModelMerchant getMerchantListWithCatId:weakSelf.intCatId Start:-1 count:-1];
+            [weakSelf.viewModelMerchant getMerchantListWithCatId:weakSelf.intCatId districtID:self.apps.storedDistrictID Start:-1 count:-1];
         }
     }];
     [self.viewModelMerchant getCachedMerchantListWithCatId:self.intCatId];

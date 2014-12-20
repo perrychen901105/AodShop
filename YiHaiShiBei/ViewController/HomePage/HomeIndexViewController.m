@@ -44,6 +44,19 @@
     return self;
 }
 
+- (void)hasNewMessage:(BOOL)boolHasMsg
+{
+    if (boolHasMsg) {
+        NSLog(@"a");
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.viewModelIndex checkNewMsg:self.apps.storedDistrictID];
+}
+
 - (void)setupBannerView
 {
     for (UIView *subView in self.scrollViewBanner.subviews) {

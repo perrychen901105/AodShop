@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MsgListModel.h"
 @interface DatabaseOperator : NSObject
 
 + (DatabaseOperator *)getInstance;
@@ -34,6 +35,7 @@
 - (void)insertAllMessages:(NSMutableArray *)arrMsgs withDistrictId:(NSInteger)districtid;
 - (NSMutableArray *)getAllMessagesWithDistrictId:(NSInteger)districtid;
 - (void)removeAllMessagesWithDistrictId:(NSInteger)districtid;
+- (BOOL)hasNewMsg:(MsgModel *)modelMsg districtID:(NSInteger)districtID;
 
 /**
  求购

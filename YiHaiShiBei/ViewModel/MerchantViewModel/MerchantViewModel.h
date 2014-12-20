@@ -30,7 +30,7 @@ typedef enum EnumRequestType
 @property (nonatomic, strong) NSMutableArray *arrMerchantList;
 
 - (void)getMerchantTypeListWithStart:(NSInteger)numStart count:(NSInteger)numCount;
-- (void)getMerchantListWithCatId:(NSInteger)catID Start:(NSInteger)numStart count:(NSInteger)numCount;
+- (void)getMerchantListWithCatId:(NSInteger)catID districtID:(NSInteger)districtID Start:(NSInteger)numStart count:(NSInteger)numCount;
 
 - (void)getCachedMerchantType;
 - (void)getCachedMerchantListWithCatId:(NSInteger)catId;

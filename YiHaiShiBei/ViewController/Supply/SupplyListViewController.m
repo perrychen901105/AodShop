@@ -8,20 +8,54 @@
 
 #import "SupplyListViewController.h"
 #import "ProductViewModel.h"
+#import "MJRefresh.h"
+#import "AppConfig.h"
+#import "ProductModel.h"
+#import "productInfoCell.h"
+#import "UIImageView+WebCache.h"
 
-@interface SupplyListViewController ()<ProductViewModelDelegate>
+
+@interface SupplyListViewController ()<ProductViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) ProductViewModel *viewModelProduct;
+@property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
 @end
 
 @implementation SupplyListViewController
 
+- (void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNaviBarTitle:self.strCatName];
+    [self setBackButton];
     self.viewModelProduct = [[ProductViewModel alloc] init];
     self.viewModelProduct.delegate = self;
-    [self.viewModelProduct getProductListWithCatid:self.intCatid start:-1 count:-1];
+
+    __weak SupplyListViewController *weakSelf = self;
+    [self.tbViewContent addHeaderWithCallback:^{
+        [weakSelf.viewModelProduct getProductListWithCatid:weakSelf.intCatid districtID:self.apps.storedDistrictID start:-1 count:-1];
+    }];
+    [self.viewModelProduct getCachedProductList:self.intCatid];
+    if (self.viewModelProduct.arrAllProductList.count <= 0) {
+        [self.tbViewContent headerBeginRefreshing];
+    } else {
+        [self.tbViewContent reloadData];
+    }
+    
     // Do any additional setup after loading the view.
 }
 
@@ -43,12 +77,34 @@
 #pragma mark - ProductViewmodel methods
 - (void)productHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumProductRequestType)typeRequest
 {
-    
+    [self.tbViewContent headerEndRefreshing];
 }
 
 - (void)productHttpSuccessWithTag:(EnumProductRequestType)typeRequest
 {
-    
+    [self.tbViewContent headerEndRefreshing];
+}
+
+#pragma mark - UITableView methods
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    productInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProductInfoCell"];
+    ProductModel *model = self.viewModelProduct.arrAllProductList[indexPath.row];
+    cell.lblTitle.text = model.productName;
+    cell.lblReleaseTime.text = model.releaseDate;
+    [cell.imgViewPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.productPicture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    cell.lblPrice.text = [NSString stringWithFormat:@"%f",model.price];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.viewModelProduct.arrAllProductList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
 @end

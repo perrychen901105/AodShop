@@ -17,6 +17,6 @@ typedef void (^GetMerchantListFailBlock)(NSInteger errorCode, NSString *strError
 
 - (void)getMerchantTypeListWithStartNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantTypeListSuccessBlock)successBlock error:(GetMerchantTypeListFailBlock)errorBlock;
 
-- (void)getMerchantListWithCatId:(NSInteger)catId startNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantListSuccessBlock)successBlock error:(GetMerchantListFailBlock)errorBlock;
+- (void)getMerchantListWithCatId:(NSInteger)catId districtID:(NSInteger)districtID startNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantListSuccessBlock)successBlock error:(GetMerchantListFailBlock)errorBlock;
 
 @end

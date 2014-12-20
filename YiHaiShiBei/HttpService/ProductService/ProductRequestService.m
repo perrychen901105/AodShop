@@ -30,10 +30,11 @@ static NSString *ActionPostAddPurchase = @"addProductPurchase";
     }];
 }
 
-- (void)getProductListWithCatId:(NSInteger)catId start:(NSInteger)start num:(NSInteger)num success:(GetAllProductListSuccessBlock)successBlock error:(GetAllProductListFailBlock)errorBlock
+- (void)getProductListWithCatId:(NSInteger)catId districtID:(NSInteger)districtID start:(NSInteger)start num:(NSInteger)num success:(GetAllProductListSuccessBlock)successBlock error:(GetAllProductListFailBlock)errorBlock
 {
     NSMutableString *strRequest = [[NSMutableString alloc] initWithString:@""];
     [strRequest appendFormat:@"/%d",catId];
+    [strRequest appendFormat:@"/%d",districtID];
     if (start >= 0) {
         [strRequest appendFormat:@"/%d",start];
     }
