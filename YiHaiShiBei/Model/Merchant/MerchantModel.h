@@ -15,6 +15,8 @@
 @interface MerchantModel : JSONModel
 
 @property (nonatomic, assign) NSInteger merchantUserId;
+@property (nonatomic, strong) NSString *merchantUserName;
+@property (nonatomic, strong) NSString *merchantUserRealName;
 @property (nonatomic, strong) NSString *merchantCompanyName;
 @property (nonatomic, strong) NSString *merchantCompanyAddr;
 @property (nonatomic, strong) NSString *merchantEmail;

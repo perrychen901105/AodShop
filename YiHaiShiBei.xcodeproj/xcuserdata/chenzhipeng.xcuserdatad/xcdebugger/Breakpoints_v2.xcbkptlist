@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YiHaiShiBei/ViewController/HomePage/HomeIndexViewController.m"
-            timestampString = "440770013.869168"
+            timestampString = "440823246.272883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-purchaseRequestSuccessWithTag:"
             landmarkType = "5">
          </BreakpointContent>
@@ -142,22 +142,6 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "-getMerchantTypeListWithStart:count:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/ViewModel/ProductViewModel/ProductViewModel.m"
-            timestampString = "440596726.294293"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-getProductListWithCatid:districtID:start:count:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -190,22 +174,6 @@
             startingLineNumber = "153"
             endingLineNumber = "153"
             landmarkName = "-checkNewMsg:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/ViewController/HomePage/HomeIndexViewController.m"
-            timestampString = "440781554.012677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-setupBannerView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

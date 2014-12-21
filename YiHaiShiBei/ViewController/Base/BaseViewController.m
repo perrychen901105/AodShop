@@ -123,13 +123,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void)searchBtnClick
+{
+    
+}
 
 - (void)setSearchAndCityButton
 {
     UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
     btnSearch.frame = CGRectMake(0, 0, 30, 30);
     [btnSearch setImage:[UIImage imageNamed:@"img_search"] forState:UIControlStateNormal];
+    [btnSearch addTarget:self action:@selector(searchBtnClick) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *searchBtnItem = [[UIBarButtonItem alloc] initWithCustomView:btnSearch];
     
     UIView *viewCity = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];

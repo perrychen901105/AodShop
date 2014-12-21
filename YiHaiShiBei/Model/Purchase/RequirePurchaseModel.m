@@ -34,5 +34,8 @@
                                                        @"ProductCat.picture":@"purchaseCatPic",
                                                        }];
 }
-
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end

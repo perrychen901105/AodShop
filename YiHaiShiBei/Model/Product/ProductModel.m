@@ -35,6 +35,10 @@
                                                        @"User.company_addr":@"companyAddr"
                                                        }];
 }
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end
 
 @implementation ProductCatModel

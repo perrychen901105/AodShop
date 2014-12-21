@@ -115,6 +115,10 @@
 		2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */; };
 		2CCC39B11A4644D6009FBB77 /* FavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC39B01A4644D6009FBB77 /* FavModel.m */; };
 		2CCC39B51A46538E009FBB77 /* favListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC39B41A46538E009FBB77 /* favListCell.m */; };
+		2CCC39B91A465CBF009FBB77 /* SearchRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC39B81A465CBF009FBB77 /* SearchRequestService.m */; };
+		2CCC39BD1A466069009FBB77 /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC39BC1A466069009FBB77 /* SearchViewModel.m */; };
+		2CCC39C11A466635009FBB77 /* SearchRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC39C01A466635009FBB77 /* SearchRootViewController.m */; };
+		2CCC39C31A466647009FBB77 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC39C21A466647009FBB77 /* Search.storyboard */; };
 		2CD091B11A30A2D10049E22E /* MsgListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD091B01A30A2D10049E22E /* MsgListModel.m */; };
 		2CD091B41A30C6D20049E22E /* MsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD091B31A30C6D20049E22E /* MsgDetailViewController.m */; };
 		2CD0BDAC1A0F73310004F44C /* ChooseLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BDAB1A0F73310004F44C /* ChooseLocationViewController.m */; };
@@ -363,6 +367,13 @@
 		2CCC39B01A4644D6009FBB77 /* FavModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavModel.m; sourceTree = "<group>"; };
 		2CCC39B31A46538E009FBB77 /* favListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favListCell.h; sourceTree = "<group>"; };
 		2CCC39B41A46538E009FBB77 /* favListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favListCell.m; sourceTree = "<group>"; };
+		2CCC39B71A465CBF009FBB77 /* SearchRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRequestService.h; sourceTree = "<group>"; };
+		2CCC39B81A465CBF009FBB77 /* SearchRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRequestService.m; sourceTree = "<group>"; };
+		2CCC39BB1A466069009FBB77 /* SearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewModel.h; sourceTree = "<group>"; };
+		2CCC39BC1A466069009FBB77 /* SearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewModel.m; sourceTree = "<group>"; };
+		2CCC39BF1A466635009FBB77 /* SearchRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRootViewController.h; sourceTree = "<group>"; };
+		2CCC39C01A466635009FBB77 /* SearchRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRootViewController.m; sourceTree = "<group>"; };
+		2CCC39C21A466647009FBB77 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		2CD091AF1A30A2D10049E22E /* MsgListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgListModel.h; sourceTree = "<group>"; };
 		2CD091B01A30A2D10049E22E /* MsgListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgListModel.m; sourceTree = "<group>"; };
 		2CD091B21A30C6D20049E22E /* MsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgDetailViewController.h; sourceTree = "<group>"; };
@@ -797,6 +808,7 @@
 		2C433E7C19EEC91600129479 /* HttpService */ = {
 			isa = PBXGroup;
 			children = (
+				2CCC39B61A465CAF009FBB77 /* SearchService */,
 				2CE7EED41A45CD85006A1A0A /* FavService */,
 				2C2E09321A3FA82000FF6FB2 /* ProductService */,
 				2C258EAB1A276B5700CE9F0D /* MerchantService */,
@@ -836,6 +848,7 @@
 		2C433E7F19EEC91600129479 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2CCC39BA1A466028009FBB77 /* SearchViewModel */,
 				2CE7EED81A45CF71006A1A0A /* FavViewModel */,
 				26C99FA71A402AE700D28C85 /* ProductViewModel */,
 				2C258EAF1A276EEF00CE9F0D /* MerchantViewModel */,
@@ -849,6 +862,7 @@
 		2C433E8019EEC93B00129479 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2CCC39BE1A466617009FBB77 /* Search */,
 				2CD3754A1A1E1710003DDE32 /* UserProfile */,
 				2CD0BDA91A0F73180004F44C /* Location */,
 				040D620E1A03369C009AB9B2 /* Register */,
@@ -1006,6 +1020,34 @@
 				2CCC39B41A46538E009FBB77 /* favListCell.m */,
 			);
 			path = FavCell;
+			sourceTree = "<group>";
+		};
+		2CCC39B61A465CAF009FBB77 /* SearchService */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC39B71A465CBF009FBB77 /* SearchRequestService.h */,
+				2CCC39B81A465CBF009FBB77 /* SearchRequestService.m */,
+			);
+			path = SearchService;
+			sourceTree = "<group>";
+		};
+		2CCC39BA1A466028009FBB77 /* SearchViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC39BB1A466069009FBB77 /* SearchViewModel.h */,
+				2CCC39BC1A466069009FBB77 /* SearchViewModel.m */,
+			);
+			path = SearchViewModel;
+			sourceTree = "<group>";
+		};
+		2CCC39BE1A466617009FBB77 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC39BF1A466635009FBB77 /* SearchRootViewController.h */,
+				2CCC39C01A466635009FBB77 /* SearchRootViewController.m */,
+				2CCC39C21A466647009FBB77 /* Search.storyboard */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		2CD0BDA91A0F73180004F44C /* Location */ = {
@@ -1242,6 +1284,7 @@
 				0446962519EFB2FF00EF71A3 /* HomePage.storyboard in Resources */,
 				2C01A5161A2CCC3400FAA7D8 /* MJRefresh.bundle in Resources */,
 				0446962C19EFC58500EF71A3 /* naviTitle.xib in Resources */,
+				2CCC39C31A466647009FBB77 /* Search.storyboard in Resources */,
 				2CDA1DE519EEA50E0001FC43 /* Main.storyboard in Resources */,
 				046643E719F7A14B0060C9CC /* FavPage.storyboard in Resources */,
 				0446962A19EFBB3700EF71A3 /* SupplyIndex.storyboard in Resources */,
@@ -1277,6 +1320,7 @@
 				2C433EA619EED4C900129479 /* ASIDataCompressor.m in Sources */,
 				2C3373C91A2628B5002918A0 /* SDImageCache.m in Sources */,
 				2C3373CC1A2628B5002918A0 /* SDWebImageDownloader.m in Sources */,
+				2CCC39C11A466635009FBB77 /* SearchRootViewController.m in Sources */,
 				2C0C17071A39EE5A0015F53F /* ASStarRatingView.m in Sources */,
 				0446961A19EFA68800EF71A3 /* BaseViewController.m in Sources */,
 				2C3373D21A2628B5002918A0 /* UIImage+MultiFormat.m in Sources */,
@@ -1318,6 +1362,7 @@
 				2CEF60591A150026001B7B53 /* BannerModel.m in Sources */,
 				2C0C17031A39ED730015F53F /* MerchantInfoCell.m in Sources */,
 				046643E519F7A1360060C9CC /* MoreIndexViewController.m in Sources */,
+				2CCC39B91A465CBF009FBB77 /* SearchRequestService.m in Sources */,
 				2C258EAE1A276B7B00CE9F0D /* MerchantRequestService.m in Sources */,
 				2CC315701A2AC33C00D63E46 /* MerchantListModel.m in Sources */,
 				2CD091B11A30A2D10049E22E /* MsgListModel.m in Sources */,
@@ -1360,6 +1405,7 @@
 				04EB670119FF6D990043D120 /* JSONHTTPClient.m in Sources */,
 				2CF8BC921A3F341400A347EA /* AddPurchaseViewController.m in Sources */,
 				2CFFA00E1A1CE3670089B5AC /* HomeGrouponListViewController.m in Sources */,
+				2CCC39BD1A466069009FBB77 /* SearchViewModel.m in Sources */,
 				04EB670819FF6F330043D120 /* LocationModel.m in Sources */,
 				2C01A51D1A2CCC3400FAA7D8 /* UIView+MJExtension.m in Sources */,
 				26FCFE071A25F3A000A53FC7 /* AdvertiseModel.m in Sources */,

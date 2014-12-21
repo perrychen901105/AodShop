@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AW9-IF-NJo">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="QXC-GN-Gt2">
+            <objects>
+                <navigationController id="AW9-IF-NJo" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hfn-XR-5Od">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2gr-JV-2JS" kind="relationship" relationship="rootViewController" id="vWi-W1-ye2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PzR-3F-xt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-275" y="257"/>
+        </scene>
+        <!--Search Root View Controller-->
+        <scene sceneID="lmA-jw-nPz">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2gr-JV-2JS" customClass="SearchRootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="41d-mJ-z3A"/>
+                        <viewControllerLayoutGuide type="bottom" id="ldT-yo-J6o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Tb-6D-hWI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pHS-LP-RWW">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="oxG-QD-4bN"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2gr-JV-2JS" id="Qq2-SO-WM4"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bR8-kw-6SL">
+                                <rect key="frame" x="16" y="118" width="288" height="29"/>
+                                <segments>
+                                    <segment title="资讯"/>
+                                    <segment title="商品"/>
+                                    <segment title="求购"/>
+                                    <segment title="商户"/>
+                                </segments>
+                                <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segValueChanged:" destination="2gr-JV-2JS" eventType="valueChanged" id="5hY-D4-YgY"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fNV-zf-66v">
+                                <rect key="frame" x="0.0" y="154" width="320" height="414"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2gr-JV-2JS" id="FWW-k3-uh0"/>
+                                    <outlet property="delegate" destination="2gr-JV-2JS" id="Zv7-6t-opf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bR8-kw-6SL" firstAttribute="leading" secondItem="7Tb-6D-hWI" secondAttribute="leading" constant="16" id="FHk-u5-sMg"/>
+                            <constraint firstItem="fNV-zf-66v" firstAttribute="top" secondItem="bR8-kw-6SL" secondAttribute="bottom" constant="8" id="Rgj-dv-HWk"/>
+                            <constraint firstAttribute="trailing" secondItem="bR8-kw-6SL" secondAttribute="trailing" constant="16" id="UO7-xs-KSO"/>
+                            <constraint firstItem="pHS-LP-RWW" firstAttribute="leading" secondItem="7Tb-6D-hWI" secondAttribute="leading" id="VVm-bR-Ncj"/>
+                            <constraint firstItem="fNV-zf-66v" firstAttribute="leading" secondItem="7Tb-6D-hWI" secondAttribute="leading" id="Vam-10-M6v"/>
+                            <constraint firstItem="ldT-yo-J6o" firstAttribute="top" secondItem="fNV-zf-66v" secondAttribute="bottom" id="Vaz-KD-BPz"/>
+                            <constraint firstAttribute="trailing" secondItem="fNV-zf-66v" secondAttribute="trailing" id="XZp-Vc-9jB"/>
+                            <constraint firstAttribute="trailing" secondItem="pHS-LP-RWW" secondAttribute="trailing" id="hc3-S9-fWl"/>
+                            <constraint firstItem="pHS-LP-RWW" firstAttribute="top" secondItem="41d-mJ-z3A" secondAttribute="bottom" id="nN4-35-kHK"/>
+                            <constraint firstItem="bR8-kw-6SL" firstAttribute="top" secondItem="pHS-LP-RWW" secondAttribute="bottom" constant="10" id="uRH-6v-i5o"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Wdi-0G-ZKi"/>
+                    <connections>
+                        <outlet property="searchBarContent" destination="pHS-LP-RWW" id="dts-9L-Wl2"/>
+                        <outlet property="tbViewContent" destination="fNV-zf-66v" id="SUY-0Z-Mcn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vjh-yI-C3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="257"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

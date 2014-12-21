@@ -33,5 +33,6 @@
 - (void)addTapGestureOnEmptyView;
 - (void)emptyViewTapped;
 - (void)didChooseCity;
+- (void)searchBtnClick;
 
 @end

@@ -16,6 +16,8 @@
                                                        @"User.id":@"merchantUserId",
                                                        @"User.company_name":@"merchantCompanyName",
                                                        @"User.company_addr":@"merchantCompanyAddr",
+                                                       @"User.realname":@"merchantUserRealName",
+                                                       @"User.username":@"merchantUserName",
                                                        @"User.email":@"merchantEmail",
                                                        @"User.phone":@"merchantPhone",
                                                        @"User.user_cat_id":@"merchantCatId",
@@ -25,6 +27,10 @@
                                                        @"UserCat.name":@"merchantCatName",
                                                        @"District.name":@"merchantDistrictName"
                                                        }];
+}
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
 }
 @end
 

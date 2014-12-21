@@ -17,6 +17,8 @@
 #import "UIImageView+WebCache.h"
 #import "HomeGrouponListViewController.h"
 
+#import "SearchRootViewController.h"
+
 #import "AdvertiseModel.h"
 #import "ProfileViewModel.h"
 #import "PurchaseViewModel.h"
@@ -55,6 +57,15 @@
 {
     [super viewWillAppear:animated];
     [self.viewModelIndex checkNewMsg:self.apps.storedDistrictID];
+}
+
+- (void)searchBtnClick
+{
+    UIStoryboard *sbSearch = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+    SearchRootViewController *viewControllerRoot = [sbSearch instantiateInitialViewController];
+    [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+        
+    }];
 }
 
 - (void)setupBannerView
@@ -98,6 +109,7 @@
     [self setNaviBarTitle:nil];
     [self setSearchAndCityButton];
     [self requestForBannerList];
+    
     
     NSString *strPreviousSelectCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
     if (strPreviousSelectCityName != nil) {
