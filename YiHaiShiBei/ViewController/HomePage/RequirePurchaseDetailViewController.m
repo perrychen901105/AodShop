@@ -105,7 +105,6 @@
 - (void)purchaseRequestSuccessWithTag:(EnumPurchaseRequestType)type
 {
     if (type == TypeRequestAllReplyList) {
-        NSLog(@"%@",self.viewModelPurchase.arrAllReplyPurchaseList);
         [self.tbViewReply reloadData];
     } else if (type == TypeRequestAddReplyPurchase) {
         [self showOnlyLabelHud:@"回复成功" withView:self.view];
@@ -135,7 +134,9 @@
     PurchaseReplyModel *model = self.viewModelPurchase.arrAllReplyPurchaseList[indexPath.row];
     cell.lblUsrName.text = model.replyUserName;
     cell.lblContent.text = model.content;
-    return nil;
+//    [cell setNeedsUpdateConstraints];
+//    [cell updateConstraintsIfNeeded];
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -146,8 +147,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ReplyPurchaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReplyPurchaseCell"];
+    PurchaseReplyModel *model = self.viewModelPurchase.arrAllReplyPurchaseList[indexPath.row];
+    cell.lblUsrName.text = model.replyUserName;
+    cell.lblContent.text = model.content;
+//    [cell setNeedsUpdateConstraints];
+//    [cell updateConstraintsIfNeeded];
+//    cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tbViewReply.bounds), CGRectGetHeight(cell.bounds));
     [cell setNeedsLayout];
     [cell layoutIfNeeded];
+    
+    CGSize size = [cell.lblContent systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     CGSize sizeFinal = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return sizeFinal.height;
 }

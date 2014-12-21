@@ -14,6 +14,7 @@
 #import "MJRefresh.h"
 #import "AppConfig.h"
 #import "MerchantInfoCell.h"
+#import "MerchantDetailViewController.h"
 
 @interface MerchantListViewController ()<MerchantViewModelDelegate,UITableViewDataSource, UITableViewDelegate>
 
@@ -66,15 +67,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueMerchantDetail"]) {
+        UITableViewCell *cellSelect = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tbViewContent indexPathForCell:cellSelect];
+        MerchantDetailViewController *viewControllerDetail = (MerchantDetailViewController *)segue.destinationViewController;
+        viewControllerDetail.model = self.viewModelMerchant.arrMerchantList[indexPath.row];
+    }
 }
-*/
+
 
 #pragma mark - Merchant View model methods
 - (void)httpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumRequestType)typeRequest

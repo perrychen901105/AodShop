@@ -169,9 +169,9 @@
         return ;
     }
     // ...
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM DistrictList"];
-    NSString *strSql2 = [NSString stringWithFormat:@"DELETE * FROM CityList"];
-    NSString *strSql3 = [NSString stringWithFormat:@"DELETE * FROM ProvinceList"];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM DistrictList"];
+    NSString *strSql2 = [NSString stringWithFormat:@"DELETE FROM CityList"];
+    NSString *strSql3 = [NSString stringWithFormat:@"DELETE FROM ProvinceList"];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     dbSuccess = [db executeUpdate:strSql2];
     dbSuccess = [db executeUpdate:strSql3];
@@ -246,7 +246,7 @@
         return ;
     }
     // ...
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM Information where district_id = %d",districtid];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE  FROM Information where district_id = %d",districtid];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");
@@ -354,7 +354,7 @@
         return ;
     }
     // ...
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM Message where district_id = %d",districtid];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM Message where district_id = %d",districtid];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");
@@ -434,7 +434,7 @@
         // error
         return ;
     }
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM RequirePurchaseList"];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM RequirePurchaseList"];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");
@@ -455,11 +455,11 @@
     }
     NSMutableArray *arrValues = [@[] mutableCopy];
     for (GrouponModel *model in arrData) {
-        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%f,%d,%d,%d,%d)",model.grouponID,model.name,model.picture,model.price,model.number,model.sort,model.isPass,model.isOnSale];
+        NSString *strValues = [NSString stringWithFormat:@"(%ld,'%@','%@',%f,%ld,%ld,%ld,%f)",model.grouponID,model.name,model.picture,model.price,model.number,model.isPass,model.isOnSale,model.new_price];
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
-    NSString *strExec = [NSString stringWithFormat:@"insert into grouponList(grouponID, name, picture, price, number, sort, isPass, isOnSale) values %@",strAllValue];
+    NSString *strExec = [NSString stringWithFormat:@"insert into grouponList(grouponID, name, picture, price, number, isPass, isOnSale,newPrice) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
         NSLog(@"success");
@@ -485,7 +485,7 @@
         model.picture = [rs stringForColumn:@"picture"];
         model.price = [rs doubleForColumn:@"price"];
         model.number = [rs intForColumn:@"number"];
-        model.sort = [rs intForColumn:@"sort"];
+        model.new_price = [rs doubleForColumn:@"newPrice"];
         model.isPass = [rs intForColumn:@"isPass"];
         model.isOnSale = [rs intForColumn:@"isOnSale"];
 #ifdef DEBUG
@@ -504,7 +504,7 @@
         return ;
     }
     // ...
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM grouponList"];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM grouponList"];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");
@@ -572,7 +572,7 @@
         return ;
     }
     // ...
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM MerchantType"];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM MerchantType"];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");
@@ -648,7 +648,7 @@
         return ;
     }
     // ...
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM MerchantList where catId = %d",catId];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM MerchantList where catId = %d",catId];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");
@@ -722,7 +722,7 @@
         return ;
     }
     // ...
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM ProductType"];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM ProductType"];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");
@@ -805,7 +805,7 @@
         return ;
     }
     // ...
-    NSString *strSql1 = [NSString stringWithFormat:@"DELETE * FROM ProductList where productCatID = %d",catId];
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM ProductList where productCatID = %d",catId];
     BOOL dbSuccess = [db executeUpdate:strSql1];
     if (dbSuccess) {
         NSLog(@"success");

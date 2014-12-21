@@ -163,6 +163,7 @@
                                             <outlet property="lblPrice" destination="fr8-U8-n6e" id="rop-IG-9mg"/>
                                             <outlet property="lblReleaseTime" destination="Pk2-en-Nzt" id="D09-Yx-aQf"/>
                                             <outlet property="lblTitle" destination="NvM-hr-Wye" id="RTU-gO-LUr"/>
+                                            <segue destination="Q6h-dB-El0" kind="push" id="nfm-sW-Vq0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -188,6 +189,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5JF-Re-vzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="394" y="53"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fut-qd-XaK">
+            <objects>
+                <viewController id="Q6h-dB-El0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gvu-LU-hlo"/>
+                        <viewControllerLayoutGuide type="bottom" id="TZQ-sS-9Si"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nD7-LX-7mR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="odE-Be-OtP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9gD-uB-cjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="784" y="53"/>
         </scene>
     </scenes>
     <resources>

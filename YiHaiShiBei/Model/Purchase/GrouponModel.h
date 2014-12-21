@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *picture;
 @property (nonatomic, assign) CGFloat price;
+@property (nonatomic, assign) CGFloat new_price;
 @property (nonatomic, assign) NSInteger number;
 @property (nonatomic, assign) NSInteger sort;
 @property (nonatomic, assign) NSInteger isPass;

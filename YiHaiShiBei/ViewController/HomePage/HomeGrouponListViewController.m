@@ -13,6 +13,7 @@
 #import "GrouponModel.h"
 #import "MJRefresh.h"
 #import "AppConfig.h"
+#import "GrouponDetailViewController.h"
 
 @interface HomeGrouponListViewController ()<UITableViewDataSource, UITableViewDelegate, PurchaseViewModelDelegate>
 
@@ -51,20 +52,36 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueGrouponDetail"]) {
+        UITableViewCell *cellSelect = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tbViewContent indexPathForCell:cellSelect];
+        GrouponDetailViewController *viewControllerDetail = (GrouponDetailViewController *)segue.destinationViewController;
+        viewControllerDetail.model = self.viewModelPurchase.arrAllGrouponList[indexPath.row];
+    }
 }
-*/
+
 
 #pragma mark - PurchaseViewModel methods
 - (void)purchaseRequestError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumPurchaseRequestType)type

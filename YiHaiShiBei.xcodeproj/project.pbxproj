@@ -54,6 +54,8 @@
 		2C0543461A46D28000525258 /* RequirePurchaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0543451A46D28000525258 /* RequirePurchaseDetailViewController.m */; };
 		2C0543491A47105B00525258 /* PurchaseReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0543481A47105B00525258 /* PurchaseReplyModel.m */; };
 		2C05434C1A4718B900525258 /* ReplyPurchaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C05434B1A4718B900525258 /* ReplyPurchaseCell.m */; };
+		2C05434F1A4736A400525258 /* GrouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C05434E1A4736A400525258 /* GrouponDetailViewController.m */; };
+		2C0543521A4740B900525258 /* MerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0543511A4740B900525258 /* MerchantDetailViewController.m */; };
 		2C0C17031A39ED730015F53F /* MerchantInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C17021A39ED730015F53F /* MerchantInfoCell.m */; };
 		2C0C17071A39EE5A0015F53F /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C17061A39EE5A0015F53F /* ASStarRatingView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */; };
@@ -253,6 +255,10 @@
 		2C0543481A47105B00525258 /* PurchaseReplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseReplyModel.m; sourceTree = "<group>"; };
 		2C05434A1A4718B900525258 /* ReplyPurchaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyPurchaseCell.h; sourceTree = "<group>"; };
 		2C05434B1A4718B900525258 /* ReplyPurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyPurchaseCell.m; sourceTree = "<group>"; };
+		2C05434D1A4736A400525258 /* GrouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrouponDetailViewController.h; sourceTree = "<group>"; };
+		2C05434E1A4736A400525258 /* GrouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrouponDetailViewController.m; sourceTree = "<group>"; };
+		2C0543501A4740B900525258 /* MerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantDetailViewController.h; sourceTree = "<group>"; };
+		2C0543511A4740B900525258 /* MerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantDetailViewController.m; sourceTree = "<group>"; };
 		2C0C17011A39ED730015F53F /* MerchantInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantInfoCell.h; sourceTree = "<group>"; };
 		2C0C17021A39ED730015F53F /* MerchantInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantInfoCell.m; sourceTree = "<group>"; };
 		2C0C17051A39EE5A0015F53F /* ASStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStarRatingView.h; sourceTree = "<group>"; };
@@ -541,6 +547,8 @@
 				2CF8BC911A3F341400A347EA /* AddPurchaseViewController.m */,
 				2C0543441A46D28000525258 /* RequirePurchaseDetailViewController.h */,
 				2C0543451A46D28000525258 /* RequirePurchaseDetailViewController.m */,
+				2C05434D1A4736A400525258 /* GrouponDetailViewController.h */,
+				2C05434E1A4736A400525258 /* GrouponDetailViewController.m */,
 				0446962419EFB2FF00EF71A3 /* HomePage.storyboard */,
 			);
 			path = HomePage;
@@ -554,6 +562,8 @@
 				046643E119F7A12C0060C9CC /* MerchantIndexViewController.m */,
 				2CF1239D1A3673BF00EE1430 /* MerchantListViewController.h */,
 				2CF1239E1A3673BF00EE1430 /* MerchantListViewController.m */,
+				2C0543501A4740B900525258 /* MerchantDetailViewController.h */,
+				2C0543511A4740B900525258 /* MerchantDetailViewController.m */,
 				046643E819F7A15B0060C9CC /* MerchantPage.storyboard */,
 			);
 			path = Merchant;
@@ -1351,6 +1361,7 @@
 				2CE7EEC61A4571FD006A1A0A /* productInfoCell.m in Sources */,
 				2C433EA519EED4C900129479 /* ASIAuthenticationDialog.m in Sources */,
 				26C99FAA1A402AFE00D28C85 /* ProductViewModel.m in Sources */,
+				2C0543521A4740B900525258 /* MerchantDetailViewController.m in Sources */,
 				2C433EA919EED4C900129479 /* ASIFormDataRequest.m in Sources */,
 				2CDA1DDF19EEA50E0001FC43 /* AppDelegate.m in Sources */,
 				2C8183161A2F65B700FFB28D /* MsgTableViewCell.m in Sources */,
@@ -1375,6 +1386,7 @@
 				2C3373D61A2628B5002918A0 /* UIView+WebCacheOperation.m in Sources */,
 				2CA9E2AA1A0922290078176D /* CommoneTools.m in Sources */,
 				2C433EAB19EED4C900129479 /* ASIInputStream.m in Sources */,
+				2C05434F1A4736A400525258 /* GrouponDetailViewController.m in Sources */,
 				2CEF60591A150026001B7B53 /* BannerModel.m in Sources */,
 				2C0C17031A39ED730015F53F /* MerchantInfoCell.m in Sources */,
 				046643E519F7A1360060C9CC /* MoreIndexViewController.m in Sources */,

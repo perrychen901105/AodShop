@@ -22,5 +22,8 @@
                                                        @"is_onsale":@"isOnSale"
                                                        }];
 }
-
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end
