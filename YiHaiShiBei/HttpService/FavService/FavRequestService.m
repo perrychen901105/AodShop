@@ -12,6 +12,7 @@
 
 static NSString *ActionGetFavList = @"getUserCollection";
 static NSString *ActionAddFav = @"addUserCollection";
+static NSString *ActionRemoveFav = @"deletetUserCollection";
 
 - (void)getAllMyFavListWithParas:(NSMutableDictionary *)dicParas success:(GetAllFavListSuccessBlock)successBlock error:(GetAllFavListFailBlock)errorBlock
 {
@@ -25,6 +26,15 @@ static NSString *ActionAddFav = @"addUserCollection";
 - (void)addUserFavWithParas:(NSMutableDictionary *)dicParas success:(AddFaveSuccessBlock)successBlock error:(AddFaveFailBlock)errorBlock
 {
     [self postRequestToServer:ActionAddFav dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+- (void)removeUserFavWithParas:(NSMutableDictionary *)dicParas success:(RemoveFaveSuccessBlock)successBlock error:(RemoveFaveFailBlock)errorBlock
+{
+    [self postRequestToServer:ActionRemoveFav dicParams:dicParas success:^(NSString *responseString) {
         successBlock(responseString);
     } error:^(NSInteger errorCode, NSString *errorMessage) {
         errorBlock(errorCode, errorMessage);

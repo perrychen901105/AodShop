@@ -12,6 +12,8 @@
 #import "MerchantModel.h"
 #import "MJRefresh.h"
 #import "AppConfig.h"
+
+#import "SearchRootViewController.h"
 @interface MerchantIndexViewController ()<MerchantViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
@@ -40,7 +42,14 @@
         [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
-
+- (void)searchBtnClick
+{
+    UIStoryboard *sbSearch = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+    SearchRootViewController *viewControllerRoot = [sbSearch instantiateInitialViewController];
+    [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+        
+    }];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -58,7 +67,8 @@
         [self.tbViewContent reloadData];
     } else {
         [self.tbViewContent headerBeginRefreshing];
-    }    
+    }
+    [self setSearchAndCityButton];
     // Do any additional setup after loading the view.
 }
 

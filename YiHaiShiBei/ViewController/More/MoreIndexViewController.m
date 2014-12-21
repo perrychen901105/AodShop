@@ -13,6 +13,7 @@
 #import "LogoutCell.h"
 #import "ChangeUserInfoViewController.h"
 #import "ChangePwdViewController.h"
+#import "SearchRootViewController.h"
 
 @interface MoreIndexViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -30,6 +31,15 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)searchBtnClick
+{
+    UIStoryboard *sbSearch = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+    SearchRootViewController *viewControllerRoot = [sbSearch instantiateInitialViewController];
+    [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+        
+    }];
 }
 
 - (void)viewDidLoad

@@ -51,6 +51,9 @@
 		2C01A51C1A2CCC3400FAA7D8 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01A5131A2CCC3400FAA7D8 /* UIScrollView+MJRefresh.m */; };
 		2C01A51D1A2CCC3400FAA7D8 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01A5151A2CCC3400FAA7D8 /* UIView+MJExtension.m */; };
 		2C03C8F41A07C7C900EB90FD /* ProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */; };
+		2C0543461A46D28000525258 /* RequirePurchaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0543451A46D28000525258 /* RequirePurchaseDetailViewController.m */; };
+		2C0543491A47105B00525258 /* PurchaseReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0543481A47105B00525258 /* PurchaseReplyModel.m */; };
+		2C05434C1A4718B900525258 /* ReplyPurchaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C05434B1A4718B900525258 /* ReplyPurchaseCell.m */; };
 		2C0C17031A39ED730015F53F /* MerchantInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C17021A39ED730015F53F /* MerchantInfoCell.m */; };
 		2C0C17071A39EE5A0015F53F /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C17061A39EE5A0015F53F /* ASStarRatingView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C0FD6E01A20CB1600269EBD /* AodShop.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C0FD6DF1A20CB1600269EBD /* AodShop.sqlite */; };
@@ -244,6 +247,12 @@
 		2C03C8F21A07C7C900EB90FD /* ProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewModel.h; sourceTree = "<group>"; };
 		2C03C8F31A07C7C900EB90FD /* ProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewModel.m; sourceTree = "<group>"; };
 		2C03C8F51A07C7F100EB90FD /* UserProfileProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileProtocol.h; sourceTree = "<group>"; };
+		2C0543441A46D28000525258 /* RequirePurchaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirePurchaseDetailViewController.h; sourceTree = "<group>"; };
+		2C0543451A46D28000525258 /* RequirePurchaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirePurchaseDetailViewController.m; sourceTree = "<group>"; };
+		2C0543471A47105B00525258 /* PurchaseReplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseReplyModel.h; sourceTree = "<group>"; };
+		2C0543481A47105B00525258 /* PurchaseReplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseReplyModel.m; sourceTree = "<group>"; };
+		2C05434A1A4718B900525258 /* ReplyPurchaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyPurchaseCell.h; sourceTree = "<group>"; };
+		2C05434B1A4718B900525258 /* ReplyPurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyPurchaseCell.m; sourceTree = "<group>"; };
 		2C0C17011A39ED730015F53F /* MerchantInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantInfoCell.h; sourceTree = "<group>"; };
 		2C0C17021A39ED730015F53F /* MerchantInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantInfoCell.m; sourceTree = "<group>"; };
 		2C0C17051A39EE5A0015F53F /* ASStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStarRatingView.h; sourceTree = "<group>"; };
@@ -530,6 +539,8 @@
 				2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */,
 				2CF8BC901A3F341400A347EA /* AddPurchaseViewController.h */,
 				2CF8BC911A3F341400A347EA /* AddPurchaseViewController.m */,
+				2C0543441A46D28000525258 /* RequirePurchaseDetailViewController.h */,
+				2C0543451A46D28000525258 /* RequirePurchaseDetailViewController.m */,
 				0446962419EFB2FF00EF71A3 /* HomePage.storyboard */,
 			);
 			path = HomePage;
@@ -684,6 +695,8 @@
 				2CB1EBD21A3C8DBC0071B90F /* HomePurchaseTableViewCell.m */,
 				2CF8BC8A1A3F165600A347EA /* GrouponTableViewCell.h */,
 				2CF8BC8B1A3F165600A347EA /* GrouponTableViewCell.m */,
+				2C05434A1A4718B900525258 /* ReplyPurchaseCell.h */,
+				2C05434B1A4718B900525258 /* ReplyPurchaseCell.m */,
 			);
 			path = HomeIndexCell;
 			sourceTree = "<group>";
@@ -1069,6 +1082,8 @@
 				2C9FB5491A3D66650056DA6A /* RequirePurchaseModel.m */,
 				2CD227F01A3BEFE700195E0F /* GrouponModel.h */,
 				2CD227F11A3BEFE700195E0F /* GrouponModel.m */,
+				2C0543471A47105B00525258 /* PurchaseReplyModel.h */,
+				2C0543481A47105B00525258 /* PurchaseReplyModel.m */,
 			);
 			path = Purchase;
 			sourceTree = "<group>";
@@ -1318,6 +1333,7 @@
 				2C8183191A2F75CD00FFB28D /* InforDetailViewController.m in Sources */,
 				2C3373D11A2628B5002918A0 /* UIImage+GIF.m in Sources */,
 				2C433EA619EED4C900129479 /* ASIDataCompressor.m in Sources */,
+				2C0543461A46D28000525258 /* RequirePurchaseDetailViewController.m in Sources */,
 				2C3373C91A2628B5002918A0 /* SDImageCache.m in Sources */,
 				2C3373CC1A2628B5002918A0 /* SDWebImageDownloader.m in Sources */,
 				2CCC39C11A466635009FBB77 /* SearchRootViewController.m in Sources */,
@@ -1383,6 +1399,7 @@
 				2CE7EEDB1A45CF8A006A1A0A /* FavViewModel.m in Sources */,
 				2C7D336D1A221C55002C4A9A /* FMDatabaseAdditions.m in Sources */,
 				2C9FB54A1A3D66650056DA6A /* RequirePurchaseModel.m in Sources */,
+				2C05434C1A4718B900525258 /* ReplyPurchaseCell.m in Sources */,
 				2C433ED519EED87200129479 /* MBProgressHUD.m in Sources */,
 				04EB66FC19FF6D990043D120 /* JSONModelArray.m in Sources */,
 				2C433EA719EED4C900129479 /* ASIDataDecompressor.m in Sources */,
@@ -1394,6 +1411,7 @@
 				2C5EC2DA1A3B4AC300DF1F84 /* PurchaseRequestService.m in Sources */,
 				2CD091B41A30C6D20049E22E /* MsgDetailViewController.m in Sources */,
 				2CE7EECD1A459B58006A1A0A /* LogoutCell.m in Sources */,
+				2C0543491A47105B00525258 /* PurchaseReplyModel.m in Sources */,
 				04EB670219FF6D990043D120 /* JSONModel+networking.m in Sources */,
 				2CFFA0081A1CE33A0089B5AC /* HomeInfoListViewController.m in Sources */,
 				2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */,

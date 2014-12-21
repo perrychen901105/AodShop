@@ -12,7 +12,6 @@
 @interface BannerModel : BaseModel
 
 @property (nonatomic, strong) NSArray<AdvertiseModel> *advertisings;
-@property (nonatomic, assign) NSInteger count;
 
 @end
 

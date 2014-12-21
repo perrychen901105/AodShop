@@ -12,6 +12,8 @@
 
 static NSString *ActionAllPurchaseList = @"productPurchaseList";
 static NSString *ActionAllGrouponList  = @"getGroupPurchases";
+static NSString *ActionAllReplyPurchaseList = @"getProductPurchasesReplies";
+static NSString *ActionAddReplyPurchase = @"addProductPurchasesReply";
 
 - (void)getAllPurchaseListWithUserId:(NSInteger)userID districtID:(NSInteger)districtID productCatId:(NSInteger)productCatID start:(NSInteger)start num:(NSInteger)num success:(GetAllPurchaseListSuccessBlock)successBlock error:(GetAllPurchaseListFailBlock)errorBlock;
 {
@@ -65,4 +67,24 @@ static NSString *ActionAllGrouponList  = @"getGroupPurchases";
         errorBlock(errorCode, errorMessage);
     }];
 }
+
+- (void)getAllReplyPurchaseListWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock;
+{
+    [self postRequestToServer:ActionAllReplyPurchaseList dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+// 评论求购信息
+- (void)postReplyWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock
+{
+    [self postRequestToServer:ActionAddReplyPurchase dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
 @end

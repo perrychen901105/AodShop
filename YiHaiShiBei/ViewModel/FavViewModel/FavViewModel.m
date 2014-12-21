@@ -71,19 +71,47 @@
         self.favService = nil;
     }
     self.favService = [[FavRequestService alloc] init];
+    __weak FavViewModel *weakSelf = self;
     NSMutableDictionary *dicParas = [@{} mutableCopy];
     [dicParas setObject:[NSString stringWithFormat:@"%ld",userid] forKey:@"userid"];
     [dicParas setObject:appKey forKey:@"appkey"];
     [dicParas setObject:[NSString stringWithFormat:@"%ld",typeId] forKey:@"typeid"];
-    if (type == 1) {
+    if (type == 1) { 
         [dicParas setObject:[NSString stringWithFormat:@"%ld",detailID] forKey:@"collectionid"];
         [self.favService addUserFavWithParas:dicParas success:^(NSString *strResponse) {
-            
+            BaseModel *model = [[BaseModel alloc] initWithString:strResponse error:nil];
+            if (model.success == 0) {
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpSuccessWithTag:)]) {
+                    [weakSelf.delegate favHttpSuccessWithTag:FavRequestAddFav];
+                }
+            } else {
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpErrorWithCode:errMessage:type:)]) {
+                    [weakSelf.delegate favHttpErrorWithCode:model.success errMessage:model.message type:FavRequestAddFav];
+                }
+            }
         } error:^(NSInteger errorCode, NSString *errorMsg) {
-            
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpErrorWithCode:errMessage:type:)]) {
+                [weakSelf.delegate favHttpErrorWithCode:errorCode errMessage:errorMsg type:FavRequestAddFav];
+            }
         }];
     } else {
         [dicParas setObject:[NSString stringWithFormat:@"%ld",detailID] forKey:@"modelid"];
+        [self.favService removeUserFavWithParas:dicParas success:^(NSString *strResponse) {
+            BaseModel *model = [[BaseModel alloc] initWithString:strResponse error:nil];
+            if (model.success == 0) {
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpSuccessWithTag:)]) {
+                    [weakSelf.delegate favHttpSuccessWithTag:FavRequestRemoveFav];
+                }
+            } else {
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpErrorWithCode:errMessage:type:)]) {
+                    [weakSelf.delegate favHttpErrorWithCode:model.success errMessage:model.message type:FavRequestRemoveFav];
+                }
+            }
+        } error:^(NSInteger errorCode, NSString *errorMsg) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpErrorWithCode:errMessage:type:)]) {
+                [weakSelf.delegate favHttpErrorWithCode:errorCode errMessage:errorMsg type:FavRequestRemoveFav];
+            }
+        }];
     }
     
 }

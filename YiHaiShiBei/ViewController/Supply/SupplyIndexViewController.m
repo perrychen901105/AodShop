@@ -13,7 +13,7 @@
 #import "AppConfig.h"
 
 #import "SupplyListViewController.h"
-
+#import "SearchRootViewController.h"
 @interface SupplyIndexViewController ()<UITableViewDataSource, UITableViewDelegate, ProductViewModelDelegate>
 
 @property (nonatomic, strong) ProductViewModel *viewModelProduct;
@@ -41,7 +41,14 @@
         [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
-
+- (void)searchBtnClick
+{
+    UIStoryboard *sbSearch = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+    SearchRootViewController *viewControllerRoot = [sbSearch instantiateInitialViewController];
+    [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+        
+    }];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -61,6 +68,7 @@
     } else {
         [self.tbViewContent headerBeginRefreshing];
     }
+    [self setSearchAndCityButton];
     // Do any additional setup after loading the view.
 }
 

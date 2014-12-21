@@ -9,6 +9,7 @@
 #import "PurchaseViewModel.h"
 #import "RequirePurchaseModel.h"
 #import "GrouponModel.h"
+#import "PurchaseReplyModel.h"
 #import "DatabaseOperator.h"
 
 @implementation PurchaseViewModel
@@ -96,6 +97,78 @@
     } error:^(NSInteger errorCode, NSString *errorMsg) {
         if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
             [weakSelf.delegate purchaseRequestError:errorCode message:errorMsg type:TypeRequestAllGrouponList];
+        }
+    }];
+}
+
+- (void)getAllReplyPurchaseList:(NSInteger)userID appKey:(NSString *)appKey ppid:(NSInteger)ppid typeID:(NSInteger)typeID
+{
+    if (self.purchaseService == nil) {
+        self.purchaseService = [[PurchaseRequestService alloc] init];
+    }
+    if (self.arrAllReplyPurchaseList == nil) {
+        self.arrAllReplyPurchaseList = [@[] mutableCopy];
+    }
+    __weak PurchaseViewModel *weakSelf = self;
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",userID] forKey:@"userid"];
+    [dicParas setObject:appKey forKey:@"appkey"];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",ppid] forKey:@"ppid"];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",typeID] forKey:@"typeid"];
+    [self.purchaseService getAllReplyPurchaseListWithParas:dicParas success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(purchaseRequestSuccessWithTag:)]) {
+                if (weakSelf.arrAllReplyPurchaseList.count > 0) {
+                    [weakSelf.arrAllReplyPurchaseList removeAllObjects];
+                }
+                for (NSDictionary *dic in dicRoot[@"data"][@"ProductPurchasesReplies"]) {
+                    PurchaseReplyModel *model = [[PurchaseReplyModel alloc] initWithDictionary:dic error:nil];
+                    [weakSelf.arrAllReplyPurchaseList addObject:model];
+                }
+                [weakSelf.delegate purchaseRequestSuccessWithTag:TypeRequestAllReplyList];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+                [weakSelf.delegate purchaseRequestError:intResponseCode message:strResponseMsg type:TypeRequestAllReplyList];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *errorMsg) {
+        if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+            [weakSelf.delegate purchaseRequestError:errorCode message:errorMsg type:TypeRequestAllReplyList];
+        }
+    }];
+}
+
+- (void)postReplyPurchase:(NSInteger)userID appKey:(NSString *)appKey ppid:(NSInteger)ppid content:(NSString *)content
+{
+    if (self.purchaseService == nil) {
+        self.purchaseService = [[PurchaseRequestService alloc] init];
+    }
+    __weak PurchaseViewModel *weakSelf = self;
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",userID] forKey:@"userid"];
+    [dicParas setObject:appKey forKey:@"appkey"];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",ppid] forKey:@"ppid"];
+    [dicParas setObject:content forKey:@"content"];
+    [self.purchaseService postReplyWithParas:dicParas success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(purchaseRequestSuccessWithTag:)]) {
+                [weakSelf.delegate purchaseRequestSuccessWithTag:TypeRequestAddReplyPurchase];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+                [weakSelf.delegate purchaseRequestError:intResponseCode message:strResponseMsg type:TypeRequestAddReplyPurchase];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *errorMsg) {
+        if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+            [weakSelf.delegate purchaseRequestError:errorCode message:errorMsg type:TypeRequestAddReplyPurchase];
         }
     }];
 }

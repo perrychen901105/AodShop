@@ -17,7 +17,7 @@
 #define IsIOS7 ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=7)
 
 #define APIHost @"http://www.aodshop.cn/aodshop/index.php/api/"
-#define IMGHost @"http://www.aodshop.cn/aodshop/app/webroot/upload/"
+#define IMGHost @"http://www.aodshop.cn/aodshop/app/webroot/js/kindeditor/attached/image/"
 
 #define K_USER_SELECTED_DISTRICT_ID @"userSelectedDistrictId"
 #define K_USER_SELECTED_CITY_NAME @"userSelectedCityName"
@@ -27,5 +27,10 @@
 #define K_USER_LOGIN_APPKEY @"userloginAppkey"
 
 #define COLOR_TITLE_DEFAULT [UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f]
+
+#define TYPE_FAV_PRODUCT 1
+#define TYPE_FAV_MERCHANT 2
+#define TYPE_FAV_GROUPON 3
+#define TYPE_FAV_INFORMATION 4
 
 #endif

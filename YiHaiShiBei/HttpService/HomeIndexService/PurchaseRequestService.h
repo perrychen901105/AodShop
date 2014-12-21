@@ -14,6 +14,12 @@ typedef void (^GetAllPurchaseListFailBlock)(NSInteger errorCode, NSString *error
 typedef void (^GetAllGrouponListSuccessBlock)(NSString *strResponse);
 typedef void (^GetAllGrouponListFailBlock)(NSInteger errorCode, NSString *errorMsg);
 
+typedef void (^GetAllReplyPurchaseListSuccessBlock)(NSString *strResponse);
+typedef void (^GetAllReplyPurchaseListFailBlock)(NSInteger errorCode, NSString *errorMsg);
+
+typedef void (^AddReplyPurchaseSuccessBlock)(NSString *strResponse);
+typedef void (^AddReplyPurchaseFailBlock)(NSInteger errorCode, NSString *errorMsg);
+
 @interface PurchaseRequestService : HttpRequestService
 
 
@@ -22,5 +28,11 @@ typedef void (^GetAllGrouponListFailBlock)(NSInteger errorCode, NSString *errorM
 
 // 获取所有团购列表
 - (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass isOnsale:(NSInteger)isOnsale start:(NSInteger)start num:(NSInteger)num success:(GetAllGrouponListSuccessBlock)successBlock error:(GetAllGrouponListFailBlock)errorBlock;
+
+// 获取产品求购回复列表
+- (void)getAllReplyPurchaseListWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock;
+
+// 评论求购信息
+- (void)postReplyWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock;
 
 @end

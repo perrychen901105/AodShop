@@ -13,6 +13,7 @@
 #import "AppConfig.h"
 #import "favListCell.h"
 
+#import "SearchRootViewController.h"
 @interface FavIndexViewController ()<FavViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControlFav;
@@ -21,6 +22,8 @@
 @property (nonatomic, strong) FavViewModel *viewModelFav;
 
 @property (nonatomic, assign) NSInteger intSelectFav;
+
+@property (nonatomic, assign) NSInteger intRemovedIndex;
 
 - (IBAction)segValueChanged:(id)sender;
 
@@ -36,7 +39,14 @@
     }
     return self;
 }
-
+- (void)searchBtnClick
+{
+    UIStoryboard *sbSearch = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
+    SearchRootViewController *viewControllerRoot = [sbSearch instantiateInitialViewController];
+    [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+        
+    }];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,6 +55,9 @@
     self.viewModelFav = [[FavViewModel alloc] init];
     self.viewModelFav.delegate = self;
     [self getFavList];
+    [self setSearchAndCityButton];
+    self.tbViewContent.allowsMultipleSelectionDuringEditing = NO;
+    self.intRemovedIndex = 0;
     // Do any additional setup after loading the view.
 }
 
@@ -89,31 +102,40 @@
 #pragma mark - Fav view model methods
 - (void)favHttpErrorWithCode:(NSInteger)errorCode errMessage:(NSString *)errorStr type:(EnumFavRequestType)type
 {
-    
+    if (type == FavRequestRemoveFav) {
+        [self showOnlyLabelHud:errorStr withView:self.view];
+    }
 }
 
 - (void)favHttpSuccessWithTag:(EnumFavRequestType)type
 {
-    [self.tbViewContent reloadData];
+    if (type == FavRequestRemoveFav) {
+        [self.viewModelFav.arrALlFavList removeObjectAtIndex:self.intRemovedIndex];
+        [self.tbViewContent reloadData];
+        self.intRemovedIndex = 0;
+        [self showOnlyLabelHud:@"删除成功" withView:self.view];
+    } else {
+        [self.tbViewContent reloadData];
+    }
 }
 
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     favListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"favListCell"];
-    if (self.viewModelFav.didChangeIndex == 1) {
+    if (self.viewModelFav.didChangeIndex == TYPE_FAV_PRODUCT) {
         ProductFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
         [cell.imgViewFav sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.productPic]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
         cell.lblTitle.text = model.productName;
         cell.lblContent.text = [NSString stringWithFormat:@"￥ %.2f",model.price];
         cell.lblSubtitle.text = [NSString stringWithFormat:@"添加时间: %@",model.strAddtime];
-    } else if(self.viewModelFav.didChangeIndex == 2) {
+    } else if(self.viewModelFav.didChangeIndex == TYPE_FAV_MERCHANT) {
         MerchantFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
         [cell.imgViewFav sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.merchantPic]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
         cell.lblTitle.text = model.merchantName;
         cell.lblContent.text = [NSString stringWithFormat:@"地址 %@",model.merchantAddr];
         cell.lblSubtitle.text = [NSString stringWithFormat:@"添加时间: %@",model.strAddtime];
-    } else if (self.viewModelFav.didChangeIndex == 3) {
+    } else if (self.viewModelFav.didChangeIndex == TYPE_FAV_GROUPON) {
         GrouponFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
         [cell.imgViewFav sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.grouponPic]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
         cell.lblTitle.text = model.grouponName;
@@ -138,4 +160,35 @@
 {
     return 1;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self showProgressLabelHud:@"正在取消" withView:self.view];
+        if (self.viewModelFav.didChangeIndex == TYPE_FAV_PRODUCT) {
+            ProductFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
+            [self.viewModelFav changeUserFavWithType:0 userID:self.apps.storedUserID appKey:self.apps.stroedAppKey typeid:TYPE_FAV_PRODUCT detailID:model.favID];
+        } else if (self.viewModelFav.didChangeIndex == TYPE_FAV_MERCHANT) {
+            MerchantFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
+            [self.viewModelFav changeUserFavWithType:0 userID:self.apps.storedUserID appKey:self.apps.stroedAppKey typeid:TYPE_FAV_MERCHANT detailID:model.favID];
+        } else if (self.viewModelFav.didChangeIndex == TYPE_FAV_GROUPON) {
+            GrouponFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
+            [self.viewModelFav changeUserFavWithType:0 userID:self.apps.storedUserID appKey:self.apps.stroedAppKey typeid:TYPE_FAV_GROUPON detailID:model.favID];
+        } else {
+            InfoFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
+            [self.viewModelFav changeUserFavWithType:0 userID:self.apps.storedUserID appKey:self.apps.stroedAppKey typeid:TYPE_FAV_INFORMATION detailID:model.favID];
+        }
+        self.intRemovedIndex = indexPath.row;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"取消收藏";
+}
+
 @end

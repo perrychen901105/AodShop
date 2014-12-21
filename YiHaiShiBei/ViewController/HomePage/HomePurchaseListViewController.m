@@ -13,6 +13,7 @@
 #import "MJRefresh.h"
 #import "AppConfig.h"
 #import "AddPurchaseViewController.h"
+#import "RequirePurchaseDetailViewController.h"
 
 @interface HomePurchaseListViewController ()<UITableViewDataSource, UITableViewDelegate, PurchaseViewModelDelegate>
 
@@ -51,6 +52,10 @@
 {
     [super viewWillAppear:animated];
     self.viewModelPurchase.delegate = self;
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -100,6 +105,11 @@
         viewController.AddPurchaseBlock = ^(BOOL success){
 //            [weakSelf.tbViewContent headerBeginRefreshing];
         };
+    } else if ([segue.identifier isEqualToString:@"seguePurchaseDetail"]) {
+        UITableViewCell *cellSelect = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tbViewContent indexPathForCell:cellSelect];
+        RequirePurchaseDetailViewController *viewController = segue.destinationViewController;
+        viewController.model = self.viewModelPurchase.arrAllPurchaseList[indexPath.row];
     }
 }
 
