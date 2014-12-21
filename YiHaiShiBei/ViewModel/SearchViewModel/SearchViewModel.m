@@ -58,6 +58,7 @@
             }
             
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(searchHttpSuccessWithTag:)]) {
+                weakSelf.intSelectType = type;
                 [weakSelf.delegate searchHttpSuccessWithTag:SearchRequestAllList];
             }
         } else {

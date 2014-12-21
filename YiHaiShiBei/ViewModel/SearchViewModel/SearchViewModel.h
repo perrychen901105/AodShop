@@ -27,6 +27,8 @@ typedef enum EnumSearchRequestType
 @property (nonatomic, strong) SearchRequestService *searchService;
 @property (nonatomic, strong) NSMutableArray *arrAllSearchList;
 
+@property (nonatomic, assign) NSInteger intSelectType;
+
 - (void)getAllSearchListWithContent:(NSString *)content type:(NSInteger)type start:(NSInteger)start num:(NSInteger)num;
 
 @end
