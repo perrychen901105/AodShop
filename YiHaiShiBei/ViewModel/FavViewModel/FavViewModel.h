@@ -26,6 +26,7 @@ typedef enum EnumFavRequestType
 @interface FavViewModel : NSObject
 
 @property (nonatomic, weak) id<FavViewModelDelegate> delegate;
+@property (nonatomic, assign) NSInteger didChangeIndex;
 @property (nonatomic, strong) FavRequestService *favService;
 @property (nonatomic, strong) NSMutableArray *arrALlFavList;
 

@@ -113,6 +113,8 @@
 		2CC3156D1A2AC13200D63E46 /* MerchantModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3156C1A2AC13200D63E46 /* MerchantModel.m */; };
 		2CC315701A2AC33C00D63E46 /* MerchantListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3156F1A2AC33C00D63E46 /* MerchantListModel.m */; };
 		2CC4C7411A0683E1001CCDAD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */; };
+		2CCC39B11A4644D6009FBB77 /* FavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC39B01A4644D6009FBB77 /* FavModel.m */; };
+		2CCC39B51A46538E009FBB77 /* favListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC39B41A46538E009FBB77 /* favListCell.m */; };
 		2CD091B11A30A2D10049E22E /* MsgListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD091B01A30A2D10049E22E /* MsgListModel.m */; };
 		2CD091B41A30C6D20049E22E /* MsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD091B31A30C6D20049E22E /* MsgDetailViewController.m */; };
 		2CD0BDAC1A0F73310004F44C /* ChooseLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BDAB1A0F73310004F44C /* ChooseLocationViewController.m */; };
@@ -357,6 +359,10 @@
 		2CC3156F1A2AC33C00D63E46 /* MerchantListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantListModel.m; sourceTree = "<group>"; };
 		2CC4C73F1A0683E1001CCDAD /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2CCC39AF1A4644D6009FBB77 /* FavModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavModel.h; sourceTree = "<group>"; };
+		2CCC39B01A4644D6009FBB77 /* FavModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavModel.m; sourceTree = "<group>"; };
+		2CCC39B31A46538E009FBB77 /* favListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = favListCell.h; sourceTree = "<group>"; };
+		2CCC39B41A46538E009FBB77 /* favListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = favListCell.m; sourceTree = "<group>"; };
 		2CD091AF1A30A2D10049E22E /* MsgListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgListModel.h; sourceTree = "<group>"; };
 		2CD091B01A30A2D10049E22E /* MsgListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgListModel.m; sourceTree = "<group>"; };
 		2CD091B21A30C6D20049E22E /* MsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgDetailViewController.h; sourceTree = "<group>"; };
@@ -485,6 +491,7 @@
 		0446961C19EFB16000EF71A3 /* Fav */ = {
 			isa = PBXGroup;
 			children = (
+				2CCC39B21A465376009FBB77 /* FavCell */,
 				046643DD19F7A11E0060C9CC /* FavIndexViewController.h */,
 				046643DE19F7A11E0060C9CC /* FavIndexViewController.m */,
 				046643E619F7A14B0060C9CC /* FavPage.storyboard */,
@@ -804,6 +811,7 @@
 		2C433E7D19EEC91600129479 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2CCC39AE1A4643A8009FBB77 /* Fav */,
 				2CB979861A40815E0072E996 /* Product */,
 				2CD227EC1A3BEFA100195E0F /* Purchase */,
 				2CC3156A1A2AC10D00D63E46 /* Merchant */,
@@ -980,6 +988,24 @@
 				2CC3156F1A2AC33C00D63E46 /* MerchantListModel.m */,
 			);
 			path = Merchant;
+			sourceTree = "<group>";
+		};
+		2CCC39AE1A4643A8009FBB77 /* Fav */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC39AF1A4644D6009FBB77 /* FavModel.h */,
+				2CCC39B01A4644D6009FBB77 /* FavModel.m */,
+			);
+			path = Fav;
+			sourceTree = "<group>";
+		};
+		2CCC39B21A465376009FBB77 /* FavCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC39B31A46538E009FBB77 /* favListCell.h */,
+				2CCC39B41A46538E009FBB77 /* favListCell.m */,
+			);
+			path = FavCell;
 			sourceTree = "<group>";
 		};
 		2CD0BDA91A0F73180004F44C /* Location */ = {
@@ -1244,6 +1270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C01A51B1A2CCC3400FAA7D8 /* UIScrollView+MJExtension.m in Sources */,
+				2CCC39B11A4644D6009FBB77 /* FavModel.m in Sources */,
 				2C3373D41A2628B5002918A0 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2C8183191A2F75CD00FFB28D /* InforDetailViewController.m in Sources */,
 				2C3373D11A2628B5002918A0 /* UIImage+GIF.m in Sources */,
@@ -1302,6 +1329,7 @@
 				2C3373CA1A2628B5002918A0 /* SDWebImageCompat.m in Sources */,
 				2C3373C71A2628B5002918A0 /* MKAnnotationView+WebCache.m in Sources */,
 				2CE7EED01A45AC28006A1A0A /* ChangeUserInfoViewController.m in Sources */,
+				2CCC39B51A46538E009FBB77 /* favListCell.m in Sources */,
 				263F2D561A122EEA00BC7AC7 /* LocationListViewController.m in Sources */,
 				2C433EAC19EED4C900129479 /* ASINetworkQueue.m in Sources */,
 				2C31B6A71A2E070F0097F8AE /* InformationListModel.m in Sources */,

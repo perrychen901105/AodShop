@@ -75,7 +75,10 @@
                     [[DatabaseOperator getInstance] removeAllProductListWithCatId:catID];
                     [[DatabaseOperator getInstance] insertAllProductList:weakSelf.arrAllProductList withCatId:catID];
                 }
-                [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAllList];
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpSuccessWithTag:)]) {
+                    [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAllList];
+
+                }
             }
         } else {
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {

@@ -7,7 +7,7 @@
 //
 
 #import "FavViewModel.h"
-
+#import "FavModel.h"
 @implementation FavViewModel
 
 - (void)getAllFavListWithUserID:(NSInteger)userid appKey:(NSString *)appKey typeID:(NSInteger)typeID start:(NSInteger)start num:(NSInteger)num
@@ -26,10 +26,41 @@
     if (num >= 0) {
         [dicParas setObject:[NSString stringWithFormat:@"%ld",num] forKey:@"number"];
     }
+    __weak FavViewModel *weakSelf = self;
     [self.favService getAllMyFavListWithParas:dicParas success:^(NSString *strResponse) {
-        
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            weakSelf.arrALlFavList = [@[] mutableCopy];
+            for (NSDictionary *dic in dicRoot[@"data"][@"Collection"]) {
+                if (typeID == 1) {  // product
+                    ProductFavModel *model = [[ProductFavModel alloc] initWithDictionary:dic error:nil];
+                    [weakSelf.arrALlFavList addObject:model];
+                } else if (typeID == 2) {   // merchant
+                    MerchantFavModel *model = [[MerchantFavModel alloc] initWithDictionary:dic error:nil];
+                    [weakSelf.arrALlFavList addObject:model];
+                } else if (typeID == 3) {   // groupon
+                    GrouponFavModel *model = [[GrouponFavModel alloc] initWithDictionary:dic error:nil];
+                    [weakSelf.arrALlFavList addObject:model];
+                } else {    // info
+                    InfoFavModel *model = [[InfoFavModel alloc] initWithDictionary:dic error:nil];
+                    [weakSelf.arrALlFavList addObject:model];
+                }
+            }
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpSuccessWithTag:)]) {
+                weakSelf.didChangeIndex = typeID;
+                [weakSelf.delegate favHttpSuccessWithTag:FavRequestAllList];
+            }
+        } else {
+            if (weakSelf && weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpErrorWithCode:errMessage:type:)]) {
+                [weakSelf.delegate favHttpErrorWithCode:intResponseCode errMessage:strResponseMsg type:FavRequestAllList];
+            }
+        }
     } error:^(NSInteger errorCode, NSString *errorMsg) {
-        
+        if (weakSelf && weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(favHttpErrorWithCode:errMessage:type:)]) {
+            [weakSelf.delegate favHttpErrorWithCode:errorCode errMessage:errorMsg type:FavRequestAllList];
+        }
     }];
 }
 
