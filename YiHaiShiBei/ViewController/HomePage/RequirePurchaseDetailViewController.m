@@ -118,7 +118,7 @@
 
 - (void)purchaseRequestError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumPurchaseRequestType)type
 {
-    
+    [self showOnlyLabelHud:errorMessage withView:self.view];
 }
 
 #pragma mark - UITableView methods
@@ -143,8 +143,6 @@
 {
     ReplyPurchaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReplyPurchaseCell"];
     [self setupCellContent:cell indexPath:indexPath];
-//    [cell setNeedsUpdateConstraints];
-//    [cell updateConstraintsIfNeeded];
     return cell;
 }
 
@@ -178,14 +176,9 @@
     NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect keyboardFrame = [kbFrame CGRectValue];
     CGFloat height = keyboardFrame.size.height;
-    
     [UIView animateWithDuration:animationDuration animations:^{
-//        self.constraintInupBottom.constant = height;
-//        [self.view layoutIfNeeded];
         NSLog(@"%f",self.constraintInupBottom.constant);
     }];
-    
-
 }
 
 - (void)keyboardChangeFrame:(NSNotification *)notification
@@ -219,8 +212,8 @@
         [self showOnlyLabelHud:@"请填写内容..." withView:self.view];
         return;
     }
-    [self showProgressLabelHud:@"正在提交内容..." withView:self.view];
     [self.tfReply resignFirstResponder];
+    [self showProgressLabelHud:@"正在提交内容..." withView:self.view];
     [self.viewModelPurchase postReplyPurchase:self.apps.storedUserID appKey:self.apps.stroedAppKey ppid:self.model.purchaseID content:strContent];
     
 }

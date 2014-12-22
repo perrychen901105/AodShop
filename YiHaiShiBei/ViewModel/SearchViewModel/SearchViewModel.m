@@ -38,6 +38,8 @@
             if (type == 1) {
                 for (NSDictionary *dic in dicRoot[@"data"][@"Informations"]) {
                     InformationModel *model = [[InformationModel alloc] initWithDictionary:dic[@"Information"] error:nil];
+                    model.realname = dic[@"User"][@"realname"];
+                    model.userName = dic[@"User"][@"username"];
                     [weakSelf.arrAllSearchList addObject:model];
                 }
             } else if (type == 2) {

@@ -95,6 +95,8 @@
 		2C433EAD19EED4C900129479 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C433EA419EED4C900129479 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C433EAF19EED52800129479 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C433EAE19EED52800129479 /* Default-568h@2x.png */; };
 		2C433ED519EED87200129479 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C433EB219EED87200129479 /* MBProgressHUD.m */; };
+		2C537FAB1A4847BC003EC471 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C537FAA1A4847BC003EC471 /* ProductDetailViewController.m */; };
+		2C537FAE1A488DEA003EC471 /* ProductCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C537FAD1A488DEA003EC471 /* ProductCommentModel.m */; };
 		2C5EC2DA1A3B4AC300DF1F84 /* PurchaseRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EC2D91A3B4AC300DF1F84 /* PurchaseRequestService.m */; };
 		2C5EC2DD1A3B503000DF1F84 /* PurchaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5EC2DC1A3B503000DF1F84 /* PurchaseViewModel.m */; };
 		2C7763741A2624F6005998B7 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7763731A2624F6005998B7 /* ImageIO.framework */; };
@@ -335,6 +337,10 @@
 		2C433EAE19EED52800129479 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C433EB119EED87200129479 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		2C433EB219EED87200129479 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2C537FA91A4847BC003EC471 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		2C537FAA1A4847BC003EC471 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		2C537FAC1A488DEA003EC471 /* ProductCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCommentModel.h; sourceTree = "<group>"; };
+		2C537FAD1A488DEA003EC471 /* ProductCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCommentModel.m; sourceTree = "<group>"; };
 		2C5EC2D81A3B4AC300DF1F84 /* PurchaseRequestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseRequestService.h; sourceTree = "<group>"; };
 		2C5EC2D91A3B4AC300DF1F84 /* PurchaseRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseRequestService.m; sourceTree = "<group>"; };
 		2C5EC2DB1A3B503000DF1F84 /* PurchaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseViewModel.h; sourceTree = "<group>"; };
@@ -587,13 +593,15 @@
 		0446962019EFB16000EF71A3 /* Supply */ = {
 			isa = PBXGroup;
 			children = (
+				2CE7EEC41A4571FD006A1A0A /* productInfoCell.h */,
+				2CE7EEC51A4571FD006A1A0A /* productInfoCell.m */,
 				0446962619EFBB1C00EF71A3 /* SupplyIndexViewController.h */,
 				0446962719EFBB1C00EF71A3 /* SupplyIndexViewController.m */,
 				2CB2F88F1A41B94D00D40F6E /* SupplyListViewController.h */,
 				2CB2F8901A41B94D00D40F6E /* SupplyListViewController.m */,
+				2C537FA91A4847BC003EC471 /* ProductDetailViewController.h */,
+				2C537FAA1A4847BC003EC471 /* ProductDetailViewController.m */,
 				0446962919EFBB3700EF71A3 /* SupplyIndex.storyboard */,
-				2CE7EEC41A4571FD006A1A0A /* productInfoCell.h */,
-				2CE7EEC51A4571FD006A1A0A /* productInfoCell.m */,
 			);
 			path = Supply;
 			sourceTree = "<group>";
@@ -1012,6 +1020,8 @@
 			children = (
 				2CB979871A40817E0072E996 /* ProductModel.h */,
 				2CB979881A40817E0072E996 /* ProductModel.m */,
+				2C537FAC1A488DEA003EC471 /* ProductCommentModel.h */,
+				2C537FAD1A488DEA003EC471 /* ProductCommentModel.m */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -1346,6 +1356,7 @@
 				2C0543461A46D28000525258 /* RequirePurchaseDetailViewController.m in Sources */,
 				2C3373C91A2628B5002918A0 /* SDImageCache.m in Sources */,
 				2C3373CC1A2628B5002918A0 /* SDWebImageDownloader.m in Sources */,
+				2C537FAE1A488DEA003EC471 /* ProductCommentModel.m in Sources */,
 				2CCC39C11A466635009FBB77 /* SearchRootViewController.m in Sources */,
 				2C0C17071A39EE5A0015F53F /* ASStarRatingView.m in Sources */,
 				0446961A19EFA68800EF71A3 /* BaseViewController.m in Sources */,
@@ -1388,6 +1399,7 @@
 				2C433EAB19EED4C900129479 /* ASIInputStream.m in Sources */,
 				2C05434F1A4736A400525258 /* GrouponDetailViewController.m in Sources */,
 				2CEF60591A150026001B7B53 /* BannerModel.m in Sources */,
+				2C537FAB1A4847BC003EC471 /* ProductDetailViewController.m in Sources */,
 				2C0C17031A39ED730015F53F /* MerchantInfoCell.m in Sources */,
 				046643E519F7A1360060C9CC /* MoreIndexViewController.m in Sources */,
 				2CCC39B91A465CBF009FBB77 /* SearchRequestService.m in Sources */,

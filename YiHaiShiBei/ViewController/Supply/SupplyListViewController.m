@@ -13,7 +13,7 @@
 #import "ProductModel.h"
 #import "productInfoCell.h"
 #import "UIImageView+WebCache.h"
-
+#import "ProductDetailViewController.h"
 
 @interface SupplyListViewController ()<ProductViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -63,15 +63,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueProductDetail"]) {
+        UITableViewCell *cellSelect = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tbViewContent indexPathForCell:cellSelect];
+        ProductModel *modelProduct = self.viewModelProduct.arrAllProductList[indexPath.row];
+        ProductDetailViewController *viewControllerDetail = (ProductDetailViewController *)segue.destinationViewController;
+        viewControllerDetail.modelProduct = modelProduct;
+    }
 }
-*/
+
 
 #pragma mark - ProductViewmodel methods
 - (void)productHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumProductRequestType)typeRequest
@@ -110,7 +115,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] init];
-    
     return view;
 }
 

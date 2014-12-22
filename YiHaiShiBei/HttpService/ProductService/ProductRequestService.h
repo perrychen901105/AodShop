@@ -17,6 +17,12 @@ typedef void (^GetAllProductListFailBlock)(NSInteger errorCode, NSString *errorM
 typedef void (^PostAddPurchaseSuccessBlock)(NSString *strResponse);
 typedef void (^PostAddPurchaseFailBlock)(NSInteger errorCode, NSString *errorMsg);
 
+typedef void (^PostGetProductCommentSuccessBlock)(NSString *strResponse);
+typedef void (^PostGetProductCommentFailBlock)(NSInteger errorCode, NSString *errorMsg);
+
+typedef void (^PostAddProductCommentSuccessBlock)(NSString *strResponse);
+typedef void (^PostAddProductCommentFailBlcok)(NSInteger errorCode, NSString *errorMsg);
+
 @interface ProductRequestService : HttpRequestService
 
 /**
@@ -37,5 +43,9 @@ typedef void (^PostAddPurchaseFailBlock)(NSInteger errorCode, NSString *errorMsg
  *  @paras userid, appkey, title, purchaseinfo, districtid, productcatid,content
  */
 - (void)postAddProductPurchaseWithUsrID:(NSInteger)userid appKey:(NSString *)appKey title:(NSString *)title purchaseInfo:(NSString *)info districtID:(NSInteger)districtID productcatid:(NSInteger)catID success:(PostAddPurchaseSuccessBlock)successBlock error:(PostAddPurchaseFailBlock)errorBlock;
+
+- (void)postGetProductCommentListWithParas:(NSMutableDictionary *)dicParas success:(PostGetProductCommentSuccessBlock)successBlock error:(PostGetProductCommentFailBlock)errorBlock;
+
+- (void)postProductCommentWithPars:(NSMutableDictionary *)dicParas success:(PostAddProductCommentSuccessBlock)successBlock error:(PostAddProductCommentFailBlcok)errorBlock;
 
 @end

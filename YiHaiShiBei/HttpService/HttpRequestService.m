@@ -95,7 +95,10 @@
         NSLog(@"message is %@",request.responseString);
         NSLog(@"add");
 #endif
-        successBlock(request.responseString);
+        if (successBlock) {
+            successBlock(request.responseString);
+        }
+        
     }];
     [request setFailedBlock:^{
 #ifdef DEBUG_X

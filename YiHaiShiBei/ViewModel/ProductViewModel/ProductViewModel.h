@@ -13,7 +13,9 @@ typedef enum EnumProductRequestType
 {
     ProductRequestAllTypeList = 100,
     ProductRequestAllList,
-    ProductRequestAddPurchase
+    ProductRequestAddPurchase,
+    ProductRequestAllCommentList,
+    ProductRequestAddComment
 }EnumProductRequestType;
 
 @protocol ProductViewModelDelegate <NSObject>
@@ -29,10 +31,13 @@ typedef enum EnumProductRequestType
 @property (nonatomic, strong) ProductRequestService *productService;
 @property (nonatomic, strong) NSMutableArray *arrAllProCatList;
 @property (nonatomic, strong) NSMutableArray *arrAllProductList;
+@property (nonatomic, strong) NSMutableArray *arrAllCommentList;
 
 - (void)getProductTypeListWithStart:(NSInteger)start count:(NSInteger)count;
 - (void)getProductListWithCatid:(NSInteger)catID districtID:(NSInteger)districtID start:(NSInteger)start count:(NSInteger)count;
 - (void)postToPurchaseWithUsrID:(NSInteger)userid appKey:(NSString *)appKey title:(NSString *)title purchaseInfo:(NSString *)info districtID:(NSInteger)districtID productcatid:(NSInteger)catID;
+- (void)getProductCommentListWithUsrID:(NSInteger)userid appKey:(NSString *)appKey productID:(NSInteger)productID;
+- (void)postProductCommentWithUserID:(NSInteger)userid appKey:(NSString *)appKey productID:(NSInteger)productID content:(NSString *)content;
 
 - (void)getCachedProductTypeList;
 - (void)getCachedProductList:(NSInteger)catID;

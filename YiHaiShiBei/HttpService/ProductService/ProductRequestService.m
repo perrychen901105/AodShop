@@ -13,6 +13,8 @@
 static NSString *ActionGetProductCatList = @"getProductCatList";
 static NSString *ActionGetProductList = @"getProductsListByCat";
 static NSString *ActionPostAddPurchase = @"addProductPurchase";
+static NSString *ActionGetProductCommentList = @"getProductComments";
+static NSString *ActionAddProductComment = @"addProductComment";
 
 - (void)getProductTypeListWithStart:(NSInteger)start number:(NSInteger)num success:(GetAllProductCatListSuccessBlock)successBlock error:(GetAllProductCatListFailBlock)errorBlock
 {
@@ -67,4 +69,23 @@ static NSString *ActionPostAddPurchase = @"addProductPurchase";
         errorBlock(errorCode, errorMessage);
     }];
 }
+
+- (void)postGetProductCommentListWithParas:(NSMutableDictionary *)dicParas success:(PostGetProductCommentSuccessBlock)successBlock error:(PostGetProductCommentFailBlock)errorBlock
+{
+    [self postRequestToServer:ActionGetProductCommentList dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+- (void)postProductCommentWithPars:(NSMutableDictionary *)dicParas success:(PostAddProductCommentSuccessBlock)successBlock error:(PostAddProductCommentFailBlcok)errorBlock
+{
+    [self postRequestToServer:ActionAddProductComment dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
 @end

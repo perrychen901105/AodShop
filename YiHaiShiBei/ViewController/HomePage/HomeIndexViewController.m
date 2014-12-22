@@ -110,7 +110,8 @@
     [self setSearchAndCityButton];
     [self requestForBannerList];
     
-    
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
+    [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     NSString *strPreviousSelectCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
     if (strPreviousSelectCityName != nil) {
         self.lblCity.text = strPreviousSelectCityName;

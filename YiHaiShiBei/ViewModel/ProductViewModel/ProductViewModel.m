@@ -9,6 +9,7 @@
 #import "ProductViewModel.h"
 #import "DatabaseOperator.h"
 #import "ProductModel.h"
+#import "ProductCommentModel.h"
 
 @implementation ProductViewModel
 
@@ -114,6 +115,78 @@
     } error:^(NSInteger errorCode, NSString *errorMsg) {
         if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
             [weakSelf.delegate productHttpError:errorCode errMsg:errorMsg withType:ProductRequestAllTypeList];
+        }
+    }];
+}
+
+- (void)getProductCommentListWithUsrID:(NSInteger)userid appKey:(NSString *)appKey productID:(NSInteger)productID
+{
+    if (self.productService == nil) {
+        self.productService = [[ProductRequestService alloc] init];
+    }
+    if (self.arrAllCommentList == nil) {
+        self.arrAllCommentList = [@[] mutableCopy];
+    }
+    __weak ProductViewModel *weakSelf = self;
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",userid] forKey:@"userid"];
+    [dicParas setObject:appKey forKey:@"appkey"];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",productID] forKey:@"productid"];
+    [self.productService postGetProductCommentListWithParas:dicParas success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpSuccessWithTag:)]) {
+                if (weakSelf.arrAllCommentList.count > 0) {
+                    [weakSelf.arrAllCommentList removeAllObjects];
+                }
+                for (NSDictionary *dic in dicRoot[@"data"][@"comments"]) {
+                    ProductCommentModel *model = [[ProductCommentModel alloc] initWithDictionary:dic error:nil];
+                    [weakSelf.arrAllCommentList addObject:model];
+                }
+                [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAllCommentList];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
+                [weakSelf.delegate productHttpError:intResponseCode errMsg:strResponseMsg withType:ProductRequestAllCommentList];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *errorMsg) {
+        if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
+            [weakSelf.delegate productHttpError:errorCode errMsg:errorMsg withType:ProductRequestAllCommentList];
+        }
+    }];
+
+}
+
+- (void)postProductCommentWithUserID:(NSInteger)userid appKey:(NSString *)appKey productID:(NSInteger)productID content:(NSString *)content
+{
+    if (self.productService == nil) {
+        self.productService = [[ProductRequestService alloc] init];
+    }
+    __weak ProductViewModel *weakSelf = self;
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",userid] forKey:@"userid"];
+    [dicParas setObject:appKey forKey:@"appkey"];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",productID] forKey:@"productid"];
+    [dicParas setObject:content forKey:@"content"];
+    [self.productService postProductCommentWithPars:dicParas success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpSuccessWithTag:)]) {
+                [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAddComment];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
+                [weakSelf.delegate productHttpError:intResponseCode errMsg:strResponseMsg withType:ProductRequestAddComment];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *errorMsg) {
+        if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
+            [weakSelf.delegate productHttpError:errorCode errMsg:errorMsg withType:ProductRequestAddComment];
         }
     }];
 }
