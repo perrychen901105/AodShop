@@ -893,19 +893,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1yl-Hg-VV1" id="VlX-HT-4Lu">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfu-T3-14f">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Mfu-T3-14f">
                                                     <rect key="frame" x="10" y="30" width="300" height="24"/>
-                                                    <color key="backgroundColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="o3M-d6-bgH"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0O-Ku-9nD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Q0O-Ku-9nD">
                                                     <rect key="frame" x="10" y="5" width="300" height="20"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="IOJ-uv-Oa6"/>
                                                     </constraints>
@@ -919,6 +914,7 @@
                                                 <constraint firstItem="Q0O-Ku-9nD" firstAttribute="leading" secondItem="VlX-HT-4Lu" secondAttribute="leading" constant="10" id="gKw-Kb-NLP"/>
                                                 <constraint firstAttribute="trailing" secondItem="Mfu-T3-14f" secondAttribute="trailing" constant="10" id="hUp-BW-3Nk"/>
                                                 <constraint firstItem="Mfu-T3-14f" firstAttribute="leading" secondItem="VlX-HT-4Lu" secondAttribute="leading" constant="10" id="knO-WU-wCZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="Mfu-T3-14f" secondAttribute="bottom" constant="5" id="phL-mf-Df7"/>
                                                 <constraint firstItem="Mfu-T3-14f" firstAttribute="top" secondItem="Q0O-Ku-9nD" secondAttribute="bottom" constant="5" id="rAA-KY-ReG"/>
                                                 <constraint firstAttribute="trailing" secondItem="Q0O-Ku-9nD" secondAttribute="trailing" constant="10" id="x5Z-kA-hup"/>
                                             </constraints>

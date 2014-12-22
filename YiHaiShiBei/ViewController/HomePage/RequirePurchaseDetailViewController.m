@@ -40,6 +40,9 @@
 
 - (void)getReplyList
 {
+    if (self.apps.storedUserID <= 0) {
+        return;
+    }
     [self.viewModelPurchase getAllReplyPurchaseList:self.apps.storedUserID appKey:self.apps.stroedAppKey ppid:self.model.purchaseID typeID:1];
 }
 
@@ -118,6 +121,13 @@
 }
 
 #pragma mark - UITableView methods
+- (void)setupCellContent:(ReplyPurchaseCell *)cell indexPath:(NSIndexPath *)indexPath
+{
+    PurchaseReplyModel *model = self.viewModelPurchase.arrAllReplyPurchaseList[indexPath.row];
+    cell.lblUsrName.text = [NSString stringWithFormat:@"用户名: %@",model.replyUserName];
+    cell.lblContent.text = [NSString stringWithFormat:@"内 容: %@",model.content];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.viewModelPurchase.arrAllReplyPurchaseList.count;
@@ -131,11 +141,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ReplyPurchaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReplyPurchaseCell"];
-    PurchaseReplyModel *model = self.viewModelPurchase.arrAllReplyPurchaseList[indexPath.row];
-    cell.lblUsrName.text = model.replyUserName;
-    cell.lblContent.text = model.content;
-//    [cell setNeedsUpdateConstraints];
-//    [cell updateConstraintsIfNeeded];
+    [self setupCellContent:cell indexPath:indexPath];
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
     return cell;
 }
 
@@ -147,18 +155,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ReplyPurchaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReplyPurchaseCell"];
-    PurchaseReplyModel *model = self.viewModelPurchase.arrAllReplyPurchaseList[indexPath.row];
-    cell.lblUsrName.text = model.replyUserName;
-    cell.lblContent.text = model.content;
-//    [cell setNeedsUpdateConstraints];
-//    [cell updateConstraintsIfNeeded];
-//    cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tbViewReply.bounds), CGRectGetHeight(cell.bounds));
+    [self setupCellContent:cell indexPath:indexPath];
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
     [cell setNeedsLayout];
     [cell layoutIfNeeded];
     
-    CGSize size = [cell.lblContent systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     CGSize sizeFinal = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return sizeFinal.height;
+    return sizeFinal.height+1.0f;
 }
 
 #pragma mark - Keyboard methdos

@@ -375,10 +375,12 @@
     }
     NSMutableArray *arrValues = [@[] mutableCopy];
     for (RequirePurchaseModel *model in arrData) {
-        NSString *strValues = [NSString stringWithFormat:@"(%d,%d,'%@','%@','%@',%d,'%@','%@',%d,'%@','%@','%@','%@','%@',%d,%d,'%@','%@')",model.purchaseID,model.purchaseUserID,model.purchaseTitle,model.purchaseInfo,model.purchaseTime,model.purchaseIsPass,model.purchasePassTime,model.backup,model.purchaseDistrictID,model.purchaseDistrictName,model.purchaseUsrName,model.purchaseAvatar,model.purchaseUsrEmail,model.purchaseUsrPhone,model.purchaseUsrIsPass,model.purchaseCatID,model.purchaseCatName,model.purchaseCatPic];
+        NSString *strValues = [NSString stringWithFormat:@"(%ld,%ld,'%@','%@','%@',%ld,'%@','%@',%ld,'%@','%@','%@','%@','%@',%ld,%ld,'%@','%@')",model.purchaseID,model.purchaseUserID,model.purchaseTitle,model.purchaseInfo,model.purchaseTime,model.purchaseIsPass,model.purchasePassTime,model.backup,model.purchaseDistrictID,model.purchaseDistrictName,model.purchaseUsrName,model.purchaseAvatar,model.purchaseUsrEmail,model.purchaseUsrPhone,model.purchaseUsrIsPass,model.purchaseCatID,model.purchaseCatName,model.purchaseCatPic];
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
+    strAllValue = [strAllValue stringByReplacingOccurrencesOfString:@"\\'" withString:@"\'"];
+    NSLog(@"str all value is %@",strAllValue);
     NSString *strExec = [NSString stringWithFormat:@"insert or replace into RequirePurchaseList(id, userID, title, info, purchaseTime, ispass, passTime, backup, distirctID, districtName, username, avatar, email, phone, userIsPass, catID, catName, catPic) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
