@@ -20,7 +20,10 @@
 #import "UIImageView+WebCache.h"
 #import "AppConfig.h"
 
-
+#import "GrouponDetailViewController.h"
+#import "InforDetailViewController.h"
+#import "MerchantDetailViewController.h"
+#import "RequirePurchaseDetailViewController.h"
 @interface SearchRootViewController ()<UITableViewDataSource, UITableViewDelegate, SearchViewModelDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) SearchViewModel *viewModelSearch;
@@ -41,6 +44,15 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)viewDidLoad {
@@ -151,6 +163,32 @@
         return 60.0f;
     } else {
         return 90.0f;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.viewModelSearch.intSelectType == 1) {
+        InformationModel *modelInfo = self.viewModelSearch.arrAllSearchList[indexPath.row];
+        UIStoryboard *sbHome = [UIStoryboard storyboardWithName:@"HomePage" bundle:nil];
+        InforDetailViewController *viewController = [sbHome instantiateViewControllerWithIdentifier:@"InforDetailViewController"];
+        viewController.modelInfo = modelInfo;
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else if (self.viewModelSearch.intSelectType == 2) {
+        ProductModel *model = self.viewModelSearch.arrAllSearchList[indexPath.row];
+       
+    } else if (self.viewModelSearch.intSelectType == 3) {
+        RequirePurchaseModel *model = self.viewModelSearch.arrAllSearchList[indexPath.row];
+        UIStoryboard *sbHome = [UIStoryboard storyboardWithName:@"HomePage" bundle:nil];
+        RequirePurchaseDetailViewController *viewController = [sbHome instantiateViewControllerWithIdentifier:@"RequirePurchaseDetailViewController"];
+        viewController.model = model;
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else {
+        MerchantModel *model = self.viewModelSearch.arrAllSearchList[indexPath.row];
+        UIStoryboard *sbMerchant = [UIStoryboard storyboardWithName:@"MerchantPage" bundle:nil];
+        MerchantDetailViewController *viewController = [sbMerchant instantiateViewControllerWithIdentifier:@"MerchantDetailViewController"];
+        viewController.model = model;
+        [self.navigationController pushViewController:viewController animated:YES];
     }
 }
 

@@ -22,7 +22,7 @@
 @property (nonatomic, assign) NSInteger user_id;
 @property (nonatomic, strong) NSString *release_date;
 @property (nonatomic, assign) NSInteger information_category_id;
-
+@property (nonatomic, strong) NSString *realname;
 @property (nonatomic, strong) NSString<Optional> *userName;
 
 @end

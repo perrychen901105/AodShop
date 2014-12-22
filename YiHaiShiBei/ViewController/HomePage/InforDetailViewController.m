@@ -68,7 +68,11 @@
 - (void)setupDetailView
 {
     [self.imgViewDes sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.modelInfo.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
-    self.lblUserName.text = [NSString stringWithFormat:@"发布人: %@",self.modelInfo.userName];
+    if (self.modelInfo.realname.length <= 0) {
+        self.lblUserName.text = [NSString stringWithFormat:@"发布人: %@",self.modelInfo.userName];
+    } else {
+        self.lblUserName.text = [NSString stringWithFormat:@"发布人: %@",self.modelInfo.realname];
+    }
     self.lblReleaseTime.text = [NSString stringWithFormat:@"时间: %@",self.modelInfo.release_date];
     self.lblTitle.text = [NSString stringWithFormat:@"%@",self.modelInfo.title];
     self.tvContent.text = [NSString stringWithFormat:@"%@",self.modelInfo.content];
