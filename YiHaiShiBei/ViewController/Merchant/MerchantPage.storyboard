@@ -196,7 +196,7 @@
         <!--Merchant Detail View Controller-->
         <scene sceneID="Lho-9e-fvX">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="TwF-rG-ILH" customClass="MerchantDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MerchantDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="TwF-rG-ILH" customClass="MerchantDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i4D-KG-ek6"/>
                         <viewControllerLayoutGuide type="bottom" id="FQg-zv-VbS"/>

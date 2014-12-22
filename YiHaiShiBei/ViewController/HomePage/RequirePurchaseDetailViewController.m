@@ -112,6 +112,7 @@
     } else if (type == TypeRequestAddReplyPurchase) {
         [self showOnlyLabelHud:@"回复成功" withView:self.view];
         self.tfReply.text = @"";
+        [self getReplyList];
     }
 }
 
@@ -125,7 +126,7 @@
 {
     PurchaseReplyModel *model = self.viewModelPurchase.arrAllReplyPurchaseList[indexPath.row];
     cell.lblUsrName.text = [NSString stringWithFormat:@"用户名: %@",model.replyUserName];
-    cell.lblContent.text = [NSString stringWithFormat:@"内 容: %@",model.content];
+    cell.lblContent.text = [NSString stringWithFormat:@"%@",model.content];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -142,8 +143,8 @@
 {
     ReplyPurchaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReplyPurchaseCell"];
     [self setupCellContent:cell indexPath:indexPath];
-    [cell setNeedsUpdateConstraints];
-    [cell updateConstraintsIfNeeded];
+//    [cell setNeedsUpdateConstraints];
+//    [cell updateConstraintsIfNeeded];
     return cell;
 }
 
@@ -154,15 +155,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ReplyPurchaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReplyPurchaseCell"];
-    [self setupCellContent:cell indexPath:indexPath];
-    [cell setNeedsUpdateConstraints];
-    [cell updateConstraintsIfNeeded];
-    cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
-    [cell setNeedsLayout];
-    [cell layoutIfNeeded];
+    static ReplyPurchaseCell *sizingCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingCell = [tableView dequeueReusableCellWithIdentifier:@"ReplyPurchaseCell"];
+    });
+    [self setupCellContent:sizingCell indexPath:indexPath];
+
+    sizingCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(sizingCell.bounds));
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
     
-    CGSize sizeFinal = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGSize sizeFinal = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return sizeFinal.height+1.0f;
 }
 

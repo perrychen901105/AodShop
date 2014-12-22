@@ -386,7 +386,7 @@
         <!--Infor Detail View Controller-->
         <scene sceneID="Db7-1p-nCS">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="WWr-I8-Hnd" customClass="InforDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InforDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="WWr-I8-Hnd" customClass="InforDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hxU-1N-ae5"/>
                         <viewControllerLayoutGuide type="bottom" id="7Lm-Yg-8Ux"/>
@@ -997,7 +997,7 @@
         <!--Groupon Detail View Controller-->
         <scene sceneID="cPm-k9-RtZ">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="sMc-CZ-CdR" customClass="GrouponDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GrouponDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="sMc-CZ-CdR" customClass="GrouponDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OYq-iW-6yr"/>
                         <viewControllerLayoutGuide type="bottom" id="Ywi-hL-OLJ"/>

@@ -14,6 +14,15 @@
 #import "favListCell.h"
 
 #import "SearchRootViewController.h"
+
+#import "MerchantModel.h"
+#import "ProductModel.h"
+#import "GrouponModel.h"
+#import "InformationListModel.h"
+
+#import "GrouponDetailViewController.h"
+#import "InforDetailViewController.h"
+#import "MerchantDetailViewController.h"
 @interface FavIndexViewController ()<FavViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControlFav;
@@ -46,6 +55,14 @@
     [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
         
     }];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 - (void)viewDidLoad
 {
@@ -193,7 +210,48 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (self.viewModelFav.didChangeIndex == TYPE_FAV_PRODUCT) {
+        ProductFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
+        
+    } else if (self.viewModelFav.didChangeIndex == TYPE_FAV_MERCHANT) {
+        MerchantFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
+        MerchantModel *modelMerchant = [[MerchantModel alloc] init];
+        modelMerchant.merchantLevelId = -1;
+        modelMerchant.merchantCompanyName = model.merchantName;
+        modelMerchant.merchantPhone = model.merchantPhone;
+        modelMerchant.merchantCompanyAddr = model.merchantAddr;
+        modelMerchant.merchantAvatar = model.avatar;
+        modelMerchant.merchantUserId = model.usreID;
+        UIStoryboard *sbMerchant = [UIStoryboard storyboardWithName:@"MerchantPage" bundle:nil];
+        MerchantDetailViewController *viewController = [sbMerchant instantiateViewControllerWithIdentifier:@"MerchantDetailViewController"];
+        viewController.model = modelMerchant;
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else if (self.viewModelFav.didChangeIndex == TYPE_FAV_GROUPON) {
+        GrouponFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
+        GrouponModel *modelGroupon = [[GrouponModel alloc] init];
+        modelGroupon.name = model.grouponName;
+        modelGroupon.new_price = model.newPrice;
+        modelGroupon.number = 0;
+        modelGroupon.picture = model.grouponPic;
+        modelGroupon.grouponID = model.grouponID;
+        UIStoryboard *sbGroupon = [UIStoryboard storyboardWithName:@"HomePage" bundle:nil];
+        GrouponDetailViewController *viewController = [sbGroupon instantiateViewControllerWithIdentifier:@"GrouponDetailViewController"];
+        viewController.model = modelGroupon;
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else {
+        InfoFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
+        InformationModel *modelInfo = [[InformationModel alloc] init];
+        modelInfo.picture = model.infoPic;
+        modelInfo.userName = model.username;
+        modelInfo.release_date = @"";
+        modelInfo.infoId = model.informationID;
+        modelInfo.title = model.infoName;
+        modelInfo.content = @"";
+        UIStoryboard *sbGroupon = [UIStoryboard storyboardWithName:@"HomePage" bundle:nil];
+        InforDetailViewController *viewController = [sbGroupon instantiateViewControllerWithIdentifier:@"InforDetailViewController"];
+        viewController.modelInfo = modelInfo;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 @end

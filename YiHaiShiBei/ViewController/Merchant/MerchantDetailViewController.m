@@ -33,9 +33,14 @@
 
 - (void)setDetailContent
 {
-    self.viewStar.canEdit = NO;
-    self.viewStar.maxRating = 5;
-    self.viewStar.rating = self.model.merchantLevelId;
+    if (self.model.merchantLevelId <= 0) {
+        self.viewStar.hidden = YES;
+    } else {
+        self.viewStar.canEdit = NO;
+        self.viewStar.maxRating = 5;
+        self.viewStar.rating = self.model.merchantLevelId;
+    }
+    
     self.lblName.text = self.model.merchantCompanyName;
     self.lblPhone.text = self.model.merchantPhone;
     self.lblAddress.text = self.model.merchantCompanyAddr;
