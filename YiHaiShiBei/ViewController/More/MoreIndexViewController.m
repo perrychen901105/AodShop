@@ -14,6 +14,7 @@
 #import "ChangeUserInfoViewController.h"
 #import "ChangePwdViewController.h"
 #import "SearchRootViewController.h"
+#import "ContactUsViewController.h"
 
 @interface MoreIndexViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -168,7 +169,9 @@
             [self.navigationController pushViewController:viewController animated:YES];
         }
     } else if (indexPath.section == 1) {
-        
+        UIStoryboard *sbMore = [UIStoryboard storyboardWithName:@"MorePage" bundle:nil];
+        ContactUsViewController *viewController = [sbMore instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
+        [self.navigationController pushViewController:viewController animated:YES];
     } else {
         [self logoutAction];
     }

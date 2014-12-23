@@ -57,7 +57,11 @@
     }];
     [self.viewModelIndex getCachedMsgList:self.apps.storedDistrictID];
     if (self.viewModelIndex.arrAllMessages.count > 0) {
-        [self.tbViewContent reloadData];
+        if (self.needUpdateList) {
+            [self.tbViewContent headerBeginRefreshing];
+        } else {
+            [self.tbViewContent reloadData];
+        }
     } else {
         [self.tbViewContent headerBeginRefreshing];
     }

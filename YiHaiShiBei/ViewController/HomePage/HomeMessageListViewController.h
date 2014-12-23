@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface HomeMessageListViewController : BaseViewController
-
+@property (nonatomic, assign) BOOL needUpdateList;
 @end

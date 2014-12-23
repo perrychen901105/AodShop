@@ -270,7 +270,7 @@
 #ifdef DEBUG
     NSLog(@"sql is %@",strSql);
 #endif
-    BOOL hasNew = NO;
+    BOOL hasNew = YES;
     FMResultSet *rs = [db executeQuery:strSql];
     
     while ([rs next]) {
@@ -659,6 +659,23 @@
     return ;
 }
 
+- (void)removeAllMerchantLists
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM MerchantList"];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    return ;
+}
+
 #pragma mark - 商品
 /**
  CREATE TABLE "ProductType" ("catID" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "name" VARCHAR, "picture" VARCHAR, "product_number" INTEGER, "info_number" INTEGER, "sort" INTEGER, "created" VARCHAR, "modified" VARCHAR, "status" INTEGER)
@@ -733,10 +750,23 @@
     return ;
 }
 
-/**
- *  商品列表
- *  CREATE TABLE "ProductList" ("productID"1 "productName"2 VARCHAR, "productPicture"3 VARCHAR, "price"4 FLOAT, "productNum"5 INTEGER, "productClick"6 INTEGER, "districtID"7 INTEGER, "productCatID"8 INTEGER, "userID" 9INTEGER, "releaseDate"10 VARCHAR, "isPass"11 INTEGER, "backup"12 TEXT, "isOnSale"13 INTEGER, "districtName"14 VARCHAR, "productCatName"15 VARCHAR, "username"16 VARCHAR, "userEmail" 17VARCHAR, "avatar"18 VARCHAR, "userPhone"19 VARCHAR, "companyName" 20VARCHAR, "companyAddr"21 VARCHAR)
- */
+- (void)removeAllProductLists
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];
+    if (![db open]) {
+        // error
+        return ;
+    }
+    // ...
+    NSString *strSql1 = [NSString stringWithFormat:@"DELETE FROM ProductList"];
+    BOOL dbSuccess = [db executeUpdate:strSql1];
+    if (dbSuccess) {
+        NSLog(@"success");
+    }
+    [db close];
+    return ;
+}
+
 - (void)insertAllProductList:(NSMutableArray *)arrList withCatId:(NSInteger)catId
 {
     FMDatabase *db = [FMDatabase databaseWithPath:[AppDelegate getCacheDatabasePath]];

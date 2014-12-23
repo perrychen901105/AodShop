@@ -141,11 +141,18 @@
         [self.delegate didSelectCity:self.selectedLocation];
     }
     [[NSUserDefaults standardUserDefaults] setObject:self.selectedLocation.strCity forKey:K_USER_SELECTED_CITY_NAME];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",self.selectedLocation.intDistrinctId] forKey:K_USER_SELECTED_DISTRICT_ID];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",self.selectedLocation.intDistrinctId] forKey:K_USER_SELECTED_DISTRICT_ID];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    if (self.apps.storedDistrictID != self.selectedLocation.intDistrinctId) {
+        [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
+        [[DatabaseOperator getInstance] removeAllGrouponList];
+        [[DatabaseOperator getInstance] removeAllProductTypes];
+        [[DatabaseOperator getInstance] removeAllMerchantTypes];
+        [[DatabaseOperator getInstance] removeAllProductLists];
+        [[DatabaseOperator getInstance] removeAllMerchantLists];
+    }
     self.apps.selectedLocation = self.selectedLocation;
     self.apps.storedDistrictID = self.selectedLocation.intDistrinctId;
-    [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }

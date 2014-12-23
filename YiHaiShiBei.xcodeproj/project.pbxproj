@@ -109,6 +109,7 @@
 		2C7D33751A2222E0002C4A9A /* DatabaseOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7D33741A2222DF002C4A9A /* DatabaseOperator.m */; };
 		2C8183161A2F65B700FFB28D /* MsgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */; };
 		2C8183191A2F75CD00FFB28D /* InforDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8183181A2F75CD00FFB28D /* InforDetailViewController.m */; };
+		2C9BDF9A1A49B80D002EF64E /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BDF991A49B80D002EF64E /* ContactUsViewController.m */; };
 		2C9FB54A1A3D66650056DA6A /* RequirePurchaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FB5491A3D66650056DA6A /* RequirePurchaseModel.m */; };
 		2CA9E2AA1A0922290078176D /* CommoneTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9E2A71A0922290078176D /* CommoneTools.m */; };
 		2CA9E2AB1A0922290078176D /* HUDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9E2A91A0922290078176D /* HUDHelper.m */; };
@@ -365,6 +366,8 @@
 		2C8183151A2F65B700FFB28D /* MsgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewCell.m; sourceTree = "<group>"; };
 		2C8183171A2F75CD00FFB28D /* InforDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InforDetailViewController.h; sourceTree = "<group>"; };
 		2C8183181A2F75CD00FFB28D /* InforDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InforDetailViewController.m; sourceTree = "<group>"; };
+		2C9BDF981A49B80D002EF64E /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
+		2C9BDF991A49B80D002EF64E /* ContactUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
 		2C9FB5481A3D66650056DA6A /* RequirePurchaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirePurchaseModel.h; sourceTree = "<group>"; };
 		2C9FB5491A3D66650056DA6A /* RequirePurchaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirePurchaseModel.m; sourceTree = "<group>"; };
 		2CA9E2A61A0922290078176D /* CommoneTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommoneTools.h; sourceTree = "<group>"; };
@@ -588,6 +591,8 @@
 				2CE7EECF1A45AC28006A1A0A /* ChangeUserInfoViewController.m */,
 				2CE7EED11A45AC6F006A1A0A /* ChangePwdViewController.h */,
 				2CE7EED21A45AC6F006A1A0A /* ChangePwdViewController.m */,
+				2C9BDF981A49B80D002EF64E /* ContactUsViewController.h */,
+				2C9BDF991A49B80D002EF64E /* ContactUsViewController.m */,
 				046643EC19F7A1700060C9CC /* MorePage.storyboard */,
 			);
 			path = More;
@@ -1385,6 +1390,7 @@
 				2CE7EECA1A4596B8006A1A0A /* MoreCell.m in Sources */,
 				2C01A5171A2CCC3400FAA7D8 /* MJRefreshBaseView.m in Sources */,
 				040C051019FE10AE009FD61D /* HttpRequestService.m in Sources */,
+				2C9BDF9A1A49B80D002EF64E /* ContactUsViewController.m in Sources */,
 				2CC3156D1A2AC13200D63E46 /* MerchantModel.m in Sources */,
 				2C3373CD1A2628B5002918A0 /* SDWebImageDownloaderOperation.m in Sources */,
 				04EB66FB19FF6D990043D120 /* JSONModel.m in Sources */,
@@ -1595,6 +1601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = YiHaiShiBei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1607,6 +1614,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = YiHaiShiBei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

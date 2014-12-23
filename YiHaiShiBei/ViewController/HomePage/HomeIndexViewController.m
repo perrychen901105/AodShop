@@ -16,20 +16,25 @@
 #import "ChooseCityProtocol.h"
 #import "UIImageView+WebCache.h"
 #import "HomeGrouponListViewController.h"
-
+#import "HomeMessageListViewController.h"
 #import "SearchRootViewController.h"
 
 #import "AdvertiseModel.h"
 #import "ProfileViewModel.h"
 #import "PurchaseViewModel.h"
-@interface HomeIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate, HomeIndexViewModelDelegate, PurchaseViewModelDelegate>
+@interface HomeIndexViewController ()<ChooseCityProtocol, HomeIndexViewModelDelegate, PurchaseViewModelDelegate>
 @property (nonatomic, strong) HomeIndexViewModel *viewModelIndex;
 
 @property (nonatomic, strong) ProfileViewModel *viewModelProfile;
 @property (nonatomic, strong) PurchaseViewModel *viewModelPurchase;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewBanner;
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
+@property (weak, nonatomic) IBOutlet UIView *viewNewMsg;
 
+- (IBAction)btnpressed_message:(id)sender;
+- (IBAction)btnpressed_infomation:(id)sender;
+- (IBAction)btnpressed_purchase:(id)sender;
+- (IBAction)btnpressed_groupon:(id)sender;
 
 @end
 
@@ -49,7 +54,7 @@
 - (void)hasNewMessage:(BOOL)boolHasMsg
 {
     if (boolHasMsg) {
-        NSLog(@"a");
+        self.viewNewMsg.hidden = NO;
     }
 }
 
@@ -105,6 +110,10 @@
     self.viewModelPurchase.delegate = self;
     
     self.viewModelProfile = [[ProfileViewModel alloc] init];
+    
+    self.viewNewMsg.layer.cornerRadius = 5.0f;
+    self.viewNewMsg.layer.masksToBounds = YES;
+    self.viewNewMsg.hidden = YES;
     
     [self setNaviBarTitle:nil];
     [self setSearchAndCityButton];
@@ -207,65 +216,41 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:SEGUE_GROUPON]) {
-        HomeGrouponListViewController *viewControllerGroupon = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"segueToMsgList"]) {
+        if (self.viewNewMsg.hidden == NO) {
+            HomeMessageListViewController *viewController = segue.destinationViewController;
+            viewController.needUpdateList = YES;
+            self.viewNewMsg.hidden = YES;
+        }
     }
 }
 
-#pragma mark - UITableView methods
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IndexInfoCell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IndexInfoCell"];
-    }
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"消息";
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"资讯";
-    } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"求购";
-    } else {
-        cell.textLabel.text = @"团购";
-    }
-    return cell;
-}
+#pragma mark - button methods
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 4;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
-        if (self.apps.storedDistrictID > 0) {
-            [self performSegueWithIdentifier:@"segueToMsgList" sender:indexPath];
-        }
-        else {
-            [self showOnlyLabelHud:@"请选择地区" withView:self.view];
-        }
-    } else if (indexPath.row == 1) {
-        
-        if (self.apps.storedDistrictID > 0) {
-            [self performSegueWithIdentifier:@"segueToInfoList" sender:indexPath];
-        }
-        else {
-            [self showOnlyLabelHud:@"请选择地区" withView:self.view];
-        }
+- (IBAction)btnpressed_message:(id)sender {
+//    if (self.apps.storedDistrictID > 0) {
     
-    } else if (indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"seguePurchaseList" sender:indexPath];
-    } else if (indexPath.row == 3) {
-        [self performSegueWithIdentifier:SEGUE_GROUPON sender:indexPath];
-    }
+    [self performSegueWithIdentifier:@"segueToMsgList" sender:sender];
+//    }
+//    else {
+//        [self showOnlyLabelHud:@"请选择地区" withView:self.view];
+//    }
 }
 
+- (IBAction)btnpressed_infomation:(id)sender {
+//    if (self.apps.storedDistrictID > 0) {
+        [self performSegueWithIdentifier:@"segueToInfoList" sender:sender];
+//    }
+//    else {
+//        [self showOnlyLabelHud:@"请选择地区" withView:self.view];
+//    }
+}
 
+- (IBAction)btnpressed_purchase:(id)sender {
+    [self performSegueWithIdentifier:@"seguePurchaseList" sender:sender];
+}
+
+- (IBAction)btnpressed_groupon:(id)sender {
+    [self performSegueWithIdentifier:SEGUE_GROUPON sender:sender];
+}
 @end
