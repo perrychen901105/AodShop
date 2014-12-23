@@ -24,6 +24,7 @@
 #import "InforDetailViewController.h"
 #import "MerchantDetailViewController.h"
 #import "RequirePurchaseDetailViewController.h"
+#import "ProductDetailViewController.h"
 @interface SearchRootViewController ()<UITableViewDataSource, UITableViewDelegate, SearchViewModelDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) SearchViewModel *viewModelSearch;
@@ -176,7 +177,10 @@
         [self.navigationController pushViewController:viewController animated:YES];
     } else if (self.viewModelSearch.intSelectType == 2) {
         ProductModel *model = self.viewModelSearch.arrAllSearchList[indexPath.row];
-       
+        UIStoryboard *sbProduct = [UIStoryboard storyboardWithName:@"SupplyIndex" bundle:nil];
+        ProductDetailViewController *viewController = [sbProduct instantiateViewControllerWithIdentifier:@"ProductDetailViewController"];
+        viewController.modelProduct = model;
+        [self.navigationController pushViewController:viewController animated:YES];
     } else if (self.viewModelSearch.intSelectType == 3) {
         RequirePurchaseModel *model = self.viewModelSearch.arrAllSearchList[indexPath.row];
         UIStoryboard *sbHome = [UIStoryboard storyboardWithName:@"HomePage" bundle:nil];
