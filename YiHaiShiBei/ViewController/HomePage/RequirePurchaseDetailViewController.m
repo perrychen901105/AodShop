@@ -43,6 +43,7 @@
     if (self.apps.storedUserID <= 0) {
         return;
     }
+    [self showProgressLabelHud:@"获取求购回复中..." withView:self.view];
     [self.viewModelPurchase getAllReplyPurchaseList:self.apps.storedUserID appKey:self.apps.stroedAppKey ppid:self.model.purchaseID typeID:1];
 }
 
@@ -109,6 +110,7 @@
 {
     if (type == TypeRequestAllReplyList) {
         [self.tbViewReply reloadData];
+        [self hideHudWithDelay:0];
     } else if (type == TypeRequestAddReplyPurchase) {
         [self showOnlyLabelHud:@"回复成功" withView:self.view];
         self.tfReply.text = @"";

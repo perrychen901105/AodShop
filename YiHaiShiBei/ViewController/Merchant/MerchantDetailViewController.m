@@ -37,7 +37,7 @@
 
 - (void)setDetailContent
 {
-    if (self.model.merchantLevelId <= 0) {
+    if (self.model.merchantLevelId < 0) {
         self.viewStar.hidden = YES;
     } else {
         self.viewStar.canEdit = NO;
@@ -84,6 +84,8 @@
     [super viewDidLoad];
     [self setNaviBarTitle:@"商家详情"];
     [self setBackButton];
+    self.viewModelFav = [[FavViewModel alloc] init];
+    self.viewModelFav.delegate = self;
     self.viewPhone.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
     self.viewAddr.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
     self.viewMail.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
@@ -114,14 +116,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)btnpresed_phoneCall:(id)sender {
     if (self.model.merchantPhone.length > 0) {
@@ -135,26 +137,13 @@
 #pragma mark - UIAlertview methods
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView.tag == 1) {
-        UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-        RegisterRootViewController *viewControllerRegister = (RegisterRootViewController *)[[viewControllerRoot viewControllers] objectAtIndex:0];
-        __weak ProductDetailViewController *weakSelf = self;
-        [viewControllerRegister loginDidSuccess:^(BOOL success) {
-            [weakSelf addFavFunc:nil];
-        }];
-        [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
-        }];
-    } else {
-        if (buttonIndex == 1) {
-            UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-            RegisterRootViewController *viewControllerRegister = (RegisterRootViewController *)[[viewControllerRoot viewControllers] objectAtIndex:0];
-            __weak ProductDetailViewController *weakSelf = self;
-            [viewControllerRegister loginDidSuccess:^(BOOL success) {
-                [weakSelf btnpressed_comment:nil];
-            }];
-            [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
-            }];
-        }
-    }
+    UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    RegisterRootViewController *viewControllerRegister = (RegisterRootViewController *)[[viewControllerRoot viewControllers] objectAtIndex:0];
+    __weak typeof(self) weakSelf = self;
+    [viewControllerRegister loginDidSuccess:^(BOOL success) {
+        [weakSelf addFavFunc:nil];
+    }];
+    [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+    }];
 }
 @end

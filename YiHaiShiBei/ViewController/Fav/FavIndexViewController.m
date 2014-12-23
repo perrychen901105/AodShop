@@ -23,6 +23,7 @@
 #import "GrouponDetailViewController.h"
 #import "InforDetailViewController.h"
 #import "MerchantDetailViewController.h"
+#import "ProductDetailViewController.h"
 @interface FavIndexViewController ()<FavViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControlFav;
@@ -162,7 +163,7 @@
         InfoFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
         [cell.imgViewFav sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.infoPic]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
         cell.lblTitle.text = model.infoName;
-        cell.lblContent.text = @"";
+        cell.lblContent.text = model.content;
         cell.lblSubtitle.text = [NSString stringWithFormat:@"添加时间: %@",model.strAddtime];
     }
     return cell;
@@ -212,11 +213,22 @@
 {
     if (self.viewModelFav.didChangeIndex == TYPE_FAV_PRODUCT) {
         ProductFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
-        
+        ProductModel *modelProduct = [[ProductModel alloc] init];
+        modelProduct.productID = model.productID;
+        modelProduct.productName = model.productName;
+        modelProduct.productPicture = model.productPic;
+        modelProduct.releaseDate = model.releaseDate;
+        modelProduct.companyAddr = model.companyAddr;
+        modelProduct.companyName = model.companyName;
+        modelProduct.userPhone = model.phone;
+        UIStoryboard *sbProduct = [UIStoryboard storyboardWithName:@"SupplyIndex" bundle:nil];
+        ProductDetailViewController *viewController = [sbProduct instantiateViewControllerWithIdentifier:@"ProductDetailViewController"];
+        viewController.modelProduct = modelProduct;
+        [self.navigationController pushViewController:viewController animated:YES];
     } else if (self.viewModelFav.didChangeIndex == TYPE_FAV_MERCHANT) {
         MerchantFavModel *model = self.viewModelFav.arrALlFavList[indexPath.row];
         MerchantModel *modelMerchant = [[MerchantModel alloc] init];
-        modelMerchant.merchantLevelId = -1;
+        modelMerchant.merchantLevelId = model.levelID;
         modelMerchant.merchantCompanyName = model.merchantName;
         modelMerchant.merchantPhone = model.merchantPhone;
         modelMerchant.merchantCompanyAddr = model.merchantAddr;
@@ -243,10 +255,10 @@
         InformationModel *modelInfo = [[InformationModel alloc] init];
         modelInfo.picture = model.infoPic;
         modelInfo.userName = model.username;
-        modelInfo.release_date = @"";
+        modelInfo.release_date = model.releaseDate;
         modelInfo.infoId = model.informationID;
         modelInfo.title = model.infoName;
-        modelInfo.content = @"";
+        modelInfo.content = model.content;
         UIStoryboard *sbGroupon = [UIStoryboard storyboardWithName:@"HomePage" bundle:nil];
         InforDetailViewController *viewController = [sbGroupon instantiateViewControllerWithIdentifier:@"InforDetailViewController"];
         viewController.modelInfo = modelInfo;

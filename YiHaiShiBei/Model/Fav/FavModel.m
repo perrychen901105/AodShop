@@ -29,6 +29,7 @@
                                                        @"Product.name":@"productName",
                                                        @"Product.picture":@"productPic",
                                                        @"Product.price":@"price",
+                                                       @"Product.release_date":@"releaseDate"
                                                        }];
 }
 @end

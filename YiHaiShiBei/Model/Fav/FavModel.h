@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *companyName;
 @property (nonatomic, strong) NSString *companyAddr;
+@property (nonatomic, strong) NSString *releaseDate;
 
 @end
 

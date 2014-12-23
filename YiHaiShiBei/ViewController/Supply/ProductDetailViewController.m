@@ -13,6 +13,7 @@
 #import "ProductCommentModel.h"
 #import "ProductCommentCell.h"
 #import "RegisterRootViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface ProductDetailViewController ()<ProductViewModelDelegate,UITextFieldDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, FavViewModelDelegate>
 
@@ -44,6 +45,7 @@
     if (self.apps.storedUserID <= 0) {
         return;
     }
+    [self showProgressLabelHud:@"获取评论中..." withView:self.view];
     [self.viewModelProduct getProductCommentListWithUsrID:self.apps.storedUserID appKey:self.apps.stroedAppKey productID:self.modelProduct.productID];
 
 }
@@ -94,6 +96,7 @@
     [self getCommentList];
     [self setFavButtonItem];
     [self setNaviBarTitle:@"供应详情"];
+    [self setupDetailView];
     // Do any additional setup after loading the view.
 }
 
@@ -109,7 +112,13 @@
 
 - (void)setupDetailView
 {
-    
+    [self.imgViewProduct sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.modelProduct.productPicture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    self.lblProductName.text = [NSString stringWithFormat:@"品名: %@",self.modelProduct.productName];
+    self.lblProductPrice.text = [NSString stringWithFormat:@"价格: ￥%.2f",self.modelProduct.price];
+    self.lblProductReleaseTime.text = [NSString stringWithFormat:@"发布时间: %@",self.modelProduct.releaseDate];
+    self.lblMerchantName.text = [NSString stringWithFormat:@"公司名: %@",self.modelProduct.companyName];
+    self.lblMerchantPhone.text = [NSString stringWithFormat:@"公司电话: %@",self.modelProduct.userPhone];
+    self.lblMerchantAddr.text = [NSString stringWithFormat:@"公司地址: %@",self.modelProduct.companyAddr];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -128,7 +137,7 @@
 {
     ProductCommentModel *model = self.viewModelProduct.arrAllCommentList[indexPath.row];
     cell.lblName.text = [NSString stringWithFormat:@"用户名: %@",model.username];
-    cell.lblContent.text = [NSString stringWithFormat:@"%@",model.strContent];
+    cell.lblContent.text = [NSString stringWithFormat:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @"%@",model.strContent];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -184,6 +193,7 @@
         self.tfProductComment.text = @"";
         [self getCommentList];
     } else if (typeRequest == ProductRequestAllCommentList) {
+        [self hideHudWithDelay:0];
         [self.tbViewContent reloadData];
     }
 }
