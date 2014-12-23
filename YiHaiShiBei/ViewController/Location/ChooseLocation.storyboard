@@ -17,70 +17,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="05M-6N-lQH">
-                                <rect key="frame" x="20" y="60" width="280" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-6q-fXI">
+                                <rect key="frame" x="0.0" y="28" width="320" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="t8V-DQ-ds6"/>
+                                    <constraint firstAttribute="height" constant="25" id="vs3-JW-aJa"/>
                                 </constraints>
-                                <segments>
-                                    <segment title="省"/>
-                                    <segment title="市"/>
-                                    <segment title="区"/>
-                                </segments>
-                                <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="segBarLocationChanged:" destination="PlJ-Xd-cYs" eventType="valueChanged" id="YJm-F4-jvq"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqk-we-cPe">
-                                <rect key="frame" x="60" y="188" width="50" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M4-nh-sSu">
+                                <rect key="frame" x="0.0" y="101" width="320" height="366"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7R-dq-3nM">
+                                        <rect key="frame" x="180" y="316" width="80" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="3Dj-Bb-Wpf"/>
+                                            <constraint firstAttribute="height" constant="30" id="CMX-U7-0fw"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="取消" backgroundImage="btn_orange">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnpressed_CancelCity:" destination="PlJ-Xd-cYs" eventType="touchUpInside" id="ipl-R0-LUn"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuT-f7-eYa">
+                                        <rect key="frame" x="0.0" y="62" width="320" height="216"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="220" id="nfe-91-TqS"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="PlJ-Xd-cYs" id="MMh-Kc-hRn"/>
+                                            <outlet property="delegate" destination="PlJ-Xd-cYs" id="6SO-fs-peV"/>
+                                        </connections>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqk-we-cPe">
+                                        <rect key="frame" x="60" y="316" width="80" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="MdX-VX-H5D"/>
+                                            <constraint firstAttribute="height" constant="30" id="g3a-1A-9YI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="确定" backgroundImage="btn_orange">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnpressed_ConfirmCity:" destination="PlJ-Xd-cYs" eventType="touchUpInside" id="RcB-df-P1h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Paq-Ke-l3U"/>
-                                    <constraint firstAttribute="width" constant="50" id="bfW-5c-RuL"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tqk-we-cPe" secondAttribute="bottom" constant="20" id="GYg-9f-iDd"/>
+                                    <constraint firstItem="QuT-f7-eYa" firstAttribute="top" secondItem="9M4-nh-sSu" secondAttribute="top" constant="60" id="VDO-F0-EaC"/>
+                                    <constraint firstItem="QuT-f7-eYa" firstAttribute="leading" secondItem="9M4-nh-sSu" secondAttribute="leading" id="YF3-yP-MZ4"/>
+                                    <constraint firstAttribute="trailing" secondItem="E7R-dq-3nM" secondAttribute="trailing" constant="60" id="di6-t0-Lvz"/>
+                                    <constraint firstAttribute="height" constant="366" id="f1I-5K-zoA"/>
+                                    <constraint firstItem="Tqk-we-cPe" firstAttribute="leading" secondItem="9M4-nh-sSu" secondAttribute="leading" constant="60" id="iyP-EM-jdZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="QuT-f7-eYa" secondAttribute="trailing" id="nK6-R1-IVo"/>
+                                    <constraint firstAttribute="bottom" secondItem="E7R-dq-3nM" secondAttribute="bottom" constant="20" id="rDe-PF-Ttn"/>
                                 </constraints>
-                                <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="确定">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnpressed_ConfirmCity:" destination="PlJ-Xd-cYs" eventType="touchUpInside" id="RcB-df-P1h"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7R-dq-3nM">
-                                <rect key="frame" x="210" y="188" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ZJc-QZ-jWU"/>
-                                    <constraint firstAttribute="width" constant="50" id="wAa-ZD-ucb"/>
-                                </constraints>
-                                <color key="tintColor" red="0.95686274510000002" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="取消">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnpressed_CancelCity:" destination="PlJ-Xd-cYs" eventType="touchUpInside" id="ipl-R0-LUn"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="05M-6N-lQH" secondAttribute="trailing" constant="20" id="4a2-TM-T0q"/>
-                            <constraint firstItem="05M-6N-lQH" firstAttribute="leading" secondItem="Bzf-vK-r7z" secondAttribute="leading" constant="20" id="5OQ-nz-jEU"/>
-                            <constraint firstItem="Tqk-we-cPe" firstAttribute="leading" secondItem="Bzf-vK-r7z" secondAttribute="leading" constant="60" id="HZl-CO-oxQ"/>
-                            <constraint firstItem="05M-6N-lQH" firstAttribute="top" secondItem="fCR-u7-mB1" secondAttribute="bottom" constant="40" id="Hva-VD-0ff"/>
-                            <constraint firstItem="E7R-dq-3nM" firstAttribute="leading" secondItem="Tqk-we-cPe" secondAttribute="trailing" priority="900" constant="100" id="KeU-Vs-5Os"/>
-                            <constraint firstItem="Tqk-we-cPe" firstAttribute="top" secondItem="05M-6N-lQH" secondAttribute="bottom" constant="100" id="YXH-0L-xeB"/>
-                            <constraint firstItem="E7R-dq-3nM" firstAttribute="top" secondItem="05M-6N-lQH" secondAttribute="bottom" constant="100" id="gyS-T2-Q9U"/>
-                            <constraint firstAttribute="trailing" secondItem="E7R-dq-3nM" secondAttribute="trailing" constant="60" id="qpm-Cs-1dr"/>
+                            <constraint firstItem="dCR-6q-fXI" firstAttribute="leading" secondItem="Bzf-vK-r7z" secondAttribute="leading" id="2Ce-F9-ggS"/>
+                            <constraint firstItem="9M4-nh-sSu" firstAttribute="leading" secondItem="Bzf-vK-r7z" secondAttribute="leading" id="Fto-ss-sh3"/>
+                            <constraint firstAttribute="trailing" secondItem="9M4-nh-sSu" secondAttribute="trailing" id="NpA-kl-IdU"/>
+                            <constraint firstItem="dCR-6q-fXI" firstAttribute="top" secondItem="fCR-u7-mB1" secondAttribute="bottom" constant="8" id="XOP-Gl-cBQ"/>
+                            <constraint firstAttribute="centerY" secondItem="9M4-nh-sSu" secondAttribute="centerY" id="g16-Qx-Igm"/>
+                            <constraint firstAttribute="trailing" secondItem="dCR-6q-fXI" secondAttribute="trailing" id="lBZ-K4-6zp"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="segControlLocation" destination="05M-6N-lQH" id="9Qe-M2-H7r"/>
+                        <outlet property="pickerViewLocation" destination="QuT-f7-eYa" id="fem-w7-sIV"/>
                         <segue destination="7e9-Z3-tHd" kind="modal" identifier="gotoLocationList" id="Tkh-7V-UQJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABP-2G-1H2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="147" y="8"/>
+            <point key="canvasLocation" x="86" y="13"/>
         </scene>
         <!--Location List View Controller-->
         <scene sceneID="ObZ-UD-pGE">
@@ -118,6 +138,9 @@
             <point key="canvasLocation" x="533" y="13"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_orange" width="61" height="26"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

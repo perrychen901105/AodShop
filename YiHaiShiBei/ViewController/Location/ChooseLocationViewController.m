@@ -20,6 +20,9 @@
 @property (nonatomic, assign) NSInteger intSelectSeg;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControlLocation;
 
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerViewLocation;
+
+
 - (IBAction)btnpressed_ConfirmCity:(id)sender;
 - (IBAction)btnpressed_CancelCity:(id)sender;
 - (IBAction)segBarLocationChanged:(id)sender;
