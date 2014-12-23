@@ -332,6 +332,49 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Bkw-nB-pee">
                                 <rect key="frame" x="0.0" y="322" width="320" height="198"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCommentCell" rowHeight="60" id="ncy-kt-MKm" customClass="ProductCommentCell">
+                                        <rect key="frame" x="10" y="332" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ncy-kt-MKm" id="Jit-SI-eFz">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="G5h-vm-2ly">
+                                                    <rect key="frame" x="10" y="30" width="300" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="OGX-99-kz6">
+                                                    <rect key="frame" x="10" y="5" width="300" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="QZY-2K-Yq7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="G5h-vm-2ly" secondAttribute="bottom" constant="5" id="4am-VO-zBX"/>
+                                                <constraint firstItem="G5h-vm-2ly" firstAttribute="top" secondItem="OGX-99-kz6" secondAttribute="bottom" constant="5" id="Bg2-75-vDe"/>
+                                                <constraint firstItem="OGX-99-kz6" firstAttribute="top" secondItem="Jit-SI-eFz" secondAttribute="top" constant="5" id="L1L-qB-NCy"/>
+                                                <constraint firstAttribute="trailing" secondItem="OGX-99-kz6" secondAttribute="trailing" constant="10" id="Xwq-gB-1g1"/>
+                                                <constraint firstItem="OGX-99-kz6" firstAttribute="leading" secondItem="Jit-SI-eFz" secondAttribute="leading" constant="10" id="exg-bT-xiJ"/>
+                                                <constraint firstItem="G5h-vm-2ly" firstAttribute="leading" secondItem="Jit-SI-eFz" secondAttribute="leading" constant="10" id="vE1-uy-Pmb"/>
+                                                <constraint firstAttribute="trailing" secondItem="G5h-vm-2ly" secondAttribute="trailing" constant="10" id="zwq-OZ-E19"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblContent" destination="OGX-99-kz6" id="bng-DX-W61"/>
+                                            <outlet property="lblName" destination="G5h-vm-2ly" id="ORu-8r-4PI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Q6h-dB-El0" id="lOS-Ex-pce"/>
+                                    <outlet property="delegate" destination="Q6h-dB-El0" id="vJI-qN-cIp"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IW8-9Q-YIi">
                                 <rect key="frame" x="0.0" y="528" width="320" height="40"/>
@@ -395,6 +438,14 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="constraintInupBottom" destination="IYg-fo-P1e" id="XgU-2s-6YG"/>
+                        <outlet property="imgViewProduct" destination="wt4-l5-LuN" id="k6P-2G-T0i"/>
+                        <outlet property="lblMerchantAddr" destination="0w6-LJ-NdP" id="IJJ-Kl-IPU"/>
+                        <outlet property="lblMerchantName" destination="Zqn-jA-BHC" id="Bgi-Q9-Fk8"/>
+                        <outlet property="lblMerchantPhone" destination="In0-3c-ekL" id="Srx-Sb-exZ"/>
+                        <outlet property="lblProductName" destination="YDC-fT-gXu" id="aRd-SY-SVG"/>
+                        <outlet property="lblProductPrice" destination="MO2-fy-KE0" id="42Z-zB-5XK"/>
+                        <outlet property="lblProductReleaseTime" destination="OzV-GK-YsY" id="aJB-Yg-ImP"/>
+                        <outlet property="tbViewContent" destination="Bkw-nB-pee" id="TJm-mV-ZhC"/>
                         <outlet property="tfProductComment" destination="cW1-62-glT" id="oxS-si-cMm"/>
                     </connections>
                 </viewController>

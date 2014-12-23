@@ -10,11 +10,24 @@
 #import "ProductViewModel.h"
 #import "AppConfig.h"
 #import "FavViewModel.h"
+#import "ProductCommentModel.h"
+#import "ProductCommentCell.h"
 #import "RegisterRootViewController.h"
 
 @interface ProductDetailViewController ()<ProductViewModelDelegate,UITextFieldDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, FavViewModelDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintInupBottom;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewProduct;
+@property (weak, nonatomic) IBOutlet UILabel *lblProductName;
+@property (weak, nonatomic) IBOutlet UILabel *lblProductPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblProductReleaseTime;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblMerchantName;
+@property (weak, nonatomic) IBOutlet UILabel *lblMerchantPhone;
+@property (weak, nonatomic) IBOutlet UILabel *lblMerchantAddr;
+
+@property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
 @property (nonatomic, strong) ProductViewModel *viewModelProduct;
 @property (nonatomic, strong) FavViewModel *viewModelFav;
@@ -94,6 +107,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)setupDetailView
+{
+    
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -104,6 +122,54 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UITableView methods
+- (void)setupCellContent:(ProductCommentCell *)cell indexPath:(NSIndexPath *)indexPath
+{
+    ProductCommentModel *model = self.viewModelProduct.arrAllCommentList[indexPath.row];
+    cell.lblName.text = [NSString stringWithFormat:@"用户名: %@",model.username];
+    cell.lblContent.text = [NSString stringWithFormat:@"%@",model.strContent];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProductCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProductCommentCell"];
+    [self setupCellContent:cell indexPath:indexPath];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.viewModelProduct.arrAllCommentList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static ProductCommentCell *sizingCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingCell = [tableView dequeueReusableCellWithIdentifier:@"ProductCommentCell"];
+    });
+    [self setupCellContent:sizingCell indexPath:indexPath];
+    
+    sizingCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(sizingCell.bounds));
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+    
+    CGSize sizeFinal = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return sizeFinal.height+1.0f;
+}
+
 
 #pragma mark - Product viewmodel methds
 -(void)productHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumProductRequestType)typeRequest
@@ -118,7 +184,7 @@
         self.tfProductComment.text = @"";
         [self getCommentList];
     } else if (typeRequest == ProductRequestAllCommentList) {
-
+        [self.tbViewContent reloadData];
     }
 }
 

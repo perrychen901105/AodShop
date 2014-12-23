@@ -25,6 +25,9 @@
 @property (nonatomic, strong) NSString *productName;
 @property (nonatomic, strong) NSString *productPic;
 @property (nonatomic, assign) CGFloat price;
+@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *companyName;
+@property (nonatomic, strong) NSString *companyAddr;
 
 @end
 
@@ -40,6 +43,8 @@
 @property (nonatomic, strong) NSString *infoName;
 @property (nonatomic, strong) NSString *infoPic;
 @property (nonatomic, assign) NSInteger sort;
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *releaseDate;
 
 @end
 
@@ -56,6 +61,7 @@
 @property (nonatomic, strong) NSString *grouponPic;
 @property (nonatomic, assign) CGFloat oriPrice;
 @property (nonatomic, assign) CGFloat newPrice;
+@property (nonatomic, assign) NSInteger number;
 
 @end
 
@@ -74,5 +80,6 @@
 @property (nonatomic, strong) NSString *merchantEmail;
 @property (nonatomic, strong) NSString *merchantPhone;
 @property (nonatomic, strong) NSString *merchantAddr;
+@property (nonatomic, assign) NSInteger levelID;
 
 @end

@@ -9,10 +9,12 @@
 #import "MerchantDetailViewController.h"
 #import "ASStarRatingView.h"
 #import "AppConfig.h"
+#import "FavViewModel.h"
 #import "UIImageView+WebCache.h"
 #import "ASStarRatingView.h"
+#import "RegisterRootViewController.h"
 
-@interface MerchantDetailViewController ()
+@interface MerchantDetailViewController ()<FavViewModelDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet ASStarRatingView *viewStar;
@@ -23,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIView *viewPhone;
 @property (weak, nonatomic) IBOutlet UIView *viewMail;
 @property (weak, nonatomic) IBOutlet UIView *viewAddr;
+
+@property (nonatomic, strong) FavViewModel *viewModelFav;
 
 - (IBAction)btnpresed_phoneCall:(id)sender;
 - (IBAction)btnpressed_email:(id)sender;
@@ -52,6 +56,30 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)addFavFunc:(id)sender
+{
+    if (self.apps.storedUserID <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请登录" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
+        alert.tag = 1;
+        [alert show];
+        return;
+    }
+    [self showProgressLabelHud:@"正在添加收藏..." withView:self.view];
+    [self.viewModelFav changeUserFavWithType:1 userID:self.apps.storedUserID appKey:self.apps.stroedAppKey typeid:TYPE_FAV_MERCHANT detailID:self.model.merchantUserId];
+}
+
+- (void)setFavButtonItem
+{
+    UIButton *btnAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnAdd.frame = CGRectMake(0, 0, 60, 30);
+    [btnAdd setTitle:@"添加收藏" forState:UIControlStateNormal];
+    [btnAdd setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnAdd.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [btnAdd setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
+    [btnAdd addTarget:self action:@selector(addFavFunc:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnAdd];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNaviBarTitle:@"商家详情"];
@@ -61,12 +89,28 @@
     self.viewMail.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
     self.viewPhone.layer.borderWidth = self.viewMail.layer.borderWidth = self.viewAddr.layer.borderWidth = 1.0f;
     [self setDetailContent];
+    [self setFavButtonItem];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Fav model methods
+- (void)favHttpSuccessWithTag:(EnumFavRequestType)type
+{
+    if (type == FavRequestAddFav) {
+        [self showOnlyLabelHud:@"收藏成功" withView:self.view];
+    }
+}
+
+- (void)favHttpErrorWithCode:(NSInteger)errorCode errMessage:(NSString *)errorStr type:(EnumFavRequestType)type
+{
+    if (type == FavRequestAddFav) {
+        [self showOnlyLabelHud:errorStr withView:self.view];
+    }
 }
 
 /*
@@ -86,5 +130,31 @@
 }
 
 - (IBAction)btnpressed_email:(id)sender {
+}
+
+#pragma mark - UIAlertview methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1) {
+        UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+        RegisterRootViewController *viewControllerRegister = (RegisterRootViewController *)[[viewControllerRoot viewControllers] objectAtIndex:0];
+        __weak ProductDetailViewController *weakSelf = self;
+        [viewControllerRegister loginDidSuccess:^(BOOL success) {
+            [weakSelf addFavFunc:nil];
+        }];
+        [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+        }];
+    } else {
+        if (buttonIndex == 1) {
+            UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            RegisterRootViewController *viewControllerRegister = (RegisterRootViewController *)[[viewControllerRoot viewControllers] objectAtIndex:0];
+            __weak ProductDetailViewController *weakSelf = self;
+            [viewControllerRegister loginDidSuccess:^(BOOL success) {
+                [weakSelf btnpressed_comment:nil];
+            }];
+            [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+            }];
+        }
+    }
 }
 @end

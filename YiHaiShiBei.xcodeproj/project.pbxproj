@@ -153,6 +153,7 @@
 		2CFFA00B1A1CE3470089B5AC /* HomeMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA00A1A1CE3470089B5AC /* HomeMessageListViewController.m */; };
 		2CFFA00E1A1CE3670089B5AC /* HomeGrouponListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA00D1A1CE3670089B5AC /* HomeGrouponListViewController.m */; };
 		2CFFA0111A1CE37E0089B5AC /* HomePurchaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */; };
+		C2490B691A49485C006C0126 /* ProductCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2490B681A49485C006C0126 /* ProductCommentCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -447,6 +448,8 @@
 		2CFFA00D1A1CE3670089B5AC /* HomeGrouponListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeGrouponListViewController.m; sourceTree = "<group>"; };
 		2CFFA00F1A1CE37E0089B5AC /* HomePurchaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePurchaseListViewController.h; sourceTree = "<group>"; };
 		2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePurchaseListViewController.m; sourceTree = "<group>"; };
+		C2490B671A49485C006C0126 /* ProductCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCommentCell.h; sourceTree = "<group>"; };
+		C2490B681A49485C006C0126 /* ProductCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCommentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -595,6 +598,8 @@
 			children = (
 				2CE7EEC41A4571FD006A1A0A /* productInfoCell.h */,
 				2CE7EEC51A4571FD006A1A0A /* productInfoCell.m */,
+				C2490B671A49485C006C0126 /* ProductCommentCell.h */,
+				C2490B681A49485C006C0126 /* ProductCommentCell.m */,
 				0446962619EFBB1C00EF71A3 /* SupplyIndexViewController.h */,
 				0446962719EFBB1C00EF71A3 /* SupplyIndexViewController.m */,
 				2CB2F88F1A41B94D00D40F6E /* SupplyListViewController.h */,
@@ -1426,6 +1431,7 @@
 				2C05434C1A4718B900525258 /* ReplyPurchaseCell.m in Sources */,
 				2C433ED519EED87200129479 /* MBProgressHUD.m in Sources */,
 				04EB66FC19FF6D990043D120 /* JSONModelArray.m in Sources */,
+				C2490B691A49485C006C0126 /* ProductCommentCell.m in Sources */,
 				2C433EA719EED4C900129479 /* ASIDataDecompressor.m in Sources */,
 				2CE7EED71A45CD9E006A1A0A /* FavRequestService.m in Sources */,
 				2C258EB21A276F0400CE9F0D /* MerchantViewModel.m in Sources */,

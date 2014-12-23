@@ -23,6 +23,9 @@
                                                        @"User.username":@"username",
                                                        @"User.avatar":@"avatar",
                                                        @"User.realname":@"realname",
+                                                       @"User.phone":@"phone",
+                                                       @"User.company_name":@"companyName",
+                                                       @"User.company_addr":@"companyAddr",
                                                        @"Product.name":@"productName",
                                                        @"Product.picture":@"productPic",
                                                        @"Product.price":@"price",
@@ -43,7 +46,9 @@
                                                        @"User.realname":@"realname",
                                                        @"Information.title":@"infoName",
                                                        @"Information.picture":@"infoPic",
-                                                       @"Information.sort":@"sort"
+                                                       @"Information.sort":@"sort",
+                                                       @"Information.content":@"content",
+                                                       @"Information.release_date":@"releaseDate"
                                                        }];
 }
 @end
@@ -62,7 +67,8 @@
                                                        @"GrouppurchaseProduct.name":@"grouponName",
                                                        @"GrouppurchaseProduct.picture":@"grouponPic",
                                                        @"GrouppurchaseProduct.price":@"oriPrice",
-                                                       @"GrouppurchaseProduct.new_price":@"newPrice"
+                                                       @"GrouppurchaseProduct.new_price":@"newPrice",
+                                                       @"GrouppurchaseProduct.number":@"number"
                                                        }];
 }
 @end
@@ -78,6 +84,7 @@
                                                        @"User.username":@"username",
                                                        @"User.avatar":@"avatar",
                                                        @"User.realname":@"realname",
+                                                       @"User.level_id":@"levelID",
                                                        @"Shop.username":@"merchantUserName",
                                                        @"Shop.avatar":@"merchantPic",
                                                        @"Shop.company_name":@"merchantName",
