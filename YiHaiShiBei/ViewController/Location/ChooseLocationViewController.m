@@ -53,10 +53,20 @@
 
     self.selectedLocation = [[CurrentLocationModel alloc] init];
     [self getAllLocations];
-    [self.pickerViewLocation selectRow:0 inComponent:0 animated:YES];
-    ProvinceModel *model = [self getAllProvices][0];
-    self.intSelectProvince = model.provinceID;
-    [self.pickerViewLocation reloadComponent:1];
+    if ([[self getAllProvices] count]>0) {
+        ProvinceModel *model = [self getAllProvices][0];
+        self.intSelectProvince = model.provinceID;
+        if ([[self getAllCityWithProvinceID:self.intSelectProvince] count] > 0) {
+            CityModel *modelCity = [self getAllCityWithProvinceID:self.intSelectProvince][0];
+            self.intSelectCity = modelCity.cityID;
+            [self.pickerViewLocation reloadComponent:1];
+            if ([[self getAllDistrictWithCityID:self.intSelectCity] count]>0) {
+                [self.pickerViewLocation reloadComponent:2];
+            }
+        }
+    }
+    self.pickerViewLocation.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
+    self.pickerViewLocation.layer.borderWidth = 1.0f;
     // Do any additional setup after loading the view.
 }
 
@@ -243,7 +253,7 @@
         DistrinctModel *model = [self getAllDistrictWithCityID:self.intSelectCity][row];
         title = model.name;
     }
-    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:COLOR_TITLE_DEFAULT,NSFontAttributeName:[UIFont boldSystemFontOfSize:15]}];
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:COLOR_TITLE_DEFAULT,NSFontAttributeName:[UIFont boldSystemFontOfSize:17]}];
     return attString;
 }
 
@@ -253,6 +263,14 @@
         ProvinceModel *model = [self getAllProvices][row];
         self.intSelectProvince = model.provinceID;
         [pickerView reloadComponent:1];
+        if ([[self getAllCityWithProvinceID:self.intSelectProvince] count] > 0) {
+            CityModel *modelCity = [self getAllCityWithProvinceID:self.intSelectProvince][0];
+            self.intSelectCity = modelCity.cityID;
+            [self.pickerViewLocation reloadComponent:1];
+            if ([[self getAllDistrictWithCityID:self.intSelectCity] count]>0) {
+                [self.pickerViewLocation reloadComponent:2];
+            }
+        }
     } else if (component == 1) {
         CityModel *model = [self getAllCityWithProvinceID:self.intSelectProvince][row];
         self.intSelectCity = model.cityID;
