@@ -41,8 +41,8 @@
     
     self.apps = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.automaticallyAdjustsScrollViewInsets =NO;
-    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
-    [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
+    [self.navigationController.navigationBar
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f]}];
     
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
         [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
