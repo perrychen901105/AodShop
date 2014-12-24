@@ -13,11 +13,17 @@
 #import "LocationListViewController.h"
 #import "DatabaseOperator.h"
 
-@interface ChooseLocationViewController ()<LocationIndexViewModelDelegate>
+
+@interface ChooseLocationViewController ()<LocationIndexViewModelDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) CurrentLocationModel *selectedLocation;
 @property (nonatomic, strong) LocationViewModel *viewModelLocation;
 @property (nonatomic, assign) NSInteger intSelectSeg;
+
+@property (nonatomic, assign) NSInteger intSelectProvince;
+@property (nonatomic, assign) NSInteger intSelectCity;
+@property (nonatomic, assign) NSInteger intSelectDistrict;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControlLocation;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerViewLocation;
@@ -47,6 +53,10 @@
 
     self.selectedLocation = [[CurrentLocationModel alloc] init];
     [self getAllLocations];
+    [self.pickerViewLocation selectRow:0 inComponent:0 animated:YES];
+    ProvinceModel *model = [self getAllProvices][0];
+    self.intSelectProvince = model.provinceID;
+    [self.pickerViewLocation reloadComponent:1];
     // Do any additional setup after loading the view.
 }
 
@@ -181,4 +191,76 @@
     }
     [self performSegueWithIdentifier:@"gotoLocationList" sender:sender];
 }
+
+#pragma mark - UIPicker methods
+- (NSArray *)getAllProvices
+{
+    NSArray *arrPro = @[];
+    arrPro = [[DatabaseOperator getInstance] getAllProvinces];
+    return arrPro;
+}
+
+- (NSArray *)getAllCityWithProvinceID:(NSInteger)provinceID
+{
+    NSArray *arrCity = @[];
+    arrCity = [[DatabaseOperator getInstance] getAllCitysWithProvinceId:provinceID];
+    return arrCity;
+}
+
+- (NSArray *)getAllDistrictWithCityID:(NSInteger)cityID
+{
+    NSArray *arrDistrict = @[];
+    arrDistrict = [[DatabaseOperator getInstance] getAllDistrictsWithCityId:cityID];
+    return arrDistrict;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (component == 0) {
+        return [[self getAllProvices] count];
+    } else if (component == 1) {
+        return [[self getAllCityWithProvinceID:self.intSelectProvince] count];
+    } else {
+        return [[self getAllDistrictWithCityID:self.intSelectCity] count];
+    }
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 3;
+}
+
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *title = @"";
+    if (component == 0) {
+        ProvinceModel *model = [self getAllProvices][row];
+        title = model.name;
+    } else if (component == 1) {
+        CityModel *model = [self getAllCityWithProvinceID:self.intSelectProvince][row];
+        title = model.name;
+    } else {
+        DistrinctModel *model = [self getAllDistrictWithCityID:self.intSelectCity][row];
+        title = model.name;
+    }
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:COLOR_TITLE_DEFAULT,NSFontAttributeName:[UIFont boldSystemFontOfSize:15]}];
+    return attString;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (component == 0) {
+        ProvinceModel *model = [self getAllProvices][row];
+        self.intSelectProvince = model.provinceID;
+        [pickerView reloadComponent:1];
+    } else if (component == 1) {
+        CityModel *model = [self getAllCityWithProvinceID:self.intSelectProvince][row];
+        self.intSelectCity = model.cityID;
+        [pickerView reloadComponent:2];
+    } else {
+        DistrinctModel *model = [self getAllDistrictWithCityID:self.intSelectCity][row];
+        NSLog(@"model %@",model);
+    }
+}
+
 @end
