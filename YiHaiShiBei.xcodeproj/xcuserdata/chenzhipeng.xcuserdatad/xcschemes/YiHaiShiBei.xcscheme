@@ -104,7 +104,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "ad-hoc Profile"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
