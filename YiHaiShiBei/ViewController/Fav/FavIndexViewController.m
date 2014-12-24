@@ -12,7 +12,8 @@
 #import "UIImageView+WebCache.h"
 #import "AppConfig.h"
 #import "favListCell.h"
-
+#import "ChooseLocationViewController.h"
+#import "ChooseCityProtocol.h"
 #import "SearchRootViewController.h"
 
 #import "MerchantModel.h"
@@ -24,7 +25,7 @@
 #import "InforDetailViewController.h"
 #import "MerchantDetailViewController.h"
 #import "ProductDetailViewController.h"
-@interface FavIndexViewController ()<FavViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FavIndexViewController ()<ChooseCityProtocol, FavViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControlFav;
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
@@ -73,12 +74,29 @@
     self.viewModelFav = [[FavViewModel alloc] init];
     self.viewModelFav.delegate = self;
     [self getFavList];
-    [self setSearchAndCityButton];
+    [self setSearchBtn];
     self.tbViewContent.allowsMultipleSelectionDuringEditing = NO;
     self.intRemovedIndex = 0;
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - Location methods
+- (void)didChooseCity
+{
+    ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
+    viewControllerCity.delegate = self;
+    [self presentViewController:viewControllerCity animated:YES completion:^{
+    }];
+}
+//#pragma mark - Location Protocol
+//- (void)didSelectCity:(CurrentLocationModel *)modelCurrent
+//{
+//    //    self.lblCity.text = modelCurrent.strCity;
+//    [self setSearchBtn];
+//    if (modelCurrent.intDistrinctId > 0) {
+//        //        [self requestForBannerList];
+//    }
+//}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

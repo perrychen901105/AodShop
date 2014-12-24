@@ -49,11 +49,51 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
     self.selectedLocation = [[CurrentLocationModel alloc] init];
     [self getAllLocations];
+    self.pickerViewLocation.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
+    self.pickerViewLocation.layer.borderWidth = 1.0f;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+#pragma mark - WebService methods
+- (void)getAllLocations
+{
+    if ([[DatabaseOperator getInstance] getAllProvinces].count > 0) {
+        if ([[self getAllProvices] count]>0) {
+            ProvinceModel *model = [self getAllProvices][0];
+            self.intSelectProvince = model.provinceID;
+            if ([[self getAllCityWithProvinceID:self.intSelectProvince] count] > 0) {
+                CityModel *modelCity = [self getAllCityWithProvinceID:self.intSelectProvince][0];
+                self.intSelectCity = modelCity.cityID;
+                [self.pickerViewLocation reloadComponent:1];
+                if ([[self getAllDistrictWithCityID:self.intSelectCity] count]>0) {
+                    [self.pickerViewLocation reloadComponent:2];
+                }
+            }
+        }
+    } else {
+        self.viewModelLocation = [[LocationViewModel alloc] init];
+        self.viewModelLocation.delegate = self;
+        [self showProgressLabelHud:TEXT_WAIT_NETWORK withView:self.view];
+        [self.viewModelLocation getAllProvinceList];
+    }
+}
+
+- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage
+{
+    [self showOnlyLabelHud:errorMessage withView:self.view];
+}
+
+- (void)httpSuccess
+{
+    [self showOnlyLabelHud:TEXT_SUCCESS_NETWORK withView:self.view];
     if ([[self getAllProvices] count]>0) {
+        [self.pickerViewLocation reloadComponent:0];
         ProvinceModel *model = [self getAllProvices][0];
         self.intSelectProvince = model.provinceID;
         if ([[self getAllCityWithProvinceID:self.intSelectProvince] count] > 0) {
@@ -65,119 +105,47 @@
             }
         }
     }
-    self.pickerViewLocation.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
-    self.pickerViewLocation.layer.borderWidth = 1.0f;
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - WebService methods
-- (void)getAllLocations
-{
-    if ([[DatabaseOperator getInstance] getAllProvinces].count > 0) {
-        
-    } else {
-        self.viewModelLocation = [[LocationViewModel alloc] init];
-        self.viewModelLocation.delegate = self;
-        [self showProgressLabelHud:TEXT_WAIT_NETWORK withView:self.view];
-        [self.viewModelLocation getAllProvinceList];
-    }
-    
-}
-
-- (void)httpError:(NSInteger)errorCode message:(NSString *)errorMessage
-{
-    [self showOnlyLabelHud:errorMessage withView:self.view];
-}
-
-- (void)httpSuccess
-{
-    [self showOnlyLabelHud:TEXT_SUCCESS_NETWORK withView:self.view];
 }
 
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"gotoLocationList"]) {
-        self.intSelectSeg = self.segControlLocation.selectedSegmentIndex;
-        LocationListViewController *viewControllerList = segue.destinationViewController;
-        if (self.segControlLocation.selectedSegmentIndex == 0) {
-            NSMutableArray *arrProvince = [[DatabaseOperator getInstance] getAllProvinces];
-            NSLog(@"%@",arrProvince);
-            viewControllerList.arrayLocation = arrProvince;
-            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_PROVINCE;
-        } else if (self.segControlLocation.selectedSegmentIndex == 1) {
-            NSMutableArray *arrCity = [[DatabaseOperator getInstance] getAllCitysWithProvinceId:self.selectedLocation.intProvinceId];
-            viewControllerList.arrayLocation = arrCity;
-            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_CITY;
-        } else {
-            NSMutableArray *arrDistrict = [[DatabaseOperator getInstance] getAllDistrictsWithCityId:self.selectedLocation.intCityId];
-            viewControllerList.arrayLocation = arrDistrict;
-            viewControllerList.TypeLocationList = ENUM_LOCATIONLIST_DISTRINCT;
-        }
-        __weak ChooseLocationViewController *weakSelf = self;
-        // 已经选择地址
-        [viewControllerList HadSelectLocation:^(NSInteger locationId, NSString *locationName) {
-            if (weakSelf.intSelectSeg == 0) {
-                weakSelf.selectedLocation.strCity = @"市";
-                weakSelf.selectedLocation.intCityId = 0;
-                weakSelf.selectedLocation.strDistrinct = @"区";
-                weakSelf.selectedLocation.intDistrinctId = 0;
-                weakSelf.selectedLocation.strProvince = locationName;
-                weakSelf.selectedLocation.intProvinceId = locationId;
-            } else if (weakSelf.intSelectSeg == 1) {
-                weakSelf.selectedLocation.strDistrinct = @"区";
-                weakSelf.selectedLocation.intDistrinctId = 0;
-                weakSelf.selectedLocation.strCity = locationName;
-                weakSelf.selectedLocation.intCityId = locationId;
-            } else {
-                weakSelf.selectedLocation.strDistrinct = locationName;
-                weakSelf.selectedLocation.intDistrinctId = locationId;
-            }
-            [self setupSegControl];
-        }];
-    }
-}
-
-- (void)setupSegControl
-{
-    [self.segControlLocation setTitle:self.selectedLocation.strProvince forSegmentAtIndex:0];
-    [self.segControlLocation setTitle:self.selectedLocation.strCity forSegmentAtIndex:1];
-    [self.segControlLocation setTitle:self.selectedLocation.strDistrinct forSegmentAtIndex:2];
-}
-
 - (IBAction)btnpressed_ConfirmCity:(id)sender {
-    if (self.selectedLocation.intDistrinctId == 0) {
+    NSArray *arrDistricts = [self getAllDistrictWithCityID:self.intSelectCity];
+    NSArray *arrCitys = [self getAllCityWithProvinceID:self.intSelectProvince];
+    NSArray *arrProvince = [self getAllProvices];
+    if ([arrDistricts count] > 0) {
+        DistrinctModel *modelDis = arrDistricts[[self.pickerViewLocation selectedRowInComponent:2]];
+        CityModel *modelCity = arrCitys[[self.pickerViewLocation selectedRowInComponent:1]];
+        ProvinceModel *modelProvince = arrProvince[[self.pickerViewLocation selectedRowInComponent:0]];
+        [[NSUserDefaults standardUserDefaults] setObject:modelCity.name forKey:K_USER_SELECTED_CITY_NAME];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",modelDis.districtID] forKey:K_USER_SELECTED_DISTRICT_ID];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        if (self.apps.storedDistrictID != modelDis.districtID) {
+            [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
+            [[DatabaseOperator getInstance] removeAllGrouponList];
+            [[DatabaseOperator getInstance] removeAllProductTypes];
+            [[DatabaseOperator getInstance] removeAllMerchantTypes];
+            [[DatabaseOperator getInstance] removeAllProductLists];
+            [[DatabaseOperator getInstance] removeAllMerchantLists];
+        }
+        self.selectedLocation = [[CurrentLocationModel alloc] init];
+        self.selectedLocation.strProvince = modelProvince.name;
+        self.selectedLocation.intProvinceId = modelProvince.provinceID;
+        self.selectedLocation.strCity = modelCity.name;
+        self.selectedLocation.intCityId = modelCity.cityID;
+        self.selectedLocation.strDistrinct = modelDis.name;
+        self.selectedLocation.intDistrinctId = modelDis.districtID;
+        self.apps.selectedLocation = self.selectedLocation;
+        self.apps.storedDistrictID = modelDis.districtID;
+        self.apps.storedCityName = modelCity.name;
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    } else {
         [self showOnlyLabelHud:@"请选择地区" withView:self.view];
         return;
     }
-    if ([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectCity:)]) {
         [self.delegate didSelectCity:self.selectedLocation];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:self.selectedLocation.strCity forKey:K_USER_SELECTED_CITY_NAME];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",self.selectedLocation.intDistrinctId] forKey:K_USER_SELECTED_DISTRICT_ID];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    if (self.apps.storedDistrictID != self.selectedLocation.intDistrinctId) {
-        [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
-        [[DatabaseOperator getInstance] removeAllGrouponList];
-        [[DatabaseOperator getInstance] removeAllProductTypes];
-        [[DatabaseOperator getInstance] removeAllMerchantTypes];
-        [[DatabaseOperator getInstance] removeAllProductLists];
-        [[DatabaseOperator getInstance] removeAllMerchantLists];
-    }
-    self.apps.selectedLocation = self.selectedLocation;
-    self.apps.storedDistrictID = self.selectedLocation.intDistrinctId;
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
 }
 
 - (IBAction)btnpressed_CancelCity:(id)sender {
@@ -277,7 +245,7 @@
         [pickerView reloadComponent:2];
     } else {
         DistrinctModel *model = [self getAllDistrictWithCityID:self.intSelectCity][row];
-        NSLog(@"model %@",model);
+        self.intSelectDistrict = model.districtID;
     }
 }
 

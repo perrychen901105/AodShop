@@ -18,7 +18,8 @@
 @property (nonatomic, strong) UILabel *lblCity;
 
 - (void)setNaviBarTitle:(NSString *)navTitle;
-- (void)setSearchAndCityButton;
+- (void)setSearchBtn;
+- (void)setCityBtn;
 - (void)setUserIconButton;
 - (void)setBackButton;
 

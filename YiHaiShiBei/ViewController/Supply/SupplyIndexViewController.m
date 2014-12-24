@@ -11,10 +11,11 @@
 #import "ProductModel.h"
 #import "MJRefresh.h"
 #import "AppConfig.h"
-
+#import "ChooseLocationViewController.h"
+#import "ChooseCityProtocol.h"
 #import "SupplyListViewController.h"
 #import "SearchRootViewController.h"
-@interface SupplyIndexViewController ()<UITableViewDataSource, UITableViewDelegate, ProductViewModelDelegate>
+@interface SupplyIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate, ProductViewModelDelegate>
 
 @property (nonatomic, strong) ProductViewModel *viewModelProduct;
 
@@ -68,12 +69,26 @@
     } else {
         [self.tbViewContent headerBeginRefreshing];
     }
-    [self setSearchAndCityButton];
+    [self setSearchBtn];
     // Do any additional setup after loading the view.
 }
 
-
-
+#pragma mark - Location methods
+- (void)didChooseCity
+{
+    ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
+    viewControllerCity.delegate = self;
+    [self presentViewController:viewControllerCity animated:YES completion:^{
+    }];
+}
+//#pragma mark - Location Protocol
+//- (void)didSelectCity:(CurrentLocationModel *)modelCurrent
+//{
+//    [self setSearchAndCityButton];
+//    if (modelCurrent.intDistrinctId > 0) {
+////        [self requestForBannerList];
+//    }
+//}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

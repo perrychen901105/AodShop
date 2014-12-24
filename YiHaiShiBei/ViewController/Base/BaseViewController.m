@@ -126,35 +126,37 @@
     
 }
 
-- (void)setSearchAndCityButton
+- (void)setCityBtn
+{
+    UIView *viewCity = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
+    UILabel *lblCity = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, 30)];
+    
+    self.lblCity = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, 30)];
+    self.lblCity.textAlignment = NSTextAlignmentRight;
+    self.lblCity.textColor = [UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f];
+    self.lblCity.font = [UIFont fontWithName:lblCity.font.fontName size:12];
+    self.lblCity.text = self.apps.storedCityName;
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 12, 5, 8)];
+    imgView.image = [UIImage imageNamed:@"img_arrowDown"];
+    
+    UIButton *btnChooseCity = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnChooseCity.frame = CGRectMake(0, 0, 70, 30);
+    
+    [btnChooseCity addTarget:self action:@selector(didChooseCity) forControlEvents:UIControlEventTouchUpInside];
+    
+    [viewCity addSubview:self.lblCity];
+    [viewCity addSubview:btnChooseCity];
+    UIBarButtonItem *cityBtnItem = [[UIBarButtonItem alloc] initWithCustomView:viewCity];
+    [self.navigationItem setRightBarButtonItem:cityBtnItem];
+}
+
+- (void)setSearchBtn
 {
     UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
     btnSearch.frame = CGRectMake(0, 0, 30, 30);
     [btnSearch setImage:[UIImage imageNamed:@"img_search"] forState:UIControlStateNormal];
     [btnSearch addTarget:self action:@selector(searchBtnClick) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *searchBtnItem = [[UIBarButtonItem alloc] initWithCustomView:btnSearch];
-    
-    UIView *viewCity = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
-    self.lblCity = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, 30)];
-    self.lblCity.textAlignment = NSTextAlignmentRight;
-    self.lblCity.textColor = [UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f];
-    self.lblCity.font = [UIFont fontWithName:self.lblCity.font.fontName size:12];
-//    self.lblCity.text = @"苏州";
-    
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 12, 5, 8)];
-    imgView.image = [UIImage imageNamed:@"img_arrowDown"];
-    
-    UIButton *btnChooseCity = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnChooseCity.frame = CGRectMake(0, 0, 70, 30);
-
-    [btnChooseCity addTarget:self action:@selector(didChooseCity) forControlEvents:UIControlEventTouchUpInside];
-    
-    [viewCity addSubview:self.lblCity];
-//    [viewCity addSubview:imgView];
-    [viewCity addSubview:btnChooseCity];
-    UIBarButtonItem *cityBtnItem = [[UIBarButtonItem alloc] initWithCustomView:viewCity];
-    
-    self.navigationItem.rightBarButtonItem = cityBtnItem;
     self.navigationItem.leftBarButtonItem = searchBtnItem;// @[searchBtnItem, cityBtnItem];
     
 }

@@ -15,8 +15,9 @@
 #import "ChangePwdViewController.h"
 #import "SearchRootViewController.h"
 #import "ContactUsViewController.h"
-
-@interface MoreIndexViewController ()<UITableViewDataSource, UITableViewDelegate>
+#import "ChooseLocationViewController.h"
+#import "ChooseCityProtocol.h"
+@interface MoreIndexViewController ()<ChooseCityProtocol, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
@@ -47,9 +48,18 @@
 {
     [super viewDidLoad];
     [self setNaviBarTitle:nil];
-    [self setSearchAndCityButton];
+    [self setSearchBtn];
     // Do any additional setup after loading the view.
 }
+
+//#pragma mark - Location methods
+//- (void)didChooseCity
+//{
+//    ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
+//    viewControllerCity.delegate = self;
+//    [self presentViewController:viewControllerCity animated:YES completion:^{
+//    }];
+//}
 
 - (void)viewWillAppear:(BOOL)animated
 {

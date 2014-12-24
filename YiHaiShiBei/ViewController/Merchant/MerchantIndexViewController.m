@@ -12,9 +12,10 @@
 #import "MerchantModel.h"
 #import "MJRefresh.h"
 #import "AppConfig.h"
-
+#import "ChooseLocationViewController.h"
+#import "ChooseCityProtocol.h"
 #import "SearchRootViewController.h"
-@interface MerchantIndexViewController ()<MerchantViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface MerchantIndexViewController ()<ChooseCityProtocol, MerchantViewModelDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
 
@@ -68,10 +69,27 @@
     } else {
         [self.tbViewContent headerBeginRefreshing];
     }
-    [self setSearchAndCityButton];
+    [self setSearchBtn];
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - Location methods
+- (void)didChooseCity
+{
+    ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
+    viewControllerCity.delegate = self;
+    [self presentViewController:viewControllerCity animated:YES completion:^{
+    }];
+}
+//#pragma mark - Location Protocol
+//- (void)didSelectCity:(CurrentLocationModel *)modelCurrent
+//{
+//    //    self.lblCity.text = modelCurrent.strCity;
+//    [self setSearchAndCityButton];
+//    if (modelCurrent.intDistrinctId > 0) {
+//        //        [self requestForBannerList];
+//    }
+//}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

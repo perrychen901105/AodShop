@@ -78,25 +78,29 @@
     for (UIView *subView in self.scrollViewBanner.subviews) {
         [subView removeFromSuperview];
     }
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
     if (self.viewModelIndex) {
         if (self.viewModelIndex.arrAllBanners.count > 0) {
+            
             for (int i = 0; i < self.viewModelIndex.arrAllBanners.count; i++) {
                 AdvertiseModel *modelAdvise = self.viewModelIndex.arrAllBanners[i];
-                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewBanner.frame.size.width*i, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height)];
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth*i, 0, screenWidth, self.scrollViewBanner.frame.size.height)];
                 imgView.contentMode = UIViewContentModeScaleToFill;
                 [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,modelAdvise.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
                 [self.scrollViewBanner addSubview:imgView];
                 
             }
-            self.scrollViewBanner.contentSize = CGSizeMake(self.scrollViewBanner.frame.size.width*self.viewModelIndex.arrAllBanners.count, self.scrollViewBanner.frame.size.height);
+            self.scrollViewBanner.contentSize = CGSizeMake(screenWidth*self.viewModelIndex.arrAllBanners.count, self.scrollViewBanner.frame.size.height);
             return;
         }
     }
     UIImageView *imgViewShow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_banner_default"]];
     imgViewShow.contentMode = UIViewContentModeScaleToFill;
-    imgViewShow.frame = CGRectMake(0, 0, self.scrollViewBanner.frame.size.width, self.scrollViewBanner.frame.size.height) ;
+    imgViewShow.frame = CGRectMake(0, 0, screenWidth, self.scrollViewBanner.frame.size.height) ;
     [self.scrollViewBanner addSubview:imgViewShow];
-    self.scrollViewBanner.contentSize = CGSizeMake(imgViewShow.frame.size.width, imgViewShow.frame.size.height);
+    self.scrollViewBanner.contentSize = CGSizeMake(screenWidth, imgViewShow.frame.size.height);
 }
 
 - (void)viewDidLoad
@@ -116,7 +120,8 @@
     self.viewNewMsg.hidden = YES;
     
     [self setNaviBarTitle:nil];
-    [self setSearchAndCityButton];
+    [self setSearchBtn];
+    [self setCityBtn];
     [self requestForBannerList];
     
     NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
@@ -171,13 +176,13 @@
     viewControllerCity.delegate = self;
     [self presentViewController:viewControllerCity animated:YES completion:^{
     }];
-    
 }
 
 #pragma mark - Location Protocol
 - (void)didSelectCity:(CurrentLocationModel *)modelCurrent
 {
-    self.lblCity.text = modelCurrent.strCity;
+//    self.lblCity.text = modelCurrent.strCity;
+    [self setCityBtn];
     if (modelCurrent.intDistrinctId > 0) {
         [self requestForBannerList];
     }
