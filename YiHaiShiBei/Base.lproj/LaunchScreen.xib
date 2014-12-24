@@ -16,7 +16,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.98039215686274506" green="0.75686274509803919" blue="0.36470588235294116" alpha="0.82000000000000006" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.98039215686274506" green="0.75686274509803919" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="YQD-d3-L2e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="75" id="aEm-lO-Qff"/>
                 <constraint firstAttribute="bottom" secondItem="YQD-d3-L2e" secondAttribute="bottom" constant="173" id="fLp-GR-Nqc"/>
@@ -24,8 +24,7 @@
                 <constraint firstItem="YQD-d3-L2e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gv7-Fc-bAJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="610" y="436"/>
         </view>
     </objects>
     <resources>

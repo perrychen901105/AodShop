@@ -668,11 +668,12 @@
                             <constraint firstItem="Egr-tG-oEn" firstAttribute="height" secondItem="D8M-zU-Msu" secondAttribute="height" id="t7A-9A-V3N"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yD-ef-AHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="611" y="410"/>
+            <point key="canvasLocation" x="590" y="410"/>
         </scene>
     </scenes>
     <resources>
