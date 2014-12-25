@@ -1567,6 +1567,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "艺海拾贝";
+				PROVISIONING_PROFILE = "6000c690-df93-47be-9ee5-3726939f6e3e";
 			};
 			name = "ad-hoc Profile";
 		};
@@ -1673,6 +1674,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "艺海拾贝";
+				PROVISIONING_PROFILE = "6000c690-df93-47be-9ee5-3726939f6e3e";
 			};
 			name = Debug;
 		};
@@ -1687,6 +1689,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "艺海拾贝";
+				PROVISIONING_PROFILE = "6000c690-df93-47be-9ee5-3726939f6e3e";
 			};
 			name = Release;
 		};
