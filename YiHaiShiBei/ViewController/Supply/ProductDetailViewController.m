@@ -14,6 +14,7 @@
 #import "ProductCommentCell.h"
 #import "RegisterRootViewController.h"
 #import "UIImageView+WebCache.h"
+#import "MerchantDetailViewController.h"
 
 @interface ProductDetailViewController ()<ProductViewModelDelegate,UITextFieldDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, FavViewModelDelegate>
 
@@ -27,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblMerchantName;
 @property (weak, nonatomic) IBOutlet UILabel *lblMerchantPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lblMerchantAddr;
+@property (weak, nonatomic) IBOutlet UIButton *btnMerchantPhone;
+@property (weak, nonatomic) IBOutlet UITextView *tvProductBackup;
 
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
@@ -35,6 +38,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *tfProductComment;
 - (IBAction)btnpressed_comment:(id)sender;
+- (IBAction)btnpressed_phoneClick:(id)sender;
+- (IBAction)btnpressed_companyClick:(id)sender;
 
 @end
 
@@ -92,10 +97,15 @@
     self.viewModelFav = [[FavViewModel alloc] init];
     self.viewModelFav.delegate = self;
     [self addTapGestureOnEmptyView];
+    self.tvProductBackup.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.tvProductBackup.layer.borderWidth = 0.5;
+    self.tvProductBackup.textContainer.lineFragmentPadding = 0;
+    self.tvProductBackup.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5);
     [self setBackButton];
     [self getCommentList];
     [self setFavButtonItem];
     [self setNaviBarTitle:@"供应详情"];
+    self.viewModelProduct.product = self.modelProduct;
     [self setupDetailView];
     // Do any additional setup after loading the view.
 }
@@ -119,6 +129,9 @@
     self.lblMerchantName.text = [NSString stringWithFormat:@"公司名: %@",self.modelProduct.companyName];
     self.lblMerchantPhone.text = [NSString stringWithFormat:@"公司电话: %@",self.modelProduct.userPhone];
     self.lblMerchantAddr.text = [NSString stringWithFormat:@"公司地址: %@",self.modelProduct.companyAddr];
+    self.btnMerchantPhone.layer.cornerRadius = 5.0f;
+    self.btnMerchantPhone.layer.masksToBounds = YES;
+    self.tvProductBackup.text = self.modelProduct.backup;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -222,9 +235,10 @@
     CGRect keyboardFrame = [kbFrame CGRectValue];
     CGFloat height = keyboardFrame.size.height;
     if (isMoveup) {
+        __weak ProductDetailViewController *weakSelf = self;
         [UIView animateWithDuration:animationDuration animations:^{
-            self.constraintInupBottom.constant = height;
-            [self.view layoutIfNeeded];
+            weakSelf.constraintInupBottom.constant = height;
+            [weakSelf.view layoutIfNeeded];
         }];
     } else {
         self.constraintInupBottom.constant = 0;
@@ -272,6 +286,19 @@
     [self.viewModelProduct postProductCommentWithUserID:self.apps.storedUserID appKey:self.apps.stroedAppKey productID:self.modelProduct.productID content:strContent];
 }
 
+- (IBAction)btnpressed_phoneClick:(id)sender {
+    if ([self.viewModelProduct.product.userPhone length] > 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.viewModelProduct.product.userPhone]]];
+    }
+}
+
+- (IBAction)btnpressed_companyClick:(id)sender {
+    UIStoryboard *sbMerchant = [UIStoryboard storyboardWithName:@"MerchantPage" bundle:nil];
+    MerchantDetailViewController *viewControllerMerchant = [sbMerchant instantiateViewControllerWithIdentifier:@"MerchantDetailViewController"];
+    viewControllerMerchant.loadFromWeb = YES;
+    viewControllerMerchant.merchantUsrID = self.modelProduct.userID;
+    [self.navigationController pushViewController:viewControllerMerchant animated:YES];
+}
 #pragma mark - UIAlertview methods
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -297,5 +324,6 @@
         }
     }
 }
+
 
 @end

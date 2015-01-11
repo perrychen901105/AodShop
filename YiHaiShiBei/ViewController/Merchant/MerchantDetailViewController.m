@@ -13,8 +13,9 @@
 #import "UIImageView+WebCache.h"
 #import "ASStarRatingView.h"
 #import "RegisterRootViewController.h"
+#import "MerchantViewModel.h"
 
-@interface MerchantDetailViewController ()<FavViewModelDelegate, UIAlertViewDelegate>
+@interface MerchantDetailViewController ()<FavViewModelDelegate, MerchantViewModelDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet ASStarRatingView *viewStar;
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewAddr;
 
 @property (nonatomic, strong) FavViewModel *viewModelFav;
+@property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
 
 - (IBAction)btnpresed_phoneCall:(id)sender;
 - (IBAction)btnpressed_email:(id)sender;
@@ -37,18 +39,18 @@
 
 - (void)setDetailContent
 {
-    if (self.model.merchantLevelId < 0) {
+    if (self.viewModelMerchant.merchantModel.merchantLevelId < 0) {
         self.viewStar.hidden = YES;
     } else {
         self.viewStar.canEdit = NO;
         self.viewStar.maxRating = 5;
-        self.viewStar.rating = self.model.merchantLevelId;
+        self.viewStar.rating = self.viewModelMerchant.merchantModel.merchantLevelId;
     }
     
-    self.lblName.text = self.model.merchantCompanyName;
-    self.lblPhone.text = self.model.merchantPhone;
-    self.lblAddress.text = self.model.merchantCompanyAddr;
-    [self.imgViewAvatar sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.model.merchantAvatar]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    self.lblName.text = self.viewModelMerchant.merchantModel.merchantCompanyName;
+    self.lblPhone.text = self.viewModelMerchant.merchantModel.merchantPhone;
+    self.lblAddress.text = self.viewModelMerchant.merchantModel.merchantCompanyAddr;
+    [self.imgViewAvatar sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.viewModelMerchant.merchantModel.merchantAvatar]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
     
 }
 
@@ -65,7 +67,7 @@
         return;
     }
     [self showProgressLabelHud:@"正在添加收藏..." withView:self.view];
-    [self.viewModelFav changeUserFavWithType:1 userID:self.apps.storedUserID appKey:self.apps.stroedAppKey typeid:TYPE_FAV_MERCHANT detailID:self.model.merchantUserId];
+    [self.viewModelFav changeUserFavWithType:1 userID:self.apps.storedUserID appKey:self.apps.stroedAppKey typeid:TYPE_FAV_MERCHANT detailID:self.viewModelMerchant.merchantModel.merchantUserId];
 }
 
 - (void)setFavButtonItem
@@ -86,11 +88,19 @@
     [self setBackButton];
     self.viewModelFav = [[FavViewModel alloc] init];
     self.viewModelFav.delegate = self;
+    self.viewModelMerchant = [[MerchantViewModel alloc] init];
+    self.viewModelMerchant.delegate = self;
     self.viewPhone.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
     self.viewAddr.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
     self.viewMail.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
     self.viewPhone.layer.borderWidth = self.viewMail.layer.borderWidth = self.viewAddr.layer.borderWidth = 1.0f;
-    [self setDetailContent];
+    if (self.loadFromWeb) {
+        [self.viewModelMerchant getMerchantDetailWithUserID:self.merchantUsrID];
+    } else {
+        self.viewModelMerchant.merchantModel = self.model;
+        [self setDetailContent];
+    }
+    
     [self setFavButtonItem];
     // Do any additional setup after loading the view.
 }
@@ -115,6 +125,21 @@
     }
 }
 
+#pragma mark - Merchant model delegate methods
+- (void)merchantHttpSuccessWithTag:(EnumMerchantRequestType)typeRequest
+{
+    if (typeRequest == TypeMerchantRequestMerchantDetail) {
+        [self setDetailContent];
+    }
+}
+
+- (void)merchantHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumMerchantRequestType)typeRequest
+{
+    //FIXME: delete it
+    NSLog(@"fail");
+}
+
+
 /*
  #pragma mark - Navigation
  
@@ -126,8 +151,8 @@
  */
 
 - (IBAction)btnpresed_phoneCall:(id)sender {
-    if (self.model.merchantPhone.length > 0) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.model.merchantPhone]]];
+    if (self.viewModelMerchant.merchantModel.merchantPhone.length > 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.viewModelMerchant.merchantModel.merchantPhone]]];
     }
 }
 

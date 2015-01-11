@@ -7,18 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MerchantModel.h"
 #import "MerchantRequestService.h"
 
-typedef enum EnumRequestType
+typedef enum EnumMerchantRequestType
 {
-    TypeRequestAllMTypeList = 10,
-    TypeRequestAllMerchantList
-}EnumRequestType;
+    TypeMerchantRequestAllMTypeList = 10,
+    TypeMerchantRequestAllMerchantList,
+    TypeMerchantRequestMerchantDetail
+}EnumMerchantRequestType;
 
 @protocol MerchantViewModelDelegate <NSObject>
 
-- (void)httpSuccessWithTag:(EnumRequestType)typeRequest;
-- (void)httpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumRequestType)typeRequest;
+- (void)merchantHttpSuccessWithTag:(EnumMerchantRequestType)typeRequest;
+- (void)merchantHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumMerchantRequestType)typeRequest;
 
 @end
 
@@ -28,9 +30,11 @@ typedef enum EnumRequestType
 @property (nonatomic, strong) MerchantRequestService *merchantService;
 @property (nonatomic, strong) NSMutableArray *arrMerchantType;
 @property (nonatomic, strong) NSMutableArray *arrMerchantList;
+@property (nonatomic, strong) MerchantModel *merchantModel;
 
 - (void)getMerchantTypeListWithStart:(NSInteger)numStart count:(NSInteger)numCount;
 - (void)getMerchantListWithCatId:(NSInteger)catID districtID:(NSInteger)districtID Start:(NSInteger)numStart count:(NSInteger)numCount;
+- (void)getMerchantDetailWithUserID:(NSInteger)userID;
 
 - (void)getCachedMerchantType;
 - (void)getCachedMerchantListWithCatId:(NSInteger)catId;

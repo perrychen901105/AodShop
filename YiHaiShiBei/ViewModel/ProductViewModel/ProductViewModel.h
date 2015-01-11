@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ProductRequestService.h"
-
+#import "ProductModel.h"
 typedef enum EnumProductRequestType
 {
     ProductRequestAllTypeList = 100,
@@ -32,6 +32,7 @@ typedef enum EnumProductRequestType
 @property (nonatomic, strong) NSMutableArray *arrAllProCatList;
 @property (nonatomic, strong) NSMutableArray *arrAllProductList;
 @property (nonatomic, strong) NSMutableArray *arrAllCommentList;
+@property (nonatomic, strong) ProductModel *product;
 
 - (void)getProductTypeListWithStart:(NSInteger)start count:(NSInteger)count;
 - (void)getProductListWithCatid:(NSInteger)catID districtID:(NSInteger)districtID start:(NSInteger)start count:(NSInteger)count;

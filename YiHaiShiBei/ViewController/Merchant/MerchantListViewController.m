@@ -84,12 +84,12 @@
 
 
 #pragma mark - Merchant View model methods
-- (void)httpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumRequestType)typeRequest
+- (void)merchantHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumMerchantRequestType)typeRequest
 {
     [self.tbViewContent headerEndRefreshing];
 }
 
-- (void)httpSuccessWithTag:(EnumRequestType)typeRequest
+- (void)merchantHttpSuccessWithTag:(EnumMerchantRequestType)typeRequest
 {
     if (self.viewModelMerchant.arrMerchantList.count > 0) {
         [self.tbViewContent reloadData];

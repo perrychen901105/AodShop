@@ -24,7 +24,7 @@
         NSString *strResponseMsg = dicRoot[@"message"];
 //        MerchantTypeListModel *listModel = [[MerchantTypeListModel alloc] initWithString:strResponse error:nil];
         if (intResponseCode == 0) {
-            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpSuccessWithTag:)]) {
                 if (weakSelf.arrMerchantType.count > 0) {
                     [weakSelf.arrMerchantType removeAllObjects];
                 }
@@ -35,16 +35,16 @@
                 if (weakSelf.arrMerchantType.count > 0) {
                     [[DatabaseOperator getInstance] insertAllMerchantTypes:weakSelf.arrMerchantType];
                 }
-                [weakSelf.delegate httpSuccessWithTag:TypeRequestAllMTypeList];
+                [weakSelf.delegate merchantHttpSuccessWithTag:TypeMerchantRequestAllMTypeList];
             }
         } else {
-            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:errMsg:withType:)]) {
-                [weakSelf.delegate httpError:intResponseCode errMsg:strResponseMsg withType:TypeRequestAllMTypeList];
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {
+                [weakSelf.delegate merchantHttpError:intResponseCode errMsg:strResponseMsg withType:TypeMerchantRequestAllMTypeList];
             }
         }
     } error:^(NSInteger errorCode, NSString *strError) {
-        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:errMsg:withType:)]) {
-            [weakSelf.delegate httpError:errorCode errMsg:strError withType:TypeRequestAllMTypeList];
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {
+            [weakSelf.delegate merchantHttpError:errorCode errMsg:strError withType:TypeMerchantRequestAllMTypeList];
         }
     }];
 }
@@ -64,7 +64,7 @@
         NSInteger intResponseCode = [dicRoot[@"success"] intValue];
         NSString *strResponseMsg = dicRoot[@"message"];
         if (intResponseCode == 0) {
-            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpSuccessWithTag:)]) {
                 if (weakSelf.arrMerchantList.count > 0) {
                     [weakSelf.arrMerchantList removeAllObjects];
                 }
@@ -75,16 +75,48 @@
                 if (weakSelf.arrMerchantList.count > 0) {
                     [[DatabaseOperator getInstance] insertAllMerchantList:weakSelf.arrMerchantList withCateId:catID];
                 }
-                [weakSelf.delegate httpSuccessWithTag:TypeRequestAllMerchantList];
+                [weakSelf.delegate merchantHttpSuccessWithTag:TypeMerchantRequestAllMerchantList];
             }
         } else {
-            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(httpError:errMsg:withType:)]) {
-                [weakSelf.delegate httpError:intResponseCode errMsg:strResponseMsg withType:TypeRequestAllMerchantList];
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {
+                [weakSelf.delegate merchantHttpError:intResponseCode errMsg:strResponseMsg withType:TypeMerchantRequestAllMerchantList];
             }
         }
     } error:^(NSInteger errorCode, NSString *strError) {
-        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpError:errMsg:withType:)]) {
-            [weakSelf.delegate httpError:errorCode errMsg:strError withType:TypeRequestAllMerchantList];
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {
+            [weakSelf.delegate merchantHttpError:errorCode errMsg:strError withType:TypeMerchantRequestAllMerchantList];
+        }
+    }];
+}
+
+- (void)getMerchantDetailWithUserID:(NSInteger)userID
+{
+    if (self.merchantService == nil) {
+        self.merchantService = [[MerchantRequestService alloc] init];
+    }
+    __weak MerchantViewModel *weakSelf = self;
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    dicParas[@"userid"] = [NSString stringWithFormat:@"%d",userID];
+    [self.merchantService getMerchantDetail:dicParas success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpSuccessWithTag:)]) {
+                if (weakSelf.merchantModel) {
+                    weakSelf.merchantModel = nil;
+                }
+                weakSelf.merchantModel = [[MerchantModel alloc] initWithDictionary:dicRoot[@"data"][0] error:nil];
+                [weakSelf.delegate merchantHttpSuccessWithTag:TypeMerchantRequestMerchantDetail];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {
+                [weakSelf.delegate merchantHttpError:intResponseCode errMsg:strResponseMsg withType:TypeMerchantRequestMerchantDetail];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *strError) {
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {
+            [weakSelf.delegate merchantHttpError:errorCode errMsg:strError withType:TypeMerchantRequestMerchantDetail];
         }
     }];
 }

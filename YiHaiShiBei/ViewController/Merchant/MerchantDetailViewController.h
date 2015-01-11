@@ -11,5 +11,7 @@
 @interface MerchantDetailViewController : BaseViewController
 
 @property (nonatomic, strong) MerchantModel *model;
+@property (nonatomic, assign) NSInteger merchantUsrID;
+@property (nonatomic, assign) BOOL loadFromWeb;
 
 @end

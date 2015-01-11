@@ -12,6 +12,7 @@
 
 static NSString *ActionMerchantTypeList = @"getUserCatList";
 static NSString *ActionMerchantList = @"getBusinessListByCat";
+static NSString *ActionMerchantDetail = @"getBusinessList";
 
 - (void)getMerchantTypeListWithStartNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantTypeListSuccessBlock)successBlock error:(GetMerchantTypeListFailBlock)errorBlock
 {
@@ -41,6 +42,15 @@ static NSString *ActionMerchantList = @"getBusinessListByCat";
         [strRequest appendFormat:@"/%d",numCount];
     }
     [self getRequestToServer:ActionMerchantList requestPara:strRequest success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+- (void)getMerchantDetail:(NSMutableDictionary *)dicPara success:(GetMerchantDetailSuccessBlock)successBlock error:(GetMerchantDetailFailBlock)errorBlock
+{
+    [self postRequestToServer:ActionMerchantDetail dicParams:dicPara success:^(NSString *responseString) {
         successBlock(responseString);
     } error:^(NSInteger errorCode, NSString *errorMessage) {
         errorBlock(errorCode, errorMessage);

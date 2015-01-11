@@ -13,10 +13,15 @@ typedef void (^GetMerchantTypeListFailBlock)(NSInteger errorCode, NSString *strE
 typedef void (^GetMerchantListSuccessBlock)(NSString *strResponse);
 typedef void (^GetMerchantListFailBlock)(NSInteger errorCode, NSString *strError);
 
+typedef void (^GetMerchantDetailSuccessBlock)(NSString *strResponse);
+typedef void (^GetMerchantDetailFailBlock)(NSInteger errorCode, NSString *strError);
+
 @interface MerchantRequestService : HttpRequestService
 
 - (void)getMerchantTypeListWithStartNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantTypeListSuccessBlock)successBlock error:(GetMerchantTypeListFailBlock)errorBlock;
 
 - (void)getMerchantListWithCatId:(NSInteger)catId districtID:(NSInteger)districtID startNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantListSuccessBlock)successBlock error:(GetMerchantListFailBlock)errorBlock;
+
+- (void)getMerchantDetail:(NSMutableDictionary *)dicPara success:(GetMerchantDetailSuccessBlock)successBlock error:(GetMerchantDetailFailBlock)errorBlock;
 
 @end
