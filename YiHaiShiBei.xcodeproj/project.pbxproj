@@ -171,6 +171,10 @@
 		C24682D41A636045002C8AA6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C24682C91A636045002C8AA6 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		C24682D51A636045002C8AA6 /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24682CC1A636045002C8AA6 /* libSocialWechat.a */; };
 		C24682D61A636046002C8AA6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24682CD1A636045002C8AA6 /* libWeChatSDK.a */; };
+		C24682D81A6362EC002C8AA6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24682D71A6362EC002C8AA6 /* Security.framework */; };
+		C24682DA1A636300002C8AA6 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C24682D91A636300002C8AA6 /* libiconv.dylib */; };
+		C24682DC1A6363A2002C8AA6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24682DB1A6363A2002C8AA6 /* CoreTelephony.framework */; };
+		C24682DE1A6363B2002C8AA6 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C24682DD1A6363B2002C8AA6 /* libstdc++.dylib */; };
 		C2490B691A49485C006C0126 /* ProductCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2490B681A49485C006C0126 /* ProductCommentCell.m */; };
 /* End PBXBuildFile section */
 
@@ -502,6 +506,10 @@
 		C24682CE1A636045002C8AA6 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
 		C24682CF1A636045002C8AA6 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		C24682D01A636045002C8AA6 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		C24682D71A6362EC002C8AA6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C24682D91A636300002C8AA6 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		C24682DB1A6363A2002C8AA6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		C24682DD1A6363B2002C8AA6 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		C2490B671A49485C006C0126 /* ProductCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCommentCell.h; sourceTree = "<group>"; };
 		C2490B681A49485C006C0126 /* ProductCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCommentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -511,6 +519,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C433E8B19EED49A00129479 /* libz.dylib in Frameworks */,
+				C24682DE1A6363B2002C8AA6 /* libstdc++.dylib in Frameworks */,
+				C24682DC1A6363A2002C8AA6 /* CoreTelephony.framework in Frameworks */,
+				C24682DA1A636300002C8AA6 /* libiconv.dylib in Frameworks */,
+				C24682D81A6362EC002C8AA6 /* Security.framework in Frameworks */,
 				C24682D21A636045002C8AA6 /* libSocialQQ.a in Frameworks */,
 				2C7763741A2624F6005998B7 /* ImageIO.framework in Frameworks */,
 				C24682B81A635FAF002C8AA6 /* libUMSocial_Sdk_4.2.1.a in Frameworks */,
@@ -519,7 +532,6 @@
 				2CA9E2AF1A0929DA0078176D /* Foundation.framework in Frameworks */,
 				C24682D51A636045002C8AA6 /* libSocialWechat.a in Frameworks */,
 				2CA9E2AD1A0929C00078176D /* UIKit.framework in Frameworks */,
-				2C433E8B19EED49A00129479 /* libz.dylib in Frameworks */,
 				2C433E8919EED49400129479 /* CoreGraphics.framework in Frameworks */,
 				C24682D11A636045002C8AA6 /* libSocialSina.a in Frameworks */,
 				2C433E8719EED48D00129479 /* MobileCoreServices.framework in Frameworks */,
@@ -996,6 +1008,10 @@
 			children = (
 				2C7D33711A221C7E002C4A9A /* libsqlite3.dylib */,
 				2C433E8A19EED49A00129479 /* libz.dylib */,
+				C24682D91A636300002C8AA6 /* libiconv.dylib */,
+				C24682DD1A6363B2002C8AA6 /* libstdc++.dylib */,
+				C24682DB1A6363A2002C8AA6 /* CoreTelephony.framework */,
+				C24682D71A6362EC002C8AA6 /* Security.framework */,
 				2C7763731A2624F6005998B7 /* ImageIO.framework */,
 				2CA9E2AE1A0929DA0078176D /* Foundation.framework */,
 				2CA9E2AC1A0929C00078176D /* UIKit.framework */,
