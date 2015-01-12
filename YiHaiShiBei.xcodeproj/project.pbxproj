@@ -972,6 +972,7 @@
 		2C433E8019EEC93B00129479 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C24682DF1A6391FA002C8AA6 /* ShareCategory */,
 				2CCC39BE1A466617009FBB77 /* Search */,
 				2CD3754A1A1E1710003DDE32 /* UserProfile */,
 				2CD0BDA91A0F73180004F44C /* Location */,
@@ -1413,6 +1414,13 @@
 				C24682D01A636045002C8AA6 /* WXApiObject.h */,
 			);
 			path = Wechat;
+			sourceTree = "<group>";
+		};
+		C24682DF1A6391FA002C8AA6 /* ShareCategory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShareCategory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

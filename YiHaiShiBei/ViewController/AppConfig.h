@@ -16,8 +16,8 @@
 
 #define IsIOS7 ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=7)
 
-#define APIHost @"http://www.aodshop.cn/aodshop/index.php/api/"
-#define IMGHost @"http://www.aodshop.cn/aodshop/app/webroot/js/kindeditor/attached/image/"
+#define APIHost @"http://www.aodshop.cn/api/"
+#define IMGHost @"http://aodshop.cn/js/kindeditor/attached/image/"
 
 #define K_USER_SELECTED_DISTRICT_ID @"userSelectedDistrictId"
 #define K_USER_SELECTED_CITY_NAME @"userSelectedCityName"
