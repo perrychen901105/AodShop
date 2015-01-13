@@ -11,6 +11,8 @@
 #import "SupplyIndexViewController.h"
 #import "CommoneTools.h"
 #import "AppConfig.h"
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 
 @interface AppDelegate ()
 
@@ -103,8 +105,22 @@
     
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:249/255.0f green:174/255.0f blue:42/255.0f alpha:1.0f]];
 
+    [UMSocialData setAppKey:UM_APPKEY];
+    // 设置微信AppId, appSecret, 分享Url
+    [UMSocialWechatHandler setWXAppId:@"wxca6896ed512153c2" appSecret:@"1e07e6969c5f77d8af110096505f6445" url:@"http://www.baidu.com"];
+    
 //    [[UITabBarController tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [UMSocialSnsService handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [UMSocialSnsService handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

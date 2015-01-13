@@ -22,6 +22,7 @@
 - (void)setCityBtn;
 - (void)setUserIconButton;
 - (void)setBackButton;
+- (void)setShareButton;
 
 - (void)backAction;
 - (void)userLoginAction;
@@ -35,5 +36,7 @@
 - (void)emptyViewTapped;
 - (void)didChooseCity;
 - (void)searchBtnClick;
+- (void)btnShareClick;
 
+- (void)shareContent:(NSString *)content img:(UIImage *)img url:(NSString *)strURL;
 @end

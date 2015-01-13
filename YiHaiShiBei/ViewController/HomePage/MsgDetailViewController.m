@@ -33,8 +33,13 @@
     [self setNaviBarTitle:@"消息详情"];
     [self setBackButton];
     [self setupDetailView];
+    //TODO: add share button
+    
+//    [self setShareButton];
     // Do any additional setup after loading the view.
 }
+
+//Share content
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -48,6 +53,11 @@
     self.lblReleaseTime.text = [NSString stringWithFormat:@"时间: %@",self.modelMsg.release_date];
     self.lblTitle.text = [NSString stringWithFormat:@"%@",self.modelMsg.title];
     self.tvContent.text = [NSString stringWithFormat:@"%@",self.modelMsg.content];
+}
+
+- (void)btnShareClick
+{
+    [self shareContent:@"关注艺海" img:[UIImage imageNamed:@"img_banner_default"] url:nil];
 }
 
 /*

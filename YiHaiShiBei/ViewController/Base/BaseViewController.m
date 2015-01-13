@@ -8,9 +8,9 @@
 
 #import "BaseViewController.h"
 #import "AppConfig.h"
+#import "UMSocial.h"
 
-
-@interface BaseViewController ()
+@interface BaseViewController ()<UMSocialUIDelegate, UMSocialDataDelegate>
 
 @property (nonatomic, strong) UIView *viewNaviTitle;
 
@@ -126,6 +126,23 @@
     
 }
 
+- (void)setShareButton
+{
+    UIButton *btnAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnAdd.frame = CGRectMake(0, 0, 30, 30);
+    [btnAdd setTitle:@"分享" forState:UIControlStateNormal];
+    [btnAdd setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnAdd.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [btnAdd setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
+    [btnAdd addTarget:self action:@selector(btnShareClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnAdd];
+}
+
+- (void)btnShareClick
+{
+    
+}
+
 - (void)setCityBtn
 {
     UIView *viewCity = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
@@ -203,5 +220,29 @@
     } else {
         self.navigationItem.title = navTitle;
     }
+}
+
+#pragma mark - Share content
+- (void)shareContent:(NSString *)content img:(UIImage *)img url:(NSString *)strURL
+{
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UM_APPKEY shareText:content shareImage:img shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToWechatFavorite] delegate:self];
+    
+}
+
+- (void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
+{
+//    [self showProgressLabelHud:@"正在分享中..." withView:self.view];
+}
+
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    NSLog(@"the response code is %d",response.responseCode);
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
+//    [self hideHudWithDelay:0];
 }
 @end

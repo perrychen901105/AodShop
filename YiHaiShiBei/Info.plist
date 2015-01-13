@@ -40,7 +40,16 @@
 				<string>wb801557270</string>
 			</array>
 		</dict>
-		<dict/>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Weixin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wxca6896ed512153c2</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

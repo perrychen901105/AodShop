@@ -33,4 +33,6 @@
 #define TYPE_FAV_GROUPON 3
 #define TYPE_FAV_INFORMATION 4
 
+#define UM_APPKEY @"54b0f224fd98c59466000127"
+
 #endif
