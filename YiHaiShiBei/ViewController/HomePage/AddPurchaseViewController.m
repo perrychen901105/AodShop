@@ -64,7 +64,7 @@
     
     self.viewModelProduct = [[ProductViewModel alloc] init];
     self.viewModelProduct.delegate = self;
-    [self getProductCategory];
+//    [self getProductCategory];
     
     UIPickerView *picker = [[UIPickerView alloc] init];
     picker.dataSource = self;
@@ -245,10 +245,10 @@
         [self showOnlyLabelHud:@"请登录" withView:self.view];
         return;
     }
-    if (self.selectCatID <= 0) {
-        [self showOnlyLabelHud:@"请选择分类" withView:self.view];
-        return;
-    }
+//    if (self.selectCatID <= 0) {
+//        [self showOnlyLabelHud:@"请选择分类" withView:self.view];
+//        return;
+//    }
     if (strPurchaseTitle.length <= 0) {
         [self showOnlyLabelHud:@"请填写标题" withView:self.view];
         return;

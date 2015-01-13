@@ -22,7 +22,7 @@
         if (modelBanner.success == 0) {
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(httpSuccessWithTag:)]) {
 #ifdef DEBUG
-                NSLog(@"%d",modelBanner.advertisings.count);
+                NSLog(@"%@",modelBanner.advertisings);
 #endif
                 weakSelf.arrAllBanners = [modelBanner.advertisings mutableCopy];
                 [weakSelf.delegate httpSuccessWithTag:TypeRequestAllBanner];

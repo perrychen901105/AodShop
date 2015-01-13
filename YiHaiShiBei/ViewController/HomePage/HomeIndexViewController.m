@@ -89,7 +89,14 @@
                 UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth*i, 0, screenWidth, self.scrollViewBanner.frame.size.height)];
                 imgView.contentMode = UIViewContentModeScaleToFill;
                 [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,modelAdvise.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+                
+                UIButton *btnTap = [UIButton buttonWithType:UIButtonTypeCustom];
+                btnTap.frame = imgView.frame;
+                [btnTap addTarget:self action:@selector(imgClicked:) forControlEvents:UIControlEventTouchUpInside];
+                btnTap.tag = i;
+            
                 [self.scrollViewBanner addSubview:imgView];
+                [self.scrollViewBanner addSubview:btnTap];
                 
             }
             self.scrollViewBanner.contentSize = CGSizeMake(screenWidth*self.viewModelIndex.arrAllBanners.count, self.scrollViewBanner.frame.size.height);
@@ -101,6 +108,11 @@
     imgViewShow.frame = CGRectMake(0, 0, screenWidth, self.scrollViewBanner.frame.size.height) ;
     [self.scrollViewBanner addSubview:imgViewShow];
     self.scrollViewBanner.contentSize = CGSizeMake(screenWidth, imgViewShow.frame.size.height);
+}
+
+- (void)imgClicked:(id)sender
+{
+    NSLog(@"d");
 }
 
 - (void)viewDidLoad

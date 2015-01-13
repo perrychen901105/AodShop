@@ -857,7 +857,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="pi6-ab-pZH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHB-RO-5jj">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHB-RO-5jj">
                                         <rect key="frame" x="8" y="85" width="304" height="27"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="xGQ-bC-hHe">
@@ -884,7 +884,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="添加求购标题" minimumFontSize="17" background="editLineBg" translatesAutoresizingMaskIntoConstraints="NO" id="l8C-v4-21t">
-                                        <rect key="frame" x="8" y="142" width="304" height="27"/>
+                                        <rect key="frame" x="8" y="85" width="304" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="lfW-W6-6ts"/>
                                         </constraints>
@@ -895,11 +895,12 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBS-NU-A7R">
-                                        <rect key="frame" x="8" y="197" width="304" height="90"/>
+                                        <rect key="frame" x="8" y="127" width="304" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加求购内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXD-7T-EaS">
-                                                <rect key="frame" x="5" y="0.0" width="116" height="21"/>
+                                                <rect key="frame" x="5" y="0.0" width="116" height="25"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="goQ-Cm-Otq"/>
                                                     <constraint firstAttribute="width" constant="116" id="kdN-Pj-gti"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -907,7 +908,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAp-aW-SGr">
-                                                <rect key="frame" x="0.0" y="-2" width="304" height="92"/>
+                                                <rect key="frame" x="0.0" y="-1" width="304" height="162"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -918,11 +919,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="UAp-aW-SGr" firstAttribute="top" secondItem="eXD-7T-EaS" secondAttribute="top" constant="-2" id="6l3-J1-LNQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="UAp-aW-SGr" secondAttribute="bottom" id="92k-Pn-Gsh"/>
+                                            <constraint firstItem="UAp-aW-SGr" firstAttribute="top" secondItem="eXD-7T-EaS" secondAttribute="top" constant="-1" id="6l3-J1-LNQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="UAp-aW-SGr" secondAttribute="bottom" constant="-1" id="92k-Pn-Gsh"/>
                                             <constraint firstAttribute="trailing" secondItem="UAp-aW-SGr" secondAttribute="trailing" id="DUn-7g-9I9"/>
-                                            <constraint firstAttribute="height" constant="90" id="JVN-hD-V89"/>
-                                            <constraint firstAttribute="bottom" secondItem="eXD-7T-EaS" secondAttribute="bottom" constant="69" id="Vkh-TV-XYv"/>
+                                            <constraint firstAttribute="height" constant="160" id="JVN-hD-V89"/>
                                             <constraint firstItem="UAp-aW-SGr" firstAttribute="leading" secondItem="wBS-NU-A7R" secondAttribute="leading" id="VmI-Oa-fkY"/>
                                             <constraint firstItem="eXD-7T-EaS" firstAttribute="top" secondItem="wBS-NU-A7R" secondAttribute="top" id="ap8-SL-9QN"/>
                                             <constraint firstItem="UAp-aW-SGr" firstAttribute="leading" secondItem="eXD-7T-EaS" secondAttribute="leading" constant="-5" id="jE1-UE-OMI"/>
@@ -949,9 +949,9 @@
                                     <constraint firstItem="l8C-v4-21t" firstAttribute="leading" secondItem="wBS-NU-A7R" secondAttribute="leading" id="FlT-9M-JSW"/>
                                     <constraint firstItem="wBS-NU-A7R" firstAttribute="centerX" secondItem="pi6-ab-pZH" secondAttribute="centerX" id="JB2-2h-wDu"/>
                                     <constraint firstItem="KHB-RO-5jj" firstAttribute="trailing" secondItem="l8C-v4-21t" secondAttribute="trailing" id="JED-MB-Z4G"/>
-                                    <constraint firstItem="l8C-v4-21t" firstAttribute="top" secondItem="KHB-RO-5jj" secondAttribute="bottom" constant="30" id="TdW-im-K4s"/>
+                                    <constraint firstItem="l8C-v4-21t" firstAttribute="top" secondItem="KHB-RO-5jj" secondAttribute="bottom" constant="-27" id="TdW-im-K4s"/>
                                     <constraint firstItem="KHB-RO-5jj" firstAttribute="leading" secondItem="pi6-ab-pZH" secondAttribute="leadingMargin" id="ZTU-pT-WfF"/>
-                                    <constraint firstItem="wBS-NU-A7R" firstAttribute="top" secondItem="l8C-v4-21t" secondAttribute="bottom" constant="28" id="ZVx-bA-6vn"/>
+                                    <constraint firstItem="wBS-NU-A7R" firstAttribute="top" secondItem="l8C-v4-21t" secondAttribute="bottom" constant="15" id="ZVx-bA-6vn"/>
                                     <constraint firstItem="KHB-RO-5jj" firstAttribute="trailing" secondItem="pi6-ab-pZH" secondAttribute="trailingMargin" id="a2B-ib-xGa"/>
                                     <constraint firstItem="l8C-v4-21t" firstAttribute="trailing" secondItem="wBS-NU-A7R" secondAttribute="trailing" id="jN2-pR-9Jz"/>
                                     <constraint firstAttribute="bottom" secondItem="5v9-QV-zKl" secondAttribute="bottom" priority="900" constant="223" id="jZB-MZ-Yo9"/>
