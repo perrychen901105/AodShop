@@ -225,6 +225,8 @@
 #pragma mark - Share content
 - (void)shareContent:(NSString *)content img:(UIImage *)img url:(NSString *)strURL
 {
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"艺海拾贝建材商城";
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = @"艺海拾贝建材商城";
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UM_APPKEY shareText:content shareImage:img shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToWechatFavorite] delegate:self];
     
 }
