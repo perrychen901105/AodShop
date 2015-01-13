@@ -154,6 +154,7 @@
 		2CFFA00B1A1CE3470089B5AC /* HomeMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA00A1A1CE3470089B5AC /* HomeMessageListViewController.m */; };
 		2CFFA00E1A1CE3670089B5AC /* HomeGrouponListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA00D1A1CE3670089B5AC /* HomeGrouponListViewController.m */; };
 		2CFFA0111A1CE37E0089B5AC /* HomePurchaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */; };
+		C23814351A64EA260012157C /* BaseViewController+ShareContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C23814341A64EA260012157C /* BaseViewController+ShareContent.m */; };
 		C24682B71A635FAF002C8AA6 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C246829D1A635FAF002C8AA6 /* UMSocialLocalizable.strings */; };
 		C24682B81A635FAF002C8AA6 /* libUMSocial_Sdk_4.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24682AB1A635FAF002C8AA6 /* libUMSocial_Sdk_4.2.1.a */; };
 		C24682B91A635FB0002C8AA6 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24682AD1A635FAF002C8AA6 /* UMSCommentDetailController.xib */; };
@@ -472,6 +473,8 @@
 		2CFFA00D1A1CE3670089B5AC /* HomeGrouponListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeGrouponListViewController.m; sourceTree = "<group>"; };
 		2CFFA00F1A1CE37E0089B5AC /* HomePurchaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePurchaseListViewController.h; sourceTree = "<group>"; };
 		2CFFA0101A1CE37E0089B5AC /* HomePurchaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePurchaseListViewController.m; sourceTree = "<group>"; };
+		C23814331A64EA260012157C /* BaseViewController+ShareContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BaseViewController+ShareContent.h"; path = "YiHaiShiBei/ViewController/BaseViewController+ShareContent.h"; sourceTree = SOURCE_ROOT; };
+		C23814341A64EA260012157C /* BaseViewController+ShareContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BaseViewController+ShareContent.m"; path = "YiHaiShiBei/ViewController/BaseViewController+ShareContent.m"; sourceTree = SOURCE_ROOT; };
 		C246829E1A635FAF002C8AA6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		C24682A01A635FAF002C8AA6 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		C24682A11A635FAF002C8AA6 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -1419,6 +1422,8 @@
 		C24682DF1A6391FA002C8AA6 /* ShareCategory */ = {
 			isa = PBXGroup;
 			children = (
+				C23814331A64EA260012157C /* BaseViewController+ShareContent.h */,
+				C23814341A64EA260012157C /* BaseViewController+ShareContent.m */,
 			);
 			path = ShareCategory;
 			sourceTree = "<group>";
@@ -1564,6 +1569,7 @@
 				2CF1239F1A3673BF00EE1430 /* MerchantListViewController.m in Sources */,
 				04EB66FE19FF6D990043D120 /* JSONModelError.m in Sources */,
 				2C7D336E1A221C55002C4A9A /* FMDatabasePool.m in Sources */,
+				C23814351A64EA260012157C /* BaseViewController+ShareContent.m in Sources */,
 				2C01A5041A2CC4E300FAA7D8 /* InfoTableViewCell.m in Sources */,
 				04E9D51419F8FCED005265E3 /* BaseModel.m in Sources */,
 				2CA9E2AB1A0922290078176D /* HUDHelper.m in Sources */,
