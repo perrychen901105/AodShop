@@ -9,6 +9,7 @@
 #import "MerchantViewModel.h"
 #import "MerchantListModel.h"
 #import "DatabaseOperator.h"
+#import "ProductModel.h"
 
 @implementation MerchantViewModel
 
@@ -131,7 +132,7 @@
     }
     __weak MerchantViewModel *weakSelf = self;
     NSMutableDictionary *dicParas = [@{} mutableCopy];
-    dicParas[@"userid"] = [NSString stringWithFormat:@"%d",userID];
+    dicParas[@"user_id"] = [NSString stringWithFormat:@"%d",userID];
     [self.merchantService getMerchantProductsWithParameter:dicParas success:^(NSString *strResponse) {
         NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
         NSInteger intResponseCode = [dicRoot[@"success"] intValue];
@@ -141,7 +142,11 @@
                 if (weakSelf.arrMerchantList.count > 0) {
                     [weakSelf.arrMerchantList removeAllObjects];
                 }
-                
+                for (NSDictionary *dicProduct in dicRoot[@"data"][@"productList"]) {
+                    ProductModel *model = [[ProductModel alloc] initWithDictionary:dicProduct error:nil];
+                    [weakSelf.arrMerchantProducts addObject:model];
+                }
+                [weakSelf.delegate merchantHttpSuccessWithTag:TypeMerchantRequestAllProducts];
             }
         } else {
             if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {

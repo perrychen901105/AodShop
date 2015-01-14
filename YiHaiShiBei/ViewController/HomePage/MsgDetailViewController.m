@@ -35,7 +35,7 @@
     [self setupDetailView];
     //TODO: add share button
     
-//    [self setShareButton];
+    [self setShareButton];
     // Do any additional setup after loading the view.
 }
 

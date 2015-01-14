@@ -131,9 +131,9 @@
     UIButton *btnAdd = [UIButton buttonWithType:UIButtonTypeCustom];
     btnAdd.frame = CGRectMake(0, 0, 30, 30);
     [btnAdd setTitle:@"分享" forState:UIControlStateNormal];
-    [btnAdd setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btnAdd setTitleColor:COLOR_TITLE_DEFAULT forState:UIControlStateNormal];
     [btnAdd.titleLabel setFont:[UIFont systemFontOfSize:13]];
-    [btnAdd setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
+//    [btnAdd setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
     [btnAdd addTarget:self action:@selector(btnShareClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnAdd];
 }
@@ -239,7 +239,6 @@
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
     //根据`responseCode`得到发送结果,如果分享成功
-    NSLog(@"the response code is %d",response.responseCode);
     if(response.responseCode == UMSResponseCodeSuccess)
     {
         //得到分享到的微博平台名

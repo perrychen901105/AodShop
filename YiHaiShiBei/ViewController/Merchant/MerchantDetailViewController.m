@@ -15,6 +15,8 @@
 #import "RegisterRootViewController.h"
 #import "MerchantViewModel.h"
 #import "productInfoCell.h"
+#import "ProductModel.h"
+#import "ProductDetailViewController.h"
 
 @interface MerchantDetailViewController ()<FavViewModelDelegate, MerchantViewModelDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewAvatar;
@@ -27,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewPhone;
 @property (weak, nonatomic) IBOutlet UIView *viewMail;
 @property (weak, nonatomic) IBOutlet UIView *viewAddr;
+@property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
 @property (nonatomic, strong) FavViewModel *viewModelFav;
 @property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
@@ -88,6 +91,15 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnAdd];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tbViewContent indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tbViewContent deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNaviBarTitle:@"商家详情"];
@@ -136,6 +148,9 @@
 {
     if (typeRequest == TypeMerchantRequestMerchantDetail) {
         [self setDetailContent];
+    } else if (typeRequest == TypeMerchantRequestAllProducts) {
+        NSLog(@"the table view content is %@",self.viewModelMerchant.arrMerchantProducts);
+        [self.tbViewContent reloadData];
     }
 }
 
@@ -166,20 +181,34 @@
 }
 
 #pragma mark - UITableView methods
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    
-//}
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    productInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProductInfoCell"];
+    ProductModel *model = self.viewModelMerchant.arrMerchantProducts[indexPath.row];
+    cell.lblTitle.text = [NSString stringWithFormat:@"标题: %@",model.productName];
+    cell.lblReleaseTime.text = [NSString stringWithFormat:@"发布时间: %@",model.releaseDate];//model.releaseDate;
+    [cell.imgViewPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.productPicture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    cell.lblPrice.text = [NSString stringWithFormat:@"￥ %.2f",model.price];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.viewModelMerchant.arrMerchantProducts.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *sbProduct = [UIStoryboard storyboardWithName:@"SupplyIndex" bundle:nil];
+    ProductDetailViewController *viewControllerDetail = [sbProduct instantiateViewControllerWithIdentifier:@"ProductDetailViewController"];
+    viewControllerDetail.modelProduct = self.viewModelMerchant.arrMerchantProducts[indexPath.row];
+    [self.navigationController pushViewController:viewControllerDetail animated:YES];
+}
 
 #pragma mark - UIAlertview methods
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
