@@ -121,6 +121,40 @@
     }];
 }
 
+- (void)getProductsWithMerchantUserID:(NSInteger)userID
+{
+    if (self.merchantService == nil) {
+        self.merchantService = [[MerchantRequestService alloc] init];
+    }
+    if (self.arrMerchantProducts == nil) {
+        self.arrMerchantProducts = [@[] mutableCopy];
+    }
+    __weak MerchantViewModel *weakSelf = self;
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    dicParas[@"userid"] = [NSString stringWithFormat:@"%d",userID];
+    [self.merchantService getMerchantProductsWithParameter:dicParas success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpSuccessWithTag:)]) {
+                if (weakSelf.arrMerchantList.count > 0) {
+                    [weakSelf.arrMerchantList removeAllObjects];
+                }
+                
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {
+                [weakSelf.delegate merchantHttpError:intResponseCode errMsg:strResponseMsg withType:TypeMerchantRequestAllProducts];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *strError) {
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(merchantHttpError:errMsg:withType:)]) {
+            [weakSelf.delegate merchantHttpError:errorCode errMsg:strError withType:TypeMerchantRequestAllProducts];
+        }
+    }];
+}
+
 #pragma mark - get cached methods
 - (void)getCachedMerchantType
 {

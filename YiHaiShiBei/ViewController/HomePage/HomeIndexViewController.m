@@ -18,6 +18,7 @@
 #import "HomeGrouponListViewController.h"
 #import "HomeMessageListViewController.h"
 #import "SearchRootViewController.h"
+#import "MerchantDetailViewController.h"
 
 #import "AdvertiseModel.h"
 #import "ProfileViewModel.h"
@@ -112,7 +113,14 @@
 
 - (void)imgClicked:(id)sender
 {
-    NSLog(@"d");
+    UIButton *btnTapped = (UIButton *)sender;
+    AdvertiseModel *modelAdvertise = self.viewModelIndex.arrAllBanners[btnTapped.tag];
+    
+    UIStoryboard *sbMerchant = [UIStoryboard storyboardWithName:@"MerchantPage" bundle:nil];
+    MerchantDetailViewController *viewControllerMerchant = [sbMerchant instantiateViewControllerWithIdentifier:@"MerchantDetailViewController"];
+    viewControllerMerchant.merchantUsrID = modelAdvertise.user_id;
+    viewControllerMerchant.loadFromWeb = YES;
+    [self.navigationController pushViewController:viewControllerMerchant animated:YES];
 }
 
 - (void)viewDidLoad

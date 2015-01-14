@@ -14,7 +14,8 @@ typedef enum EnumMerchantRequestType
 {
     TypeMerchantRequestAllMTypeList = 10,
     TypeMerchantRequestAllMerchantList,
-    TypeMerchantRequestMerchantDetail
+    TypeMerchantRequestMerchantDetail,
+    TypeMerchantRequestAllProducts
 }EnumMerchantRequestType;
 
 @protocol MerchantViewModelDelegate <NSObject>
@@ -30,11 +31,13 @@ typedef enum EnumMerchantRequestType
 @property (nonatomic, strong) MerchantRequestService *merchantService;
 @property (nonatomic, strong) NSMutableArray *arrMerchantType;
 @property (nonatomic, strong) NSMutableArray *arrMerchantList;
+@property (nonatomic, strong) NSMutableArray *arrMerchantProducts;
 @property (nonatomic, strong) MerchantModel *merchantModel;
 
 - (void)getMerchantTypeListWithStart:(NSInteger)numStart count:(NSInteger)numCount;
 - (void)getMerchantListWithCatId:(NSInteger)catID districtID:(NSInteger)districtID Start:(NSInteger)numStart count:(NSInteger)numCount;
 - (void)getMerchantDetailWithUserID:(NSInteger)userID;
+- (void)getProductsWithMerchantUserID:(NSInteger)userID;
 
 - (void)getCachedMerchantType;
 - (void)getCachedMerchantListWithCatId:(NSInteger)catId;

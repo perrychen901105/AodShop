@@ -16,5 +16,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *picture;
 @property (nonatomic, assign) NSInteger is_system;
+@property (nonatomic, assign) NSInteger user_id;
 
 @end

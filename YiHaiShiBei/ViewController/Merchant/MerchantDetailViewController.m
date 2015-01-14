@@ -14,8 +14,9 @@
 #import "ASStarRatingView.h"
 #import "RegisterRootViewController.h"
 #import "MerchantViewModel.h"
+#import "productInfoCell.h"
 
-@interface MerchantDetailViewController ()<FavViewModelDelegate, MerchantViewModelDelegate, UIAlertViewDelegate>
+@interface MerchantDetailViewController ()<FavViewModelDelegate, MerchantViewModelDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet ASStarRatingView *viewStar;
@@ -51,6 +52,11 @@
     self.lblPhone.text = self.viewModelMerchant.merchantModel.merchantPhone;
     self.lblAddress.text = self.viewModelMerchant.merchantModel.merchantCompanyAddr;
     [self.imgViewAvatar sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.viewModelMerchant.merchantModel.merchantAvatar]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    
+}
+
+- (void)setupMerchantProducts
+{
     
 }
 
@@ -100,7 +106,7 @@
         self.viewModelMerchant.merchantModel = self.model;
         [self setDetailContent];
     }
-    
+    [self.viewModelMerchant getProductsWithMerchantUserID:self.merchantUsrID];
     [self setFavButtonItem];
     // Do any additional setup after loading the view.
 }
@@ -158,6 +164,22 @@
 
 - (IBAction)btnpressed_email:(id)sender {
 }
+
+#pragma mark - UITableView methods
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    
+//}
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 1;
+//}
 
 #pragma mark - UIAlertview methods
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
