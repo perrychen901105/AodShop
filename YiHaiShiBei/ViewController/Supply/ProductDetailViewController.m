@@ -317,14 +317,16 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == 1) {
-        UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-        RegisterRootViewController *viewControllerRegister = (RegisterRootViewController *)[[viewControllerRoot viewControllers] objectAtIndex:0];
-        __weak ProductDetailViewController *weakSelf = self;
-        [viewControllerRegister loginDidSuccess:^(BOOL success) {
-            [weakSelf addFavFunc:nil];
-        }];
-        [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
-        }];
+        if (buttonIndex == 1) {
+            UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            RegisterRootViewController *viewControllerRegister = (RegisterRootViewController *)[[viewControllerRoot viewControllers] objectAtIndex:0];
+            __weak ProductDetailViewController *weakSelf = self;
+            [viewControllerRegister loginDidSuccess:^(BOOL success) {
+                [weakSelf addFavFunc:nil];
+            }];
+            [self.navigationController presentViewController:viewControllerRoot animated:YES completion:^{
+            }];
+        }
     } else {
         if (buttonIndex == 1) {
             UINavigationController *viewControllerRoot = [[UIStoryboard storyboardWithName:@"Register" bundle:[NSBundle mainBundle]] instantiateInitialViewController];

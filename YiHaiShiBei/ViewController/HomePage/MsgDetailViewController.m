@@ -57,7 +57,7 @@
 
 - (void)btnShareClick
 {
-    [self shareContent:@"关注艺海" img:[UIImage imageNamed:@"img_banner_default"] url:nil];
+    [self shareContent:self.modelMsg.title img:[UIImage imageNamed:@"img_banner_default"] url:nil];
 }
 
 /*
