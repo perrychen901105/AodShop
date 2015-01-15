@@ -56,15 +56,27 @@
 - (void)setFavButtonItem
 {
     UIButton *btnAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnAdd.frame = CGRectMake(0, 0, 60, 30);
-    [btnAdd setTitle:@"添加收藏" forState:UIControlStateNormal];
-    [btnAdd setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnAdd.frame = CGRectMake(0, 0, 30, 30);
+    [btnAdd setTitle:@"收藏" forState:UIControlStateNormal];
+    [btnAdd setTitleColor:COLOR_TITLE_DEFAULT forState:UIControlStateNormal];
     [btnAdd.titleLabel setFont:[UIFont systemFontOfSize:13]];
-    [btnAdd setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
+    //    [btnAdd setBackgroundImage:[UIImage imageNamed:@"btn_orange"] forState:UIControlStateNormal];
     [btnAdd addTarget:self action:@selector(addFavFunc:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnAdd];
+    UIBarButtonItem *itemFav = [[UIBarButtonItem alloc] initWithCustomView:btnAdd];
+    
+    UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnShare.frame = CGRectMake(0, 0, 30, 30);
+    [btnShare setTitle:@"分享" forState:UIControlStateNormal];
+    [btnShare setTitleColor:COLOR_TITLE_DEFAULT forState:UIControlStateNormal];
+    [btnShare.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [btnShare addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *itemShare = [[UIBarButtonItem alloc] initWithCustomView:btnShare];
+    self.navigationItem.rightBarButtonItems = @[itemFav, itemShare];
 }
-
+- (void)shareBtnClick:(id)sender
+{
+    [self shareContent:self.modelInfo.title img:[UIImage imageNamed:@"img_banner_default"] url:nil];
+}
 - (void)setupDetailView
 {
     [self.imgViewDes sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.modelInfo.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
