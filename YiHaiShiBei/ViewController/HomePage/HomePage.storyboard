@@ -1274,8 +1274,12 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpV-tJ-zoK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpV-tJ-zoK">
                                 <rect key="frame" x="120" y="326" width="81" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="Evl-MP-7sp"/>
+                                    <constraint firstAttribute="height" constant="30" id="RRa-TN-Vbc"/>
+                                </constraints>
                                 <state key="normal" title="参与团购" backgroundImage="btn_orange">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1291,6 +1295,8 @@
                             <constraint firstItem="ym3-x2-9aF" firstAttribute="leading" secondItem="KnL-B9-aui" secondAttribute="leading" constant="10" id="CUm-xI-7u5"/>
                             <constraint firstItem="Plm-kn-O3H" firstAttribute="leading" secondItem="KnL-B9-aui" secondAttribute="leading" constant="10" id="IJl-aF-YUp"/>
                             <constraint firstAttribute="trailing" secondItem="wDZ-x3-Exi" secondAttribute="trailing" constant="10" id="Ngh-no-m98"/>
+                            <constraint firstItem="LpV-tJ-zoK" firstAttribute="top" secondItem="ym3-x2-9aF" secondAttribute="bottom" constant="8" id="Umc-64-1pU"/>
+                            <constraint firstAttribute="centerX" secondItem="LpV-tJ-zoK" secondAttribute="centerX" id="Wez-Ak-6Kc"/>
                             <constraint firstItem="Z1b-zz-Xj2" firstAttribute="leading" secondItem="Ug1-ng-HuI" secondAttribute="trailing" constant="-100" id="YLp-0C-v61"/>
                             <constraint firstAttribute="trailing" secondItem="GZf-Z2-nnn" secondAttribute="trailing" constant="10" id="ZzI-rZ-CL3"/>
                             <constraint firstItem="ym3-x2-9aF" firstAttribute="top" secondItem="uMn-VY-4VI" secondAttribute="bottom" constant="6" id="gwP-Qf-Onp"/>
