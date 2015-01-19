@@ -457,11 +457,11 @@
     }
     NSMutableArray *arrValues = [@[] mutableCopy];
     for (GrouponModel *model in arrData) {
-        NSString *strValues = [NSString stringWithFormat:@"(%ld,'%@','%@',%f,%ld,%ld,%ld,%f)",model.grouponID,model.name,model.picture,model.price,model.number,model.isPass,model.isOnSale,model.new_price];
+        NSString *strValues = [NSString stringWithFormat:@"(%d,'%@','%@',%f,%d,%d,%d,%f,'%@','%@')",model.grouponID,model.name,model.picture,model.price,model.number,model.isPass,model.isOnSale,model.new_price,model.start_time,model.end_time];
         [arrValues addObject:strValues];
     }
     NSString *strAllValue = [arrValues componentsJoinedByString:@","];
-    NSString *strExec = [NSString stringWithFormat:@"insert into grouponList(grouponID, name, picture, price, number, isPass, isOnSale,newPrice) values %@",strAllValue];
+    NSString *strExec = [NSString stringWithFormat:@"insert into grouponList(grouponID, name, picture, price, number, isPass, isOnSale,newPrice,startTime,endTime) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
         NSLog(@"success");
@@ -490,6 +490,8 @@
         model.new_price = [rs doubleForColumn:@"newPrice"];
         model.isPass = [rs intForColumn:@"isPass"];
         model.isOnSale = [rs intForColumn:@"isOnSale"];
+        model.start_time = [rs stringForColumn:@"startTime"];
+        model.end_time = [rs stringForColumn:@"endTime"];
 #ifdef DEBUG
         NSLog(@"model is %@",model);
 #endif

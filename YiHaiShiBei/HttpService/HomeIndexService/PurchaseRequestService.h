@@ -20,8 +20,8 @@ typedef void (^GetAllReplyPurchaseListFailBlock)(NSInteger errorCode, NSString *
 typedef void (^AddReplyPurchaseSuccessBlock)(NSString *strResponse);
 typedef void (^AddReplyPurchaseFailBlock)(NSInteger errorCode, NSString *errorMsg);
 
-typedef void (^AddToGrouponSuccessBlock)(NSString *strResponse);
-typedef void (^AddToGrouponFailBlock)(NSInteger errorCode, NSString *errorMsg);
+typedef void (^JoinGrouponSuccessBlock)(NSString *strResponse);
+typedef void (^JoinGrouponFailBlock)(NSInteger errorCode, NSString *errorMsg);
 
 typedef void (^GetGrouponNumberSuccessBlock)(NSString *strResponse);
 typedef void (^GetGrouponNumberFailBlock)(NSInteger errorCode, NSString *errorMsg);
@@ -42,7 +42,8 @@ typedef void (^GetGrouponNumberFailBlock)(NSInteger errorCode, NSString *errorMs
 - (void)postReplyWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock;
 
 // 参加团购接口
+- (void)joinGroupPurchase:(NSMutableDictionary *)dicParas success:(JoinGrouponSuccessBlock)successBlock error:(JoinGrouponFailBlock)errorBlock;
 
-
-
+// 获取参与团购人数的接口
+- (void)getJoinGroupNum:(NSMutableDictionary *)dicParas success:(GetGrouponNumberSuccessBlock)successBlock error:(GetGrouponNumberFailBlock)errorBlock;
 @end

@@ -20,5 +20,7 @@
 @property (nonatomic, assign) NSInteger sort;
 @property (nonatomic, assign) NSInteger isPass;
 @property (nonatomic, assign) NSInteger isOnSale;
+@property (nonatomic, strong) NSString *start_time;
+@property (nonatomic, strong) NSString *end_time;
 
 @end

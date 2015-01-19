@@ -14,6 +14,8 @@ static NSString *ActionAllPurchaseList = @"productPurchaseList";
 static NSString *ActionAllGrouponList  = @"getGroupPurchases";
 static NSString *ActionAllReplyPurchaseList = @"getProductPurchasesReplies";
 static NSString *ActionAddReplyPurchase = @"addProductPurchasesReply";
+static NSString *ActionJoinGroupon = @"joinGroupPurchase";
+static NSString *ActionGetJoinGrouponNum = @"getNumberOfGroupPurchase";
 
 - (void)getAllPurchaseListWithUserId:(NSInteger)userID districtID:(NSInteger)districtID productCatId:(NSInteger)productCatID start:(NSInteger)start num:(NSInteger)num success:(GetAllPurchaseListSuccessBlock)successBlock error:(GetAllPurchaseListFailBlock)errorBlock;
 {
@@ -81,6 +83,26 @@ static NSString *ActionAddReplyPurchase = @"addProductPurchasesReply";
 - (void)postReplyWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock
 {
     [self postRequestToServer:ActionAddReplyPurchase dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+- (void)joinGroupPurchase:(NSMutableDictionary *)dicParas success:(JoinGrouponSuccessBlock)successBlock error:(JoinGrouponFailBlock)errorBlock
+{
+    NSString *strRequest = [NSString stringWithFormat:@"/%d/%d",[dicParas[@"group_id"] intValue],[dicParas[@"user_id"] intValue]];
+    [self getRequestToServer:ActionJoinGroupon requestPara:strRequest success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode,errorMessage);
+    }];
+}
+
+- (void)getJoinGroupNum:(NSMutableDictionary *)dicParas success:(GetGrouponNumberSuccessBlock)successBlock error:(GetGrouponNumberFailBlock)errorBlock
+{
+    NSString *strRequest = [NSString stringWithFormat:@"/%d",[dicParas[@"group_id"] intValue]];
+    [self getRequestToServer:ActionGetJoinGrouponNum requestPara:strRequest success:^(NSString *responseString) {
         successBlock(responseString);
     } error:^(NSInteger errorCode, NSString *errorMessage) {
         errorBlock(errorCode, errorMessage);
