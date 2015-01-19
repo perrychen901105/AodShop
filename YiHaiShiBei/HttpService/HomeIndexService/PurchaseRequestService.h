@@ -20,6 +20,12 @@ typedef void (^GetAllReplyPurchaseListFailBlock)(NSInteger errorCode, NSString *
 typedef void (^AddReplyPurchaseSuccessBlock)(NSString *strResponse);
 typedef void (^AddReplyPurchaseFailBlock)(NSInteger errorCode, NSString *errorMsg);
 
+typedef void (^AddToGrouponSuccessBlock)(NSString *strResponse);
+typedef void (^AddToGrouponFailBlock)(NSInteger errorCode, NSString *errorMsg);
+
+typedef void (^GetGrouponNumberSuccessBlock)(NSString *strResponse);
+typedef void (^GetGrouponNumberFailBlock)(NSInteger errorCode, NSString *errorMsg);
+
 @interface PurchaseRequestService : HttpRequestService
 
 
@@ -34,5 +40,9 @@ typedef void (^AddReplyPurchaseFailBlock)(NSInteger errorCode, NSString *errorMs
 
 // 评论求购信息
 - (void)postReplyWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock;
+
+// 参加团购接口
+
+
 
 @end
