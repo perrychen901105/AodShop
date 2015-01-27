@@ -32,6 +32,10 @@
                                                        @"Product.release_date":@"releaseDate"
                                                        }];
 }
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end
 
 @implementation InfoFavModel
@@ -52,6 +56,10 @@
                                                        @"Information.release_date":@"releaseDate"
                                                        }];
 }
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end
 
 @implementation GrouponFavModel
@@ -71,6 +79,10 @@
                                                        @"GrouppurchaseProduct.new_price":@"newPrice",
                                                        @"GrouppurchaseProduct.number":@"number"
                                                        }];
+}
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
 }
 @end
 
@@ -93,5 +105,9 @@
                                                        @"Shop.phone":@"merchantPhone",
                                                        @"Shop.company_addr":@"merchantAddr"
                                                        }];
+}
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
 }
 @end
