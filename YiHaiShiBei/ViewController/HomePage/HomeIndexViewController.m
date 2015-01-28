@@ -194,6 +194,7 @@
 {
     ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
     viewControllerCity.delegate = self;
+    viewControllerCity.needSynacApp = YES;
     [self presentViewController:viewControllerCity animated:YES completion:^{
     }];
 }

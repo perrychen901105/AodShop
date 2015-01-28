@@ -107,6 +107,16 @@
     }
 }
 
+- (void)synacApps:(CityModel *)modelCity distrinct:(DistrinctModel *)modelDis
+{
+    [[NSUserDefaults standardUserDefaults] setObject:modelCity.name forKey:K_USER_SELECTED_CITY_NAME];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",modelDis.districtID] forKey:K_USER_SELECTED_DISTRICT_ID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    self.apps.selectedLocation = self.selectedLocation;
+    self.apps.storedDistrictID = modelDis.districtID;
+    self.apps.storedCityName = modelCity.name;
+}
+
 #pragma mark - Navigation
 - (IBAction)btnpressed_ConfirmCity:(id)sender {
     NSArray *arrDistricts = [self getAllDistrictWithCityID:self.intSelectCity];
@@ -116,9 +126,7 @@
         DistrinctModel *modelDis = arrDistricts[[self.pickerViewLocation selectedRowInComponent:2]];
         CityModel *modelCity = arrCitys[[self.pickerViewLocation selectedRowInComponent:1]];
         ProvinceModel *modelProvince = arrProvince[[self.pickerViewLocation selectedRowInComponent:0]];
-        [[NSUserDefaults standardUserDefaults] setObject:modelCity.name forKey:K_USER_SELECTED_CITY_NAME];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",modelDis.districtID] forKey:K_USER_SELECTED_DISTRICT_ID];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         if (self.apps.storedDistrictID != modelDis.districtID) {
             [[DatabaseOperator getInstance] removeAllRequirePurchaseList];
             [[DatabaseOperator getInstance] removeAllGrouponList];
@@ -134,9 +142,9 @@
         self.selectedLocation.intCityId = modelCity.cityID;
         self.selectedLocation.strDistrinct = modelDis.name;
         self.selectedLocation.intDistrinctId = modelDis.districtID;
-        self.apps.selectedLocation = self.selectedLocation;
-        self.apps.storedDistrictID = modelDis.districtID;
-        self.apps.storedCityName = modelCity.name;
+        if (self.needSynacApp) {
+            [self synacApps:modelCity distrinct:modelDis];
+        }
         [self dismissViewControllerAnimated:YES completion:^{
         }];
     } else {

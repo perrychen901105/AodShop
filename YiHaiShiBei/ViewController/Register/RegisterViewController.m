@@ -9,13 +9,18 @@
 #import "RegisterViewController.h"
 #import "ProfileViewModel.h"
 #import "UserProfileProtocol.h"
+#import "ChooseLocationViewController.h"
+#import "ChooseCityProtocol.h"
+#import "LocationModel.h"
 
-@interface RegisterViewController ()<UITextFieldDelegate, UserProfileProtocol, MBProgressHUDDelegate>
+@interface RegisterViewController ()<UITextFieldDelegate, UserProfileProtocol, MBProgressHUDDelegate, ChooseCityProtocol>
 
 @property (weak, nonatomic) IBOutlet UITextField *tfChooseDistrict;
 @property (weak, nonatomic) IBOutlet UITextField *tfUserName;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassword;
 @property (weak, nonatomic) IBOutlet UITextField *tfConfirmPwd;
+
+@property (nonatomic, assign) NSInteger intDistrinctID;
 
 @property (strong, nonatomic) ProfileViewModel *viewModelRegister;
 
@@ -124,7 +129,10 @@
 - (IBAction)actionRegisterComplete:(id)sender {
     if ([self checkAllFields]) {
         [self showProgressLabelHud:@"注册中..." withView:self.view];
-        [self.viewModelRegister RegisterWithName:self.tfUserName.text pwd:self.tfPassword.text districtId:1];
+#ifdef DEBUG
+        NSLog(@"the select district id is %ld",self.intDistrinctID);
+#endif
+        [self.viewModelRegister RegisterWithName:self.tfUserName.text pwd:self.tfPassword.text districtId:self.intDistrinctID];
     }
 }
 
@@ -146,9 +154,21 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (textField == self.tfChooseDistrict) {
+        ChooseLocationViewController *viewControllerCity = [[UIStoryboard storyboardWithName:@"ChooseLocation" bundle:nil] instantiateInitialViewController];
+        viewControllerCity.delegate = self;
+        viewControllerCity.needSynacApp = NO;
+        [self presentViewController:viewControllerCity animated:YES completion:^{
+        }];
         return NO;
     }
     return YES;
+}
+
+#pragma mark - Location delegate methods
+- (void)didSelectCity:(CurrentLocationModel *)modelCurrent
+{
+    self.tfChooseDistrict.text = modelCurrent.strDistrinct;
+    self.intDistrinctID = modelCurrent.intDistrinctId;
 }
 
 @end

@@ -11,5 +11,6 @@
 @interface ChooseLocationViewController : BaseViewController<ChooseCityProtocol>
 
 @property (weak, nonatomic) id<ChooseCityProtocol> delegate;
+@property (assign, nonatomic) BOOL needSynacApp;
 
 @end
