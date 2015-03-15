@@ -73,6 +73,7 @@
                     MerchantModel *model = [[MerchantModel alloc] initWithDictionary:dic error:nil];
                     [weakSelf.arrMerchantList addObject:model];
                 }
+                weakSelf.arrMerchantList = [weakSelf sortArrWithKey:@"aaa" isAscend:YES oriArray:weakSelf.arrMerchantList];
                 if (weakSelf.arrMerchantList.count > 0) {
                     [[DatabaseOperator getInstance] insertAllMerchantList:weakSelf.arrMerchantList withCateId:catID];
                 }
@@ -168,5 +169,18 @@
 - (void)getCachedMerchantListWithCatId:(NSInteger)catId
 {
     self.arrMerchantList = [[DatabaseOperator getInstance] getAllMerchantListWithCatId:catId];
+    self.arrMerchantList = [self sortArrWithKey:@"aaa" isAscend:YES oriArray:self.arrMerchantList];
+}
+
+#pragma mark - array sort methods
+- (NSMutableArray *)sortArrWithKey:(NSString *)strKey isAscend:(BOOL)isAscend oriArray:(NSMutableArray *)oriArr
+{
+    NSMutableArray *arrSorted = [@[] mutableCopy];
+    NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"merchantLevelId" ascending:NO];
+    
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+    
+    arrSorted = [[oriArr sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+    return arrSorted;
 }
 @end

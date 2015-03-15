@@ -56,6 +56,8 @@
                 for (NSDictionary *dic in dicRoot[@"data"][@"Users"]) {
                     MerchantModel *model = [[MerchantModel alloc] initWithDictionary:dic error:nil];
                     [weakSelf.arrAllSearchList addObject:model];
+                    weakSelf.arrAllSearchList = [weakSelf sortArrWithKey:@"aa" isAscend:NO
+                                                                oriArray:weakSelf.arrAllSearchList];
                 }
             }
             
@@ -73,5 +75,16 @@
             [weakSelf.delegate searchHttpErrorWithErrorCode:errorCode errMessage:errorMsg type:SearchRequestAllList];
         }
     }];
+}
+
+- (NSMutableArray *)sortArrWithKey:(NSString *)strKey isAscend:(BOOL)isAscend oriArray:(NSMutableArray *)oriArr
+{
+    NSMutableArray *arrSorted = [@[] mutableCopy];
+    NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"merchantLevelId" ascending:NO];
+    
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+    
+    arrSorted = [[oriArr sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+    return arrSorted;
 }
 @end
