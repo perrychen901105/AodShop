@@ -111,10 +111,12 @@
 {
     [[NSUserDefaults standardUserDefaults] setObject:modelCity.name forKey:K_USER_SELECTED_CITY_NAME];
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",modelDis.districtID] forKey:K_USER_SELECTED_DISTRICT_ID];
+    [[NSUserDefaults standardUserDefaults] setObject:modelDis.name forKey:K_USER_SELECTED_DISTRICT_NAME];
     [[NSUserDefaults standardUserDefaults] synchronize];
     self.apps.selectedLocation = self.selectedLocation;
     self.apps.storedDistrictID = modelDis.districtID;
     self.apps.storedCityName = modelCity.name;
+    self.apps.storedDistrictName = modelDis.name;
 }
 
 #pragma mark - Navigation

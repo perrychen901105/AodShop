@@ -147,8 +147,15 @@
     NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     NSString *strPreviousSelectCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
+    NSString *strPreviousSelectDistrictName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_DISTRICT_NAME];
+    NSString *strLbl = @"";
+    if (strPreviousSelectDistrictName.length > 0) {
+        strLbl = strPreviousSelectDistrictName;
+    } else {
+        strLbl = strPreviousSelectCityName;
+    }
     if (strPreviousSelectCityName != nil) {
-        self.lblCity.text = strPreviousSelectCityName;
+        self.lblCity.text = strLbl;
     } else {
         self.lblCity.text = @"地址";
     }

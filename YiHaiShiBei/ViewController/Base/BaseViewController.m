@@ -152,7 +152,14 @@
     self.lblCity.textAlignment = NSTextAlignmentRight;
     self.lblCity.textColor = [UIColor colorWithRed:244/255.0f green:146/255.0f blue:10/255.0f alpha:1.0f];
     self.lblCity.font = [UIFont fontWithName:lblCity.font.fontName size:12];
-    self.lblCity.text = self.apps.storedCityName;
+    NSString *strLbl = @"";
+    if (self.apps.storedDistrictName.length > 0) {
+        strLbl = self.apps.storedDistrictName;
+    } else {
+        strLbl = self.apps.storedCityName;
+    }
+    self.lblCity.text = strLbl;
+    
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 12, 5, 8)];
     imgView.image = [UIImage imageNamed:@"img_arrowDown"];
     

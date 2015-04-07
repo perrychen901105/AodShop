@@ -21,6 +21,7 @@
 
 #define K_USER_SELECTED_DISTRICT_ID @"userSelectedDistrictId"
 #define K_USER_SELECTED_CITY_NAME @"userSelectedCityName"
+#define K_USER_SELECTED_DISTRICT_NAME @"userSelectedDistrictName"
 
 #define K_USER_LOGIN_NAME @"userloginName"
 #define K_USER_LOGIN_USERID @"userloginUserID"

@@ -91,10 +91,12 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_DISTRICT_ID] == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@4 forKey:K_USER_SELECTED_DISTRICT_ID];
         [[NSUserDefaults standardUserDefaults] setObject:@"南通市" forKey:K_USER_SELECTED_CITY_NAME];
+        [[NSUserDefaults standardUserDefaults] setObject:@"海门市" forKey:K_USER_SELECTED_DISTRICT_NAME];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
     self.storedCityName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_CITY_NAME];
+    self.storedDistrictName = [[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_DISTRICT_NAME];
     self.storedDistrictID = [[[NSUserDefaults standardUserDefaults] objectForKey:K_USER_SELECTED_DISTRICT_ID] intValue];
     
     self.storedUserID = [[[NSUserDefaults standardUserDefaults] objectForKey:K_USER_LOGIN_USERID] intValue];
