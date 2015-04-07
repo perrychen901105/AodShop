@@ -154,7 +154,7 @@
     } else {
         strLbl = strPreviousSelectCityName;
     }
-    if (strPreviousSelectCityName != nil) {
+    if (strLbl != nil) {
         self.lblCity.text = strLbl;
     } else {
         self.lblCity.text = @"地址";
