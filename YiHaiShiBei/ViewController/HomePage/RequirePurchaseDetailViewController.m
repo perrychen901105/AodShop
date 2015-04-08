@@ -18,10 +18,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintInupBottom;
 @property (weak, nonatomic) IBOutlet UILabel *lblPurchaseTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblPurchaseTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblUserPhone;
 @property (weak, nonatomic) IBOutlet UITextView *tvPurchaseContent;
 @property (weak, nonatomic) IBOutlet UITableView *tbViewReply;
 
 @property (nonatomic, strong) PurchaseViewModel *viewModelPurchase;
+- (IBAction)btnPressedCallPhone:(id)sender;
 
 - (IBAction)btnpressed_reply:(id)sender;
 @end
@@ -72,6 +74,7 @@
     self.lblPurchaseTitle.text = self.model.purchaseTitle;
     self.lblPurchaseTime.text = self.model.purchaseTime;
     self.tvPurchaseContent.text = self.model.purchaseInfo;
+    self.lblUserPhone.text = self.model.purchaseUsrPhone;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -203,6 +206,12 @@
     [self.view layoutIfNeeded];
 
 }
+- (IBAction)btnPressedCallPhone:(id)sender {
+    if (self.model.purchaseUsrPhone.length > 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.model.purchaseUsrPhone]]];
+    }
+}
+
 - (IBAction)btnpressed_reply:(id)sender {
     if (self.apps.storedUserID <= 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请登录" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
