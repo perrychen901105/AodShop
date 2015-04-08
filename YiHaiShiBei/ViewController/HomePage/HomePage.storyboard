@@ -1320,6 +1320,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ajb-o8-tur"/>
                     <connections>
+                        <outlet property="btnJoinGroupon" destination="LpV-tJ-zoK" id="9Qz-Wl-S6b"/>
                         <outlet property="imgViewContent" destination="Ug1-ng-HuI" id="vCJ-8x-yNi"/>
                         <outlet property="lblEndTime" destination="uMn-VY-4VI" id="0GM-SD-5Oz"/>
                         <outlet property="lblGrouponPrice" destination="FOM-kC-jRk" id="HB4-6T-lGD"/>

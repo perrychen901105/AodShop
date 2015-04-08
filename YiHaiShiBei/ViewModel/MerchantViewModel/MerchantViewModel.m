@@ -73,7 +73,7 @@
                     MerchantModel *model = [[MerchantModel alloc] initWithDictionary:dic error:nil];
                     [weakSelf.arrMerchantList addObject:model];
                 }
-                weakSelf.arrMerchantList = [weakSelf sortArrWithKey:@"aaa" isAscend:YES oriArray:weakSelf.arrMerchantList];
+//                weakSelf.arrMerchantList = [weakSelf sortArrWithKey:@"aaa" isAscend:YES oriArray:weakSelf.arrMerchantList];
                 if (weakSelf.arrMerchantList.count > 0) {
                     [[DatabaseOperator getInstance] insertAllMerchantList:weakSelf.arrMerchantList withCateId:catID];
                 }

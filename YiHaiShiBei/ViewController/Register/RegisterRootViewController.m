@@ -9,6 +9,7 @@
 #import "RegisterRootViewController.h"
 #import "ProfileViewModel.h"
 #import "UserProfileProtocol.h"
+#import "RegisterViewController.h"
 #import "AppConfig.h"
 
 //#import "MBProgressHUD.h"
@@ -75,6 +76,16 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"registerSegue"]) {
+        RegisterViewController *viewControllerRegister = (RegisterViewController *)segue.destinationViewController;
+        [viewControllerRegister registerDidSuccess:^(BOOL success, NSString *userName, NSString *password) {
+            if (success) {
+                self.tfPassword.text = password;
+                self.tfUserName.text = userName;
+                [self actionLogin:nil];
+            }
+        }];
+    }
 }
 
 #pragma mark - Login Request

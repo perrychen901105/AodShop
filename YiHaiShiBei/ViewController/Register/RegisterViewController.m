@@ -139,9 +139,20 @@
 - (void)hudWasHidden:(MBProgressHUD *)hud
 {
     if (hud.tag == 1) {
-        [self dismissViewControllerAnimated:YES completion:^{
-        }];
+        if (self.blockSuccess) {
+            self.blockSuccess(YES, self.tfUserName.text, self.tfPassword.text);
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+        
+//        [self dismissViewControllerAnimated:YES completion:^{
+//            
+//        }];
     }
+}
+
+- (void)registerDidSuccess:(UserRegisterSuccessBlock)blockTemp
+{
+    self.blockSuccess = blockTemp;
 }
 
 #pragma mark - UITextField methods

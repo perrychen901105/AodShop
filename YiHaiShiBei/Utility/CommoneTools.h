@@ -47,7 +47,7 @@ typedef void (^ReloadRequestBlock)(UIView *view);
 +(BOOL)isSameYear:(NSDate*)date1 date2:(NSDate*)date2;
 //返回时间所在日期当天的准确时间
 +(NSString *)dateTimewithTimeStr:(NSString *)timeStr withFormat:(NSString*)strFormat;
-
++ (NSDate *)dateFromFormatterString:(NSString *)dateString withFormat:(NSString *)formatString;
 
 +(NSString *)indexRushTime:(NSString *)rushTime rushEndTime:(NSString *)rushEndTime systime:(NSString *)systime;
 

@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/Utility/DatabaseOperator.m"
-            timestampString = "444137575.418657"
+            filePath = "YiHaiShiBei/ViewController/HomePage/GrouponDetailViewController.m"
+            timestampString = "450198136.787104"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-insertAllLocations:"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-setViewContent"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,30 +73,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/Utility/DatabaseOperator.m"
-            timestampString = "444137625.739046"
+            filePath = "YiHaiShiBei/ViewModel/MerchantViewModel/MerchantViewModel.m"
+            timestampString = "450198469.62894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-insertAllLocations:"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-getProductsWithMerchantUserID:"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/Utility/DatabaseOperator.m"
-            timestampString = "444137633.831156"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "-insertAllLocations:"
-            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MerchantViewModel getProductsWithMerchantUserID:]"
+                  moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
+                  urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewModel/MerchantViewModel/MerchantViewModel.m"
+                  timestampString = "450198592.674972"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "741">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__51-[MerchantViewModel getProductsWithMerchantUserID:]_block_invoke"
+                  moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
+                  urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewModel/MerchantViewModel/MerchantViewModel.m"
+                  timestampString = "450198592.675167"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "75">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

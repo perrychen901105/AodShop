@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void (^UserRegisterSuccessBlock)(BOOL success, NSString *userName, NSString *password);
 @interface RegisterViewController : BaseViewController
+@property (nonatomic, strong) UserRegisterSuccessBlock blockSuccess;
 
+- (void)registerDidSuccess:(UserRegisterSuccessBlock)blockTemp;
 @end

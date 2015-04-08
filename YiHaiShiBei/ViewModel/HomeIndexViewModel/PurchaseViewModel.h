@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PurchaseRequestService.h"
-
+#import "GrouponModel.h"
 typedef enum EnumPurchaseRequestType
 {
     TypeRequestAllPurchaseList = 10,
@@ -16,7 +16,8 @@ typedef enum EnumPurchaseRequestType
     TypeRequestAllReplyList,
     TypeRequestAddReplyPurchase,
     TypeRequestGetGrouponNum,
-    TypeRequestJoinGroupon
+    TypeRequestJoinGroupon,
+    TypeRequestGrouponDetail
 }EnumPurchaseRequestType;
 
 @protocol PurchaseViewModelDelegate <NSObject>
@@ -37,8 +38,11 @@ typedef enum EnumPurchaseRequestType
 @property (nonatomic, strong) NSMutableArray *arrAllReplyPurchaseList;
 @property (nonatomic, assign) NSInteger joinedGrouponNum;
 
+@property (nonatomic, strong) GrouponModel *modelGroupon;
+
 - (void)getAllPurchaseList:(NSInteger)userID districtID:(NSInteger)districtID productCateID:(NSInteger)productCatID start:(NSInteger)start num:(NSInteger)num;
 - (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass IsOnsale:(NSInteger)isOnsale start:(NSInteger)numStart num:(NSInteger)num;
+- (void)getGrouponDetail:(NSInteger)groupID;
 
 - (void)getAllReplyPurchaseList:(NSInteger)userID appKey:(NSString *)appKey ppid:(NSInteger)ppid typeID:(NSInteger)typeID;
 - (void)postReplyPurchase:(NSInteger)userID appKey:(NSString *)appKey ppid:(NSInteger)ppid content:(NSString *)content;

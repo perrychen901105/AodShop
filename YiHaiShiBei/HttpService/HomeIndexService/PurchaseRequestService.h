@@ -26,6 +26,9 @@ typedef void (^JoinGrouponFailBlock)(NSInteger errorCode, NSString *errorMsg);
 typedef void (^GetGrouponNumberSuccessBlock)(NSString *strResponse);
 typedef void (^GetGrouponNumberFailBlock)(NSInteger errorCode, NSString *errorMsg);
 
+typedef void (^GetGrouponDetailSuccessBlock)(NSString *strResponse);
+typedef void (^GetGrouponDetailFailBlock)(NSInteger errorCode, NSString *errorMsg);
+
 @interface PurchaseRequestService : HttpRequestService
 
 
@@ -34,6 +37,9 @@ typedef void (^GetGrouponNumberFailBlock)(NSInteger errorCode, NSString *errorMs
 
 // 获取所有团购列表
 - (void)getAllGrouponList:(NSInteger)districtID isPass:(NSInteger)isPass isOnsale:(NSInteger)isOnsale start:(NSInteger)start num:(NSInteger)num success:(GetAllGrouponListSuccessBlock)successBlock error:(GetAllGrouponListFailBlock)errorBlock;
+
+// 获取单个团购详情
+- (void)getGrouponDetail:(NSInteger)grouponID success:(GetGrouponDetailSuccessBlock)successBlock error:(GetGrouponDetailFailBlock)errorBlock;
 
 // 获取产品求购回复列表
 - (void)getAllReplyPurchaseListWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock;

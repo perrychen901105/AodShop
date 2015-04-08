@@ -78,7 +78,9 @@
         UITableViewCell *cellSelect = (UITableViewCell *)sender;
         NSIndexPath *indexPath = [self.tbViewContent indexPathForCell:cellSelect];
         MerchantDetailViewController *viewControllerDetail = (MerchantDetailViewController *)segue.destinationViewController;
-        viewControllerDetail.model = self.viewModelMerchant.arrMerchantList[indexPath.row];
+        MerchantModel *modelT = self.viewModelMerchant.arrMerchantList[indexPath.row];
+        viewControllerDetail.model = modelT;
+        viewControllerDetail.merchantUsrID = modelT.merchantUserId;
     }
 }
 

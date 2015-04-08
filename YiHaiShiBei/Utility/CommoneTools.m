@@ -146,6 +146,14 @@
     return [df stringFromDate:dt1];
 }
 
++ (NSDate *)dateFromFormatterString:(NSString *)dateString withFormat:(NSString *)formatString
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:formatString];
+    NSDate *dt1 = [df dateFromString:dateString];
+    return dt1;
+}
+
 +(NSString *)getUUIDstring
 {
 //    NSString *strUUID = [[NSUUID UUID] UUIDString];

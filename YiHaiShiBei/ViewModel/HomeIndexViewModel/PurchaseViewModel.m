@@ -101,6 +101,33 @@
     }];
 }
 
+- (void)getGrouponDetail:(NSInteger)groupID
+{
+    if (self.purchaseService == nil) {
+        self.purchaseService = [[PurchaseRequestService alloc] init];
+    }
+    __weak PurchaseViewModel *weakSelf = self;
+    [self.purchaseService getGrouponDetail:groupID success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(purchaseRequestSuccessWithTag:)]) {
+                self.modelGroupon = [[GrouponModel alloc] initWithDictionary:dicRoot[@"data"][@"GrouppurchaseProduct"] error:nil];
+                [weakSelf.delegate purchaseRequestSuccessWithTag:TypeRequestGrouponDetail];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+                [weakSelf.delegate purchaseRequestError:intResponseCode message:strResponseMsg type:TypeRequestGrouponDetail];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *errorMsg) {
+        if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(purchaseRequestError:message:type:)]) {
+            [weakSelf.delegate purchaseRequestError:errorCode message:errorMsg type:TypeRequestGrouponDetail];
+        }
+    }];
+}
+
 - (void)getAllReplyPurchaseList:(NSInteger)userID appKey:(NSString *)appKey ppid:(NSInteger)ppid typeID:(NSInteger)typeID
 {
     if (self.purchaseService == nil) {

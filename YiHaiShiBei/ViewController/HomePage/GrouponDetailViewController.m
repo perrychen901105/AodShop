@@ -11,6 +11,7 @@
 #import "AppConfig.h"
 #import "PurchaseViewModel.h"
 #import "FavViewModel.h"
+#import "CommoneTools.h"
 #import "RegisterRootViewController.h"
 @interface GrouponDetailViewController ()<FavViewModelDelegate,UIAlertViewDelegate,PurchaseViewModelDelegate>
 
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStartTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblEndTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblJoinedNum;
+@property (weak, nonatomic) IBOutlet UIButton *btnJoinGroupon;
 
 @property (weak, nonatomic) IBOutlet UITextView *tvContent;
 
@@ -38,17 +40,28 @@
 
 - (void)setViewContent
 {
-    self.lblTitle.text = [NSString stringWithFormat:@"商品名: %@",self.model.name];
-    self.lblGrouponPrice.text = [NSString stringWithFormat:@"团购价: %.2f",self.model.new_price];
-    self.lblRemainCount.text = [NSString stringWithFormat:@"剩余数量: %ld",self.model.number];
-    self.lblStartTime.text = [NSString stringWithFormat:@"开始时间: %@",self.model.start_time];
-    self.lblEndTime.text = [NSString stringWithFormat:@"结束时间: %@",self.model.end_time];
-    [self.imgViewContent sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.model.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
+    NSDate *dateNow = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate: dateNow];
+    NSDate *localeDate = [dateNow  dateByAddingTimeInterval: interval];
+    if (self.viewModelPurchase.modelGroupon.end_time.length > 0) {
+        NSDate *dateEnd = [CommoneTools dateFromFormatterString:self.viewModelPurchase.modelGroupon.end_time withFormat:@"YYYY-MM-DD hh:mm:ss"];
+        if (NSOrderedDescending == [localeDate compare:dateEnd]) {
+            self.btnJoinGroupon.enabled = NO;
+        }
+    }
+    
+    self.lblTitle.text = [NSString stringWithFormat:@"商品名: %@",self.viewModelPurchase.modelGroupon.name];
+    self.lblGrouponPrice.text = [NSString stringWithFormat:@"团购价: %.2f",self.viewModelPurchase.modelGroupon.new_price];
+    self.lblRemainCount.text = [NSString stringWithFormat:@"剩余数量: %ld",self.viewModelPurchase.modelGroupon.number];
+    self.lblStartTime.text = [NSString stringWithFormat:@"开始时间: %@",self.viewModelPurchase.modelGroupon.start_time];
+    self.lblEndTime.text = [NSString stringWithFormat:@"结束时间: %@",self.viewModelPurchase.modelGroupon.end_time];
+    [self.imgViewContent sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,self.viewModelPurchase.modelGroupon.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
 //    self.tvContent.text = [NSString stringWithFormat:<#(NSString *), ...#>]
     
 }
 
-- (void)addFavFunc:(id)sender
+- (void)addFavFunc:(id)senders
 {
     if (self.apps.storedUserID <= 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请登录" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
@@ -88,14 +101,15 @@
     [super viewDidLoad];
     [self setNaviBarTitle:@"团购详情"];
     [self setBackButton];
-    [self setViewContent];
+//    [self setViewContent];
     [self setFavButtonItem];
     
     self.viewModelFav = [[FavViewModel alloc] init];
     self.viewModelFav.delegate = self;
     self.viewModelPurchase = [[PurchaseViewModel alloc] init];
     self.viewModelPurchase.delegate = self;
-    
+    [self showProgressLabelHud:@"请求中..." withView:self.view];
+    [self.viewModelPurchase getGrouponDetail:self.model.grouponID];
     [self.viewModelPurchase getJoinedGrouponNum:self.model.grouponID];
     // Do any additional setup after loading the view.
 }
@@ -141,12 +155,15 @@
         [self showOnlyLabelHud:@"成功参与" withView:self.view];
         self.viewModelPurchase.joinedGrouponNum ++;
         self.lblJoinedNum.text = [NSString stringWithFormat:@"参与人数: %d",self.viewModelPurchase.joinedGrouponNum];
+    } else if (type == TypeRequestGrouponDetail) {
+        [self hideHudWithDelay:0];
+        [self setViewContent];
     }
 }
 
 - (void)purchaseRequestError:(NSInteger)errorCode message:(NSString *)errorMessage type:(EnumPurchaseRequestType)type
 {
-    
+    [self hideHudWithDelay:0];
 }
 
 #pragma mark - UIAlertview methods

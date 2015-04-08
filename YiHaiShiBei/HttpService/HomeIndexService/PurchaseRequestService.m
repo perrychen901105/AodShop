@@ -16,6 +16,7 @@ static NSString *ActionAllReplyPurchaseList = @"getProductPurchasesReplies";
 static NSString *ActionAddReplyPurchase = @"addProductPurchasesReply";
 static NSString *ActionJoinGroupon = @"joinGroupPurchase";
 static NSString *ActionGetJoinGrouponNum = @"getNumberOfGroupPurchase";
+static NSString *ActionGetGrouponDetail = @"getSingleGroupPurchase";
 
 - (void)getAllPurchaseListWithUserId:(NSInteger)userID districtID:(NSInteger)districtID productCatId:(NSInteger)productCatID start:(NSInteger)start num:(NSInteger)num success:(GetAllPurchaseListSuccessBlock)successBlock error:(GetAllPurchaseListFailBlock)errorBlock;
 {
@@ -68,6 +69,23 @@ static NSString *ActionGetJoinGrouponNum = @"getNumberOfGroupPurchase";
     } error:^(NSInteger errorCode, NSString *errorMessage) {
         errorBlock(errorCode, errorMessage);
     }];
+}
+
+- (void)getGrouponDetail:(NSInteger)grouponID success:(GetGrouponDetailSuccessBlock)successBlock error:(GetGrouponDetailFailBlock)errorBlock
+{
+    NSMutableString *strGetGrouponDetail = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@""]];
+    if (grouponID < 0) {
+        grouponID = 0;
+    }
+    [strGetGrouponDetail appendFormat:@"/%d",grouponID];
+
+    
+    [self getRequestToServer:ActionGetGrouponDetail requestPara:strGetGrouponDetail success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+
 }
 
 - (void)getAllReplyPurchaseListWithParas:(NSMutableDictionary *)dicParas success:(GetAllReplyPurchaseListSuccessBlock)successBlock error:(GetAllReplyPurchaseListFailBlock)errorBlock;
