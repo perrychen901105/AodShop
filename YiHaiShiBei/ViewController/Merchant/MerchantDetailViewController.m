@@ -131,8 +131,10 @@
     if (self.loadFromWeb) {
         [self.viewModelMerchant getMerchantDetailWithUserID:self.merchantUsrID];
     } else {
-        self.viewModelMerchant.merchantModel = self.model;
-        [self setDetailContent];
+        self.merchantUsrID = self.model.merchantUserId;
+        [self.viewModelMerchant getMerchantDetailWithUserID:self.merchantUsrID];
+//        self.viewModelMerchant.merchantModel = self.model;
+//        [self setDetailContent];
     }
     [self.viewModelMerchant getProductsWithMerchantUserID:self.merchantUsrID];
     [self setFavButtonItem];

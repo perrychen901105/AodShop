@@ -73,44 +73,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/ViewModel/MerchantViewModel/MerchantViewModel.m"
-            timestampString = "450198469.62894"
+            filePath = "YiHaiShiBei/ViewController/HomePage/RequirePurchaseDetailViewController.m"
+            timestampString = "450199495.185916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-getProductsWithMerchantUserID:"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "-btnPressedCallPhone:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[MerchantViewModel getProductsWithMerchantUserID:]"
-                  moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
-                  urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewModel/MerchantViewModel/MerchantViewModel.m"
-                  timestampString = "450199495.277679"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "741">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__51-[MerchantViewModel getProductsWithMerchantUserID:]_block_invoke"
-                  moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
-                  urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewModel/MerchantViewModel/MerchantViewModel.m"
-                  timestampString = "450199495.277777"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "75">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -119,13 +89,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/ViewController/HomePage/RequirePurchaseDetailViewController.m"
-            timestampString = "450199495.185916"
+            filePath = "YiHaiShiBei/ViewController/Merchant/MerchantDetailViewController.m"
+            timestampString = "450273361.221202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-btnPressedCallPhone:"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YiHaiShiBei/ViewModel/MerchantViewModel/MerchantViewModel.m"
+            timestampString = "450274007.05405"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-getMerchantDetailWithUserID:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
