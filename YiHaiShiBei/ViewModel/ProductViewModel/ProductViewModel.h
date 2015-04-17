@@ -15,7 +15,8 @@ typedef enum EnumProductRequestType
     ProductRequestAllList,
     ProductRequestAddPurchase,
     ProductRequestAllCommentList,
-    ProductRequestAddComment
+    ProductRequestAddComment,
+    ProductRequestAddClickCount
 }EnumProductRequestType;
 
 @protocol ProductViewModelDelegate <NSObject>
@@ -39,6 +40,7 @@ typedef enum EnumProductRequestType
 - (void)postToPurchaseWithUsrID:(NSInteger)userid appKey:(NSString *)appKey title:(NSString *)title purchaseInfo:(NSString *)info districtID:(NSInteger)districtID productcatid:(NSInteger)catID;
 - (void)getProductCommentListWithUsrID:(NSInteger)userid appKey:(NSString *)appKey productID:(NSInteger)productID;
 - (void)postProductCommentWithUserID:(NSInteger)userid appKey:(NSString *)appKey productID:(NSInteger)productID content:(NSString *)content;
+- (void)addProductClickCountWithModelId:(NSInteger)modelid typeId:(NSInteger)typeId;
 
 - (void)getCachedProductTypeList;
 - (void)getCachedProductList:(NSInteger)catID;

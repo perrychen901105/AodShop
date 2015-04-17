@@ -15,6 +15,7 @@ static NSString *ActionGetProductList = @"getProductsListByCat";
 static NSString *ActionPostAddPurchase = @"addProductPurchase";
 static NSString *ActionGetProductCommentList = @"getProductComments";
 static NSString *ActionAddProductComment = @"addProductComment";
+static NSString *ActionAddProductClickCount = @"addCountClick";
 
 - (void)getProductTypeListWithStart:(NSInteger)start number:(NSInteger)num success:(GetAllProductCatListSuccessBlock)successBlock error:(GetAllProductCatListFailBlock)errorBlock
 {
@@ -82,6 +83,15 @@ static NSString *ActionAddProductComment = @"addProductComment";
 - (void)postProductCommentWithPars:(NSMutableDictionary *)dicParas success:(PostAddProductCommentSuccessBlock)successBlock error:(PostAddProductCommentFailBlcok)errorBlock
 {
     [self postRequestToServer:ActionAddProductComment dicParams:dicParas success:^(NSString *responseString) {
+        successBlock(responseString);
+    } error:^(NSInteger errorCode, NSString *errorMessage) {
+        errorBlock(errorCode, errorMessage);
+    }];
+}
+
+- (void)postAddProductClickWithParas:(NSMutableDictionary *)dicParas success:(PostAddProudctClickCountSuccessBlock)successBlock error:(PostAddProductClickCountFailBlock)errorBlock
+{
+    [self postRequestToServer:ActionAddProductClickCount dicParams:dicParas success:^(NSString *responseString) {
         successBlock(responseString);
     } error:^(NSInteger errorCode, NSString *errorMessage) {
         errorBlock(errorCode, errorMessage);

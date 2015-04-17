@@ -23,6 +23,9 @@ typedef void (^PostGetProductCommentFailBlock)(NSInteger errorCode, NSString *er
 typedef void (^PostAddProductCommentSuccessBlock)(NSString *strResponse);
 typedef void (^PostAddProductCommentFailBlcok)(NSInteger errorCode, NSString *errorMsg);
 
+typedef void (^PostAddProudctClickCountSuccessBlock)(NSString *strResponse);
+typedef void (^PostAddProductClickCountFailBlock)(NSInteger errorCode, NSString *errorMsg);
+
 @interface ProductRequestService : HttpRequestService
 
 /**
@@ -47,5 +50,7 @@ typedef void (^PostAddProductCommentFailBlcok)(NSInteger errorCode, NSString *er
 - (void)postGetProductCommentListWithParas:(NSMutableDictionary *)dicParas success:(PostGetProductCommentSuccessBlock)successBlock error:(PostGetProductCommentFailBlock)errorBlock;
 
 - (void)postProductCommentWithPars:(NSMutableDictionary *)dicParas success:(PostAddProductCommentSuccessBlock)successBlock error:(PostAddProductCommentFailBlcok)errorBlock;
+
+- (void)postAddProductClickWithParas:(NSMutableDictionary *)dicParas success:(PostAddProudctClickCountSuccessBlock)successBlock error:(PostAddProductClickCountFailBlock)errorBlock;
 
 @end

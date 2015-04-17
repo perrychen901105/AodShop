@@ -191,6 +191,36 @@
     }];
 }
 
+- (void)addProductClickCountWithModelId:(NSInteger)modelid typeId:(NSInteger)typeId
+{
+    if (self.productService == nil) {
+        self.productService = [[ProductRequestService alloc] init];
+    }
+    __weak ProductViewModel *weakSelf = self;
+    NSMutableDictionary *dicParas = [@{} mutableCopy];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",modelid] forKey:@"modelid"];
+    [dicParas setObject:[NSString stringWithFormat:@"%ld",typeId] forKey:@"typeid"];
+    [self.productService postAddProductClickWithParas:dicParas success:^(NSString *strResponse) {
+        NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        NSInteger intResponseCode = [dicRoot[@"success"] intValue];
+        NSString *strResponseMsg = dicRoot[@"message"];
+        if (intResponseCode == 0) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(productHttpSuccessWithTag:)]) {
+                [weakSelf.delegate productHttpSuccessWithTag:ProductRequestAddClickCount];
+            }
+        } else {
+            if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
+                [weakSelf.delegate productHttpError:intResponseCode errMsg:strResponseMsg withType:ProductRequestAddClickCount];
+            }
+        }
+    } error:^(NSInteger errorCode, NSString *errorMsg) {
+        if (weakSelf.delegate && [self.delegate respondsToSelector:@selector(productHttpError:errMsg:withType:)]) {
+            [weakSelf.delegate productHttpError:errorCode errMsg:errorMsg withType:ProductRequestAddClickCount];
+        }
+    }];
+
+}
+
 - (void)getCachedProductTypeList
 {
     if (self.arrAllProCatList == nil) {

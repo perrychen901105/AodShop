@@ -121,6 +121,8 @@
     [self setNaviBarTitle:@"供应详情"];
     self.viewModelProduct.product = self.modelProduct;
     [self setupDetailView];
+    
+    [self.viewModelProduct addProductClickCountWithModelId:self.modelProduct.productID typeId:1];
     // Do any additional setup after loading the view.
 }
 
