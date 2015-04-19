@@ -23,6 +23,9 @@ typedef void (^UpdateUserInfoFailBlock)(NSInteger errorCode, NSString *strError)
 typedef void (^UpdatePwdSuccessBlock)(NSString *strResponse);
 typedef void (^UpdatePwdFailBlock)(NSInteger errorCode, NSString *strError);
 
+typedef void (^GetUserIntroSuccessBlock)(NSString *strResponse);
+typedef void (^GetUserIntroFailBlock)(NSInteger errorCode, NSString *strError);
+
 @interface ProfileRequestService : HttpRequestService
 
 - (void)userRegisterWithUserName:(NSString *)userName password:(NSString *)pwd district:(NSInteger)disId success:(RegisterSuccessBlock)successBlock error:(RegisterFailBlock)errorBlock;
@@ -30,4 +33,6 @@ typedef void (^UpdatePwdFailBlock)(NSInteger errorCode, NSString *strError);
 - (void)getUserInfo:(NSString *)userId appKey:(NSString *)appKey success:(GetUserInfoSuccessBlock)successBlock error:(GetUserInfoFailBlock)errorBlock;
 - (void)updateUserInfo:(NSMutableDictionary *)dicParas success:(UpdateUserInfoSuccessBlock)successBlock error:(UpdateUserInfoFailBlock)errorBlock;
 - (void)updatePwd:(NSMutableDictionary *)dicParas success:(UpdatePwdSuccessBlock)successBlock error:(UpdatePwdFailBlock)errorBlock;
+- (void)getUserIntro:(NSString *)userId success:(GetUserIntroSuccessBlock)successBlock error:(GetUserIntroFailBlock)errorBlock;
+
 @end

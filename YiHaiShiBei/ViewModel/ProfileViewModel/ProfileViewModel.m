@@ -72,7 +72,7 @@
     if (self.profileRequest == nil) {
         self.profileRequest = [[ProfileRequestService alloc] init];
     }
-    [self.profileRequest getUserInfo:@"9" appKey:appKey success:^(NSString *strResponse) {
+    [self.profileRequest getUserInfo:userId appKey:appKey success:^(NSString *strResponse) {
         
     } error:^(NSInteger errorCode, NSString *strError) {
         
@@ -140,6 +140,31 @@
     } error:^(NSInteger errorCode, NSString *strError) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(updateUserPwdFail:errorMsg:)]) {
             [self.delegate updateUserPwdFail:errorCode errorMsg:strError];
+        }
+    }];
+}
+
+- (void)getUserIntro:(NSString *)userId
+{
+    if (self.profileRequest == nil) {
+        self.profileRequest = [[ProfileRequestService alloc] init];
+    }
+    [self.profileRequest getUserIntro:userId success:^(NSString *strResponse) {
+        NSLog(@"str response is %@",strResponse);
+        BaseModel *modelBase = [[BaseModel alloc] initWithString:strResponse error:nil];
+        if (modelBase.success == 0) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(getUserIntroSuccess:)]) {
+                [self.delegate getUserIntroSuccess:strResponse];
+            }
+        } else {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(getUserIntroFail:errorMsg:)]) {
+                [self.delegate getUserIntroFail:modelBase.success errorMsg:modelBase.message];
+            }
+        }
+
+    } error:^(NSInteger errorCode, NSString *strError) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(getUserIntroFail:errorMsg:)]) {
+            [self.delegate getUserIntroFail:errorCode errorMsg:strError];
         }
     }];
 }

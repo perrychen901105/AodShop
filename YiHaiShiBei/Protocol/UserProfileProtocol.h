@@ -23,4 +23,7 @@
 - (void)updateUserPwdSuccess;
 - (void)updateUserPwdFail:(NSInteger)errorCode errorMsg:(NSString *)errorMsg;
 
+- (void)getUserIntroSuccess:(NSString *)strIntro;
+- (void)getUserIntroFail:(NSInteger)errorCode errorMsg:(NSString *)errorMsg;
+
 @end

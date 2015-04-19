@@ -17,8 +17,10 @@
 #import "productInfoCell.h"
 #import "ProductModel.h"
 #import "ProductDetailViewController.h"
+#import "ProfileViewModel.h"
 
-@interface MerchantDetailViewController ()<FavViewModelDelegate, MerchantViewModelDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@interface MerchantDetailViewController ()<FavViewModelDelegate, MerchantViewModelDelegate, UserProfileProtocol, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet ASStarRatingView *viewStar;
@@ -34,7 +36,7 @@
 
 @property (nonatomic, strong) FavViewModel *viewModelFav;
 @property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
-
+@property (nonatomic, strong) ProfileViewModel *viewModelProfile;
 - (IBAction)btnpresed_phoneCall:(id)sender;
 - (IBAction)btnpressed_email:(id)sender;
 
@@ -124,6 +126,8 @@
     self.viewModelFav.delegate = self;
     self.viewModelMerchant = [[MerchantViewModel alloc] init];
     self.viewModelMerchant.delegate = self;
+    self.viewModelProfile = [[ProfileViewModel alloc] init];
+    self.viewModelProfile.delegate = self;
     self.viewPhone.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
     self.viewAddr.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
     self.viewMail.layer.borderColor = [COLOR_TITLE_DEFAULT CGColor];
@@ -137,6 +141,7 @@
 //        [self setDetailContent];
     }
     [self.viewModelMerchant getProductsWithMerchantUserID:self.merchantUsrID];
+    [self.viewModelProfile getUserIntro:[NSString stringWithFormat:@"%d",self.merchantUsrID]];
     [self setFavButtonItem];
     // Do any additional setup after loading the view.
 }
@@ -161,13 +166,23 @@
     }
 }
 
+#pragma mark - UserInfo methods
+- (void)getUserIntroFail:(NSInteger)errorCode errorMsg:(NSString *)errorMsg
+{
+    
+}
+
+- (void)getUserIntroSuccess:(NSString *)strIntro
+{
+    self.tvMerchantDetail.text = strIntro;
+}
+
 #pragma mark - Merchant model delegate methods
 - (void)merchantHttpSuccessWithTag:(EnumMerchantRequestType)typeRequest
 {
     if (typeRequest == TypeMerchantRequestMerchantDetail) {
         [self setDetailContent];
     } else if (typeRequest == TypeMerchantRequestAllProducts) {
-        NSLog(@"the table view content is %@",self.viewModelMerchant.arrMerchantProducts);
         [self.tbViewContent reloadData];
     }
 }
@@ -177,7 +192,6 @@
     //FIXME: delete it
     NSLog(@"fail");
 }
-
 
 /*
  #pragma mark - Navigation

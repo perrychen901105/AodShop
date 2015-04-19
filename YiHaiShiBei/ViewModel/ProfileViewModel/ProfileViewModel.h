@@ -28,4 +28,6 @@
 
 - (void)updatePwd:(NSInteger)userId appKey:(NSString *)appKey oldpassword:(NSString *)oldpassword newpassword:(NSString *)newpassword repassword:(NSString *)repassword;
 
+- (void)getUserIntro:(NSString *)userId;
+
 @end
