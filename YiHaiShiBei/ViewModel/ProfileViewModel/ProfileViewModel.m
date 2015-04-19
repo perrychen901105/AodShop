@@ -150,11 +150,12 @@
         self.profileRequest = [[ProfileRequestService alloc] init];
     }
     [self.profileRequest getUserIntro:userId success:^(NSString *strResponse) {
-        NSLog(@"str response is %@",strResponse);
         BaseModel *modelBase = [[BaseModel alloc] initWithString:strResponse error:nil];
+        
         if (modelBase.success == 0) {
+            NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
             if (self.delegate && [self.delegate respondsToSelector:@selector(getUserIntroSuccess:)]) {
-                [self.delegate getUserIntroSuccess:strResponse];
+                [self.delegate getUserIntroSuccess:dicRoot[@"data"][@"User"][@"introduction"]];
             }
         } else {
             if (self.delegate && [self.delegate respondsToSelector:@selector(getUserIntroFail:errorMsg:)]) {

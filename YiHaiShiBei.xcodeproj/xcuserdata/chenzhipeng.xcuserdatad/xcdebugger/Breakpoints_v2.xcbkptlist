@@ -138,7 +138,7 @@
                   moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/HomePage/HomeInfoListViewController.m"
-                  timestampString = "451138191.969346"
+                  timestampString = "451149002.295304"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
@@ -153,7 +153,7 @@
                   moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/HomePage/HomeInfoListViewController.m"
-                  timestampString = "451138191.969519"
+                  timestampString = "451149002.295449"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "42"
@@ -193,6 +193,16 @@
             endingLineNumber = "200"
             landmarkName = "-insertAllInformations:withDistrictId:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

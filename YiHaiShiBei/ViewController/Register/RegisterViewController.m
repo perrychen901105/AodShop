@@ -12,6 +12,7 @@
 #import "ChooseLocationViewController.h"
 #import "ChooseCityProtocol.h"
 #import "LocationModel.h"
+#import "LicenseViewController.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate, UserProfileProtocol, MBProgressHUDDelegate, ChooseCityProtocol, UIAlertViewDelegate>
 
@@ -84,7 +85,7 @@
     [self showOnlyLabelHud:strMessage withView:self.view];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -92,8 +93,19 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueLicense"]) {
+        LicenseViewController *viewControllerLicense = (LicenseViewController *)segue.destinationViewController;
+        viewControllerLicense.blockSuccess = ^(BOOL success){
+            NSLog(@"success");
+            [self showProgressLabelHud:@"注册中..." withView:self.view];
+#ifdef DEBUG
+            NSLog(@"the select district id is %ld",self.intDistrinctID);
+#endif
+            [self.viewModelRegister RegisterWithName:self.tfUserName.text pwd:self.tfPassword.text districtId:self.intDistrinctID];
+        };
+    }
 }
-*/
+
 
 // Get the new view controller using [segue destinationViewController].
 // Pass the selected object to the new view controller.
@@ -129,20 +141,13 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        [self showProgressLabelHud:@"注册中..." withView:self.view];
-#ifdef DEBUG
-        NSLog(@"the select district id is %ld",self.intDistrinctID);
-#endif
-        [self.viewModelRegister RegisterWithName:self.tfUserName.text pwd:self.tfPassword.text districtId:self.intDistrinctID];
+
     }
 }
 
 - (IBAction)actionRegisterComplete:(id)sender {
     if ([self checkAllFields]) {
-        NSString *strShow = [NSString stringWithFormat:@"Firefox OS 是完全开源的，因而避免了专有技术。她能为应用开发人员提供有力的支持以创造优秀的产品。此外，这款灵活的操作系统能够创造优异的用户体验。\n 对 web 开发者而言，最重要的部分莫过于理解 Firefox OS 的整个用户界面就是一个 web 应用，而且这个 web 应用具有启动并展现其他 web 应用的能力。尽管提高了对移动设备硬件和服务的访问，但是您对用户界面的改动和您开发的任何在 Firefox OS 上运行的 web 应用使用的都是 HTML、CSS 和 JavaScript。\n从产品的角度看，Firefox OS 是 Mozilla 公司（以及其 OEM 合作伙伴）的品牌，它基于 Boot to Gecko (B2G)，Boot to Gecko 是 Firefox OS 操作系统的工程代号，它是由 Mozilla 内部的一组工程师团队和 Mozilla 开源社区的众多外部贡献人员共同开发的.\nFirefox OS 是完全开源的，因而避免了专有技术。她能为应用开发人员提供有力的支持以创造优秀的产品。此外，这款灵活的操作系统能够创造优异的用户体验。\n 对 web 开发者而言，最重要的部分莫过于理解 Firefox OS 的整个用户界面就是一个 web 应用，而且这个 web 应用具有启动并展现其他 web 应用的能力。尽管提高了对移动设备硬件和服务的访问，但是您对用户界面的改动和您开发的任何在 Firefox OS 上运行的 web 应用使用的都是 HTML、CSS 和 JavaScript。\n从产品的角度看，Firefox OS 是 Mozilla 公司（以及其 OEM 合作伙伴）的品牌，它基于 Boot to Gecko (B2G)，Boot to Gecko 是 Firefox OS 操作系统的工程代号，它是由 Mozilla 内部的一组工程师团队和 Mozilla 开源社区的众多外部贡献人员共同开发的."];
-        UIAlertView *alertLicense = [[UIAlertView alloc] initWithTitle:@"许可协议" message:strShow delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"接受", nil];
-        [alertLicense show];
-
+        [self performSegueWithIdentifier:@"segueLicense" sender:nil];
     }
 }
 

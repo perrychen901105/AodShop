@@ -145,6 +145,7 @@
 		2CE7EED31A45AC6F006A1A0A /* ChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7EED21A45AC6F006A1A0A /* ChangePwdViewController.m */; };
 		2CE7EED71A45CD9E006A1A0A /* FavRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7EED61A45CD9E006A1A0A /* FavRequestService.m */; };
 		2CE7EEDB1A45CF8A006A1A0A /* FavViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7EEDA1A45CF8A006A1A0A /* FavViewModel.m */; };
+		2CEAEF2B1AE3F72000DA1C91 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAEF2A1AE3F72000DA1C91 /* LicenseViewController.m */; };
 		2CEF60591A150026001B7B53 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF60581A150026001B7B53 /* BannerModel.m */; };
 		2CF1239F1A3673BF00EE1430 /* MerchantListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF1239E1A3673BF00EE1430 /* MerchantListViewController.m */; };
 		2CF8BC8C1A3F165600A347EA /* GrouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8BC8B1A3F165600A347EA /* GrouponTableViewCell.m */; };
@@ -460,6 +461,8 @@
 		2CE7EED61A45CD9E006A1A0A /* FavRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavRequestService.m; sourceTree = "<group>"; };
 		2CE7EED91A45CF8A006A1A0A /* FavViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavViewModel.h; sourceTree = "<group>"; };
 		2CE7EEDA1A45CF8A006A1A0A /* FavViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavViewModel.m; sourceTree = "<group>"; };
+		2CEAEF291AE3F72000DA1C91 /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
+		2CEAEF2A1AE3F72000DA1C91 /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
 		2CEF60571A150026001B7B53 /* BannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
 		2CEF60581A150026001B7B53 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
 		2CF1239D1A3673BF00EE1430 /* MerchantListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantListViewController.h; sourceTree = "<group>"; };
@@ -605,6 +608,8 @@
 				040D62101A0336B2009AB9B2 /* RegisterRootViewController.m */,
 				2CC4C73F1A0683E1001CCDAD /* RegisterViewController.h */,
 				2CC4C7401A0683E1001CCDAD /* RegisterViewController.m */,
+				2CEAEF291AE3F72000DA1C91 /* LicenseViewController.h */,
+				2CEAEF2A1AE3F72000DA1C91 /* LicenseViewController.m */,
 				040D62141A0336CB009AB9B2 /* Register.storyboard */,
 			);
 			path = Register;
@@ -1709,6 +1714,7 @@
 				2C433EA719EED4C900129479 /* ASIDataDecompressor.m in Sources */,
 				2CE7EED71A45CD9E006A1A0A /* FavRequestService.m in Sources */,
 				2C258EB21A276F0400CE9F0D /* MerchantViewModel.m in Sources */,
+				2CEAEF2B1AE3F72000DA1C91 /* LicenseViewController.m in Sources */,
 				0446962819EFBB1C00EF71A3 /* SupplyIndexViewController.m in Sources */,
 				2CFD71911A0A80EE00A9902D /* UserModel.m in Sources */,
 				04AA31931A00B63D00623D30 /* ProfileRequestService.m in Sources */,

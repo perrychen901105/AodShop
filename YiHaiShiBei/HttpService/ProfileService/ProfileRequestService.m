@@ -55,9 +55,9 @@ static NSString *ActionGetUserIntro = @"getUserIntro";
 
 - (void)getUserIntro:(NSString *)userId success:(GetUserIntroSuccessBlock)successBlock error:(GetUserIntroFailBlock)errorBlock
 {
-    NSMutableDictionary *dicPara = [@{@"userid":userId
-                                      } mutableCopy];
-    [self postRequestToServer:ActionGetUserIntro dicParams:dicPara success:^(NSString *responseString) {
+
+    NSString *strPara = [NSString stringWithFormat:@"/%@",userId];
+    [self getRequestToServer:ActionGetUserIntro requestPara:strPara success:^(NSString *responseString) {
         successBlock(responseString);
     } error:^(NSInteger errorCode, NSString *errorMessage) {
         errorBlock(errorCode, errorMessage);
