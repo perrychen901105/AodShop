@@ -110,7 +110,7 @@
     [UMSocialData setAppKey:UM_APPKEY];
     // 设置微信AppId, appSecret, 分享Url
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline]];
-    [UMSocialWechatHandler setWXAppId:@"wxca6896ed512153c2" appSecret:@"1e07e6969c5f77d8af110096505f6445" url:@"http://www.baidu.com"];
+    [UMSocialWechatHandler setWXAppId:@"wxca6896ed512153c2" appSecret:@"1e07e6969c5f77d8af110096505f6445" url:@"itms://itunes.apple.com/cn/app/apple-store/id958584355?mt=8"];
     
 //    [[UITabBarController tabBarItem]setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_homeSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_home"]];
     return YES;
