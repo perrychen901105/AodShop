@@ -74,6 +74,7 @@
                     [weakSelf.arrMerchantList addObject:model];
                 }
 //                weakSelf.arrMerchantList = [weakSelf sortArrWithKey:@"aaa" isAscend:YES oriArray:weakSelf.arrMerchantList];
+                [[DatabaseOperator getInstance] removeAllMerchantLists];
                 if (weakSelf.arrMerchantList.count > 0) {
                     [[DatabaseOperator getInstance] insertAllMerchantList:weakSelf.arrMerchantList withCateId:catID];
                 }
@@ -177,9 +178,7 @@
 {
     NSMutableArray *arrSorted = [@[] mutableCopy];
     NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"merchantLevelId" ascending:NO];
-    
     NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
-    
     arrSorted = [[oriArr sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
     return arrSorted;
 }
