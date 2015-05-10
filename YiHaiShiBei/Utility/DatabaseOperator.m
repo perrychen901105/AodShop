@@ -42,7 +42,7 @@
     NSMutableArray *arrCitys = [@[] mutableCopy];
     for (NSDictionary *dicLocation in arrAllLocations) {
         [arrProvinces addObject:dicLocation[@"Province"]];
-        NSLog(@"dic loaction city is %@",[dicLocation[@"City"] objectAtIndex:0]);
+//        NSLog(@"dic loaction city is %@",[dicLocation[@"City"] objectAtIndex:0]);
 //        [arrCitys addObject:[dicLocation[@"City"] objectAtIndex:0]];
         [arrCitys addObjectsFromArray:dicLocation[@"City"]];
     }
@@ -54,18 +54,15 @@
             NSString *strProvinceName = dicPro[@"name"];
             BOOL dbSuccess = [db executeUpdate:@"insert or replace into ProvinceList(id, name) values (?,?)",strProvinceId, strProvinceName];
             if (dbSuccess) {
-                NSLog(@"success");
             }
         }
         
         for (NSDictionary *dicCity in arrCitys) {
-            NSLog(@"the dic city is %@",dicCity);
             NSString *strCityId = dicCity[@"id"];
             NSString *strCityName = dicCity[@"name"];
             NSString *strProvinceId = dicCity[@"province_id"];
             BOOL dbSuccess = [db executeUpdate:@"insert or replace into CityList(id, name, provinceId) values (?,?,?)",strCityId, strCityName, strProvinceId];
             if (dbSuccess) {
-                NSLog(@"success");
             }
             NSArray *arrDistrict = dicCity[@"District"];
             for (NSDictionary *dicDistrict in arrDistrict) {
@@ -74,7 +71,6 @@
                 NSString *strCityId = dicDistrict[@"city_id"];
                 BOOL dbSuccess = [db executeUpdate:@"insert or replace into DistrictList(id, name, cityId) values (?,?,?)",strDisId, strDisName, strCityId];
                 if (dbSuccess) {
-                    NSLog(@"success");
                 }
             }
         }
@@ -117,18 +113,14 @@
     }
     // ...
     NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM CityList where provinceId = %d",provinceId];
-#ifdef DEBUG
-    NSLog(@"sql is %@",strSql);
-#endif
+
     FMResultSet *rs = [db executeQuery:strSql];
     NSMutableArray *arrCitys = [@[] mutableCopy];
     while ([rs next]) {
         CityModel *model = [[CityModel alloc] init];
         model.cityID = [rs intForColumn:@"id"];
         model.name = [rs stringForColumn:@"name"];
-#ifdef DEBUG
-        NSLog(@"model is %@",model);
-#endif
+
         [arrCitys addObject:model];
     }
     [db close];
@@ -143,18 +135,14 @@
     }
     // ...
     NSString *strSql = [NSString stringWithFormat:@"SELECT * FROM DistrictList where cityId = %d",cityId];
-#ifdef DEBUG
-    NSLog(@"sql is %@",strSql);
-#endif
+
     FMResultSet *rs = [db executeQuery:strSql];
     NSMutableArray *arrDistricts = [@[] mutableCopy];
     while ([rs next]) {
         DistrinctModel *model = [[DistrinctModel alloc] init];
         model.districtID = [rs intForColumn:@"id"];
         model.name = [rs stringForColumn:@"name"];
-#ifdef DEBUG
-        NSLog(@"model is %@",model);
-#endif
+
         [arrDistricts addObject:model];
     }
     [db close];
@@ -176,7 +164,6 @@
     dbSuccess = [db executeUpdate:strSql2];
     dbSuccess = [db executeUpdate:strSql3];
     if (dbSuccess) {
-        NSLog(@"success");
     }
 
     [db close];
@@ -201,7 +188,6 @@
     NSString *strExec = [NSString stringWithFormat:@"insert or replace into Information(id, title, content, release_date, picture, district_id, user_id, username) values %@",strAllValue];
     BOOL dbSuccess = [db executeUpdate:strExec];
     if (dbSuccess) {
-        NSLog(@"success");
     }
     [db close];
     db = nil;

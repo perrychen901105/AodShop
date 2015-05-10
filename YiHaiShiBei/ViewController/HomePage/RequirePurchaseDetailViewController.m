@@ -182,7 +182,6 @@
     CGRect keyboardFrame = [kbFrame CGRectValue];
     CGFloat height = keyboardFrame.size.height;
     [UIView animateWithDuration:animationDuration animations:^{
-        NSLog(@"%f",self.constraintInupBottom.constant);
     }];
 }
 

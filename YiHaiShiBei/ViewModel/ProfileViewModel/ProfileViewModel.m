@@ -19,9 +19,7 @@
     }
     
     [self.profileRequest loginWithName:strUserName password:strPwd success:^(NSString *strToken) {
-#ifdef DEBUG_X
-        NSLog(@"%s, %@",__func__,strToken);
-#endif
+
         UserModel *user = [[UserModel alloc] initWithString:strToken error:nil];
         
         if (user.success == 0) {
@@ -48,9 +46,7 @@
         self.profileRequest = [[ProfileRequestService alloc] init];
     }
     [self.profileRequest userRegisterWithUserName:strUserName password:strPwd district:districtId success:^(NSString *modelLocation) {
-#ifdef DEBUG_X
-        NSLog(@"%s, %@",__func__,modelLocation);
-#endif
+
         BaseModel *modelBase = [[BaseModel alloc] initWithString:modelLocation error:nil];
         if ([self.delegate respondsToSelector:@selector(RegisterSuccess)]) {
             if (modelBase.success == 0) {

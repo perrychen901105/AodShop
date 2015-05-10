@@ -67,7 +67,7 @@
 
 - (void)moveTempFile:(NSString *)tmpFilePath ToDestination:(NSString *)desFilePath needRemoveOld:(BOOL)needRemove
 {
-    NSLog(@"tmp file path is %@, dir path is %@",tmpFilePath, desFilePath);
+//    NSLog(@"tmp file path is %@, dir path is %@",tmpFilePath, desFilePath);
     NSFileManager *fm = [NSFileManager defaultManager];
     NSError *err = nil;
     

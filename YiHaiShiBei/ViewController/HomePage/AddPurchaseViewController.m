@@ -64,7 +64,7 @@
     
     self.viewModelProduct = [[ProductViewModel alloc] init];
     self.viewModelProduct.delegate = self;
-//    [self getProductCategory];
+    [self getProductCategory];
     
     UIPickerView *picker = [[UIPickerView alloc] init];
     picker.dataSource = self;

@@ -24,9 +24,7 @@
     }
     __weak PurchaseViewModel *weakSelf = self;
     [self.purchaseService getAllPurchaseListWithUserId:userID districtID:districtID productCatId:productCatID start:start num:num success:^(NSString *strResponse) {
-#ifdef DEBUG
-        NSLog(@"THE response is %@",strResponse);
-#endif
+
         NSDictionary *dicRoot = [NSJSONSerialization JSONObjectWithData:[strResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
         NSInteger intResponseCode = [dicRoot[@"success"] intValue];
         NSString *strResponseMsg = dicRoot[@"message"];
