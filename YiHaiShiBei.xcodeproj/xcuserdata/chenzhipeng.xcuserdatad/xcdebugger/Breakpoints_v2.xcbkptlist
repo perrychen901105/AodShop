@@ -41,22 +41,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiHaiShiBei/ViewController/HomePage/GrouponDetailViewController.m"
-            timestampString = "450198136.787104"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-setViewContent"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "YiHaiShiBei/ViewController/HomePage/RequirePurchaseDetailViewController.m"
             timestampString = "450199495.185916"
             startingColumnNumber = "9223372036854775807"
@@ -122,12 +106,12 @@
                   moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/HomePage/HomeInfoListViewController.m"
-                  timestampString = "452964337.955178"
+                  timestampString = "453078373.795408"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "281">
+                  offsetFromSymbolStart = "292">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -137,12 +121,12 @@
                   moduleName = "&#x827a;&#x6d77;&#x62fe;&#x8d1d;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chenzhipeng/Project/MyProject/AodShop/AodShop/YiHaiShiBei/ViewController/HomePage/HomeInfoListViewController.m"
-                  timestampString = "452964337.955273"
+                  timestampString = "453078373.795604"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "42"
                   endingLineNumber = "42"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -177,6 +161,16 @@
             endingLineNumber = "200"
             landmarkName = "-insertAllInformations:withDistrictId:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

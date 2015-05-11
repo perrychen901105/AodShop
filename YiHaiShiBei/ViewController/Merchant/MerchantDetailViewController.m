@@ -151,7 +151,7 @@
     [self.viewModelMerchant getProductsWithMerchantUserID:self.merchantUsrID];
     [self.viewModelProfile getUserIntro:[NSString stringWithFormat:@"%d",self.merchantUsrID]];
     [self setFavButtonItem];
-    self.tbViewContent.tableHeaderView = self.viewForHeader;
+//    self.tbViewContent.tableHeaderView = self.viewForHeader;
     // Do any additional setup after loading the view.
 }
 

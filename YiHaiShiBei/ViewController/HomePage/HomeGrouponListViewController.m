@@ -102,7 +102,7 @@
     GrouponModel *model = self.viewModelPurchase.arrAllGrouponList[indexPath.row];
     [cell.imgViewPicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMGHost,model.picture]] placeholderImage:[UIImage imageNamed:@"img_banner_default"]];
     cell.lblTitle.text  = [NSString stringWithFormat:@"商品名: %@",model.name];
-    cell.lblPrice.text = [NSString stringWithFormat:@"团购价: %.2f",model.price];
+    cell.lblPrice.text = [NSString stringWithFormat:@"团购价: %.2f",model.new_price];
     cell.lblNumber.text = [NSString stringWithFormat:@"剩余数量: %d",model.number];
     return cell;
 }
