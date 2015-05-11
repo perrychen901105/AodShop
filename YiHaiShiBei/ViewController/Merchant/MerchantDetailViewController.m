@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UIView *viewAddr;
 @property (weak, nonatomic) IBOutlet UITableView *tbViewContent;
 
+@property (nonatomic, strong) IBOutlet UIView *viewForHeader;
+
 @property (nonatomic, strong) FavViewModel *viewModelFav;
 @property (nonatomic, strong) MerchantViewModel *viewModelMerchant;
 @property (nonatomic, strong) ProfileViewModel *viewModelProfile;
@@ -65,6 +67,12 @@
 {
     
 }
+
+- (void)setupTableViewHeader
+{
+    
+}
+
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
@@ -143,6 +151,7 @@
     [self.viewModelMerchant getProductsWithMerchantUserID:self.merchantUsrID];
     [self.viewModelProfile getUserIntro:[NSString stringWithFormat:@"%d",self.merchantUsrID]];
     [self setFavButtonItem];
+    self.tbViewContent.tableHeaderView = self.viewForHeader;
     // Do any additional setup after loading the view.
 }
 

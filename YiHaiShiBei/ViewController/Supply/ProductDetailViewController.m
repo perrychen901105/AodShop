@@ -126,6 +126,7 @@
     // Do any additional setup after loading the view.
 }
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -207,7 +208,6 @@
     CGSize sizeFinal = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return sizeFinal.height+1.0f;
 }
-
 
 #pragma mark - Product viewmodel methds
 -(void)productHttpError:(NSInteger)errorCode errMsg:(NSString *)errorStr withType:(EnumProductRequestType)typeRequest
