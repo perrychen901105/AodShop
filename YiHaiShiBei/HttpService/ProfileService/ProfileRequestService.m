@@ -10,18 +10,19 @@
 
 @implementation ProfileRequestService
 
-static NSString *ActionRegister = @"register";
-static NSString *ActionLogin = @"login";
-static NSString *ActionGetUserInfo = @"getUserInfo";
-static NSString *ActionUpdateUserInfo = @"editUserInfo";
-static NSString *ActionUpdatePwd = @"editUserPassword";
+static NSString *ActionRegister = @"register/";
+static NSString *ActionLogin = @"login/";
+static NSString *ActionGetUserInfo = @"getUserInfo/";
+static NSString *ActionUpdateUserInfo = @"editUserInfo/";
+static NSString *ActionUpdatePwd = @"editUserPassword/";
 static NSString *ActionGetUserIntro = @"getUserIntro";
 
-- (void)userRegisterWithUserName:(NSString *)userName password:(NSString *)pwd district:(NSInteger)disId success:(RegisterSuccessBlock)successBlock error:(RegisterFailBlock)errorBlock
+- (void)userRegisterWithUserName:(NSString *)userName password:(NSString *)pwd district:(NSInteger)disId phoneNum:(NSString *)phoneNum success:(RegisterSuccessBlock)successBlock error:(RegisterFailBlock)errorBlock
 {
     NSMutableDictionary *dicPara = [@{@"username":userName
                                      ,@"password":pwd
-                                     ,@"district_id":[NSNumber numberWithInt:disId]} mutableCopy];
+                                     ,@"district_id":[NSNumber numberWithInt:disId]
+                                     ,@"phone":phoneNum} mutableCopy];
     
     [self postRequestToServer:ActionRegister dicParams:dicPara success:^(NSString *responseString) {
         successBlock(responseString);

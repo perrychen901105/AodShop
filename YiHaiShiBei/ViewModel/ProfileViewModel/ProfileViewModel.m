@@ -40,12 +40,12 @@
     }];
 }
 
-- (void)RegisterWithName:(NSString *)strUserName pwd:(NSString *)strPwd districtId:(NSInteger)districtId
+- (void)RegisterWithName:(NSString *)strUserName pwd:(NSString *)strPwd districtId:(NSInteger)districtId phoneNum:(NSString *)phoneNum
 {
     if (self.profileRequest == nil) {
         self.profileRequest = [[ProfileRequestService alloc] init];
     }
-    [self.profileRequest userRegisterWithUserName:strUserName password:strPwd district:districtId success:^(NSString *modelLocation) {
+    [self.profileRequest userRegisterWithUserName:strUserName password:strPwd district:districtId phoneNum:phoneNum success:^(NSString *modelLocation) {
 
         BaseModel *modelBase = [[BaseModel alloc] initWithString:modelLocation error:nil];
         if ([self.delegate respondsToSelector:@selector(RegisterSuccess)]) {

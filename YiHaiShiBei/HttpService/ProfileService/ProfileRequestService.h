@@ -27,8 +27,8 @@ typedef void (^GetUserIntroSuccessBlock)(NSString *strResponse);
 typedef void (^GetUserIntroFailBlock)(NSInteger errorCode, NSString *strError);
 
 @interface ProfileRequestService : HttpRequestService
+- (void)userRegisterWithUserName:(NSString *)userName password:(NSString *)pwd district:(NSInteger)disId phoneNum:(NSString *)phoneNum success:(RegisterSuccessBlock)successBlock error:(RegisterFailBlock)errorBlock;
 
-- (void)userRegisterWithUserName:(NSString *)userName password:(NSString *)pwd district:(NSInteger)disId success:(RegisterSuccessBlock)successBlock error:(RegisterFailBlock)errorBlock;
 - (void)loginWithName:(NSString *)userName password:(NSString *)pwd success:(LoginSuccessBlock)successBlock error:(LoginFailBlock)errorBlock;
 - (void)getUserInfo:(NSString *)userId appKey:(NSString *)appKey success:(GetUserInfoSuccessBlock)successBlock error:(GetUserInfoFailBlock)errorBlock;
 - (void)updateUserInfo:(NSMutableDictionary *)dicParas success:(UpdateUserInfoSuccessBlock)successBlock error:(UpdateUserInfoFailBlock)errorBlock;

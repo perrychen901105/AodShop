@@ -13,7 +13,7 @@
 
 static NSString *ActionAllLocation = @"getProvinces";
 static NSString *ActionAllBanners  = @"getAdvertisings";
-static NSString *ActionAllInfos    = @"getInfomations";
+static NSString *ActionAllInfos    = @"getInfomations/";
 
 - (void)getAllLocationList:(GetLocationListSuccessBlock)successBlock error:(GetLocationListFailBlock)errorBlock
 {
@@ -30,7 +30,7 @@ static NSString *ActionAllInfos    = @"getInfomations";
 {
     NSMutableString *strGetBannerList = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"/%d",distrinctID]];
     if (num >= 0) {
-        [strGetBannerList appendFormat:@"/%d",num];
+        [strGetBannerList appendFormat:@"/%d/",num];
     }
     [self getRequestToServer:ActionAllBanners requestPara:strGetBannerList success:^(NSString *responseString) {
         successBlock(responseString);
@@ -44,7 +44,7 @@ static NSString *ActionAllInfos    = @"getInfomations";
 {
     NSMutableDictionary *dicParas = [@{@"typeid":@1,
                                        @"districtid":[NSString stringWithFormat:@"%ld",distrinctID]} mutableCopy];
-    
+
     if (start >= 0) {
         dicParas[@"start"] = [NSString stringWithFormat:@"%ld",start];
     }

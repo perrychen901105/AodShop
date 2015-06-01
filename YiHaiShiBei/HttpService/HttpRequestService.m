@@ -15,14 +15,8 @@
 - (void)getRequestToServer:(NSString *)actionName requestPara:(NSString *)requestData success:(RequestSuccessBlock)successBlock error:(RequestErrorBlock)errorBlock
 {
     NSURL *url = [NSURL URLWithString:[[APIHost stringByAppendingString:actionName] stringByAppendingString:requestData]];
-#ifdef DEBUG
-    NSLog(@"url is %@",url);
-#endif
-    
-    __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    
-    [request setRequestMethod:@"GET"];
-    [request setTimeOutSeconds:10.0];
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+
     [request startAsynchronous];
     [request setCompletionBlock:^{
         NSString *responseString = [request responseString];
@@ -38,15 +32,13 @@
 #endif
         errorBlock(request.responseStatusCode, [error localizedDescription]);
     }];
-    
 }
 
 - (void)postFileToServer:(NSString *)actionName Datas:(NSMutableDictionary *)datas dicParams:(NSMutableDictionary *)dicParams success:(RequestSuccessBlock)successBlock error:(RequestErrorBlock)errorBlock
 {
     NSURL *url = [NSURL URLWithString:[APIHost stringByAppendingString:actionName]];
     
-    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    
+    ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:url];
     for (NSString *fileKey in [datas allKeys]) {
         [request addData:datas[fileKey] withFileName:@"temp.jpg" andContentType:@"image/jpeg" forKey:fileKey];
     }
@@ -56,8 +48,6 @@
     
     [request setRequestMethod:@"POST"];
     [request setTimeOutSeconds:30];
-   
-    [request startAsynchronous];
     [request setCompletionBlock:^{
 #ifdef DEBUG_X
         NSLog(@"message is %@",request.responseString);
@@ -71,25 +61,32 @@
         NSError *error = [request error];
         errorBlock(request.responseStatusCode, [error localizedDescription]);
     }];
+   
+    [request startAsynchronous];
 }
 
 - (void)postRequestToServer:(NSString *)actionName dicParams:(NSMutableDictionary *)dicParams success:(RequestSuccessBlock)successBlock error:(RequestErrorBlock)errorBlock
 {
     NSURL *url = [NSURL URLWithString:[APIHost stringByAppendingString:actionName]];
-    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+//    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 
+    
+    ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:url];
+    [request setRequestMethod:@"POST"];
+    
 #ifdef DEBUG_X
     NSLog(@"url is %@, dic is %@",url, dicParams);
 #endif
     for (NSString *key in [dicParams allKeys]) {
-        [request addPostValue:dicParams[key] forKey:key];
+//        [request addPostValue:dicParams[key] forKey:key];
+        [request setPostValue:dicParams[key] forKey:key];
     }
     
     
     [request setRequestMethod:@"POST"];
-    [request setTimeOutSeconds:30];
+    [request setTimeOutSeconds:10];
+//    request.delegate = self;
     
-    [request startAsynchronous];
     [request setCompletionBlock:^{
 #ifdef DEBUG_X
         NSLog(@"message is %@",request.responseString);
@@ -108,6 +105,16 @@
         errorBlock(request.responseStatusCode, [error localizedDescription]);
     }];
 
+    [request startAsynchronous];
+
+}
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    
 }
 
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    
+}
 @end

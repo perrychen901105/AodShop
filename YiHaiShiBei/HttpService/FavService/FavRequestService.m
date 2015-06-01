@@ -10,9 +10,9 @@
 
 @implementation FavRequestService
 
-static NSString *ActionGetFavList = @"getUserCollection";
-static NSString *ActionAddFav = @"addUserCollection";
-static NSString *ActionRemoveFav = @"deletetUserCollection";
+static NSString *ActionGetFavList = @"getUserCollection/";
+static NSString *ActionAddFav = @"addUserCollection/";
+static NSString *ActionRemoveFav = @"deletetUserCollection/";
 
 - (void)getAllMyFavListWithParas:(NSMutableDictionary *)dicParas success:(GetAllFavListSuccessBlock)successBlock error:(GetAllFavListFailBlock)errorBlock
 {

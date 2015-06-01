@@ -12,10 +12,10 @@
 
 static NSString *ActionGetProductCatList = @"getProductCatList";
 static NSString *ActionGetProductList = @"getProductsListByCat";
-static NSString *ActionPostAddPurchase = @"addProductPurchase";
-static NSString *ActionGetProductCommentList = @"getProductComments";
-static NSString *ActionAddProductComment = @"addProductComment";
-static NSString *ActionAddProductClickCount = @"addCountClick";
+static NSString *ActionPostAddPurchase = @"addProductPurchase/";
+static NSString *ActionGetProductCommentList = @"getProductComments/";
+static NSString *ActionAddProductComment = @"addProductComment/";
+static NSString *ActionAddProductClickCount = @"addCountClick/";
 
 - (void)getProductTypeListWithStart:(NSInteger)start number:(NSInteger)num success:(GetAllProductCatListSuccessBlock)successBlock error:(GetAllProductCatListFailBlock)errorBlock
 {

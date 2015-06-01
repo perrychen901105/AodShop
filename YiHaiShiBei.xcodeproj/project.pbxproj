@@ -1823,7 +1823,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: chun long shen (JEKL22D8G5)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1847,7 +1848,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YiHaiShiBei/Support/Share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
@@ -1871,7 +1872,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "艺海拾贝";
-				PROVISIONING_PROFILE = "6000c690-df93-47be-9ee5-3726939f6e3e";
+				PROVISIONING_PROFILE = "ac5d1b83-6abe-4c0b-bd06-ea80a74665c7";
 			};
 			name = "ad-hoc Profile";
 		};
@@ -1911,6 +1912,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: chun long shen (JEKL22D8G5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: chun long shen (JEKL22D8G5)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1933,6 +1935,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "0e33d403-c2c1-45d6-b051-87e41b666594";
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -1953,6 +1956,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: chun long shen (JEKL22D8G5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: chun long shen (JEKL22D8G5)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1966,6 +1970,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "0e33d403-c2c1-45d6-b051-87e41b666594";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1977,7 +1982,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: chun long shen (JEKL22D8G5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YiHaiShiBei/Support/Share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
@@ -2001,7 +2006,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "艺海拾贝";
-				PROVISIONING_PROFILE = "6000c690-df93-47be-9ee5-3726939f6e3e";
+				PROVISIONING_PROFILE = "ac5d1b83-6abe-4c0b-bd06-ea80a74665c7";
 			};
 			name = Debug;
 		};
@@ -2010,7 +2015,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: chun long shen (JEKL22D8G5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YiHaiShiBei/Support/Share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
@@ -2032,9 +2037,11 @@
 					"$(PROJECT_DIR)/YiHaiShiBei/Support/Share/UMSocial_Sdk_Extra_Frameworks/Whatsapp",
 					"$(PROJECT_DIR)/YiHaiShiBei/Support/Share/UMSocial_Sdk_Extra_Frameworks/YiXin",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "艺海拾贝";
-				PROVISIONING_PROFILE = "6000c690-df93-47be-9ee5-3726939f6e3e";
+				PROVISIONING_PROFILE = "ac5d1b83-6abe-4c0b-bd06-ea80a74665c7";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};

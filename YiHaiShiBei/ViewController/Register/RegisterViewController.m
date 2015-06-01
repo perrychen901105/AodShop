@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tfUserName;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassword;
 @property (weak, nonatomic) IBOutlet UITextField *tfConfirmPwd;
+@property (weak, nonatomic) IBOutlet UITextField *tfPhoneNumber;
 
 @property (nonatomic, assign) NSInteger intDistrinctID;
 
@@ -63,6 +64,7 @@
     [self.tfUserName resignFirstResponder];
     [self.tfPassword resignFirstResponder];
     [self.tfConfirmPwd resignFirstResponder];
+    [self.tfPhoneNumber resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,7 +103,7 @@
 #ifdef DEBUG
             NSLog(@"the select district id is %ld",self.intDistrinctID);
 #endif
-            [self.viewModelRegister RegisterWithName:self.tfUserName.text pwd:self.tfPassword.text districtId:self.intDistrinctID];
+            [self.viewModelRegister RegisterWithName:self.tfUserName.text pwd:self.tfPassword.text districtId:self.intDistrinctID phoneNum:self.tfPhoneNumber.text];
         };
     }
 }
@@ -124,6 +126,20 @@
         boolAllComplete = NO;
         [self showOnlyLabelHud:@"用户名不能为空" withView:self.view];
         return boolAllComplete;
+    }
+    if ([self.tfPhoneNumber.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        boolAllComplete = NO;
+        [self showOnlyLabelHud:@"手机号不能为空" withView:self.view];
+        return boolAllComplete;
+    } else {
+        NSString *strPhoneNum = [self.tfPhoneNumber.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if ([self isValidateMobile:strPhoneNum]) {
+            
+        } else {
+            boolAllComplete = NO;
+            [self showOnlyLabelHud:@"请输入正确的手机号" withView:self.view];
+            return boolAllComplete;
+        }
     }
     if ([self.tfChooseDistrict.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
         boolAllComplete = NO;
@@ -165,6 +181,15 @@
     }
 }
 
+- (BOOL)isValidateMobile:(NSString *)mobile
+{
+    // 手机号以13， 15，18开头，八个 \d 数字字符
+    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    // NSLog(@"phoneTest is %@",phoneTest);
+    return [phoneTest evaluateWithObject:mobile];
+    
+}
 - (void)registerDidSuccess:(UserRegisterSuccessBlock)blockTemp
 {
     self.blockSuccess = blockTemp;

@@ -8,7 +8,7 @@
 
 #import "SearchRequestService.h"
 
-static NSString *ActionSearchList = @"search";
+static NSString *ActionSearchList = @"search/";
 
 @implementation SearchRequestService
 

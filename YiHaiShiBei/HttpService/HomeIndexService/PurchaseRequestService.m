@@ -10,10 +10,10 @@
 
 @implementation PurchaseRequestService
 
-static NSString *ActionAllPurchaseList = @"productPurchaseList";
+static NSString *ActionAllPurchaseList = @"productPurchaseList/";
 static NSString *ActionAllGrouponList  = @"getGroupPurchases";
-static NSString *ActionAllReplyPurchaseList = @"getProductPurchasesReplies";
-static NSString *ActionAddReplyPurchase = @"addProductPurchasesReply";
+static NSString *ActionAllReplyPurchaseList = @"getProductPurchasesReplies/";
+static NSString *ActionAddReplyPurchase = @"addProductPurchasesReply/";
 static NSString *ActionJoinGroupon = @"joinGroupPurchase";
 static NSString *ActionGetJoinGrouponNum = @"getNumberOfGroupPurchase";
 static NSString *ActionGetGrouponDetail = @"getSingleGroupPurchase";

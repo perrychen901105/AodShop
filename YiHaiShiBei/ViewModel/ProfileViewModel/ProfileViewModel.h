@@ -19,8 +19,7 @@
 @property (nonatomic, strong) UserModel *modelUser;
 
 - (void)loginWithName:(NSString *)strUserName pwd:(NSString *)strPwd;
-
-- (void)RegisterWithName:(NSString *)strUserName pwd:(NSString *)strPwd districtId:(NSInteger)districtId;
+- (void)RegisterWithName:(NSString *)strUserName pwd:(NSString *)strPwd districtId:(NSInteger)districtId phoneNum:(NSString *)phoneNum;
 
 - (void)getUserInfo:(NSString *)userId appKey:(NSString *)appKey;
 

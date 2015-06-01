@@ -12,7 +12,7 @@
 
 static NSString *ActionMerchantTypeList = @"getUserCatList";
 static NSString *ActionMerchantList = @"getBusinessListByCat";
-static NSString *ActionMerchantDetail = @"getBusinessList";
+static NSString *ActionMerchantDetail = @"getBusinessList/";
 static NSString *ActionMerchantProducts = @"getProductByBusiness";
 
 - (void)getMerchantTypeListWithStartNum:(NSInteger)numStart Number:(NSInteger)numCount success:(GetMerchantTypeListSuccessBlock)successBlock error:(GetMerchantTypeListFailBlock)errorBlock
